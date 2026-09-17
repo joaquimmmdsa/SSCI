@@ -260,6 +260,353 @@ Així, \(\alpha = -9\) i \(\beta = 47\).
 **Explicació de l'exemple:**
 Primer hem aplicat l'Algorisme d'Euclides per trobar el mcd (que és 2). Després, hem anat "cap enrere" aïllant els residus de cada divisió (començant per l'última divisió no nul·la, que és \(6 = 4 \cdot 1 + 2\)). En cada pas, substituïm el residu anterior per la seva expressió en funció dels nombres originals. Aquest procés de substitucions successives ens permet expressar el 2 final com una combinació de 240 i 46. Els coeficients que acompanyen 240 i 46 són \(\alpha = -9\) i \(\beta = 47\), respectivament.
 
+## 14.1. Mètode matricial \(2\times 2\) per trobar \(\alpha\) i \(\beta\)
+
+La Identitat de Bézout diu que, per a \(a,b\in\mathbb Z\) no tots dos zero, existeixen \(\alpha,\beta\in\mathbb Z\) tals que
+\[
+d=\operatorname{mcd}(a,b)=\alpha a+\beta b.
+\]
+Aquests coeficients es poden trobar de manera molt ordenada fent servir matrius \(2\times 2\).
+
+### Idea
+
+Representem la parella \((a,b)\) com un vector fila. Cada divisió euclidiana
+\[
+a=bq+r,\qquad 0\le r<b,
+\]
+es pot escriure com
+\[
+(a,b)
+\begin{pmatrix}
+0 & 1\\
+1 & -q
+\end{pmatrix}
+=
+(b,\ a-qb)
+=
+(b,r).
+\]
+Per tant, la matriu
+\[
+M_q=
+\begin{pmatrix}
+0 & 1\\
+1 & -q
+\end{pmatrix}
+\]
+transforma la parella \((a,b)\) en la parella \((b,r)\).
+
+Si repetim aquest procés fins que el segon component sigui \(0\), obtindrem
+\[
+(a,b)\,M=(d,0),
+\]
+on \(d=\operatorname{mcd}(a,b)\) i \(M\) és el producte de totes les matrius \(M_q\) utilitzades.
+
+Com que
+\[
+(a,b)
+\begin{pmatrix}
+m_{11} & m_{12}\\
+m_{21} & m_{22}
+\end{pmatrix}
+=
+(a m_{11}+b m_{21},\ a m_{12}+b m_{22}),
+\]
+la primera component de \((d,0)\) és
+\[
+d=a\,m_{11}+b\,m_{21}.
+\]
+Per tant, els coeficients de Bézout són
+\[
+\boxed{\alpha=m_{11},\qquad \beta=m_{21}}.
+\]
+És a dir, la **primera columna** de la matriu total \(M\) dona els coeficients \(\alpha\) i \(\beta\).
+
+---
+
+### Algorisme
+
+1. Inicialitzem
+   \[
+   M=I_2=\begin{pmatrix}1&0\\0&1\end{pmatrix}.
+   \]
+
+2. Mentre els dos components de la parella actual \((a,b)\) siguin no nuls:
+   - Fem la divisió euclidiana \(a=bq+r\).
+   - Actualitzem la parella:
+     \[
+     (a,b)\leftarrow (b,r).
+     \]
+   - Actualitzem la matriu:
+     \[
+     M\leftarrow M
+     \begin{pmatrix}
+     0&1\\
+     1&-q
+     \end{pmatrix}.
+     \]
+
+3. Quan un component sigui \(0\), l’altre és \(d=\operatorname{mcd}(a,b)\).
+
+4. La primera columna de \(M\) dona \(\alpha\) i \(\beta\):
+   \[
+   d=\alpha a+\beta b.
+   \]
+
+---
+
+### Exemple 1: \(\operatorname{mcd}(240,46)\)
+
+Volem
+\[
+2=\alpha\cdot 240+\beta\cdot 46.
+\]
+
+#### Divisions euclidianes
+
+\[
+240=5\cdot 46+10
+\]
+\[
+46=4\cdot 10+6
+\]
+\[
+10=1\cdot 6+4
+\]
+\[
+6=1\cdot 4+2
+\]
+\[
+4=2\cdot 2+0
+\]
+
+Els quocients són:
+\[
+q_1=5,\quad q_2=4,\quad q_3=1,\quad q_4=1,\quad q_5=2.
+\]
+
+#### Matrius associades
+
+\[
+M_1=
+\begin{pmatrix}
+0&1\\
+1&-5
+\end{pmatrix},
+\quad
+M_2=
+\begin{pmatrix}
+0&1\\
+1&-4
+\end{pmatrix},
+\quad
+M_3=
+\begin{pmatrix}
+0&1\\
+1&-1
+\end{pmatrix},
+\quad
+M_4=
+\begin{pmatrix}
+0&1\\
+1&-1
+\end{pmatrix},
+\quad
+M_5=
+\begin{pmatrix}
+0&1\\
+1&-2
+\end{pmatrix}.
+\]
+
+#### Producte total
+
+\[
+M=M_1M_2M_3M_4M_5
+=
+\begin{pmatrix}
+-9 & 23\\
+47 & -120
+\end{pmatrix}.
+\]
+
+La primera columna és \((-9,47)\). Per tant:
+\[
+\boxed{2=(-9)\cdot 240+47\cdot 46}.
+\]
+Així,
+\[
+\boxed{\alpha=-9,\qquad \beta=47}.
+\]
+
+Comprovació:
+\[
+(-9)\cdot 240+47\cdot 46=-2160+2162=2.
+\]
+
+---
+
+### Exemple 2: \(\operatorname{mcd}(31,12)\)
+
+Aquest és l’exemple que apareix a la pissarra.
+
+Volem
+\[
+1=\alpha\cdot 31+\beta\cdot 12.
+\]
+
+#### Divisions euclidianes
+
+\[
+31=2\cdot 12+7
+\]
+\[
+12=1\cdot 7+5
+\]
+\[
+7=1\cdot 5+2
+\]
+\[
+5=2\cdot 2+1
+\]
+\[
+2=2\cdot 1+0
+\]
+
+Els quocients són:
+\[
+q_1=2,\quad q_2=1,\quad q_3=1,\quad q_4=2,\quad q_5=2.
+\]
+
+#### Matrius associades
+
+\[
+M_1=
+\begin{pmatrix}
+0&1\\
+1&-2
+\end{pmatrix},
+\quad
+M_2=
+\begin{pmatrix}
+0&1\\
+1&-1
+\end{pmatrix},
+\quad
+M_3=
+\begin{pmatrix}
+0&1\\
+1&-1
+\end{pmatrix},
+\quad
+M_4=
+\begin{pmatrix}
+0&1\\
+1&-2
+\end{pmatrix},
+\quad
+M_5=
+\begin{pmatrix}
+0&1\\
+1&-2
+\end{pmatrix}.
+\]
+
+#### Producte total
+
+\[
+M=M_1M_2M_3M_4M_5
+=
+\begin{pmatrix}
+-5 & 12\\
+13 & -31
+\end{pmatrix}.
+\]
+
+La primera columna és \((-5,13)\). Per tant:
+\[
+\boxed{1=(-5)\cdot 31+13\cdot 12}.
+\]
+Així,
+\[
+\boxed{\alpha=-5,\qquad \beta=13}.
+\]
+
+Comprovació:
+\[
+(-5)\cdot 31+13\cdot 12=-155+156=1.
+\]
+
+---
+
+### Justificació del mètode
+
+Cada matriu
+\[
+\begin{pmatrix}
+0&1\\
+1&-q
+\end{pmatrix}
+\]
+té determinant
+\[
+0\cdot(-q)-1\cdot 1=-1.
+\]
+Per tant, és invertible sobre els enters. Això garanteix que totes les operacions conserven les combinacions lineals enteres.
+
+Si després d’aplicar totes les matrius obtenim
+\[
+(a,b)M=(d,0),
+\]
+aleshores
+\[
+d=a\,m_{11}+b\,m_{21},
+\]
+on \(m_{11}\) i \(m_{21}\) són els elements de la primera columna de \(M\). Per tant:
+\[
+\boxed{d=\alpha a+\beta b}
+\]
+amb
+\[
+\boxed{\alpha=m_{11},\qquad \beta=m_{21}}.
+\]
+
+---
+
+### Observació
+
+Els coeficients \(\alpha\) i \(\beta\) no són únics. Si
+\[
+d=\alpha a+\beta b,
+\]
+aleshores per a qualsevol \(t\in\mathbb Z\) també tenim
+\[
+d=\left(\alpha+t\frac{b}{d}\right)a+
+\left(\beta-t\frac{a}{d}\right)b.
+\]
+Això dona infinites parelles de coeficients de Bézout per al mateix mcd.
+
+---
+
+### Resum
+
+Per trobar \(\alpha,\beta\) amb matrius \(2\times 2\):
+
+1. Escriu cada divisió euclidiana \(a=bq+r\) com la matriu
+   \[
+   \begin{pmatrix}
+   0&1\\
+   1&-q
+   \end{pmatrix}.
+   \]
+2. Multiplica totes aquestes matrius en ordre.
+3. Quan la parella inicial \((a,b)\) es transformi en \((d,0)\), la primera columna de la matriu producte dona els coeficients:
+   \[
+   d=\alpha a+\beta b.
+   \]
+
+Aquest mètode és equivalent a l’Algorisme d’Euclides estès, però amb un format matricial molt net i fàcil de comprovar.
+
 ## 15. Corol·lari (Caracterització del màxim comú divisor)
 
 Siguin \(a, b, d \in \mathbb{Z}\) amb \(a, b, d > 0\). Aleshores:
@@ -291,3 +638,22 @@ Comprovem les condicions:
    - \(3 \mid 12\) i \(3 \mid 18 \implies 3 \mid 6\) (cert).
 
 Per tant, es compleix la definició i \(6 = \operatorname{mcd}(12,18)\).
+
+
+
+
+
+
+
+d=mcd(a,b) -->
+d|a
+d|b
+c|a, c|b --> c <= d llavors c|d?
+compte!
+
+
+
+
+d=mcd(a,b) <-- evident perque c|d -> c <= d
+
+
