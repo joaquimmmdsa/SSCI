@@ -690,9 +690,318 @@ class="math inline">\(2 \mid 18 \implies 2 \mid 6\)</span> (cert). -
 class="math inline">\(3 \mid 18 \implies 3 \mid 6\)</span> (cert).</p>
 <p>Per tant, es compleix la definició i <span class="math inline">\(6 =
 \operatorname{mcd}(12,18)\)</span>.</p>
-<p>d=mcd(a,b) –&gt; d|a d|b c|a, c|b –&gt; c &lt;= d llavors c|d?
-compte!</p>
-<p>d=mcd(a,b) &lt;– evident perque c|d -&gt; c &lt;= d</p>
+<h2 id="definició-nombres-coprimers">16. Definició: nombres
+coprimers</h2>
+<h3 id="enunciat">Enunciat</h3>
+<p>Siguin <span class="math inline">\(a,b&gt;0\)</span> enters. Es diu
+que <span class="math inline">\(a\)</span> i <span
+class="math inline">\(b\)</span> són <strong>coprimers</strong> (o
+<strong>primers entre si</strong>) si <span class="math display">\[
+\operatorname{mcd}(a,b)=1.
+\]</span> Equivalentment, <span class="math inline">\(a\)</span> i <span
+class="math inline">\(b\)</span> són coprimers si existeixen <span
+class="math inline">\(\alpha,\beta\in\mathbb Z\)</span> tals que <span
+class="math display">\[
+\alpha a+\beta b=1.
+\]</span></p>
+<hr />
+<h3 id="explicació">Explicació</h3>
+<p>Que dos nombres siguin coprimers vol dir que <strong>no tenen cap
+divisor positiu comú més gran que 1</strong>. És a dir, l’únic divisor
+positiu que comparteixen és l’1.</p>
+<p>No cal que els dos nombres siguin primers. Per exemple, <span
+class="math inline">\(8\)</span> i <span
+class="math inline">\(15\)</span> no són primers, però <span
+class="math display">\[
+\operatorname{mcd}(8,15)=1,
+\]</span> per tant són coprimers. En canvi, <span
+class="math inline">\(6\)</span> i <span
+class="math inline">\(10\)</span> no són coprimers perquè <span
+class="math display">\[
+\operatorname{mcd}(6,10)=2\neq 1.
+\]</span></p>
+<hr />
+<h3 id="per-què-és-equivalent-a-lexistència-de-alphabeta">Per què és
+equivalent a l’existència de <span
+class="math inline">\(\alpha,\beta\)</span>?</h3>
+<p>Aquesta equivalència és una conseqüència directa de la
+<strong>Identitat de Bézout</strong>.</p>
+<h4
+id="rightarrow-si-operatornamemcdab1-aleshores-existeixen-alphabetainmathbb-z-tals-que-alpha-abeta-b1."><span
+class="math inline">\((\Rightarrow)\)</span> Si <span
+class="math inline">\(\operatorname{mcd}(a,b)=1\)</span>, aleshores
+existeixen <span class="math inline">\(\alpha,\beta\in\mathbb Z\)</span>
+tals que <span class="math inline">\(\alpha a+\beta b=1\)</span>.</h4>
+<p>Això és exactament la Identitat de Bézout aplicada a <span
+class="math inline">\(a\)</span> i <span
+class="math inline">\(b\)</span>, amb <span
+class="math inline">\(d=\operatorname{mcd}(a,b)=1\)</span>.</p>
+<h4
+id="leftarrow-si-existeixen-alphabetainmathbb-z-tals-que-alpha-abeta-b1-aleshores-operatornamemcdab1."><span
+class="math inline">\((\Leftarrow)\)</span> Si existeixen <span
+class="math inline">\(\alpha,\beta\in\mathbb Z\)</span> tals que <span
+class="math inline">\(\alpha a+\beta b=1\)</span>, aleshores <span
+class="math inline">\(\operatorname{mcd}(a,b)=1\)</span>.</h4>
+<p>Demostració: sigui <span
+class="math inline">\(d=\operatorname{mcd}(a,b)\)</span>. Com que <span
+class="math inline">\(d\mid a\)</span> i <span
+class="math inline">\(d\mid b\)</span>, tenim <span
+class="math display">\[
+d\mid \alpha a+\beta b=1.
+\]</span> Per tant, <span class="math inline">\(d\mid 1\)</span>. Com
+que <span class="math inline">\(d&gt;0\)</span>, necessàriament <span
+class="math inline">\(d=1\)</span>.</p>
+<p>Així, doncs, les dues condicions són equivalents: <span
+class="math display">\[
+\boxed{\operatorname{mcd}(a,b)=1 \iff \exists \alpha,\beta\in\mathbb Z,\
+\alpha a+\beta b=1.}
+\]</span></p>
+<hr />
+<h3 id="exemples">Exemples</h3>
+<ol type="1">
+<li><p><span class="math inline">\(8\)</span> i <span
+class="math inline">\(15\)</span> són coprimers: <span
+class="math display">\[
+\operatorname{mcd}(8,15)=1.
+\]</span> A més, podem trobar coeficients de Bézout: <span
+class="math display">\[
+2\cdot 8+(-1)\cdot 15=16-15=1.
+\]</span> Per tant, <span class="math inline">\(\alpha=2\)</span> i
+<span class="math inline">\(\beta=-1\)</span>.</p></li>
+<li><p><span class="math inline">\(31\)</span> i <span
+class="math inline">\(12\)</span> són coprimers: <span
+class="math display">\[
+\operatorname{mcd}(31,12)=1.
+\]</span> I hem vist que <span class="math display">\[
+(-5)\cdot 31+13\cdot 12=1.
+\]</span></p></li>
+<li><p><span class="math inline">\(14\)</span> i <span
+class="math inline">\(25\)</span> són coprimers: <span
+class="math display">\[
+\operatorname{mcd}(14,25)=1.
+\]</span> Per exemple, <span class="math display">\[
+9\cdot 14+(-5)\cdot 25=126-125=1.
+\]</span></p></li>
+<li><p><span class="math inline">\(6\)</span> i <span
+class="math inline">\(10\)</span> <strong>no</strong> són coprimers,
+perquè <span class="math display">\[
+\operatorname{mcd}(6,10)=2\neq 1.
+\]</span></p></li>
+</ol>
+<hr />
+<h2
+id="corollari-després-de-dividir-pel-mcd-els-quocients-són-coprimers">17.
+Corol·lari: després de dividir pel mcd, els quocients són coprimers</h2>
+<h3 id="enunciat-1">Enunciat</h3>
+<p>Siguin <span class="math inline">\(a,b&gt;0\)</span>, i sigui <span
+class="math display">\[
+d=\operatorname{mcd}(a,b).
+\]</span> Escrivim <span class="math display">\[
+a=d a&#39;,\qquad b=d b&#39;
+\]</span> amb <span class="math inline">\(a&#39;,b&#39;\in\mathbb
+Z\)</span>. Aleshores <span class="math display">\[
+\operatorname{mcd}(a&#39;,b&#39;)=1.
+\]</span> És a dir, <span class="math inline">\(a&#39;\)</span> i <span
+class="math inline">\(b&#39;\)</span> són coprimers.</p>
+<hr />
+<h3 id="explicació-1">Explicació</h3>
+<p>Aquest corol·lari diu que si traiem de <span
+class="math inline">\(a\)</span> i <span
+class="math inline">\(b\)</span> tot el que tenen en comú, és a dir, si
+els dividim pel seu màxim comú divisor, els nombres que queden
+<strong>ja no tenen res en comú</strong> llevat de l’1.</p>
+<p>Per exemple: <span class="math display">\[
+a=12,\quad b=18,\quad d=\operatorname{mcd}(12,18)=6.
+\]</span> Aleshores <span class="math display">\[
+a&#39;=\frac{12}{6}=2,\qquad b&#39;=\frac{18}{6}=3.
+\]</span> I efectivament, <span class="math display">\[
+\operatorname{mcd}(2,3)=1.
+\]</span></p>
+<p>Un altre exemple: <span class="math display">\[
+a=240,\quad b=46,\quad d=\operatorname{mcd}(240,46)=2.
+\]</span> Aleshores <span class="math display">\[
+a&#39;=\frac{240}{2}=120,\qquad b&#39;=\frac{46}{2}=23.
+\]</span> I <span class="math display">\[
+\operatorname{mcd}(120,23)=1.
+\]</span></p>
+<hr />
+<h3 id="demostració">Demostració</h3>
+<p>Siguin <span class="math display">\[
+a=d a&#39;,\qquad b=d b&#39;.
+\]</span> Volem veure que <span
+class="math inline">\(\operatorname{mcd}(a&#39;,b&#39;)=1\)</span>.</p>
+<p>Sigui <span class="math display">\[
+c=\operatorname{mcd}(a&#39;,b&#39;).
+\]</span> Aleshores <span class="math inline">\(c\mid a&#39;\)</span> i
+<span class="math inline">\(c\mid b&#39;\)</span>. Per tant, <span
+class="math display">\[
+dc\mid d a&#39;=a
+\]</span> i <span class="math display">\[
+dc\mid d b&#39;=b.
+\]</span> Així, <span class="math inline">\(dc\)</span> és un divisor
+comú de <span class="math inline">\(a\)</span> i <span
+class="math inline">\(b\)</span>.</p>
+<p>Com que <span
+class="math inline">\(d=\operatorname{mcd}(a,b)\)</span>, qualsevol
+divisor comú de <span class="math inline">\(a\)</span> i <span
+class="math inline">\(b\)</span> ha de dividir <span
+class="math inline">\(d\)</span>. Per tant, <span
+class="math display">\[
+dc\mid d.
+\]</span> Com que <span class="math inline">\(d&gt;0\)</span>, això
+implica <span class="math display">\[
+c\mid 1.
+\]</span> Com que <span class="math inline">\(c&gt;0\)</span>,
+necessàriament <span class="math display">\[
+c=1.
+\]</span> Per tant, <span class="math display">\[
+\operatorname{mcd}(a&#39;,b&#39;)=1.
+\]</span></p>
+<hr />
+<h3 id="importància">Importància</h3>
+<p>Aquest corol·lari és la base per simplificar fraccions: <span
+class="math display">\[
+\frac{a}{b}=\frac{d a&#39;}{d b&#39;}=\frac{a&#39;}{b&#39;}.
+\]</span> La fracció <span
+class="math inline">\(\frac{a&#39;}{b&#39;}\)</span> és irreductible,
+perquè <span class="math inline">\(a&#39;\)</span> i <span
+class="math inline">\(b&#39;\)</span> són coprimers.</p>
+<hr />
+<h2 id="corollari-lema-deuclides">18. Corol·lari: lema d’Euclides</h2>
+<h3 id="enunciat-2">Enunciat</h3>
+<p>Si <span class="math inline">\(a\mid bc\)</span> i <span
+class="math inline">\(a\)</span> i <span
+class="math inline">\(b\)</span> són coprimers, aleshores <span
+class="math display">\[
+a\mid c.
+\]</span></p>
+<p>És a dir: <span class="math display">\[
+\boxed{a\mid bc \ \text{i}\ \operatorname{mcd}(a,b)=1 \implies a\mid c.}
+\]</span></p>
+<hr />
+<h3 id="explicació-2">Explicació</h3>
+<p>Aquest resultat es coneix com el <strong>lema d’Euclides</strong>.
+Diu que si un nombre <span class="math inline">\(a\)</span> divideix un
+producte <span class="math inline">\(bc\)</span>, i <span
+class="math inline">\(a\)</span> no comparteix cap factor amb <span
+class="math inline">\(b\)</span>, aleshores forçosament <span
+class="math inline">\(a\)</span> ha de dividir l’altre factor <span
+class="math inline">\(c\)</span>.</p>
+<p>Intuïtivament: com que <span class="math inline">\(a\)</span> i <span
+class="math inline">\(b\)</span> no tenen factors comuns, tots els
+factors de <span class="math inline">\(a\)</span> han d’estar dins de
+<span class="math inline">\(c\)</span> perquè <span
+class="math inline">\(a\)</span> pugui dividir <span
+class="math inline">\(bc\)</span>.</p>
+<hr />
+<h3 id="demostració-1">Demostració</h3>
+<p>Com que <span
+class="math inline">\(\operatorname{mcd}(a,b)=1\)</span>, per la
+Identitat de Bézout existeixen <span
+class="math inline">\(\alpha,\beta\in\mathbb Z\)</span> tals que <span
+class="math display">\[
+\alpha a+\beta b=1.
+\]</span> Multiplicant aquesta igualtat per <span
+class="math inline">\(c\)</span>: <span class="math display">\[
+\alpha a c+\beta b c=c.
+\]</span> Ara observem que: - <span class="math inline">\(a\mid \alpha a
+c\)</span>, perquè <span class="math inline">\(\alpha a c=a(\alpha
+c)\)</span>. - <span class="math inline">\(a\mid \beta b c\)</span>,
+perquè per hipòtesi <span class="math inline">\(a\mid bc\)</span>, i per
+tant <span class="math inline">\(a\mid \beta(bc)\)</span>.</p>
+<p>Com que <span class="math inline">\(a\)</span> divideix els dos
+sumands, també divideix la seva suma: <span class="math display">\[
+a\mid c.
+\]</span> Per tant, <span class="math display">\[
+a\mid c.
+\]</span></p>
+<hr />
+<h3 id="exemple-correcte">Exemple correcte</h3>
+<p>Siguin <span class="math display">\[
+a=5,\quad b=7,\quad c=10.
+\]</span> Com que <span class="math display">\[
+\operatorname{mcd}(5,7)=1,
+\]</span> i <span class="math display">\[
+5\mid 7\cdot 10=70,
+\]</span> aleshores el lema d’Euclides ens assegura que <span
+class="math display">\[
+5\mid 10.
+\]</span> I, efectivament, <span class="math inline">\(10=5\cdot
+2\)</span>.</p>
+<p>Un altre exemple: <span class="math display">\[
+a=4,\quad b=3,\quad c=8.
+\]</span> Com que <span
+class="math inline">\(\operatorname{mcd}(4,3)=1\)</span> i <span
+class="math display">\[
+4\mid 3\cdot 8=24,
+\]</span> llavors <span class="math display">\[
+4\mid 8.
+\]</span> Cert, <span class="math inline">\(8=4\cdot 2\)</span>.</p>
+<hr />
+<h3 id="contraexemple-si-no-són-coprimers">Contraexemple si no són
+coprimers</h3>
+<p>La condició <span
+class="math inline">\(\operatorname{mcd}(a,b)=1\)</span> és
+<strong>essencial</strong>. Si no es compleix, el resultat pot ser
+fals.</p>
+<p>Per exemple: <span class="math display">\[
+a=6,\quad b=4,\quad c=3.
+\]</span> Tenim <span class="math display">\[
+6\mid 4\cdot 3=12,
+\]</span> però <span class="math display">\[
+6\nmid 3.
+\]</span> Aquí <span class="math inline">\(\operatorname{mcd}(6,4)=2\neq
+1\)</span>, i per tant no podem aplicar el lema.</p>
+<p>Un altre cas: <span class="math display">\[
+a=6,\quad b=8,\quad c=9.
+\]</span> <span class="math display">\[
+6\mid 8\cdot 9=72,
+\]</span> però <span class="math display">\[
+6\nmid 9.
+\]</span> De nou, <span
+class="math inline">\(\operatorname{mcd}(6,8)=2\neq 1\)</span>.</p>
+<hr />
+<h3 id="importància-1">Importància</h3>
+<p>Aquest corol·lari és fonamental per demostrar la <strong>unicitat de
+la factorització en primers</strong>. També s’utilitza per resoldre
+congruències, per simplificar equacions diofàntiques i en
+criptografia.</p>
+<p>A més, es pot combinar amb el corol·lari 17: si <span
+class="math inline">\(d=\operatorname{mcd}(a,b)\)</span>, <span
+class="math inline">\(a=d a&#39;\)</span>, <span
+class="math inline">\(b=d b&#39;\)</span>, aleshores <span
+class="math inline">\(a&#39;\)</span> i <span
+class="math inline">\(b&#39;\)</span> són coprimers. Si <span
+class="math inline">\(a\mid bc\)</span>, aleshores <span
+class="math inline">\(d a&#39;\mid d b&#39; c\)</span>, és a dir, <span
+class="math inline">\(a&#39;\mid b&#39; c\)</span>. Com que <span
+class="math inline">\(\operatorname{mcd}(a&#39;,b&#39;)=1\)</span>, pel
+lema d’Euclides <span class="math inline">\(a&#39;\mid c\)</span>, i per
+tant <span class="math inline">\(a=d a&#39;\mid d c\)</span>, és a dir,
+<span class="math inline">\(a\mid c\)</span> si <span
+class="math inline">\(d\mid d c\)</span> (sempre cert). Això dona una
+altra manera de veure la coherència entre 17 i 18.</p>
+<hr />
+<h3 id="resum-1">Resum</h3>
+<ul>
+<li><strong>16.</strong> <span class="math inline">\(a\)</span> i <span
+class="math inline">\(b\)</span> són coprimers si <span
+class="math inline">\(\operatorname{mcd}(a,b)=1\)</span>.
+Equivalentment, si existeixen <span
+class="math inline">\(\alpha,\beta\in\mathbb Z\)</span> amb <span
+class="math inline">\(\alpha a+\beta b=1\)</span>.</li>
+<li><strong>17.</strong> Si <span
+class="math inline">\(d=\operatorname{mcd}(a,b)\)</span> i <span
+class="math inline">\(a=d a&#39;\)</span>, <span
+class="math inline">\(b=d b&#39;\)</span>, aleshores <span
+class="math inline">\(a&#39;\)</span> i <span
+class="math inline">\(b&#39;\)</span> són coprimers.</li>
+<li><strong>18.</strong> Si <span class="math inline">\(a\mid
+bc\)</span> i <span
+class="math inline">\(\operatorname{mcd}(a,b)=1\)</span>, aleshores
+<span class="math inline">\(a\mid c\)</span>. Aquest és el lema
+d’Euclides.</li>
+</ul>
 
 </body>
 </html>

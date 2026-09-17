@@ -2,3 +2,5 @@
 !.gitignore
 !*.md
 !*.html
+!*.org
+!*.pdf
