@@ -963,3 +963,265 @@ A més, es pot combinar amb el corol·lari 17: si \(d=\operatorname{mcd}(a,b)\),
 - *16.* \(a\) i \(b\) són coprimers si \(\operatorname{mcd}(a,b)=1\). Equivalentment, si existeixen \(\alpha,\beta\in\mathbb Z\) amb \(\alpha a+\beta b=1\).
 - *17.* Si \(d=\operatorname{mcd}(a,b)\) i \(a=d a'\), \(b=d b'\), aleshores \(a'\) i \(b'\) són coprimers.
 - *18.* Si \(a\mid bc\) i \(\operatorname{mcd}(a,b)=1\), aleshores \(a\mid c\). Aquest és el lema d’Euclides.
+#+title: Exercici: MCD de \(a+b\) i \(a-b\)
+
+* Enunciat
+Siguin \(a,b\in\mathbb Z\) amb \(\operatorname{mcd}(a,b)=1\). Aleshores
+\[
+\operatorname{mcd}(a+b,a-b)\in\{1,2\}.
+\]
+És a dir, el màxim comú divisor de \(a+b\) i \(a-b\) només pot ser \(1\) o \(2\).
+
+* Solució
+Sigui
+\[
+d=\operatorname{mcd}(a+b,a-b).
+\]
+Aleshores
+\[
+d\mid a+b \quad\text{i}\quad d\mid a-b.
+\]
+Per la propietat de linealitat del mcd:
+\[
+d\mid (a+b)+(a-b)=2a,
+\]
+\[
+d\mid (a+b)-(a-b)=2b.
+\]
+Per tant,
+\[
+d\mid \operatorname{mcd}(2a,2b)=2\operatorname{mcd}(a,b).
+\]
+Com que \(\operatorname{mcd}(a,b)=1\), tenim
+\[
+d\mid 2.
+\]
+Com que \(d>0\), necessàriament
+\[
+d=1 \quad\text{o}\quad d=2.
+\]
+Per tant,
+\[
+\boxed{\operatorname{mcd}(a+b,a-b)\in\{1,2\}.}
+\]
+
+* Observació sobre la paritat
+Com que \(\operatorname{mcd}(a,b)=1\), \(a\) i \(b\) no poden ser tots dos parells. Aleshores:
+
+- Si \(a\) i \(b\) són tots dos senars, \(a+b\) i \(a-b\) són parells, i per tant
+  \[
+  \operatorname{mcd}(a+b,a-b)=2.
+  \]
+- Si un és parell i l’altre senar, \(a+b\) i \(a-b\) són senars, i per tant
+  \[
+  \operatorname{mcd}(a+b,a-b)=1.
+  \]
+
+Així:
+\[
+\operatorname{mcd}(a+b,a-b)=
+\begin{cases}
+2, & \text{si } a,b \text{ són tots dos senars},\\[4pt]
+1, & \text{si } a,b \text{ tenen paritat diferent}.
+\end{cases}
+\]
+
+* Exemples
+
+1. \(a=31,\ b=12\):
+   \[
+   \operatorname{mcd}(31,12)=1.
+   \]
+   Aleshores
+   \[
+   a+b=43,\qquad a-b=19,
+   \]
+   i
+   \[
+   \operatorname{mcd}(43,19)=1.
+   \]
+
+2. \(a=1,\ b=5\):
+   \[
+   \operatorname{mcd}(1,5)=1.
+   \]
+   Aleshores
+   \[
+   a+b=6,\qquad a-b=-4,
+   \]
+   i
+   \[
+   \operatorname{mcd}(6,-4)=2.
+   \]
+   Equivalentment,
+   \[
+   \operatorname{mcd}(6,4)=2.
+   \]
+
+3. \(a=19,\ b=43\):
+   \[
+   \operatorname{mcd}(19,43)=1.
+   \]
+   Aleshores
+   \[
+   a+b=62,\qquad a-b=-24,
+   \]
+   i
+   \[
+   \operatorname{mcd}(62,-24)=2.
+   \]
+
+* Nota
+La condició \(\operatorname{mcd}(a,b)=1\) és essencial. Si \(a\) i \(b\) no són coprimers, el mcd de \(a+b\) i \(a-b\) pot ser més gran que \(2\). Per exemple, amb \(a=6\) i \(b=10\):
+\[
+\operatorname{mcd}(6,10)=2,
+\]
+i
+\[
+a+b=16,\qquad a-b=-4,
+\]
+\[
+\operatorname{mcd}(16,-4)=4.
+\]
+Per tant, la hipòtesi \(\operatorname{mcd}(a,b)=1\) no es pot eliminar.
+
+* Resum
+Si \(a\) i \(b\) són coprimers, aleshores
+\[
+\boxed{\operatorname{mcd}(a+b,a-b)=1 \text{ o } 2.}
+\]
+Més concretament:
+\[
+\boxed{
+\operatorname{mcd}(a+b,a-b)=
+\begin{cases}
+2, & a,b \text{ tots dos senars},\\
+1, & a,b \text{ de paritat diferent}.
+\end{cases}}
+\]
+
+
+#+title: Apunts: Exercicis de divisibilitat i mcd
+
+* Recordatori: propietat fonamental del mcd (apartat 12)
+Per a qualssevol \(x,y\in\mathbb Z\) i \(k\in\mathbb Z\),
+\[
+\operatorname{mcd}(x,y)=\operatorname{mcd}(x+ky,\ y)=\operatorname{mcd}(x,\ y+kx).
+\]
+Això és cert perquè qualsevol divisor comú de \(x\) i \(y\) també divideix \(x+ky\), i viceversa: si divideix \(x+ky\) i \(y\), aleshores divideix \((x+ky)-ky=x\).
+
+Aquesta propietat és la que ens permet “eliminar” termes i simplificar el càlcul del mcd.
+
+---
+
+* Exercici 1.3: És cert que \(\operatorname{mcd}(3a-b,\ b-2a)=\operatorname{mcd}(a,b)\)?
+
+** Enunciat
+Per a \(a,b\in\mathbb Z\), volem veure si
+\[
+\operatorname{mcd}(3a-b,\ b-2a)=\operatorname{mcd}(a,b).
+\]
+
+** Solució pas a pas
+Apliquem la propietat del mcd. Primer sumem el segon component al primer:
+\[
+\operatorname{mcd}(3a-b,\ b-2a)
+=
+\operatorname{mcd}\bigl((3a-b)+(b-2a),\ b-2a\bigr).
+\]
+Calculem el primer component:
+\[
+(3a-b)+(b-2a)=3a-b+b-2a=a.
+\]
+Per tant,
+\[
+\operatorname{mcd}(3a-b,\ b-2a)=\operatorname{mcd}(a,\ b-2a).
+\]
+Ara sumem \(2a\) al segon component:
+\[
+\operatorname{mcd}(a,\ b-2a)
+=
+\operatorname{mcd}\bigl(a,\ (b-2a)+2a\bigr)
+=
+\operatorname{mcd}(a,b).
+\]
+Així doncs,
+\[
+\boxed{\operatorname{mcd}(3a-b,\ b-2a)=\operatorname{mcd}(a,b).}
+\]
+Sí que és cert.
+
+** Explicació alternativa amb divisors comuns
+Si \(d\) és un divisor comú de \(3a-b\) i \(b-2a\), aleshores
+\[
+d\mid (3a-b)+(b-2a)=a.
+\]
+Per tant \(d\mid a\). Com que també \(d\mid b-2a\), tenim
+\[
+d\mid (b-2a)+2a=b.
+\]
+Així \(d\mid b\). Per tant, tot divisor comú de \(3a-b\) i \(b-2a\) també és divisor comú de \(a\) i \(b\).
+
+Recíprocament, si \(d\mid a\) i \(d\mid b\), aleshores
+\[
+d\mid 3a-b
+\quad\text{i}\quad
+d\mid b-2a.
+\]
+Per tant, els conjunts de divisors comuns coincideixen, i en particular el seu màxim comú divisor és el mateix.
+
+---
+
+* Exercici 1.7: Demostra que la fracció \(\dfrac{4n+5}{2n+3}\) és irreductible per a tot \(n\ge 1\).
+
+** Enunciat
+Volem veure que
+\[
+\operatorname{mcd}(4n+5,\ 2n+3)=1
+\]
+per a tot \(n\ge 1\). Si el mcd és \(1\), la fracció no es pot simplificar, és a dir, és irreductible.
+
+** Solució pas a pas
+Apliquem la propietat del mcd per eliminar la \(n\) del primer component. Prenem \(k=2\) i restem \(2\cdot(2n+3)\) al primer component:
+\[
+\operatorname{mcd}(4n+5,\ 2n+3)
+=
+\operatorname{mcd}\bigl(4n+5-2(2n+3),\ 2n+3\bigr).
+\]
+Calculem:
+\[
+4n+5-2(2n+3)=4n+5-4n-6=-1.
+\]
+Per tant,
+\[
+\operatorname{mcd}(4n+5,\ 2n+3)=\operatorname{mcd}(-1,\ 2n+3).
+\]
+Ara bé, els únics divisors de \(-1\) són \(1\) i \(-1\). Per tant, el màxim comú divisor de \(-1\) amb qualsevol enter és \(1\):
+\[
+\operatorname{mcd}(-1,\ 2n+3)=1.
+\]
+Així,
+\[
+\boxed{\operatorname{mcd}(4n+5,\ 2n+3)=1.}
+\]
+Com que el numerador i el denominador són coprimers, la fracció
+\[
+\frac{4n+5}{2n+3}
+\]
+és irreductible per a tot \(n\ge 1\).
+
+** Exemples
+- \(n=1\): \(\dfrac{9}{5}\), i \(\operatorname{mcd}(9,5)=1\).
+- \(n=2\): \(\dfrac{13}{7}\), i \(\operatorname{mcd}(13,7)=1\).
+- \(n=3\): \(\dfrac{17}{9}\), i \(\operatorname{mcd}(17,9)=1\).
+
+** Nota
+El mateix mètode serveix per a fraccions de la forma
+\[
+\frac{an+b}{cn+d}
+\]
+sempre que \(ad-bc=\pm 1\). En aquest cas, \(a=4\), \(b=5\), \(c=2\), \(d=3\), i
+\[
+ad-bc=4\cdot 3-5\cdot 2=12-10=2,
+\]
+però el que importa és que la combinació \(4n+5-2(2n+3)=-1\), que és una constant no nul·la. Això garanteix que el mcd és \(1\).
