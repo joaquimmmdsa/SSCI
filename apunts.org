@@ -1,3 +1,4 @@
+
 * 8. Divisibilitat
 
 Siguin \(a,b \in \mathbb{Z}\).
@@ -1225,3 +1226,281 @@ sempre que \(ad-bc=\pm 1\). En aquest cas, \(a=4\), \(b=5\), \(c=2\), \(d=3\), i
 ad-bc=4\cdot 3-5\cdot 2=12-10=2,
 \]
 però el que importa és que la combinació \(4n+5-2(2n+3)=-1\), que és una constant no nul·la. Això garanteix que el mcd és \(1\).
+
+
+
+
+* 19. Equacions diofàntiques (Diofant d'Alexandria)
+
+** Enunciat
+
+Siguin \(a,b,c \in \mathbb{Z}\), amb \(a\) i \(b\) no tots dos zero. Considerem l'equació
+\[
+ax + by = c
+\]
+on les incògnites \(x,y\) es busquen *només dins dels enters* \(\mathbb{Z}\).
+
+Sigui
+\[
+d = \operatorname{mcd}(a,b).
+\]
+Aleshores:
+\[
+\boxed{\text{l'equació } ax+by=c \text{ té solució entera } \iff d \mid c.}
+\]
+
+---
+
+** Explicació
+
+Els enters són més "fàcils" que els racionals en el sentit que no tenen denominadors, però això mateix fa que resoldre equacions *només amb enters* sigui més complicat: no sempre podem dividir.
+
+Sobre \(\mathbb{Q}\) l'equació \(ax+by=c\) (amb \(a,b\) no nuls) sempre té solució. Sobre \(\mathbb{Z}\), en canvi, la paritat i la divisibilitat ho poden impedir.
+
+La idea clau és que tot el costat esquerre \(ax+by\) és forçosament un múltiple de \(d = \operatorname{mcd}(a,b)\). Per tant, si \(c\) no és múltiple de \(d\), l'equació és impossible. I si sí que ho és, la *Identitat de Bézout* ens permet construir una solució explícitament.
+
+---
+
+** Demostració
+
+Sigui \(d = \operatorname{mcd}(a,b)\).
+
+*** \((\Rightarrow)\) Si hi ha solució, aleshores \(d \mid c\).
+
+Suposem que existeixen \(x,y \in \mathbb{Z}\) tals que \(ax+by=c\).
+
+Com que \(d \mid a\), tenim \(d \mid ax\) per a qualsevol \(x \in \mathbb{Z}\) (propietat 9.iii).
+
+De la mateixa manera, com que \(d \mid b\), tenim \(d \mid by\).
+
+Per linealitat (propietat 9.ii), \(d\) divideix la suma:
+\[
+d \mid ax+by = c.
+\]
+Per tant, \(d \mid c\). Això demostra que si \(d \nmid c\), l'equació *no té solució*.
+
+*** \((\Leftarrow)\) Si \(d \mid c\), aleshores hi ha solució.
+
+Suposem ara que \(d \mid c\). Aleshores existeix \(c' \in \mathbb{Z}\) tal que
+\[
+c = d c'.
+\]
+
+Per la Identitat de Bézout (apartat 14), existeixen \(\alpha,\beta \in \mathbb{Z}\) (que sabem calcular amb l'Algorisme d'Euclides) tals que
+\[
+\alpha a + \beta b = d.
+\]
+
+Multiplicant aquesta igualtat per \(c'\):
+\[
+\alpha a c' + \beta b c' = d c' = c.
+\]
+
+És a dir,
+\[
+a(\alpha c') + b(\beta c') = c.
+\]
+
+Per tant, prenent
+\[
+\boxed{x_0 = \alpha c', \qquad y_0 = \beta c'}
+\]
+obtenim una solució entera de \(ax+by=c\).
+
+Així, \(d \mid c\) és condició necessària i suficient.
+
+---
+
+** Exemple 1: equació sense solució
+
+Volem resoldre en enters:
+\[
+2x + 4y = 7.
+\]
+
+Aquí \(a=2\), \(b=4\), \(c=7\), i
+\[
+d = \operatorname{mcd}(2,4) = 2.
+\]
+
+Com que
+\[
+2 \nmid 7,
+\]
+el teorema ens diu que *no hi ha cap solució entera*.
+
+Intuïtivament: \(2x\) sempre és parell, \(4y\) sempre és parell, i la suma de dos parells sempre és parella. Però \(7\) és senar, així que mai podrem obtenir \(7\) sumant dos nombres parells.
+
+---
+
+** Exemple 2: equació amb solució
+
+Volem resoldre en enters:
+\[
+27x + 13y = 1250.
+\]
+
+*** Pas 1: calcular \(d\) i comprovar que divideix \(c\).
+
+\[
+d = \operatorname{mcd}(27,13) = 1.
+\]
+
+Com que \(1 \mid 1250\), el teorema garanteix que sí que hi ha solució.
+
+*** Pas 2: trobar coeficients de Bézout.
+
+Busquem \(\alpha,\beta \in \mathbb{Z}\) tals que
+\[
+\alpha \cdot 27 + \beta \cdot 13 = 1.
+\]
+
+Amb l'Algorisme d'Euclides:
+\[
+27 = 2 \cdot 13 + 1.
+\]
+
+Aïllant l'1:
+\[
+1 = 27 - 2 \cdot 13.
+\]
+
+Per tant, \(\alpha = 1\) i \(\beta = -2\).
+
+*** Pas 3: multiplicar per \(c'\).
+
+Escrivim \(c = d c'\):
+\[
+1250 = 1 \cdot 1250,
+\]
+és a dir, \(c' = 1250\).
+
+Aleshores una solució particular és:
+\[
+x_0 = \alpha c' = 1 \cdot 1250 = 1250,
+\]
+\[
+y_0 = \beta c' = (-2) \cdot 1250 = -2500.
+\]
+
+*** Pas 4: comprovació.
+
+\[
+27 \cdot 1250 + 13 \cdot (-2500) = 33750 - 32500 = 1250.
+\]
+
+Per tant:
+\[
+\boxed{x_0 = 1250, \qquad y_0 = -2500.}
+\]
+
+---
+
+** Resum
+
+- L'equació \(ax+by=c\) en enters només pot tenir solució si \(d = \operatorname{mcd}(a,b)\) divideix \(c\).
+- Si \(d \nmid c\), és impossible (exemple: \(2x+4y=7\)).
+- Si \(d \mid c\), n'hi ha: es troba \(\alpha a + \beta b = d\) per Bézout, s'escriu \(c = d c'\), i \(x_0 = \alpha c'\), \(y_0 = \beta c'\) és solució.
+
+
+
+---
+
+** És l'única solució? Hi ha més solucions?
+
+*** Enunciat
+
+La solució \(x_0 = \alpha c'\), \(y_0 = \beta c'\) que hem construït *no és única*. De fet, si l'equació té una solució, en té infinites.
+
+Sigui \(d = \operatorname{mcd}(a,b)\) i escrivim
+\[
+a = d a', \qquad b = d b'
+\]
+amb \(a',b' \in \mathbb{Z}\). Sabem pel corol·lari 17 que \(\operatorname{mcd}(a',b') = 1\).
+
+Si \((x_0,y_0)\) és una solució particular de \(ax+by=c\), aleshores per a tot \(\lambda \in \mathbb{Z}\),
+\[
+\boxed{x = x_0 + \lambda b', \qquad y = y_0 - \lambda a'}
+\]
+també és solució.
+
+En el nostre cas, amb \(x_0 = \alpha c'\) i \(y_0 = \beta c'\):
+\[
+\boxed{x = \alpha c' + \lambda b', \qquad y = \beta c' - \lambda a', \quad \lambda \in \mathbb{Z}.}
+\]
+
+---
+
+*** Explicació
+
+Un cop tenim una solució, en podem fabricar infinites sumant i restant el mateix valor de manera que es compensi. La idea és sumar a \(x_0\) un múltiple de \(b'\) i restar de \(y_0\) el corresponent múltiple de \(a'\), de manera que l'augment \(a \cdot (\lambda b')\) quedi exactament anul·lat per la disminució \(b \cdot (-\lambda a')\).
+
+Per què funciona amb \(a'\) i \(b'\) i no amb \(a\) i \(b\)? Perquè \(a b' = b a'\) (tots dos valen \(d a' b'\)), així que els dos termes extra se cancel·len. Si féssim servir \(a\) i \(b\) directament, el pas seria més gran del necessari; dividint pel \(d\) obtenim el pas mínim que genera *totes* les solucions.
+
+---
+
+*** Demostració que són solucions
+
+Suposem que
+\[
+a x_0 + b y_0 = c,
+\]
+és a dir, \(a(\alpha c') + b(\beta c') = c\).
+
+Prenem un altre candidat:
+\[
+x = \alpha c' + \lambda b', \qquad y = \beta c' - \lambda a'
+\]
+amb \(\lambda \in \mathbb{Z}\) arbitrari. Aleshores:
+\[
+ax + by = a(\alpha c' + \lambda b') + b(\beta c' - \lambda a').
+\]
+
+Desenvolupant:
+\[
+ax + by = \underbrace{a \alpha c' + b \beta c'}_{=c} + \lambda a b' - \lambda b a'.
+\]
+
+Ara observem que
+\[
+a b' = (d a')b' = d a' b' = (d b')a' = b a'.
+\]
+
+Per tant,
+\[
+\lambda a b' - \lambda b a' = 0,
+\]
+i queda
+\[
+ax + by = c.
+\]
+
+Així, \((x,y)\) també és solució per a qualsevol \(\lambda \in \mathbb{Z}\). Com que \(\lambda\) pot ser qualsevol enter, hi ha infinites solucions.
+
+---
+
+*** Exemple: \(27x+13y=1250\)
+
+Ja tenim la solució particular \(x_0 = 1250\), \(y_0 = -2500\).
+
+Aquí \(d = 1\), així que
+\[
+a' = \frac{27}{1} = 27, \qquad b' = \frac{13}{1} = 13.
+\]
+
+La solució general és:
+\[
+x = 1250 + 13\lambda, \qquad y = -2500 - 27\lambda, \quad \lambda \in \mathbb{Z}.
+\]
+
+Per exemple, amb \(\lambda = 1\):
+\[
+x = 1250 + 13 = 1263, \qquad y = -2500 - 27 = -2527,
+\]
+i es comprova que \(27 \cdot 1263 + 13 \cdot (-2527) = 1250\).
+
+---
+
+*** Nota: són totes
+
+De fet, aquestes són *totes* les solucions: si \((x,y)\) és qualsevol altra solució, restant \(a x_0 + b y_0 = c\) s'obté \(a(x-x_0) + b(y-y_0) = 0\), és a dir, \(a'(x-x_0) = -b'(y-y_0)\). Com que \(\operatorname{mcd}(a',b')=1\), el lema d'Euclides obliga \(b' \mid (x-x_0)\), d'on \(x = x_0 + \lambda b'\) per a algun \(\lambda\), i aleshores \(y = y_0 - \lambda a'\).
