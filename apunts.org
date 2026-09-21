@@ -1504,3 +1504,196 @@ i es comprova que \(27 \cdot 1263 + 13 \cdot (-2527) = 1250\).
 *** Nota: són totes
 
 De fet, aquestes són *totes* les solucions: si \((x,y)\) és qualsevol altra solució, restant \(a x_0 + b y_0 = c\) s'obté \(a(x-x_0) + b(y-y_0) = 0\), és a dir, \(a'(x-x_0) = -b'(y-y_0)\). Com que \(\operatorname{mcd}(a',b')=1\), el lema d'Euclides obliga \(b' \mid (x-x_0)\), d'on \(x = x_0 + \lambda b'\) per a algun \(\lambda\), i aleshores \(y = y_0 - \lambda a'\).
+
+
+---
+
+*** Demostració que aquestes són totes les solucions
+
+Volem veure que no hi ha cap solució fora de la forma \(x_0+\lambda b'\), \(y_0-\lambda a'\). És a dir, que les infinites solucions que hem construït són *totes*.
+
+Suposem que
+\[
+x = e, \qquad y = f
+\]
+és una altra solució qualsevol en enters. Aleshores:
+\[
+a e + b f = c.
+\]
+Però també sabem que la solució particular compleix:
+\[
+a(\alpha c') + b(\beta c') = c.
+\]
+
+Restant les dues igualtats:
+\[
+a(e - \alpha c') + b(f - \beta c') = 0,
+\]
+és a dir:
+\[
+a(e - \alpha c') = b(\beta c' - f).
+\]
+
+Escrivim \(a = d a'\) i \(b = d b'\) amb \(d = \operatorname{mcd}(a,b)\), i "tatxem" la \(d\) dividint els dos costats per \(d\):
+\[
+a'(e - \alpha c') = b'(\beta c' - f).
+\]
+
+El costat esquerre és clarament un múltiple de \(a'\). Per tant, el costat dret també ho ha de ser:
+\[
+a' \mid b'(\beta c' - f).
+\]
+
+Però sabem que \(\operatorname{mcd}(a',b') = 1\) (corol·lari 17). Pel lema d'Euclides (corol·lari 18), si \(a'\) divideix el producte \(b'(\beta c' - f)\) i és coprimer amb \(b'\), aleshores forçosament
+\[
+a' \mid (\beta c' - f).
+\]
+
+Això vol dir que existeix un enter \(\lambda \in \mathbb{Z}\) tal que
+\[
+\beta c' - f = \lambda a'.
+\]
+
+Aïllant \(f\):
+\[
+\boxed{f = \beta c' - \lambda a'.}
+\]
+
+Substituint això a l'equació \(a'(e-\alpha c') = b'(\beta c'-f)\):
+\[
+a'(e - \alpha c') = b' \lambda a'.
+\]
+
+Simplificant \(a'\) (si \(a' \neq 0\); el cas \(a'=0\) és anàleg):
+\[
+e - \alpha c' = \lambda b',
+\]
+és a dir:
+\[
+\boxed{e = \alpha c' + \lambda b'.}
+\]
+
+Per tant, qualsevol solució \((e,f)\) és necessàriament de la forma
+\[
+\boxed{e = \alpha c' + \lambda b', \qquad f = \beta c' - \lambda a'}
+\]
+per a alguna \(\lambda \in \mathbb{Z}\). Això demostra que les solucions paramètriques són *totes* les solucions.
+
+
+---
+
+**** Complement: l'altra divisibilitat i unicitat del paràmetre \(\lambda\)
+
+De la igualtat \(a'(e-\alpha c') = b'(\beta c'-f)\) també es pot raonar simètricament: el costat dret és múltiple de \(b'\), així que
+\[
+b' \mid a'(e-\alpha c').
+\]
+Com que \(\operatorname{mcd}(a',b')=1\), pel lema d'Euclides \(b'\) és coprimer amb \(a'\) i per tant
+\[
+\boxed{b' \mid (e-\alpha c').}
+\]
+
+Això vol dir que existeix \(\lambda \in \mathbb{Z}\) tal que
+\[
+e - \alpha c' = b'\lambda,
+\]
+és a dir:
+\[
+\boxed{e = \alpha c' + b'\lambda.}
+\]
+
+Finalment, els dos paràmetres coincideixen: si escrivim \(e-\alpha c' = b'\lambda\) i \(\beta c'-f = a'\mu\), substituint a \(a'(e-\alpha c') = b'(\beta c'-f)\) s'obté
+\[
+a'b'\lambda = b'a'\mu,
+\]
+d'on, simplificant \(a'b' \neq 0\),
+\[
+\boxed{\lambda = \mu.}
+\]
+Per tant, una sola \(\lambda \in \mathbb{Z}\) parametritza totes les solucions: \(e = \alpha c'+\lambda b'\), \(f = \beta c'-\lambda a'\).
+
+
+
+---
+
+** Exercici: endevinar la data de naixement
+
+*** Enunciat
+
+Considerem l'equació
+\[
+12x + 31y = c,
+\]
+on \(x\) és el mes de naixement (\(1 \le x \le 12\)) i \(y\) és el dia de naixement (\(1 \le y \le 31\)).
+
+Si només ens donen el valor de \(c\), és possible descobrir quin dia va néixer aquella persona? És a dir, podem recuperar \((x,y)\) a partir de \(c\)?
+
+*** Explicació
+
+Sense les cotes \(1 \le x \le 12\) i \(1 \le y \le 31\), l'equació \(12x+31y=c\) té infinites solucions enteres (de la forma \(x = \alpha c'+\lambda b'\), \(y = \beta c'-\lambda a'\)). Per tant, \(c\) sol no determina \((x,y)\).
+
+Però amb les cotes de mes i dia, d'entre les infinites solucions només una cau dins dels intervals permesos. Així, les cotes seleccionen la solució "real" i permeten endevinar la data.
+
+*** Resolució pas a pas amb \(c = 256\)
+
+Volem resoldre en enters
+\[
+12x + 31y = 256.
+\]
+
+**** Pas 1: existeix solució?
+
+\[
+d = \operatorname{mcd}(12,31) = 1.
+\]
+
+Com que \(1 \mid 256\), el teorema garanteix que sí que hi ha solució.
+
+**** Pas 2: coeficients de Bézout.
+
+Busquem \(\alpha,\beta\) tals que \(12\alpha+31\beta = 1\). Per Euclides:
+\[
+\boxed{12 \cdot 13 + 31 \cdot (-5) = 156 - 155 = 1.}
+\]
+Per tant, \(\alpha = 13\) i \(\beta = -5\).
+
+**** Pas 3: solució particular.
+
+Com que \(c = 256 = 1 \cdot 256\), tenim \(c' = 256\). Multiplicant Bézout per \(c'\):
+\[
+12 \cdot (13 \cdot 256) + 31 \cdot (-5 \cdot 256) = 256.
+\]
+
+És a dir, \(x_0 = 3328\), \(y_0 = -1280\) és una solució particular (molt fora de rang, però vàlida).
+
+**** Pas 4: solució general.
+
+Aquí \(a' = 12\), \(b' = 31\) (perquè \(d=1\)). Per tant:
+\[
+\boxed{x = 3328 + 31\lambda, \qquad y = -1280 - 12\lambda, \quad \lambda \in \mathbb{Z}.}
+\]
+
+**** Pas 5: imposar les cotes.
+
+Busquem \(\lambda\) tal que
+\[
+1 \le x \le 12, \qquad 1 \le y \le 31.
+\]
+
+Provant amb \(\lambda = -107\):
+\[
+x = 3328 + 31 \cdot (-107) = 3328 - 3317 = 11,
+\]
+\[
+y = -1280 - 12 \cdot (-107) = -1280 + 1284 = 4.
+\]
+
+Així, \(x = 11\) (novembre) i \(y = 4\) compleixen les cotes.
+
+*** Comprovació
+
+\[
+12 \cdot 11 + 31 \cdot 4 = 132 + 124 = 256.
+\]
+
+Per tant, la data recuperada és el *4 de novembre*.
