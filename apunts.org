@@ -1,3 +1,7 @@
+#+TITLE: Apunts SSCI — Divisibilitat i mcd
+#+LANGUAGE: ca
+#+OPTIONS: toc:t num:t
+#+STARTUP: showall
 
 * 8. Divisibilitat
 
@@ -11,10 +15,10 @@ a \mid b
 \iff \exists c \in \mathbb{Z} \text{ tal que } b = ac.
 \]
 
-*Explicació:*
+** Explicació
 La divisibilitat és un concepte fonamental que descriu quan un nombre cap dins d'un altre sense deixar residu. La notació \(a \mid b\) es llegeix "a divideix b". Fixa't que la condició principal és que existeixi un enter \(c\) que, multiplicat per \(a\), ens doni exactament \(b\). És a dir, \(b\) es pot construir com a múltiples de \(a\).
 
-*Exemples:*
+** Exemples
 
 \[
 2 \mid 6 \quad \text{perquè} \quad 6 = 2\cdot 3.
@@ -30,10 +34,10 @@ La divisibilitat és un concepte fonamental que descriu quan un nombre cap dins 
 
 Siguin \(a,b,c \in \mathbb{Z}\). Si \(a \mid b\) i \(b \mid c\), aleshores \(a \mid c\).
 
-*Explicació:*
+*** Explicació
 La transitivitat és com una cadena de dominó. Si \(a\) cap dins de \(b\) (és a dir, \(b\) és múltiple de \(a\)), i al seu torn \(b\) cap dins de \(c\), aleshores forçosament \(a\) també ha de cabre dins de \(c\). Això ens permet encadenar divisions i simplificar problemes.
 
-*Demostració:*
+*** Demostració
 
 Si \(a \mid b\), aleshores \(\exists k \in \mathbb{Z}\) tal que \(b = ak\).
 
@@ -45,7 +49,7 @@ c = (ak)m = a(km).
 \]
 Com que \(km \in \mathbb{Z}\), tenim que \(a \mid c\).
 
-*Exemple concret (només un cas):*
+*** Exemple concret (només un cas)
 
 \(2 \mid 4\) i \(4 \mid 12\), per tant \(2 \mid 12\).
 
@@ -58,10 +62,10 @@ Siguin \(a,b,c \in \mathbb{Z}\). Si \(a \mid b\) i \(a \mid c\), aleshores
 a \mid (b+c) \quad \text{i} \quad a \mid (b-c).
 \]
 
-*Explicació:*
+*** Explicació
 Si un nombre divideix dos nombres diferents, també divideix qualsevol combinació lineal seva. Pensa-hi com a grups d'objectes: si pots agrupar \(b\) objectes en grups de mida \(a\), i també pots agrupar \(c\) objectes en grups de mida \(a\), aleshores si els ajuntes tots, o si en treus una part, la mida del grup \(a\) encara funciona perfectament. Aquesta propietat és la base per a moltes demostracions algebraiques.
 
-*Demostració:*
+*** Demostració
 
 Si \(a \mid b\), aleshores \(\exists k \in \mathbb{Z}\) tal que \(b = ak\).
 
@@ -79,7 +83,7 @@ Com que \(k+m \in \mathbb{Z}\) i \(k-m \in \mathbb{Z}\), tenim que
 a \mid (b+c) \quad \text{i} \quad a \mid (b-c).
 \]
 
-*Exemple concret (només un cas):*
+*** Exemple concret (només un cas)
 
 \(2 \mid 6\) i \(2 \mid 10\), per tant \(2 \mid (6+10) = 16\) i \(2 \mid (10-6) = 4\).
 
@@ -89,10 +93,10 @@ Comprovació: \(6 = 2\cdot 3\), \(10 = 2\cdot 5\), així \(16 = 2\cdot 8\) i \(4
 
 Siguin \(a,b,c \in \mathbb{Z}\). Si \(a \mid b\), aleshores \(a \mid bc\).
 
-*Explicació:*
+*** Explicació
 Si \(a\) ja divideix \(b\), aleshores dividirà qualsevol múltiple de \(b\). És com dir: si 2 divideix 6, aleshores 2 també dividirà 6 multiplicat per qualsevol nombre (per exemple, 6×5=30, i 2 divideix 30). La divisibilitat es propaga cap amunt quan multipliquem.
 
-*Demostració:*
+*** Demostració
 
 Si \(a \mid b\), aleshores \(\exists k \in \mathbb{Z}\) tal que \(b = ak\).
 
@@ -102,7 +106,7 @@ bc = (ak)c = a(kc).
 \]
 Com que \(kc \in \mathbb{Z}\), tenim que \(a \mid bc\).
 
-*Exemple concret:*
+*** Exemple concret
 
 \(2 \mid 6\), per tant \(2 \mid 6\cdot 5 = 30\).
 
@@ -112,10 +116,10 @@ Comprovació: \(6 = 2\cdot 3\), així \(30 = 6\cdot 5 = 2\cdot 3\cdot 5 = 2\cdot
 
 En general, que \(a\) divideixi un producte \(bc\) *no* implica que divideixi cap dels factors.
 
-*Explicació:*
+*** Explicació
 Aquesta és una trampa molt comuna. El fet que un nombre divideixi un producte *no vol dir* que divideixi necessàriament cadascun dels factors per separat. El nombre pot estar format per la combinació de parts dels dos factors. Cal anar amb compte i no assumir aquesta propietat sense demostració, perquè és falsa en general.
 
-*Contraexemple:*
+*** Contraexemple
 
 \[
 6 \mid 2\cdot 3 = 6,
@@ -134,10 +138,10 @@ Siguin \(a,b \in \mathbb{Z}\). Si \(a \mid b\) i \(b \mid a\), aleshores
 a = \pm b.
 \]
 
-*Explicació:*
+*** Explicació
 Si dos nombres es divideixen mútuament, vol dir que tenen exactament la mateixa "grandària" en valor absolut. L'únic que pot canviar és el signe (positiu o negatiu). Per exemple, 2 i -2 es divideixen mútuament, però no podria ser que 2 dividís 4 i 4 dividís 2 alhora (llevat que fossin iguals o oposats). Això ens ajuda a classificar nombres segons la seva divisibilitat.
 
-*Demostració:*
+*** Demostració
 
 Si \(a \mid b\), aleshores \(\exists k \in \mathbb{Z}\) tal que \(b = ak\).
 
@@ -155,7 +159,7 @@ b = a(\pm 1) = \pm a.
 
 Si \(a = 0\), aleshores \(a \mid b\) implica \(b = 0\), i també es compleix \(a = \pm b = 0\).
 
-*Exemple concret:*
+*** Exemple concret
 
 \(2 \mid -2\) i \(-2 \mid 2\), per tant \(2 = -(-2)\).
 
@@ -166,7 +170,7 @@ Siguin \(a,b \in \mathbb{Z}\), no tots dos zero. El màxim comú divisor de \(a\
 \operatorname{mcd}(a,b).
 \]
 
-*Explicació:*
+** Explicació
 El màxim comú divisor (mcd) és el nombre més gran possible que divideix alhora tant \(a\) com \(b\) sense deixar residu. És una eina fonamental per simplificar fraccions i resoldre equacions diofàntiques. Per definició, sempre és un nombre positiu, i com a mínim sempre existeix l'1 (que divideix tots els enters). La condició "no tots dos zero" és perquè si tots dos fossin zero, qualsevol nombre els dividiria i no tindria sentit parlar d'un "màxim".
 
 * 11. Teorema (divisió euclidiana) "divisió normal"
@@ -180,7 +184,7 @@ i
 0 \le r < b.
 \]
 
-*Explicació:*
+** Explicació
 Aquest és el teorema que aprenem a primària quan fem divisions amb residu. Diu que si dividim un nombre enter \(a\) (dividend) per un nombre positiu \(b\) (divisor), obtenim un quocient \(q\) i un residu \(r\). La clau és que el residu sempre ha de ser més petit que el divisor (\(r < b\)) i no pot ser negatiu (\(r \ge 0\)). Els valors de \(q\) i \(r\) són únics per a cada parella \(a\) i \(b\).
 
 * 12. Observació
@@ -194,7 +198,7 @@ Per tant,
 \]
 on \(r\) és el residu de la divisió euclidiana de \(a\) per \(b\).
 
-*Explicació:*
+** Explicació
 Aquesta observació és la base de l'Algorisme d'Euclides. La primera part diu que si sumem o restem \(b\) a \(a\), el màxim comú divisor no canvia. Això és perquè qualsevol nombre que divideixi \(a\) i \(b\) també dividirà \(a+b\) i \(a-b\) (propietat 9.ii). La segona part és la conseqüència directa d'aplicar la divisió euclidiana: com que \(a = bq + r\), aleshores \(r = a - bq\), i per la propietat anterior, el mcd de \((a,b)\) és el mateix que el mcd de \((b,r)\). Això ens permet anar reduint el problema a nombres cada cop més petits fins que el residu sigui zero, moment en què el divisor actual és el mcd.
 
 * 14. Teorema (Identitat de Bézout)
@@ -208,17 +212,17 @@ El màxim comú divisor de dos nombres sempre es pot escriure com una combinaci�
 
 Els coeficients \(\alpha\) i \(\beta\) poden ser positius, negatius o zero. No són únics: si en trobem uns, també en podem trobar infinits afegint múltiples de \(b/d\) i \(-a/d\).
 
-*Explicació:*
+** Explicació
 La Identitat de Bézout ens assegura que el màxim comú divisor de dos nombres sempre es pot "fabricar" sumant i restant múltiples d'aquests dos nombres. És a dir, no és només un nombre que els divideix, sinó que és una combinació lineal d'ells. Això té aplicacions molt potents, com ara trobar l'invers modular d'un nombre, que és essencial en criptografia (com el sistema RSA). Els coeficients \(\alpha\) i \(\beta\) es poden trobar aplicant l'Algorisme d'Euclides "cap enrere", com veurem a l'exemple.
 
-*Exemple pràctic:*
+** Exemple pràctic
 
 Volem trobar \(\alpha, \beta\) tals que:
 \[
 d = \operatorname{mcd}(240,46) = \alpha \cdot 240 + \beta \cdot 46.
 \]
 
-*Algorisme d’Euclides:*
+** Algorisme d'Euclides
 \[
 240 = 46 \cdot 5 + 10
 \]
@@ -237,7 +241,7 @@ d = \operatorname{mcd}(240,46) = \alpha \cdot 240 + \beta \cdot 46.
 
 Per tant, \(d = 2\).
 
-*Ara cap enrere:*
+** Ara cap enrere
 \[
 2 = 6 - 4 \cdot 1
 \]
@@ -258,7 +262,7 @@ Per tant:
 
 Així, \(\alpha = -9\) i \(\beta = 47\).
 
-*Explicació de l'exemple:*
+** Explicació de l'exemple
 Primer hem aplicat l'Algorisme d'Euclides per trobar el mcd (que és 2). Després, hem anat "cap enrere" aïllant els residus de cada divisió (començant per l'última divisió no nul·la, que és \(6 = 4 \cdot 1 + 2\)). En cada pas, substituïm el residu anterior per la seva expressió en funció dels nombres originals. Aquest procés de substitucions successives ens permet expressar el 2 final com una combinació de 240 i 46. Els coeficients que acompanyen 240 i 46 són \(\alpha = -9\) i \(\beta = 47\), respectivament.
 
 * 14.1. Mètode matricial \(2\times 2\) per trobar \(\alpha\) i \(\beta\)
@@ -323,7 +327,7 @@ Per tant, els coeficients de Bézout són
 \]
 És a dir, la *primera columna* de la matriu total \(M\) dona els coeficients \(\alpha\) i \(\beta\).
 
----
+-----
 
 ** Algorisme
 
@@ -354,7 +358,7 @@ Per tant, els coeficients de Bézout són
    d=\alpha a+\beta b.
    \]
 
----
+-----
 
 ** Exemple 1: \(\operatorname{mcd}(240,46)\)
 
@@ -445,7 +449,7 @@ Comprovació:
 (-9)\cdot 240+47\cdot 46=-2160+2162=2.
 \]
 
----
+-----
 
 ** Exemple 2: \(\operatorname{mcd}(31,12)\)
 
@@ -538,7 +542,7 @@ Comprovació:
 (-5)\cdot 31+13\cdot 12=-155+156=1.
 \]
 
----
+-----
 
 ** Justificació del mètode
 
@@ -572,7 +576,7 @@ amb
 \boxed{\alpha=m_{11},\qquad \beta=m_{21}}.
 \]
 
----
+-----
 
 ** Observació
 
@@ -587,7 +591,7 @@ d=\left(\alpha+t\frac{b}{d}\right)a+
 \]
 Això dona infinites parelles de coeficients de Bézout per al mateix mcd.
 
----
+-----
 
 ** Resum
 
@@ -620,14 +624,14 @@ d = \operatorname{mcd}(a,b) \iff
 \end{cases}
 \]
 
-*Explicació:*
+** Explicació
 Aquest corol·lari ens dona la *definició formal i rigorosa* del màxim comú divisor. No només diu que \(d\) és un divisor comú (condicions 1 i 2), sinó que a més és el *més gran* possible (condició 3). 
 
 La clau és la condició (3): si qualsevol altre nombre \(c\) també divideix tant \(a\) com \(b\), aleshores forçosament \(c\) ha de dividir \(d\). Això vol dir que \(d\) és un múltiple de /tots/ els divisors comuns de \(a\) i \(b\), la qual cosa el converteix automàticament en el més gran de tots ells.
 
 Aquesta caracterització és molt útil perquè ens permet demostrar propietats del mcd sense necessitat de calcular-lo explícitament. També és la definició que s'utilitza en àlgebra abstracta per generalitzar el concepte de mcd a altres estructures algebraiques (com els anells d'ideals principals).
 
-*Exemple concret:*
+** Exemple concret
 
 Siguin \(a = 12\) i \(b = 18\). Sabem que \(d = \operatorname{mcd}(12,18) = 6\).
 
@@ -653,7 +657,7 @@ Equivalentment, \(a\) i \(b\) són coprimers si existeixen \(\alpha,\beta\in\mat
 \alpha a+\beta b=1.
 \]
 
----
+-----
 
 ** Explicació
 
@@ -668,7 +672,7 @@ per tant són coprimers. En canvi, \(6\) i \(10\) no són coprimers perquè
 \operatorname{mcd}(6,10)=2\neq 1.
 \]
 
----
+-----
 
 ** Per què és equivalent a l’existència de \(\alpha,\beta\)?
 
@@ -691,7 +695,7 @@ Així, doncs, les dues condicions són equivalents:
 \boxed{\operatorname{mcd}(a,b)=1 \iff \exists \alpha,\beta\in\mathbb Z,\ \alpha a+\beta b=1.}
 \]
 
----
+-----
 
 ** Exemples
 
@@ -728,7 +732,7 @@ Així, doncs, les dues condicions són equivalents:
    \operatorname{mcd}(6,10)=2\neq 1.
    \]
 
----
+-----
 
 * 17. Corol·lari: després de dividir pel mcd, els quocients són coprimers
 
@@ -748,7 +752,7 @@ amb \(a',b'\in\mathbb Z\). Aleshores
 \]
 És a dir, \(a'\) i \(b'\) són coprimers.
 
----
+-----
 
 ** Explicació
 
@@ -780,7 +784,7 @@ I
 \operatorname{mcd}(120,23)=1.
 \]
 
----
+-----
 
 ** Demostració
 
@@ -821,7 +825,7 @@ Per tant,
 \operatorname{mcd}(a',b')=1.
 \]
 
----
+-----
 
 ** Importància
 
@@ -831,7 +835,7 @@ Aquest corol·lari és la base per simplificar fraccions:
 \]
 La fracció \(\frac{a'}{b'}\) és irreductible, perquè \(a'\) i \(b'\) són coprimers.
 
----
+-----
 
 * 18. Corol·lari: lema d’Euclides
 
@@ -847,7 +851,7 @@ a\mid c.
 \boxed{a\mid bc \ \text{i}\ \operatorname{mcd}(a,b)=1 \implies a\mid c.}
 \]
 
----
+-----
 
 ** Explicació
 
@@ -855,7 +859,7 @@ Aquest resultat es coneix com el *lema d’Euclides*. Diu que si un nombre \(a\)
 
 Intuïtivament: com que \(a\) i \(b\) no tenen factors comuns, tots els factors de \(a\) han d’estar dins de \(c\) perquè \(a\) pugui dividir \(bc\).
 
----
+-----
 
 ** Demostració
 
@@ -880,7 +884,7 @@ Per tant,
 a\mid c.
 \]
 
----
+-----
 
 ** Exemple correcte
 
@@ -916,7 +920,7 @@ llavors
 \]
 Cert, \(8=4\cdot 2\).
 
----
+-----
 
 ** Contraexemple si no són coprimers
 
@@ -949,7 +953,7 @@ però
 \]
 De nou, \(\operatorname{mcd}(6,8)=2\neq 1\).
 
----
+-----
 
 ** Importància
 
@@ -957,23 +961,23 @@ Aquest corol·lari és fonamental per demostrar la *unicitat de la factoritzaci�
 
 A més, es pot combinar amb el corol·lari 17: si \(d=\operatorname{mcd}(a,b)\), \(a=d a'\), \(b=d b'\), aleshores \(a'\) i \(b'\) són coprimers. Si \(a\mid bc\), aleshores \(d a'\mid d b' c\), és a dir, \(a'\mid b' c\). Com que \(\operatorname{mcd}(a',b')=1\), pel lema d’Euclides \(a'\mid c\), i per tant \(a=d a'\mid d c\), és a dir, \(a\mid c\) si \(d\mid d c\) (sempre cert). Això dona una altra manera de veure la coherència entre 17 i 18.
 
----
+-----
 
 ** Resum
 
 - *16.* \(a\) i \(b\) són coprimers si \(\operatorname{mcd}(a,b)=1\). Equivalentment, si existeixen \(\alpha,\beta\in\mathbb Z\) amb \(\alpha a+\beta b=1\).
 - *17.* Si \(d=\operatorname{mcd}(a,b)\) i \(a=d a'\), \(b=d b'\), aleshores \(a'\) i \(b'\) són coprimers.
 - *18.* Si \(a\mid bc\) i \(\operatorname{mcd}(a,b)=1\), aleshores \(a\mid c\). Aquest és el lema d’Euclides.
-#+title: Exercici: MCD de \(a+b\) i \(a-b\)
+* Exercici: MCD de \(a+b\) i \(a-b\)
 
-* Enunciat
+** Enunciat
 Siguin \(a,b\in\mathbb Z\) amb \(\operatorname{mcd}(a,b)=1\). Aleshores
 \[
 \operatorname{mcd}(a+b,a-b)\in\{1,2\}.
 \]
 És a dir, el màxim comú divisor de \(a+b\) i \(a-b\) només pot ser \(1\) o \(2\).
 
-* Solució
+** Solució
 Sigui
 \[
 d=\operatorname{mcd}(a+b,a-b).
@@ -1006,7 +1010,7 @@ Per tant,
 \boxed{\operatorname{mcd}(a+b,a-b)\in\{1,2\}.}
 \]
 
-* Observació sobre la paritat
+** Observació sobre la paritat
 Com que \(\operatorname{mcd}(a,b)=1\), \(a\) i \(b\) no poden ser tots dos parells. Aleshores:
 
 - Si \(a\) i \(b\) són tots dos senars, \(a+b\) i \(a-b\) són parells, i per tant
@@ -1027,7 +1031,7 @@ Així:
 \end{cases}
 \]
 
-* Exemples
+** Exemples
 
 1. \(a=31,\ b=12\):
    \[
@@ -1069,10 +1073,10 @@ Així:
    \]
    i
    \[
-   \operatorname{mcd}(62,-24)=2.
-   \]
+    \operatorname{mcd}(62,-24)=2.
+    \]
 
-* Nota
+** Nota
 La condició \(\operatorname{mcd}(a,b)=1\) és essencial. Si \(a\) i \(b\) no són coprimers, el mcd de \(a+b\) i \(a-b\) pot ser més gran que \(2\). Per exemple, amb \(a=6\) i \(b=10\):
 \[
 \operatorname{mcd}(6,10)=2,
@@ -1086,7 +1090,7 @@ a+b=16,\qquad a-b=-4,
 \]
 Per tant, la hipòtesi \(\operatorname{mcd}(a,b)=1\) no es pot eliminar.
 
-* Resum
+** Resum
 Si \(a\) i \(b\) són coprimers, aleshores
 \[
 \boxed{\operatorname{mcd}(a+b,a-b)=1 \text{ o } 2.}
@@ -1102,10 +1106,10 @@ Més concretament:
 \]
 
 
-#+title: Apunts: Exercicis de divisibilitat i mcd
+* Apunts: Exercicis de divisibilitat i mcd
 
-* Recordatori: propietat fonamental del mcd (apartat 12)
-Per a qualssevol \(x,y\in\mathbb Z\) i \(k\in\mathbb Z\),
+** Recordatori: propietat fonamental del mcd (apartat 12)
+Per a qualsevol \(x,y\in\mathbb Z\) i \(k\in\mathbb Z\),
 \[
 \operatorname{mcd}(x,y)=\operatorname{mcd}(x+ky,\ y)=\operatorname{mcd}(x,\ y+kx).
 \]
@@ -1113,9 +1117,9 @@ Això és cert perquè qualsevol divisor comú de \(x\) i \(y\) també divideix 
 
 Aquesta propietat és la que ens permet “eliminar” termes i simplificar el càlcul del mcd.
 
----
+-----
 
-* Exercici 1.3: És cert que \(\operatorname{mcd}(3a-b,\ b-2a)=\operatorname{mcd}(a,b)\)?
+** Exercici 1.3: És cert que \(\operatorname{mcd}(3a-b,\ b-2a)=\operatorname{mcd}(a,b)\)?
 
 ** Enunciat
 Per a \(a,b\in\mathbb Z\), volem veure si
@@ -1171,9 +1175,9 @@ d\mid b-2a.
 \]
 Per tant, els conjunts de divisors comuns coincideixen, i en particular el seu màxim comú divisor és el mateix.
 
----
+-----
 
-* Exercici 1.7: Demostra que la fracció \(\dfrac{4n+5}{2n+3}\) és irreductible per a tot \(n\ge 1\).
+** Exercici 1.7: Demostra que la fracció \(\dfrac{4n+5}{2n+3}\) és irreductible per a tot \(n\ge 1\).
 
 ** Enunciat
 Volem veure que
@@ -1249,7 +1253,7 @@ Aleshores:
 \boxed{\text{l'equació } ax+by=c \text{ té solució entera } \iff d \mid c.}
 \]
 
----
+-----
 
 ** Explicació
 
@@ -1259,7 +1263,7 @@ Sobre \(\mathbb{Q}\) l'equació \(ax+by=c\) (amb \(a,b\) no nuls) sempre té sol
 
 La idea clau és que tot el costat esquerre \(ax+by\) és forçosament un múltiple de \(d = \operatorname{mcd}(a,b)\). Per tant, si \(c\) no és múltiple de \(d\), l'equació és impossible. I si sí que ho és, la *Identitat de Bézout* ens permet construir una solució explícitament.
 
----
+-----
 
 ** Demostració
 
@@ -1309,7 +1313,7 @@ obtenim una solució entera de \(ax+by=c\).
 
 Així, \(d \mid c\) és condició necessària i suficient.
 
----
+-----
 
 ** Exemple 1: equació sense solució
 
@@ -1331,7 +1335,7 @@ el teorema ens diu que *no hi ha cap solució entera*.
 
 Intuïtivament: \(2x\) sempre és parell, \(4y\) sempre és parell, i la suma de dos parells sempre és parella. Però \(7\) és senar, així que mai podrem obtenir \(7\) sumant dos nombres parells.
 
----
+-----
 
 ** Exemple 2: equació amb solució
 
@@ -1394,7 +1398,7 @@ Per tant:
 \boxed{x_0 = 1250, \qquad y_0 = -2500.}
 \]
 
----
+-----
 
 ** Resum
 
@@ -1404,7 +1408,7 @@ Per tant:
 
 
 
----
+-----
 
 ** És l'única solució? Hi ha més solucions?
 
@@ -1429,7 +1433,7 @@ En el nostre cas, amb \(x_0 = \alpha c'\) i \(y_0 = \beta c'\):
 \boxed{x = \alpha c' + \lambda b', \qquad y = \beta c' - \lambda a', \quad \lambda \in \mathbb{Z}.}
 \]
 
----
+-----
 
 *** Explicació
 
@@ -1437,7 +1441,7 @@ Un cop tenim una solució, en podem fabricar infinites sumant i restant el matei
 
 Per què funciona amb \(a'\) i \(b'\) i no amb \(a\) i \(b\)? Perquè \(a b' = b a'\) (tots dos valen \(d a' b'\)), així que els dos termes extra se cancel·len. Si féssim servir \(a\) i \(b\) directament, el pas seria més gran del necessari; dividint pel \(d\) obtenim el pas mínim que genera *totes* les solucions.
 
----
+-----
 
 *** Demostració que són solucions
 
@@ -1477,7 +1481,7 @@ ax + by = c.
 
 Així, \((x,y)\) també és solució per a qualsevol \(\lambda \in \mathbb{Z}\). Com que \(\lambda\) pot ser qualsevol enter, hi ha infinites solucions.
 
----
+-----
 
 *** Exemple: \(27x+13y=1250\)
 
@@ -1499,14 +1503,14 @@ x = 1250 + 13 = 1263, \qquad y = -2500 - 27 = -2527,
 \]
 i es comprova que \(27 \cdot 1263 + 13 \cdot (-2527) = 1250\).
 
----
+-----
 
 *** Nota: són totes
 
 De fet, aquestes són *totes* les solucions: si \((x,y)\) és qualsevol altra solució, restant \(a x_0 + b y_0 = c\) s'obté \(a(x-x_0) + b(y-y_0) = 0\), és a dir, \(a'(x-x_0) = -b'(y-y_0)\). Com que \(\operatorname{mcd}(a',b')=1\), el lema d'Euclides obliga \(b' \mid (x-x_0)\), d'on \(x = x_0 + \lambda b'\) per a algun \(\lambda\), i aleshores \(y = y_0 - \lambda a'\).
 
 
----
+-----
 
 *** Demostració que aquestes són totes les solucions
 
@@ -1580,7 +1584,7 @@ Per tant, qualsevol solució \((e,f)\) és necessàriament de la forma
 per a alguna \(\lambda \in \mathbb{Z}\). Això demostra que les solucions paramètriques són *totes* les solucions.
 
 
----
+-----
 
 **** Complement: l'altra divisibilitat i unicitat del paràmetre \(\lambda\)
 
@@ -1614,7 +1618,7 @@ Per tant, una sola \(\lambda \in \mathbb{Z}\) parametritza totes les solucions: 
 
 
 
----
+-----
 
 ** Exercici: endevinar la data de naixement
 
@@ -1697,3 +1701,262 @@ Així, \(x = 11\) (novembre) i \(y = 4\) compleixen les cotes.
 \]
 
 Per tant, la data recuperada és el *4 de novembre*.
+
+
+
+
+
+* 24. Lema d'Euclides per a primers
+
+** Enunciat
+
+Sigui \(p\) primer. Si \(p \mid ab\), aleshores \(p \mid a\) o \(p \mid b\).
+
+És a dir:
+\[
+\boxed{p \text{ primer i } p \mid ab \implies p \mid a \text{ o } p \mid b.}
+\]
+
+-----
+
+** Explicació
+
+Aquest és el cas particular del lema d'Euclides (apartat 18) quan \(a = p\) és primer.
+
+Si \(p\) no divideix \(a\), aleshores necessàriament \(\operatorname{mcd}(p,a) = 1\) (perquè els únics divisors positius de \(p\) són \(1\) i \(p\)). Aleshores, com que \(p \mid ab\) i \(\operatorname{mcd}(p,a) = 1\), pel lema d'Euclides \(p \mid b\).
+
+-----
+
+* 25. Teorema fonamental de l'aritmètica
+
+** Enunciat
+
+Qualsevol nombre enter que no sigui \(0\), \(1\) ni \(-1\) es pot descompondre en producte de potències de nombres primers, tots diferents, i aquesta descomposició és única si no tenim en compte l'ordre dels factors ni el signe.
+
+És a dir:
+\[
+a = p_1^{r_1} p_2^{r_2} \cdots p_n^{r_n}
+\]
+
+on:
+
+- \(a \in \mathbb{Z}\), \(a \neq 0, \pm 1\).
+- \(p_1, \dots, p_n\) són nombres primers, tots diferents entre si.
+- \(r_1, \dots, r_n\) són nombres naturals \(\ge 1\), és a dir, els exponents.
+- "únics llevat d'ordre i signe" vol dir que si escrius la factorització en un altre ordre, o amb algun signe canviat, en realitat és la mateixa factorització.
+
+-----
+
+** Demostració resumida
+
+*** Existència
+Per inducció forta en \(n > 1\): si \(n\) és primer, fet; si \(n = ab\) amb \(1 < a, b < n\), per H.I. \(a\) i \(b\) factoritzen en primers i ajuntant-les s'obté la de \(n\).
+
+*** Lema clau
+Si \(p\) és primer, \(p \mid uv\) i \(p \nmid u\), llavors \(\operatorname{mcd}(p,u) = 1\). Per Bézout \(1 = px + uy\), d'on \(v = pxv + uyv\) és múltiple de \(p\). Per tant \(p \mid v\).
+
+*** Unicitat
+Si \(p_1 \cdots p_r = q_1 \cdots q_s\), llavors \(p_1 \mid q_j\) per algun \(j\), i com que són primers \(p_1 = q_j\). Cancel·lem i repetim: les dues llistes coincideixen llevat d'ordre. Agrupant repetits, \(a = p_1^{r_1} \cdots p_n^{r_n}\) amb \(r_i \ge 1\) únics. Si \(a < 0\), factoritzem \(-a > 0\) i hi afegim el signe.
+
+-----
+
+** Exemples
+
+1. \(84 = 2^2 \cdot 3 \cdot 7\)
+
+   Aquí els primers són \(2, 3, 7\), tots diferents, i els exponents són \(2, 1, 1\).
+
+2. \(360 = 2^3 \cdot 3^2 \cdot 5\)
+
+3. Si el nombre és negatiu, normalment es treu el signe fora i es factoritza la part positiva:
+   \[
+   -84 = -\, 2^2 \cdot 3 \cdot 7
+   \]
+
+   O, si es permeten primers negatius, es pot repartir el signe entre els primers, però l'essència és la mateixa: els primers "de veritat" que apareixen, presos en valor absolut, i els seus exponents, són únics.
+
+-----
+
+** Observacions sobre la unicitat
+
+Un exemple de no-unicitat només aparent seria:
+\[
+12 = 2^2 \cdot 3 = 3 \cdot 2^2
+\]
+Són la mateixa factorització, només canvia l'ordre.
+
+També cal que els primers siguin tots diferents. No escriuríem:
+\[
+12 = 2 \cdot 2 \cdot 3
+\]
+amb \(p_1 = 2\), \(p_2 = 2\), perquè no serien diferents. Ho agrupem com:
+\[
+12 = 2^2 \cdot 3
+\]
+
+-----
+
+** Importància
+
+Aquest teorema és fonamental perquè diu que els nombres primers són com els "àtoms" dels enters: qualsevol enter no nul ni \(\pm 1\) es construeix multiplicant primers d'una manera única. Serveix per calcular el mcd, el mcm, simplificar fraccions, estudiar divisibilitat, congruències, etc.
+
+-----
+
+* 26. Hi ha infinits nombres primers
+
+** Enunciat
+
+Hi ha infinits nombres primers.
+
+** Demostració (Euclides)
+
+Suposem que només hi hagués un nombre finit de primers:
+\[
+p_1, p_2, p_3, \dots, p_n.
+\]
+
+Mirem el nombre
+\[
+a = p_1 p_2 p_3 \cdots p_n + 1.
+\]
+
+Aleshores \(p_1 \nmid a\), perquè \(a - 1\) és múltiple de \(p_1\) però \(a\) no ho és. En general, cap \(p_i\) divideix \(a\), perquè donaria residu \(1\).
+
+Per tant, o bé \(a\) és primer, o bé té un factor primer nou diferent de tots els \(p_i\). En tots dos casos hi ha un primer fora de la llista, contradicció.
+
+Així doncs, no hi pot haver un nombre finit de primers: n'hi ha infinits.
+
+-----
+
+* 28. Proposició: mcd i mcm mitjançant la factorització en primers
+
+** Enunciat
+
+Siguin \(0 < a\) i \(0 < b\). Escrivim les seves factoritzacions en primers fent servir la mateixa llista de primers:
+\[
+a = p_1^{r_1} p_2^{r_2} \cdots p_n^{r_n}, \qquad b = p_1^{s_1} p_2^{s_2} \cdots p_n^{s_n},
+\]
+amb \(r_i, s_i \ge 0\).
+
+Aleshores:
+\[
+\operatorname{mcd}(a,b) = p_1^{\min(r_1,s_1)} \cdots p_n^{\min(r_n,s_n)}
+\]
+i
+\[
+\operatorname{mcm}(a,b) = p_1^{\max(r_1,s_1)} \cdots p_n^{\max(r_n,s_n)}.
+\]
+
+** Què són \(r_i\) i \(s_i\)?
+
+- \(p_1, \dots, p_n\) són tots els primers que apareixen en \(a\), en \(b\), o en tots dos.
+- \(r_i\) és l'exponent del primer \(p_i\) dins de \(a\).
+- \(s_i\) és l'exponent del primer \(p_i\) dins de \(b\).
+- Si un primer no apareix en un dels dos nombres, li posem exponent \(0\).
+
+Per tant, \(r_i, s_i \ge 0\).
+
+-----
+
+** Per què funciona?
+
+*** Màxim comú divisor
+
+Un divisor comú de \(a\) i \(b\) només pot tenir els primers que apareixen en tots dos. A més, per a cada primer \(p_i\):
+
+- a \(a\), l'exponent és \(r_i\);
+- a \(b\), l'exponent és \(s_i\).
+
+Perquè un nombre divideixi tant \(a\) com \(b\), el seu exponent en \(p_i\) no pot superar ni \(r_i\) ni \(s_i\). Per tant, com a màxim pot ser
+\[
+\min(r_i,s_i).
+\]
+
+Per obtenir el màxim comú divisor, agafem precisament aquest exponent màxim permès:
+\[
+\operatorname{mcd}(a,b) = p_1^{\min(r_1,s_1)} \cdots p_n^{\min(r_n,s_n)}.
+\]
+
+*** Mínim comú múltiple
+
+Un múltiple comú de \(a\) i \(b\) ha de ser divisible per \(a\) i per \(b\). Per tant, per a cada primer \(p_i\), el seu exponent ha de ser com a mínim \(r_i\) i com a mínim \(s_i\). És a dir, com a mínim
+\[
+\max(r_i,s_i).
+\]
+
+Per obtenir el mínim comú múltiple, agafem exactament aquest exponent mínim obligatori:
+\[
+\operatorname{mcm}(a,b) = p_1^{\max(r_1,s_1)} \cdots p_n^{\max(r_n,s_n)}.
+\]
+
+-----
+
+** Exemple complet
+
+Siguin
+\[
+a = 360 = 2^3 \cdot 3^2 \cdot 5^1
+\]
+i
+\[
+b = 84 = 2^2 \cdot 3^1 \cdot 7^1.
+\]
+
+Primer posem la mateixa llista de primers: \(2, 3, 5, 7\). Els exponents són:
+\[
+a = 2^3 \cdot 3^2 \cdot 5^1 \cdot 7^0, \qquad b = 2^2 \cdot 3^1 \cdot 5^0 \cdot 7^1.
+\]
+
+| primer \(p_i\) | \(r_i\) | \(s_i\) | \(\min(r_i,s_i)\) | \(\max(r_i,s_i)\) |
+|-----------------|-----------|-----------|---------------------|---------------------|
+| 2               | 3         | 2         | 2                   | 3                   |
+| 3               | 2         | 1         | 1                   | 2                   |
+| 5               | 1         | 0         | 0                   | 1                   |
+| 7               | 0         | 1         | 0                   | 1                   |
+
+*** MCD
+
+Agafem els mínims:
+\[
+\operatorname{mcd}(360,84) = 2^2 \cdot 3^1 \cdot 5^0 \cdot 7^0 = 4 \cdot 3 = 12.
+\]
+
+*** MCM
+
+Agafem els màxims:
+\[
+\operatorname{mcm}(360,84) = 2^3 \cdot 3^2 \cdot 5^1 \cdot 7^1 = 8 \cdot 9 \cdot 5 \cdot 7 = 2520.
+\]
+
+-----
+
+** Propietat important
+
+Sempre es compleix:
+\[
+\operatorname{mcd}(a,b) \cdot \operatorname{mcm}(a,b) = a \cdot b.
+\]
+
+En l'exemple:
+\[
+12 \cdot 2520 = 30240
+\]
+i
+\[
+360 \cdot 84 = 30240.
+\]
+
+Aquesta propietat surt del fet que, per a cada primer \(p_i\),
+\[
+\min(r_i,s_i) + \max(r_i,s_i) = r_i + s_i.
+\]
+
+-----
+
+** Observacions
+
+- Cal escriure els dos nombres amb la mateixa llista de primers. Si un primer no hi és, l'exponent és \(0\).
+- Els exponents \(r_i, s_i\) poden ser zero.
+- El mètode és molt útil quan les factoritzacions són conegudes o fàcils de calcular.
+- Per a nombres grans, normalment és més pràctic fer servir l'algorisme d'Euclides per al mcd, i després la propietat \(\operatorname{mcm}(a,b) = a \cdot b / \operatorname{mcd}(a,b)\).
+- La idea es pot generalitzar a més de dos nombres: el mcd pren els mínims exponents i el mcm pren els màxims exponents.
