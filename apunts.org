@@ -1960,3 +1960,809 @@ Aquesta propietat surt del fet que, per a cada primer \(p_i\),
 - El mètode és molt útil quan les factoritzacions són conegudes o fàcils de calcular.
 - Per a nombres grans, normalment és més pràctic fer servir l'algorisme d'Euclides per al mcd, i després la propietat \(\operatorname{mcm}(a,b) = a \cdot b / \operatorname{mcd}(a,b)\).
 - La idea es pot generalitzar a més de dos nombres: el mcd pren els mínims exponents i el mcm pren els màxims exponents.
+
+
+* 29. Aritmètica modular
+
+** Definició
+
+Suposem que \(m > 0\). Es diu que
+\[
+a \equiv b \pmod{m}
+\]
+si \(a - b\) és múltiple de \(m\), és a dir, si existeix \(k \in \mathbb{Z}\) tal que
+\[
+a - b = k \cdot m.
+\]
+
+Això equival a dir que \(a\) i \(b\) donen el mateix residu quan els dividim per \(m\).
+
+-----
+
+** Explicació: per què equival a tenir el mateix residu?
+
+Si dividim \(a\) i \(b\) per \(m\):
+\[
+a = qm + r, \qquad b = q'm + r'
+\]
+amb \(0 \le r, r' < m\).
+
+Llavors:
+\[
+a - b = (q - q')m + (r - r').
+\]
+
+Perquè \(a - b\) sigui múltiple de \(m\), cal que \(r - r'\) també sigui múltiple de \(m\). Però com que \(r\) i \(r'\) estan entre \(0\) i \(m - 1\), l'única possibilitat és que
+\[
+r - r' = 0,
+\]
+és a dir, \(r = r'\). Per tant, \(a\) i \(b\) tenen el mateix residu.
+
+-----
+
+** Exemples amb \(m = 5\)
+
+*** Exemple 1
+
+\[
+7 \equiv 2 \pmod{5}
+\]
+perquè \(7 - 2 = 5\), que és múltiple de \(5\). I, efectivament, tant \(7\) com \(2\) donen residu \(2\) en dividir per \(5\).
+
+*** Exemple 2
+
+\[
+-3 \equiv 2 \pmod{5}
+\]
+perquè \(-3 - 2 = -5\), múltiple de \(5\). I \(-3\) es pot escriure com \(-1 \cdot 5 + 2\), així que també té residu \(2\).
+
+Podem imaginar-ho com calaixos: cada residu possible (\(0, 1, \dots, m-1\)) és un calaix, i dos nombres són congruents si són al mateix calaix.
+
+* 30. La congruència mòdul \(m\) és una relació d'equivalència
+
+** Recordatori: què vol dir \(a \equiv b \pmod{m}\)
+
+Donats \(a, b, m \in \mathbb{Z}\) amb \(m > 0\), diem que
+\[
+a \equiv b \pmod{m}
+\]
+si \(a - b\) és múltiple de \(m\), és a dir, si existeix \(k \in \mathbb{Z}\) tal que
+\[
+a - b = km.
+\]
+
+Això equival a dir que \(a\) i \(b\) donen el mateix residu en dividir per \(m\) (vegeu apartat 29).
+
+-----
+
+** Què és una relació d'equivalència?
+
+Una relació \(\sim\) sobre un conjunt és una relació d'equivalència si compleix tres propietats:
+
+1. Reflexiva,
+2. Simètrica,
+3. Transitiva.
+
+Volem veure que \(\equiv \pmod{m}\) les compleix totes tres.
+
+-----
+
+** Propietat reflexiva
+
+*** Enunciat
+
+\[
+a \equiv a \pmod{m} \quad \text{per a tot } a \in \mathbb{Z}.
+\]
+
+*** Demostració
+
+Cal veure que \(a - a\) és múltiple de \(m\):
+\[
+a - a = 0 = 0 \cdot m.
+\]
+Com que \(0\) és múltiple de \(m\), tenim \(a \equiv a \pmod{m}\).
+
+En paraules: tot nombre és al mateix calaix que ell mateix.
+
+*** Exemple
+
+\[
+7 \equiv 7 \pmod{5},
+\]
+ja que \(7 - 7 = 0\).
+
+-----
+
+** Propietat simètrica
+
+*** Enunciat
+
+Si \(a \equiv b \pmod{m}\), llavors \(b \equiv a \pmod{m}\).
+
+*** Demostració
+
+Suposem que \(a \equiv b \pmod{m}\). Això vol dir que \(a - b\) és múltiple de \(m\).
+
+Llavors:
+\[
+b - a = -(a - b).
+\]
+El negatiu d'un múltiple de \(m\) també és múltiple de \(m\). Per tant, \(b - a\) és múltiple de \(m\), i així
+\[
+b \equiv a \pmod{m}.
+\]
+
+En paraules: si dos nombres són al mateix calaix, l'ordre no importa.
+
+*** Exemple
+
+Com que \(7 \equiv 2 \pmod{5}\) (perquè \(7 - 2 = 5\)), també \(2 \equiv 7 \pmod{5}\) (perquè \(2 - 7 = -5\)).
+
+-----
+
+** Propietat transitiva
+
+*** Enunciat
+
+Si \(a \equiv b \pmod{m}\) i \(b \equiv c \pmod{m}\), llavors \(a \equiv c \pmod{m}\).
+
+*** Demostració
+
+Suposem que \(a - b\) és múltiple de \(m\) i que \(b - c\) també ho és.
+
+Sumem les dues expressions:
+\[
+a - c = (a - b) + (b - c).
+\]
+Com que \(a - b\) i \(b - c\) són tots dos múltiples de \(m\), la seva suma també és múltiple de \(m\). Per tant, \(a - c\) és múltiple de \(m\), és a dir,
+\[
+a \equiv c \pmod{m}.
+\]
+
+En paraules: si \(a\) comparteix calaix amb \(b\), i \(b\) comparteix calaix amb \(c\), llavors \(a\) i \(c\) són al mateix calaix.
+
+*** Exemple
+
+\(7 \equiv 2 \pmod{5}\) i \(2 \equiv -3 \pmod{5}\). Llavors \(7 \equiv -3 \pmod{5}\), ja que \(7 - (-3) = 10\), que és múltiple de \(5\).
+
+-----
+
+** Conseqüència: classes de residus
+
+Com que \(\equiv \pmod{m}\) és una relació d'equivalència, parteix \(\mathbb{Z}\) en classes d'equivalència disjuntes, una per a cada residu possible.
+
+Per a \(m = 5\):
+
+- Residu \(0\): \(\dots, -10, -5, 0, 5, 10, \dots\)
+- Residu \(1\): \(\dots, -9, -4, 1, 6, 11, \dots\)
+- Residu \(2\): \(\dots, -8, -3, 2, 7, 12, \dots\)
+- Residu \(3\): \(\dots, -7, -2, 3, 8, 13, \dots\)
+- Residu \(4\): \(\dots, -6, -1, 4, 9, 14, \dots\)
+
+El conjunt d'aquestes classes s'escriu \(\mathbb{Z}/m\mathbb{Z}\) (o \(\mathbb{Z}_m\)) i té exactament \(m\) elements.
+
+-----
+
+** Resum
+
+- \(\equiv \pmod{m}\) és una relació d'equivalència perquè compleix:
+  1. Reflexiva: \(a \equiv a \pmod{m}\).
+  2. Simètrica: \(a \equiv b \pmod{m} \Rightarrow b \equiv a \pmod{m}\).
+  3. Transitiva: \(a \equiv b \pmod{m}\) i \(b \equiv c \pmod{m} \Rightarrow a \equiv c \pmod{m}\).
+- Les tres propietats es demostren directament a partir de la definició: "\(a \equiv b \pmod{m}\) si \(a - b\) és múltiple de \(m\)".
+- Això permet agrupar els enters en classes de residus, que són la base de l'aritmètica modular.
+
+* 31. Definició: classes d'equivalència mòdul \(m\)
+
+** Definició
+
+Donat un enter \(a \in \mathbb{Z}\), la classe d'equivalència de \(a\) mòdul \(m\) es defineix com:
+\[
+[a]_m = \{ b \in \mathbb{Z} \mid a \equiv b \pmod{m} \}.
+\]
+És a dir, \([a]_m\) és el conjunt de tots els enters \(b\) que són congruents amb \(a\) mòdul \(m\).
+
+-----
+
+** Formes equivalents
+
+La mateixa classe es pot escriure com:
+\[
+[a]_m = \{ b \in \mathbb{Z} \mid b = a + km \text{ per a algun } k \in \mathbb{Z} \}
+      = a + m\mathbb{Z}.
+\]
+
+Intuïció: \([a]_m\) és el "calaix" del residu de \(a\). Conté tots els enters que donen el mateix residu que \(a\) quan els dividim per \(m\).
+
+-----
+
+** Exemple amb \(m = 5\)
+
+\[
+[0]_5 = \{ \dots, -10, -5, 0, 5, 10, \dots \}
+\]
+\[
+[1]_5 = \{ \dots, -9, -4, 1, 6, 11, \dots \}
+\]
+\[
+[2]_5 = \{ \dots, -8, -3, 2, 7, 12, \dots \}
+\]
+\[
+[3]_5 = \{ \dots, -7, -2, 3, 8, 13, \dots \}
+\]
+\[
+[4]_5 = \{ \dots, -6, -1, 4, 9, 14, \dots \}
+\]
+
+-----
+
+** Observació important
+
+\[
+[7]_5 = [2]_5, \text{ perquè } 7 \equiv 2 \pmod{5}.
+\]
+
+En general:
+\[
+[a]_m = [b]_m \iff a \equiv b \pmod{m}.
+\]
+
+Per tant, una mateixa classe es pot representar amb qualsevol dels seus elements.
+
+* 32. Observació: partició de \(\mathbb{Z}\) en \(m\) classes
+
+** Enunciat
+
+Les \(m\) classes
+\[
+[0]_m, [1]_m, \dots, [m-1]_m
+\]
+són totes diferents i cobreixen tots els enters. Escrivim:
+\[
+\mathbb{Z} = [0]_m \sqcup [1]_m \sqcup \dots \sqcup [m-1]_m.
+\]
+El símbol \(\sqcup\) indica unió disjunta: cada enter pertany exactament a una d'aquestes classes.
+
+Això vol dir que tenim una partició de \(\mathbb{Z}\) en \(m\) classes.
+
+-----
+
+** Demostració
+
+*** 1. Existència
+
+Per a qualsevol \(a \in \mathbb{Z}\), dividim \(a\) per \(m\):
+\[
+a = qm + r, \quad \text{amb } 0 \le r < m.
+\]
+Llavors \(a \equiv r \pmod{m}\), així que \(a \in [r]_m\).
+Per tant, tot enter pertany com a mínim a una classe.
+
+*** 2. Unicitat
+
+Si \(a \in [r]_m\) i \(a \in [s]_m\) amb \(0 \le r, s < m\), llavors
+\[
+r \equiv s \pmod{m},
+\]
+és a dir, \(m\) divideix \(r - s\).
+Com que \(|r - s| < m\), l'única possibilitat és \(r = s\).
+Per tant, cada enter pertany exactament a una classe.
+
+*** 3. Disjunció
+
+Si \([r]_m \cap [s]_m \neq \varnothing\), aleshores existeix algun \(b\) que és congruent amb \(r\) i amb \(s\).
+Per tant, \(r \equiv s \pmod{m}\), i com que \(0 \le r, s < m\), tenim \(r = s\).
+Així, classes diferents no es tallen.
+
+-----
+
+** El conjunt quocient \(\mathbb{Z}/m\mathbb{Z}\)
+
+El conjunt de totes les classes d'equivalència mòdul \(m\) s'escriu:
+\[
+\mathbb{Z}/m\mathbb{Z} = \{ [0]_m, [1]_m, \dots, [m-1]_m \}.
+\]
+Aquest conjunt té exactament \(m\) elements.
+
+*** Exemple amb \(m = 5\)
+
+\[
+\mathbb{Z}/5\mathbb{Z} = \{ [0]_5, [1]_5, [2]_5, [3]_5, [4]_5 \}.
+\]
+
+Cada classe és un conjunt infinit, però el conjunt de classes \(\mathbb{Z}/5\mathbb{Z}\) només té \(5\) elements.
+
+-----
+
+** Nota
+
+- Si \(m = 1\), hi ha una sola classe: \([0]_1 = \mathbb{Z}\).
+- Normalment prenem \(m > 0\). Si \(m\) fos negatiu, es treballa amb \(|m|\).
+- La notació \(\mathbb{Z}/m\mathbb{Z}\) també s'escriu de vegades com \(\mathbb{Z}_m\).
+
+Aquestes classes de residus són la base de l'aritmètica modular: més endavant es poden definir operacions com
+\[
+[a]_m + [b]_m = [a+b]_m,
+\]
+\[
+[a]_m \cdot [b]_m = [a \cdot b]_m.
+\]
+Però això ja seria el següent tema.
+
+* 33. Observació: compatibilitat de la congruència amb la suma i el producte
+
+** Enunciat
+
+Siguin \(a, a_0, b, b_0 \in \mathbb{Z}\) i \(m > 0\). Aleshores:
+
+*** (i) Compatibilitat amb la suma
+
+Si \(a \equiv a_0 \pmod{m}\) i \(b \equiv b_0 \pmod{m}\), llavors
+\[
+a + b \equiv a_0 + b_0 \pmod{m}.
+\]
+
+*** (ii) Compatibilitat amb el producte
+
+Si \(a \equiv a_0 \pmod{m}\) i \(b \equiv b_0 \pmod{m}\), llavors
+\[
+a \cdot b \equiv a_0 \cdot b_0 \pmod{m}.
+\]
+
+És a dir, la congruència és compatible amb la suma i amb el producte: podem substituir un nombre per qualsevol altre congruent sense alterar la congruència del resultat.
+
+-----
+
+** Demostració de (i)
+
+Suposem que \(a \equiv a_0 \pmod{m}\) i \(b \equiv b_0 \pmod{m}\). Això vol dir que
+\[
+a - a_0 \text{ és múltiple de } m,
+\]
+\[
+b - b_0 \text{ és múltiple de } m.
+\]
+
+Volem veure que \((a + b) - (a_0 + b_0)\) és múltiple de \(m\). Però:
+\[
+(a + b) - (a_0 + b_0) = (a - a_0) + (b - b_0).
+\]
+Com que és suma de dos múltiples de \(m\), també és múltiple de \(m\). Per tant,
+\[
+a + b \equiv a_0 + b_0 \pmod{m}.
+\]
+
+-----
+
+** Demostració de (ii)
+
+Suposem igualment que \(a \equiv a_0 \pmod{m}\) i \(b \equiv b_0 \pmod{m}\). Volem veure que
+\[
+a \cdot b - a_0 \cdot b_0
+\]
+és múltiple de \(m\). Fem una manipulació útil:
+\[
+a \cdot b - a_0 \cdot b_0 = a \cdot b - a_0 \cdot b + a_0 \cdot b - a_0 \cdot b_0
+                         = (a - a_0) \cdot b + a_0 \cdot (b - b_0).
+\]
+
+Ara bé:
+- \((a - a_0)\) és múltiple de \(m\), així que \((a - a_0) \cdot b\) també és múltiple de \(m\).
+- \((b - b_0)\) és múltiple de \(m\), així que \(a_0 \cdot (b - b_0)\) també és múltiple de \(m\).
+
+Per tant, la suma dels dos termes és múltiple de \(m\). Així,
+\[
+a \cdot b \equiv a_0 \cdot b_0 \pmod{m}.
+\]
+
+-----
+
+** Observació addicional: compatibilitat amb la resta
+
+També es compleix:
+\[
+a \equiv a_0 \pmod{m},\ b \equiv b_0 \pmod{m} \Rightarrow a - b \equiv a_0 - b_0 \pmod{m}.
+\]
+Això surt de (i) aplicat a \(b\) i \(-b\), o directament fent la diferència.
+
+-----
+
+** Exemple amb \(m = 5\)
+
+Tenim \(7 \equiv 2 \pmod{5}\) i \(8 \equiv 3 \pmod{5}\). Llavors:
+
+- Suma: \(7 + 8 = 15 \equiv 0 \pmod{5}\) i \(2 + 3 = 5 \equiv 0 \pmod{5}\).
+- Producte: \(7 \cdot 8 = 56 \equiv 1 \pmod{5}\) i \(2 \cdot 3 = 6 \equiv 1 \pmod{5}\).
+
+Els resultats són congruents, com diu l'observació.
+
+* 34. Teorema: \(\mathbb{Z}/m\mathbb{Z}\) és un anell commutatiu
+
+** Idea
+
+A la secció anterior hem vist que la congruència respecta la suma i el producte. Això permet definir operacions sobre el conjunt de classes \(\mathbb{Z}/m\mathbb{Z}\).
+
+-----
+
+** Definició de les operacions
+
+A \(\mathbb{Z}/m\mathbb{Z}\) definim:
+\[
+[a]_m + [b]_m := [a+b]_m,
+\]
+\[
+[a]_m \cdot [b]_m := [a \cdot b]_m.
+\]
+És a dir, sumem o multipliquem les classes sumant o multiplicant qualsevol representant i prenent després la classe del resultat.
+
+-----
+
+** Primer: les operacions estan ben definides
+
+Que una operació estigui ben definida vol dir que el resultat no depèn dels representants triats. És a dir, si canviem \(a\) per un altre \(a_0\) amb \([a]_m = [a_0]_m\), i \(b\) per un altre \(b_0\) amb \([b]_m = [b_0]_m\), el resultat ha de ser el mateix.
+
+Suposem, doncs, que
+\[
+[a]_m = [a_0]_m \quad \text{i} \quad [b]_m = [b_0]_m.
+\]
+Això equival a dir:
+\[
+a \equiv a_0 \pmod{m} \quad \text{i} \quad b \equiv b_0 \pmod{m}.
+\]
+
+Per l'observació 33:
+\[
+a + b \equiv a_0 + b_0 \pmod{m},
+\]
+\[
+a \cdot b \equiv a_0 \cdot b_0 \pmod{m}.
+\]
+
+Per tant:
+\[
+[a+b]_m = [a_0+b_0]_m,
+\]
+\[
+[a \cdot b]_m = [a_0 \cdot b_0]_m.
+\]
+
+Així, les operacions no depenen dels representants. Estan ben definides.
+
+-----
+
+** Segon: \(\mathbb{Z}/m\mathbb{Z}\) amb aquestes operacions és un anell commutatiu
+
+Un anell commutatiu és un conjunt amb dues operacions, suma i producte, que compleixen les propietats habituals: associativitat, commutativitat, element neutre, element oposat per a la suma, i distributivitat del producte respecte de la suma.
+
+Comprovem-les per a \(\mathbb{Z}/m\mathbb{Z}\).
+
+*** Suma
+
+1. Associativa:
+\[
+([a] + [b]) + [c] = [a+b] + [c] = [(a+b)+c] = [a+(b+c)] = [a] + ([b]+[c]).
+\]
+
+2. Commutativa:
+\[
+[a] + [b] = [a+b] = [b+a] = [b] + [a].
+\]
+
+3. Element neutre: \([0]_m\).
+\[
+[a] + [0] = [a+0] = [a].
+\]
+
+4. Element oposat: \([-a]_m\).
+\[
+[a] + [-a] = [a+(-a)] = [0].
+\]
+
+*** Producte
+
+1. Associatiu:
+\[
+([a] \cdot [b]) \cdot [c] = [a \cdot b] \cdot [c] = [(a \cdot b) \cdot c] = [a \cdot (b \cdot c)] = [a] \cdot ([b] \cdot [c]).
+\]
+
+2. Commutatiu:
+\[
+[a] \cdot [b] = [a \cdot b] = [b \cdot a] = [b] \cdot [a].
+\]
+
+3. Element neutre: \([1]_m\).
+\[
+[a] \cdot [1] = [a \cdot 1] = [a].
+\]
+
+*** Distributivitat
+
+El producte és distributiu respecte de la suma:
+\[
+[a] \cdot ([b]+[c]) = [a] \cdot [b+c] = [a \cdot (b+c)] = [a \cdot b + a \cdot c] = [a \cdot b] + [a \cdot c] = [a]\cdot[b] + [a]\cdot[c].
+\]
+Igualment per l'altre costat, però com que el producte és commutatiu, ja queda cobert.
+
+-----
+
+** Conclusió
+
+Amb les operacions
+\[
+[a]_m + [b]_m = [a+b]_m,
+\]
+\[
+[a]_m \cdot [b]_m = [a \cdot b]_m,
+\]
+el conjunt \(\mathbb{Z}/m\mathbb{Z}\) té estructura d'anell commutatiu amb unitat. L'element neutre de la suma és \([0]_m\) i l'element neutre del producte és \([1]_m\).
+
+-----
+
+** Exemple amb \(\mathbb{Z}/5\mathbb{Z}\)
+
+A \(\mathbb{Z}/5\mathbb{Z}\):
+\[
+[2] + [4] = [6] = [1],
+\]
+\[
+[2] \cdot [4] = [8] = [3],
+\]
+\[
+[3] + [4] = [7] = [2],
+\]
+\[
+[3] \cdot [4] = [12] = [2].
+\]
+
+Comprovem la distributivitat:
+\[
+[2] \cdot ([3]+[4]) = [2] \cdot [7] = [2] \cdot [2] = [4],
+\]
+\[
+[2]\cdot[3] + [2]\cdot[4] = [6] + [8] = [1] + [3] = [4].
+\]
+Coincideix.
+
+-----
+
+** Nota final
+
+Si \(m\) és primer, aleshores \(\mathbb{Z}/m\mathbb{Z}\) no només és un anell commutatiu, sinó que a més tot element no nul té invers multiplicatiu, i per tant és un cos. Per exemple, \(\mathbb{Z}/5\mathbb{Z}\) és un cos. En canvi, \(\mathbb{Z}/6\mathbb{Z}\) no és un cos, perquè, per exemple, \([2]\) no té invers: no existeix cap \([x]\) tal que \([2]\cdot[x] = [1]\).
+
+Però això ja correspondria a un tema posterior.
+
+* 35. Proposició: invertibles, cossos i divisors de zero
+
+Suposem \(m > 1\) i treballem a l'anell \(\mathbb{Z}/m\mathbb{Z}\).
+
+** Recordatori
+
+- \([a]_m\) és invertible (o una unitat) si existeix \([x]_m\) tal que
+\[
+[a]_m \cdot [x]_m = [1]_m.
+\]
+- Dos enters \(a\) i \(m\) són coprimers (o primers entre si) si \(\operatorname{mcd}(a,m) = 1\).
+
+-----
+
+** (i) \([a]_m\) és invertible \(\iff\) \(a\) i \(m\) són coprimers
+
+*** Demostració
+
+\[
+[a]_m \text{ és invertible}
+\iff \text{existeix } [x]_m \text{ tal que } [a]_m \cdot [x]_m = [1]_m
+\]
+\[
+\iff a \cdot x \equiv 1 \pmod{m}
+\]
+\[
+\iff a \cdot x - 1 \text{ és múltiple de } m
+\]
+\[
+\iff \text{existeix un enter } y \text{ tal que } a \cdot x - 1 = y \cdot m
+\]
+\[
+\iff \text{existeix una combinació entera } a \cdot x + m \cdot (-y) = 1
+\]
+\[
+\iff \operatorname{mcd}(a,m) = 1.
+\]
+
+L'últim pas és el teorema de Bézout: una combinació lineal entera de \(a\) i \(m\) val \(1\) si i només si \(\operatorname{mcd}(a,m) = 1\).
+
+Per tant, \([a]_m\) té invers si i només si \(a\) i \(m\) són coprimers.
+
+*** Exemple amb \(m = 5\)
+
+- \([2]_5\) és invertible perquè \(\operatorname{mcd}(2,5) = 1\). El seu invers és \([3]_5\), ja que \(2 \cdot 3 = 6 \equiv 1 \pmod{5}\).
+- \([4]_5\) és invertible perquè \(\operatorname{mcd}(4,5) = 1\). El seu invers és \([4]_5\), ja que \(4 \cdot 4 = 16 \equiv 1 \pmod{5}\).
+
+*** Exemple amb \(m = 6\)
+
+- \([2]_6\) no és invertible perquè \(\operatorname{mcd}(2,6) = 2 \neq 1\).
+- \([3]_6\) no és invertible perquè \(\operatorname{mcd}(3,6) = 3 \neq 1\).
+- \([5]_6\) sí que és invertible perquè \(\operatorname{mcd}(5,6) = 1\). El seu invers és \([5]_6\), ja que \(5 \cdot 5 = 25 \equiv 1 \pmod{6}\).
+
+-----
+
+** (ii) \(\mathbb{Z}/m\mathbb{Z}\) és un cos \(\iff\) \(m\) és primer
+
+*** Demostració
+
+**** (\(\Rightarrow\)) Si \(\mathbb{Z}/m\mathbb{Z}\) és un cos, tot element no nul és invertible. Si \(m\) no fos primer, podríem escriure \(m = d \cdot n\) amb \(1 < d < m\). Llavors \([d]_m \neq [0]_m\), però \(\operatorname{mcd}(d,m) = d > 1\), així que per (i) \([d]_m\) no seria invertible. Contradicció. Per tant, \(m\) ha de ser primer.
+
+**** (\(\Leftarrow\)) Si \(m\) és primer, prenem qualsevol \([a]_m \neq [0]_m\). Això vol dir que \(m\) no divideix \(a\). Com que \(m\) és primer, \(\operatorname{mcd}(a,m) = 1\). Per (i), \([a]_m\) és invertible. Per tant, tot element no nul té invers, i \(\mathbb{Z}/m\mathbb{Z}\) és un cos.
+
+*** Exemples
+
+- \(\mathbb{Z}/5\mathbb{Z}\) és un cos, perquè \(5\) és primer.
+- \(\mathbb{Z}/7\mathbb{Z}\) és un cos, perquè \(7\) és primer.
+- \(\mathbb{Z}/6\mathbb{Z}\) no és un cos, perquè \(6\) no és primer. Per exemple, \([2]_6\) no té invers.
+
+-----
+
+** (iii) Si \([a]_m\) no és invertible, aleshores és un divisor de zero
+
+*** Enunciat
+
+Si \([a]_m\) no és invertible, aleshores existeix \([b]_m \neq [0]_m\) tal que \([a]_m \cdot [b]_m = [0]_m\).
+
+És a dir, en \(\mathbb{Z}/m\mathbb{Z}\), tot element no invertible és un divisor de zero.
+
+*** Demostració
+
+Si \([a]_m\) no és invertible, per (i) tenim \(\operatorname{mcd}(a,m) = d > 1\).
+
+Escrivim:
+\[
+a = d \cdot a', \qquad m = d \cdot n
+\]
+amb \(n = m/d\). Com que \(d > 1\), tenim \(0 < n < m\) (excepte si \(d = m\); llavors \(n = 1\), que també és diferent de \(0\)).
+
+Aleshores:
+\[
+[a]_m \cdot [n]_m = [a \cdot n]_m = [d \cdot a' \cdot n]_m = [a' \cdot d \cdot n]_m = [a' \cdot m]_m = [0]_m.
+\]
+I \([n]_m \neq [0]_m\), perquè \(0 < n < m\).
+
+Per tant, existeix \([b]_m = [n]_m \neq [0]_m\) amb \([a]_m \cdot [b]_m = [0]_m\).
+
+*** Exemple amb \(m = 6\)
+
+- \([2]_6\) no és invertible. Prenem \(n = 6/2 = 3\). Llavors:
+\[
+[2]_6 \cdot [3]_6 = [6]_6 = [0]_6.
+\]
+I \([3]_6 \neq [0]_6\).
+- \([3]_6\) no és invertible. Prenem \(n = 6/3 = 2\). Llavors:
+\[
+[3]_6 \cdot [2]_6 = [6]_6 = [0]_6.
+\]
+I \([2]_6 \neq [0]_6\).
+- \([4]_6\) no és invertible. \(\operatorname{mcd}(4,6) = 2\), \(n = 6/2 = 3\). Llavors:
+\[
+[4]_6 \cdot [3]_6 = [12]_6 = [0]_6.
+\]
+I \([3]_6 \neq [0]_6\).
+
+*** Conseqüència
+
+A \(\mathbb{Z}/m\mathbb{Z}\), els elements invertibles són exactament les classes \([a]_m\) amb \(\operatorname{mcd}(a,m) = 1\). Els elements no invertibles i no nuls són divisors de zero.
+
+* 36. Observació: llei de cancel·lació
+
+A l'anell \(\mathbb{Z}/m\mathbb{Z}\):
+
+- (i) Si \([a]_m\) és invertible, aleshores
+\[
+[a]_m \cdot [b]_m = [a]_m \cdot [c]_m \Rightarrow [b]_m = [c]_m.
+\]
+- (ii) Si \([a]_m\) no és invertible, això no és cert en general.
+
+-----
+
+** (i) Demostració de la cancel·lació per elements invertibles
+
+Suposem que \([a]_m\) és invertible. Això vol dir que existeix \([a]^{-1}_m\) tal que
+\[
+[a]_m \cdot [a]^{-1}_m = [1]_m.
+\]
+
+Suposem que
+\[
+[a]_m \cdot [b]_m = [a]_m \cdot [c]_m.
+\]
+
+Multipliquem els dos costats per l'invers \([a]^{-1}_m\):
+\[
+[a]^{-1}_m \cdot ([a]_m \cdot [b]_m) = [a]^{-1}_m \cdot ([a]_m \cdot [c]_m).
+\]
+
+Per associativitat:
+\[
+([a]^{-1}_m \cdot [a]_m) \cdot [b]_m = ([a]^{-1}_m \cdot [a]_m) \cdot [c]_m.
+\]
+
+Com que \([a]^{-1}_m \cdot [a]_m = [1]_m\):
+\[
+[1]_m \cdot [b]_m = [1]_m \cdot [c]_m.
+\]
+
+Per tant:
+\[
+[b]_m = [c]_m.
+\]
+
+Així, els elements invertibles es poden cancel·lar.
+
+*** Exemple amb \(m = 5\)
+
+Com que \([2]_5\) és invertible, si
+\[
+[2]_5 \cdot [b]_5 = [2]_5 \cdot [c]_5,
+\]
+llavors necessàriament \([b]_5 = [c]_5\).
+
+-----
+
+** (ii) Si \([a]_m\) no és invertible, la cancel·lació pot fallar
+
+*** Exemple amb \(m = 6\)
+
+Prenem \([a]_6 = [2]_6\), que no és invertible perquè \(\operatorname{mcd}(2,6) = 2\).
+
+Tenim:
+\[
+[2]_6 \cdot [0]_6 = [0]_6,
+\]
+\[
+[2]_6 \cdot [3]_6 = [6]_6 = [0]_6.
+\]
+
+Per tant:
+\[
+[2]_6 \cdot [0]_6 = [2]_6 \cdot [3]_6,
+\]
+però
+\[
+[0]_6 \neq [3]_6.
+\]
+
+Així, no podem cancel·lar \([2]_6\).
+
+Un altre exemple:
+\[
+[2]_6 \cdot [1]_6 = [2]_6,
+\]
+\[
+[2]_6 \cdot [4]_6 = [8]_6 = [2]_6.
+\]
+Llavors
+\[
+[2]_6 \cdot [1]_6 = [2]_6 \cdot [4]_6,
+\]
+però
+\[
+[1]_6 \neq [4]_6.
+\]
+
+-----
+
+** Conclusió
+
+- Si \([a]_m\) és invertible, podem cancel·lar-lo.
+- Si \([a]_m\) no és invertible, no podem cancel·lar-lo en general, perquè pot passar que \([a]\cdot[b] = [a]\cdot[c]\) amb \([b] \neq [c]\).
+
+-----
+
+** Resum final
+
+A \(\mathbb{Z}/m\mathbb{Z}\), amb \(m > 1\):
+
+- \([a]_m\) és invertible \(\iff\) \(\operatorname{mcd}(a,m) = 1\).
+- \(\mathbb{Z}/m\mathbb{Z}\) és un cos \(\iff\) \(m\) és primer.
+- Si \([a]_m\) no és invertible, aleshores és un divisor de zero: existeix \([b]_m \neq [0]_m\) amb \([a]_m \cdot [b]_m = [0]_m\).
+- Si \([a]_m\) és invertible, es pot cancel·lar en igualtats: \([a]\cdot[b] = [a]\cdot[c] \Rightarrow [b] = [c]\).
+- Si \([a]_m\) no és invertible, la cancel·lació falla en general.
