@@ -3,11 +3,11 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ca" xml:lang="ca">
 <head>
-<!-- 2026-09-28 lun 11:48 -->
+<!-- 2026-10-01 jue 09:48 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Apunts SSCI — Divisibilitat i mcd</title>
-<meta name="author" content="Joaquim" />
+<title>Apunts SSCI — Divisibilitat i mcd Apunts: Matrius mòdul \(m\), determinants i invertibilitat</title>
+<meta name="author" content="Apunts" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -228,396 +228,451 @@
 </head>
 <body>
 <div id="content" class="content">
-<h1 class="title">Apunts SSCI — Divisibilitat i mcd</h1>
+<h1 class="title">Apunts SSCI — Divisibilitat i mcd Apunts: Matrius mòdul \(m\), determinants i invertibilitat</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>&Iacute;ndex</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgfd0102a">1. 8. Divisibilitat</a>
+<li><a href="#org1d5b8d6">1. 8. Divisibilitat</a>
 <ul>
-<li><a href="#orgd5f4da7">1.1. Explicació</a></li>
-<li><a href="#org305ed22">1.2. Exemples</a></li>
+<li><a href="#org8ba330c">1.1. Explicació</a></li>
+<li><a href="#orge52571c">1.2. Exemples</a></li>
 </ul>
 </li>
-<li><a href="#org23aeaaa">2. 9. Propietats de la divisibilitat</a>
+<li><a href="#org6b09a57">2. 9. Propietats de la divisibilitat</a>
 <ul>
-<li><a href="#org5edfcf3">2.1. 9.i) Transitivitat</a>
+<li><a href="#org564f416">2.1. 9.i) Transitivitat</a>
 <ul>
-<li><a href="#org4a28658">2.1.1. Explicació</a></li>
-<li><a href="#org2a4a16f">2.1.2. Demostració</a></li>
-<li><a href="#org3f92302">2.1.3. Exemple concret (només un cas)</a></li>
+<li><a href="#org68aa83f">2.1.1. Explicació</a></li>
+<li><a href="#org54399bb">2.1.2. Demostració</a></li>
+<li><a href="#orgf60c069">2.1.3. Exemple concret (només un cas)</a></li>
 </ul>
 </li>
-<li><a href="#orgbe0f77c">2.2. 9.ii) Linealitat (suma i resta)</a>
+<li><a href="#orgfe9d7cb">2.2. 9.ii) Linealitat (suma i resta)</a>
 <ul>
-<li><a href="#org0ecbaf6">2.2.1. Explicació</a></li>
-<li><a href="#orge6719fd">2.2.2. Demostració</a></li>
-<li><a href="#org5d56f3a">2.2.3. Exemple concret (només un cas)</a></li>
+<li><a href="#orgb48564f">2.2.1. Explicació</a></li>
+<li><a href="#org69183f5">2.2.2. Demostració</a></li>
+<li><a href="#org06c5e95">2.2.3. Exemple concret (només un cas)</a></li>
 </ul>
 </li>
-<li><a href="#org79f2f26">2.3. 9.iii) Factor comú</a>
+<li><a href="#org65f2396">2.3. 9.iii) Factor comú</a>
 <ul>
-<li><a href="#org89e8a2d">2.3.1. Explicació</a></li>
-<li><a href="#orgab347fa">2.3.2. Demostració</a></li>
-<li><a href="#org29e927a">2.3.3. Exemple concret</a></li>
+<li><a href="#org5a04317">2.3.1. Explicació</a></li>
+<li><a href="#org0d86f07">2.3.2. Demostració</a></li>
+<li><a href="#orgab578b2">2.3.3. Exemple concret</a></li>
 </ul>
 </li>
-<li><a href="#org71e5dd1">2.4. 9.iv) Contraexemple: \(a \mid bc \nRightarrow a \mid b\) o \(a \mid c\)</a>
+<li><a href="#orgff55386">2.4. 9.iv) Contraexemple: \(a \mid bc \nRightarrow a \mid b\) o \(a \mid c\)</a>
 <ul>
-<li><a href="#org5cc1ed7">2.4.1. Explicació</a></li>
-<li><a href="#org866ccef">2.4.2. Contraexemple</a></li>
+<li><a href="#org408bceb">2.4.1. Explicació</a></li>
+<li><a href="#org6384dbe">2.4.2. Contraexemple</a></li>
 </ul>
 </li>
-<li><a href="#org65aa141">2.5. 9.v) Antisimetria (llevat de signe)</a>
+<li><a href="#orgcefeda1">2.5. 9.v) Antisimetria (llevat de signe)</a>
 <ul>
-<li><a href="#orgffdec44">2.5.1. Explicació</a></li>
-<li><a href="#org728493f">2.5.2. Demostració</a></li>
-<li><a href="#org81c5dc0">2.5.3. Exemple concret</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#org651c98c">3. 10. Definició: màxim comú divisor</a>
-<ul>
-<li><a href="#org55887c9">3.1. Explicació</a></li>
-</ul>
-</li>
-<li><a href="#org11b85c2">4. 11. Teorema (divisió euclidiana) "divisió normal"</a>
-<ul>
-<li><a href="#org0bd6eb5">4.1. Explicació</a></li>
-</ul>
-</li>
-<li><a href="#org5c4a33c">5. 12. Observació</a>
-<ul>
-<li><a href="#org26174cd">5.1. Explicació</a></li>
-</ul>
-</li>
-<li><a href="#org3e25bc7">6. 14. Teorema (Identitat de Bézout)</a>
-<ul>
-<li><a href="#orgafe1d78">6.1. Explicació</a></li>
-<li><a href="#org7a989e3">6.2. Exemple pràctic</a></li>
-<li><a href="#org97c3754">6.3. Algorisme d'Euclides</a></li>
-<li><a href="#orgb78cd05">6.4. Ara cap enrere</a></li>
-<li><a href="#org90513d1">6.5. Explicació de l'exemple</a></li>
-</ul>
-</li>
-<li><a href="#orgb37b293">7. 14.1. Mètode matricial \(2\times 2\) per trobar \(\alpha\) i \(\beta\)</a>
-<ul>
-<li><a href="#orged53f52">7.1. Idea</a></li>
-<li><a href="#org2afa907">7.2. Algorisme</a></li>
-<li><a href="#org57f5dda">7.3. Exemple 1: \(\operatorname{mcd}(240,46)\)</a>
-<ul>
-<li><a href="#org0929915">7.3.1. Divisions euclidianes</a></li>
-<li><a href="#orge63882b">7.3.2. Matrius associades</a></li>
-<li><a href="#org8bd6231">7.3.3. Producte total</a></li>
-</ul>
-</li>
-<li><a href="#org7989b61">7.4. Exemple 2: \(\operatorname{mcd}(31,12)\)</a>
-<ul>
-<li><a href="#org36cb23a">7.4.1. Divisions euclidianes</a></li>
-<li><a href="#org2871fc3">7.4.2. Matrius associades</a></li>
-<li><a href="#orgd912645">7.4.3. Producte total</a></li>
-</ul>
-</li>
-<li><a href="#org48df9ba">7.5. Justificació del mètode</a></li>
-<li><a href="#org5ff79a3">7.6. Observació</a></li>
-<li><a href="#orgc074478">7.7. Resum</a></li>
-</ul>
-</li>
-<li><a href="#org6740b34">8. 15. Corol·lari (Caracterització del màxim comú divisor)</a>
-<ul>
-<li><a href="#orgef48ca4">8.1. Explicació</a></li>
-<li><a href="#org3731ac2">8.2. Exemple concret</a></li>
-</ul>
-</li>
-<li><a href="#org6e09aa0">9. 16. Definició: nombres coprimers</a>
-<ul>
-<li><a href="#org705098a">9.1. Enunciat</a></li>
-<li><a href="#org40571a1">9.2. Explicació</a></li>
-<li><a href="#org31d9b93">9.3. Per què és equivalent a l’existència de \(\alpha,\beta\)?</a>
-<ul>
-<li><a href="#org4df9180">9.3.1. \((\Rightarrow)\) Si \(\operatorname{mcd}(a,b)=1\), aleshores existeixen \(\alpha,\beta\in\mathbb Z\) tals que \(\alpha a+\beta b=1\).</a></li>
-<li><a href="#orge88a3ee">9.3.2. \((\Leftarrow)\) Si existeixen \(\alpha,\beta\in\mathbb Z\) tals que \(\alpha a+\beta b=1\), aleshores \(\operatorname{mcd}(a,b)=1\).</a></li>
-</ul>
-</li>
-<li><a href="#orgc39c774">9.4. Exemples</a></li>
-</ul>
-</li>
-<li><a href="#orgde6222f">10. 17. Corol·lari: després de dividir pel mcd, els quocients són coprimers</a>
-<ul>
-<li><a href="#orgf577cff">10.1. Enunciat</a></li>
-<li><a href="#org5440423">10.2. Explicació</a></li>
-<li><a href="#orge691387">10.3. Demostració</a></li>
-<li><a href="#org7002dd2">10.4. Importància</a></li>
-</ul>
-</li>
-<li><a href="#orgb08cc18">11. 18. Corol·lari: lema d’Euclides</a>
-<ul>
-<li><a href="#orgbea88a2">11.1. Enunciat</a></li>
-<li><a href="#orgc7d42cd">11.2. Explicació</a></li>
-<li><a href="#org4806c04">11.3. Demostració</a></li>
-<li><a href="#org9d0d329">11.4. Exemple correcte</a></li>
-<li><a href="#org1223373">11.5. Contraexemple si no són coprimers</a></li>
-<li><a href="#org558bd13">11.6. Importància</a></li>
-<li><a href="#org813389b">11.7. Resum</a></li>
-</ul>
-</li>
-<li><a href="#orgec7bcf2">12. Exercici: MCD de \(a+b\) i \(a-b\)</a>
-<ul>
-<li><a href="#org9cf27be">12.1. Enunciat</a></li>
-<li><a href="#org4495f2f">12.2. Solució</a></li>
-<li><a href="#org258b423">12.3. Observació sobre la paritat</a></li>
-<li><a href="#orgf3b7ec6">12.4. Exemples</a></li>
-<li><a href="#orgd231c08">12.5. Nota</a></li>
-<li><a href="#orgc6abede">12.6. Resum</a></li>
-</ul>
-</li>
-<li><a href="#org663ecca">13. Apunts: Exercicis de divisibilitat i mcd</a>
-<ul>
-<li><a href="#org27a7a35">13.1. Recordatori: propietat fonamental del mcd (apartat 12)</a></li>
-<li><a href="#org409733c">13.2. Exercici 1.3: És cert que \(\operatorname{mcd}(3a-b,\ b-2a)=\operatorname{mcd}(a,b)\)?</a></li>
-<li><a href="#org4ed8118">13.3. Enunciat</a></li>
-<li><a href="#org9e1929a">13.4. Solució pas a pas</a></li>
-<li><a href="#org41c76bc">13.5. Explicació alternativa amb divisors comuns</a></li>
-<li><a href="#org8093ade">13.6. Exercici 1.7: Demostra que la fracció \(\dfrac{4n+5}{2n+3}\) és irreductible per a tot \(n\ge 1\).</a></li>
-<li><a href="#orga6e669f">13.7. Enunciat</a></li>
-<li><a href="#orgd47086a">13.8. Solució pas a pas</a></li>
-<li><a href="#orgdceefa5">13.9. Exemples</a></li>
-<li><a href="#org42d788e">13.10. Nota</a></li>
-</ul>
-</li>
-<li><a href="#orgd72bafe">14. 19. Equacions diofàntiques (Diofant d'Alexandria)</a>
-<ul>
-<li><a href="#org383cfa3">14.1. Enunciat</a></li>
-<li><a href="#org767f7f2">14.2. Explicació</a></li>
-<li><a href="#org9c7426a">14.3. Demostració</a>
-<ul>
-<li><a href="#org6115fb4">14.3.1. \((\Rightarrow)\) Si hi ha solució, aleshores \(d \mid c\).</a></li>
-<li><a href="#orgec0e664">14.3.2. \((\Leftarrow)\) Si \(d \mid c\), aleshores hi ha solució.</a></li>
-</ul>
-</li>
-<li><a href="#org5e39d3e">14.4. Exemple 1: equació sense solució</a></li>
-<li><a href="#org7d478eb">14.5. Exemple 2: equació amb solució</a>
-<ul>
-<li><a href="#org61b70d7">14.5.1. Pas 1: calcular \(d\) i comprovar que divideix \(c\).</a></li>
-<li><a href="#orgff488b4">14.5.2. Pas 2: trobar coeficients de Bézout.</a></li>
-<li><a href="#orgdaac617">14.5.3. Pas 3: multiplicar per \(c'\).</a></li>
-<li><a href="#org4aa675f">14.5.4. Pas 4: comprovació.</a></li>
-</ul>
-</li>
-<li><a href="#orgfd85a3d">14.6. Resum</a></li>
-<li><a href="#orgf731532">14.7. És l'única solució? Hi ha més solucions?</a>
-<ul>
-<li><a href="#org4a4cc38">14.7.1. Enunciat</a></li>
-<li><a href="#org3752e00">14.7.2. Explicació</a></li>
-<li><a href="#org774da77">14.7.3. Demostració que són solucions</a></li>
-<li><a href="#org27369f2">14.7.4. Exemple: \(27x+13y=1250\)</a></li>
-<li><a href="#org25f465f">14.7.5. Nota: són totes</a></li>
-<li><a href="#org01dd89a">14.7.6. Demostració que aquestes són totes les solucions</a></li>
-</ul>
-</li>
-<li><a href="#orgd5d6f1e">14.8. Exercici: endevinar la data de naixement</a>
-<ul>
-<li><a href="#orgd024a21">14.8.1. Enunciat</a></li>
-<li><a href="#orgd662a0d">14.8.2. Explicació</a></li>
-<li><a href="#org9144e23">14.8.3. Resolució pas a pas amb \(c = 256\)</a></li>
-<li><a href="#org9de7b93">14.8.4. Comprovació</a></li>
+<li><a href="#org8e14f1d">2.5.1. Explicació</a></li>
+<li><a href="#orgf5dec47">2.5.2. Demostració</a></li>
+<li><a href="#orge4ec99b">2.5.3. Exemple concret</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org1b001e7">15. 24. Lema d'Euclides per a primers</a>
+<li><a href="#orgbc600b2">3. 10. Definició: màxim comú divisor</a>
 <ul>
-<li><a href="#org41114f6">15.1. Enunciat</a></li>
-<li><a href="#orgedba2e0">15.2. Explicació</a></li>
+<li><a href="#orgf3bf18c">3.1. Explicació</a></li>
 </ul>
 </li>
-<li><a href="#orgf2a0b01">16. 25. Teorema fonamental de l'aritmètica</a>
+<li><a href="#orgbc642f6">4. 11. Teorema (divisió euclidiana) "divisió normal"</a>
 <ul>
-<li><a href="#orgce14db9">16.1. Enunciat</a></li>
-<li><a href="#orgc2eee4e">16.2. Demostració resumida</a>
-<ul>
-<li><a href="#orgecfd1be">16.2.1. Existència</a></li>
-<li><a href="#orga16d3b9">16.2.2. Lema clau</a></li>
-<li><a href="#org032d178">16.2.3. Unicitat</a></li>
+<li><a href="#orgc0fe29e">4.1. Explicació</a></li>
 </ul>
 </li>
-<li><a href="#orgcdae701">16.3. Exemples</a></li>
-<li><a href="#orge048ec2">16.4. Observacions sobre la unicitat</a></li>
-<li><a href="#org24b296f">16.5. Importància</a></li>
+<li><a href="#org203be7e">5. 12. Observació</a>
+<ul>
+<li><a href="#orgc5d7522">5.1. Explicació</a></li>
 </ul>
 </li>
-<li><a href="#org18a8ebf">17. 26. Hi ha infinits nombres primers</a>
+<li><a href="#org7a5ad29">6. 14. Teorema (Identitat de Bézout)</a>
 <ul>
-<li><a href="#org92bc557">17.1. Enunciat</a></li>
-<li><a href="#org515dff7">17.2. Demostració (Euclides)</a></li>
+<li><a href="#org344bee1">6.1. Explicació</a></li>
+<li><a href="#org22583aa">6.2. Exemple pràctic</a></li>
+<li><a href="#orged1a837">6.3. Algorisme d'Euclides</a></li>
+<li><a href="#org3070c70">6.4. Ara cap enrere</a></li>
+<li><a href="#org660d34c">6.5. Explicació de l'exemple</a></li>
 </ul>
 </li>
-<li><a href="#org4911bab">18. 28. Proposició: mcd i mcm mitjançant la factorització en primers</a>
+<li><a href="#org2909220">7. 14.1. Mètode matricial \(2\times 2\) per trobar \(\alpha\) i \(\beta\)</a>
 <ul>
-<li><a href="#org4c04ec5">18.1. Enunciat</a></li>
-<li><a href="#orgd6ff254">18.2. Què són \(r_i\) i \(s_i\)?</a></li>
-<li><a href="#org97a2406">18.3. Per què funciona?</a>
+<li><a href="#org4867172">7.1. Idea</a></li>
+<li><a href="#org9bbf8a8">7.2. Algorisme</a></li>
+<li><a href="#orgc14f6db">7.3. Exemple 1: \(\operatorname{mcd}(240,46)\)</a>
 <ul>
-<li><a href="#org86047de">18.3.1. Màxim comú divisor</a></li>
-<li><a href="#org700d332">18.3.2. Mínim comú múltiple</a></li>
+<li><a href="#org2129dd5">7.3.1. Divisions euclidianes</a></li>
+<li><a href="#orgc94f838">7.3.2. Matrius associades</a></li>
+<li><a href="#orge4beff7">7.3.3. Producte total</a></li>
 </ul>
 </li>
-<li><a href="#orgcf610f2">18.4. Exemple complet</a>
+<li><a href="#orgaf33fb9">7.4. Exemple 2: \(\operatorname{mcd}(31,12)\)</a>
 <ul>
-<li><a href="#orgd243e83">18.4.1. MCD</a></li>
-<li><a href="#org134ec42">18.4.2. MCM</a></li>
+<li><a href="#org4e8d6f3">7.4.1. Divisions euclidianes</a></li>
+<li><a href="#org89e255b">7.4.2. Matrius associades</a></li>
+<li><a href="#orge48991d">7.4.3. Producte total</a></li>
 </ul>
 </li>
-<li><a href="#orge179b67">18.5. Propietat important</a></li>
-<li><a href="#org2c3e1cc">18.6. Observacions</a></li>
+<li><a href="#org3a41781">7.5. Justificació del mètode</a></li>
+<li><a href="#org43a59df">7.6. Observació</a></li>
+<li><a href="#org0b6d407">7.7. Resum</a></li>
 </ul>
 </li>
-<li><a href="#org5e13e66">19. 29. Aritmètica modular</a>
+<li><a href="#org27691bf">8. 15. Corol·lari (Caracterització del màxim comú divisor)</a>
 <ul>
-<li><a href="#org0938fc9">19.1. Definició</a></li>
-<li><a href="#org2e81381">19.2. Explicació: per què equival a tenir el mateix residu?</a></li>
-<li><a href="#orgad15f72">19.3. Exemples amb \(m = 5\)</a>
-<ul>
-<li><a href="#org361f9e9">19.3.1. Exemple 1</a></li>
-<li><a href="#orge517461">19.3.2. Exemple 2</a></li>
+<li><a href="#org35f14cb">8.1. Explicació</a></li>
+<li><a href="#org8017e33">8.2. Exemple concret</a></li>
 </ul>
 </li>
+<li><a href="#org2d31259">9. 16. Definició: nombres coprimers</a>
+<ul>
+<li><a href="#org7fe4045">9.1. Enunciat</a></li>
+<li><a href="#org9ef5549">9.2. Explicació</a></li>
+<li><a href="#org927387f">9.3. Per què és equivalent a l’existència de \(\alpha,\beta\)?</a>
+<ul>
+<li><a href="#org1672ac5">9.3.1. \((\Rightarrow)\) Si \(\operatorname{mcd}(a,b)=1\), aleshores existeixen \(\alpha,\beta\in\mathbb Z\) tals que \(\alpha a+\beta b=1\).</a></li>
+<li><a href="#orgd5fb0e3">9.3.2. \((\Leftarrow)\) Si existeixen \(\alpha,\beta\in\mathbb Z\) tals que \(\alpha a+\beta b=1\), aleshores \(\operatorname{mcd}(a,b)=1\).</a></li>
 </ul>
 </li>
-<li><a href="#org1cbfe50">20. 30. La congruència mòdul \(m\) és una relació d'equivalència</a>
-<ul>
-<li><a href="#orgc0a8a78">20.1. Recordatori: què vol dir \(a \equiv b \pmod{m}\)</a></li>
-<li><a href="#org1abfae4">20.2. Què és una relació d'equivalència?</a></li>
-<li><a href="#org739e986">20.3. Propietat reflexiva</a>
-<ul>
-<li><a href="#org3009efa">20.3.1. Enunciat</a></li>
-<li><a href="#org0589bc0">20.3.2. Demostració</a></li>
-<li><a href="#org4b95740">20.3.3. Exemple</a></li>
+<li><a href="#org77d81e8">9.4. Exemples</a></li>
 </ul>
 </li>
-<li><a href="#org34062dd">20.4. Propietat simètrica</a>
+<li><a href="#org1d487f9">10. 17. Corol·lari: després de dividir pel mcd, els quocients són coprimers</a>
 <ul>
-<li><a href="#org6037b07">20.4.1. Enunciat</a></li>
-<li><a href="#org1fcbfab">20.4.2. Demostració</a></li>
-<li><a href="#org5e5818b">20.4.3. Exemple</a></li>
+<li><a href="#orga0688b4">10.1. Enunciat</a></li>
+<li><a href="#orga0b0720">10.2. Explicació</a></li>
+<li><a href="#org4ed8925">10.3. Demostració</a></li>
+<li><a href="#org27e4f4d">10.4. Importància</a></li>
 </ul>
 </li>
-<li><a href="#org198e865">20.5. Propietat transitiva</a>
+<li><a href="#org6e0fd2a">11. 18. Corol·lari: lema d’Euclides</a>
 <ul>
-<li><a href="#org3e1c5fb">20.5.1. Enunciat</a></li>
-<li><a href="#orgd2570d4">20.5.2. Demostració</a></li>
-<li><a href="#org16685df">20.5.3. Exemple</a></li>
+<li><a href="#org910f0b6">11.1. Enunciat</a></li>
+<li><a href="#org5fcb82f">11.2. Explicació</a></li>
+<li><a href="#org6698cdc">11.3. Demostració</a></li>
+<li><a href="#orge4bef79">11.4. Exemple correcte</a></li>
+<li><a href="#org3a24a7a">11.5. Contraexemple si no són coprimers</a></li>
+<li><a href="#org6d1b441">11.6. Importància</a></li>
+<li><a href="#org6c67484">11.7. Resum</a></li>
 </ul>
 </li>
-<li><a href="#org487e2f7">20.6. Conseqüència: classes de residus</a></li>
-<li><a href="#org6a6bcdd">20.7. Resum</a></li>
+<li><a href="#org47015d4">12. Exercici: MCD de \(a+b\) i \(a-b\)</a>
+<ul>
+<li><a href="#org504c7a8">12.1. Enunciat</a></li>
+<li><a href="#org2f68060">12.2. Solució</a></li>
+<li><a href="#org7704fb7">12.3. Observació sobre la paritat</a></li>
+<li><a href="#orgc3bb0b1">12.4. Exemples</a></li>
+<li><a href="#org002a71b">12.5. Nota</a></li>
+<li><a href="#org73d9fa9">12.6. Resum</a></li>
 </ul>
 </li>
-<li><a href="#org9c9a89c">21. 31. Definició: classes d'equivalència mòdul \(m\)</a>
+<li><a href="#org540cec9">13. Apunts: Exercicis de divisibilitat i mcd</a>
 <ul>
-<li><a href="#orgef1e3b3">21.1. Definició</a></li>
-<li><a href="#orgc8b7499">21.2. Formes equivalents</a></li>
-<li><a href="#orgf347d84">21.3. Exemple amb \(m = 5\)</a></li>
-<li><a href="#org77e57b1">21.4. Observació important</a></li>
+<li><a href="#org5a79a91">13.1. Recordatori: propietat fonamental del mcd (apartat 12)</a></li>
+<li><a href="#org0af8490">13.2. Exercici 1.3: És cert que \(\operatorname{mcd}(3a-b,\ b-2a)=\operatorname{mcd}(a,b)\)?</a></li>
+<li><a href="#org6131e95">13.3. Enunciat</a></li>
+<li><a href="#org84538b0">13.4. Solució pas a pas</a></li>
+<li><a href="#org582c4dc">13.5. Explicació alternativa amb divisors comuns</a></li>
+<li><a href="#org33b9498">13.6. Exercici 1.7: Demostra que la fracció \(\dfrac{4n+5}{2n+3}\) és irreductible per a tot \(n\ge 1\).</a></li>
+<li><a href="#orgff4868b">13.7. Enunciat</a></li>
+<li><a href="#orgc7f74e3">13.8. Solució pas a pas</a></li>
+<li><a href="#orgac7eda9">13.9. Exemples</a></li>
+<li><a href="#orga48b4e5">13.10. Nota</a></li>
 </ul>
 </li>
-<li><a href="#org6263437">22. 32. Observació: partició de \(\mathbb{Z}\) en \(m\) classes</a>
+<li><a href="#orgfdde2fb">14. 19. Equacions diofàntiques (Diofant d'Alexandria)</a>
 <ul>
-<li><a href="#orgf12a72c">22.1. Enunciat</a></li>
-<li><a href="#org5c7c2b0">22.2. Demostració</a>
+<li><a href="#org593256d">14.1. Enunciat</a></li>
+<li><a href="#orga932b36">14.2. Explicació</a></li>
+<li><a href="#org33f8b16">14.3. Demostració</a>
 <ul>
-<li><a href="#orgfae9be9">22.2.1. 1. Existència</a></li>
-<li><a href="#org2954b20">22.2.2. 2. Unicitat</a></li>
-<li><a href="#org6b82891">22.2.3. 3. Disjunció</a></li>
+<li><a href="#org9cddb7b">14.3.1. \((\Rightarrow)\) Si hi ha solució, aleshores \(d \mid c\).</a></li>
+<li><a href="#org0867003">14.3.2. \((\Leftarrow)\) Si \(d \mid c\), aleshores hi ha solució.</a></li>
 </ul>
 </li>
-<li><a href="#org2d154da">22.3. El conjunt quocient \(\mathbb{Z}/m\mathbb{Z}\)</a>
+<li><a href="#orgbccad1a">14.4. Exemple 1: equació sense solució</a></li>
+<li><a href="#org6fc08f9">14.5. Exemple 2: equació amb solució</a>
 <ul>
-<li><a href="#org0f3b9c8">22.3.1. Exemple amb \(m = 5\)</a></li>
+<li><a href="#org9fc7b00">14.5.1. Pas 1: calcular \(d\) i comprovar que divideix \(c\).</a></li>
+<li><a href="#org42e0453">14.5.2. Pas 2: trobar coeficients de Bézout.</a></li>
+<li><a href="#org9f15fce">14.5.3. Pas 3: multiplicar per \(c'\).</a></li>
+<li><a href="#orgdd536d9">14.5.4. Pas 4: comprovació.</a></li>
 </ul>
 </li>
-<li><a href="#orgdb62c1b">22.4. Nota</a></li>
+<li><a href="#orgfacc0fd">14.6. Resum</a></li>
+<li><a href="#org3ee0d92">14.7. És l'única solució? Hi ha més solucions?</a>
+<ul>
+<li><a href="#orgade1152">14.7.1. Enunciat</a></li>
+<li><a href="#org306b4c3">14.7.2. Explicació</a></li>
+<li><a href="#org285b9c5">14.7.3. Demostració que són solucions</a></li>
+<li><a href="#org7bf6773">14.7.4. Exemple: \(27x+13y=1250\)</a></li>
+<li><a href="#org16362c4">14.7.5. Nota: són totes</a></li>
+<li><a href="#org3341e56">14.7.6. Demostració que aquestes són totes les solucions</a></li>
 </ul>
 </li>
-<li><a href="#org31bb474">23. 33. Observació: compatibilitat de la congruència amb la suma i el producte</a>
+<li><a href="#org8af8883">14.8. Exercici: endevinar la data de naixement</a>
 <ul>
-<li><a href="#org6f54e0d">23.1. Enunciat</a>
-<ul>
-<li><a href="#org2e3999a">23.1.1. (i) Compatibilitat amb la suma</a></li>
-<li><a href="#org6da3944">23.1.2. (ii) Compatibilitat amb el producte</a></li>
-</ul>
-</li>
-<li><a href="#orga7a795b">23.2. Demostració de (i)</a></li>
-<li><a href="#org034d2d7">23.3. Demostració de (ii)</a></li>
-<li><a href="#orgfdc5680">23.4. Observació addicional: compatibilitat amb la resta</a></li>
-<li><a href="#orgf78adf0">23.5. Exemple amb \(m = 5\)</a></li>
-</ul>
-</li>
-<li><a href="#orgda99d93">24. 34. Teorema: \(\mathbb{Z}/m\mathbb{Z}\) és un anell commutatiu</a>
-<ul>
-<li><a href="#orgad71841">24.1. Idea</a></li>
-<li><a href="#org35c3606">24.2. Definició de les operacions</a></li>
-<li><a href="#org257790b">24.3. Primer: les operacions estan ben definides</a></li>
-<li><a href="#org19dacf3">24.4. Segon: \(\mathbb{Z}/m\mathbb{Z}\) amb aquestes operacions és un anell commutatiu</a>
-<ul>
-<li><a href="#orgf783fb4">24.4.1. Suma</a></li>
-<li><a href="#org5b63b15">24.4.2. Producte</a></li>
-<li><a href="#org236d45c">24.4.3. Distributivitat</a></li>
-</ul>
-</li>
-<li><a href="#orgffc98b0">24.5. Conclusió</a></li>
-<li><a href="#org61b6f72">24.6. Exemple amb \(\mathbb{Z}/5\mathbb{Z}\)</a></li>
-<li><a href="#orgac7a3f0">24.7. Nota final</a></li>
-</ul>
-</li>
-<li><a href="#org55fbfcc">25. 35. Proposició: invertibles, cossos i divisors de zero</a>
-<ul>
-<li><a href="#org67d35e0">25.1. Recordatori</a></li>
-<li><a href="#org705c448">25.2. (i) \([a]_m\) és invertible \(\iff\) \(a\) i \(m\) són coprimers</a>
-<ul>
-<li><a href="#org7aeee7e">25.2.1. Demostració</a></li>
-<li><a href="#orgd498d6d">25.2.2. Exemple amb \(m = 5\)</a></li>
-<li><a href="#org7a12305">25.2.3. Exemple amb \(m = 6\)</a></li>
-</ul>
-</li>
-<li><a href="#orgcc3e890">25.3. (ii) \(\mathbb{Z}/m\mathbb{Z}\) és un cos \(\iff\) \(m\) és primer</a>
-<ul>
-<li><a href="#org7ae6a2d">25.3.1. Demostració</a></li>
-<li><a href="#org20a00ef">25.3.2. Exemples</a></li>
-</ul>
-</li>
-<li><a href="#org3f47073">25.4. (iii) Si \([a]_m\) no és invertible, aleshores és un divisor de zero</a>
-<ul>
-<li><a href="#org310e004">25.4.1. Enunciat</a></li>
-<li><a href="#org4049c6b">25.4.2. Demostració</a></li>
-<li><a href="#org38ba95c">25.4.3. Exemple amb \(m = 6\)</a></li>
-<li><a href="#orgd331fa0">25.4.4. Conseqüència</a></li>
+<li><a href="#orgd1e712c">14.8.1. Enunciat</a></li>
+<li><a href="#orgde493b3">14.8.2. Explicació</a></li>
+<li><a href="#org39386aa">14.8.3. Resolució pas a pas amb \(c = 256\)</a></li>
+<li><a href="#orgbf17dfe">14.8.4. Comprovació</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org364057d">26. 36. Observació: llei de cancel·lació</a>
+<li><a href="#org6ca3038">15. 24. Lema d'Euclides per a primers</a>
 <ul>
-<li><a href="#orga9e9d90">26.1. (i) Demostració de la cancel·lació per elements invertibles</a>
-<ul>
-<li><a href="#org65b7f71">26.1.1. Exemple amb \(m = 5\)</a></li>
+<li><a href="#orgd58ce05">15.1. Enunciat</a></li>
+<li><a href="#org68b48cb">15.2. Explicació</a></li>
 </ul>
 </li>
-<li><a href="#org7d32e2c">26.2. (ii) Si \([a]_m\) no és invertible, la cancel·lació pot fallar</a>
+<li><a href="#org0a7e80c">16. 25. Teorema fonamental de l'aritmètica</a>
 <ul>
-<li><a href="#org3a4f511">26.2.1. Exemple amb \(m = 6\)</a></li>
+<li><a href="#org91179c1">16.1. Enunciat</a></li>
+<li><a href="#orgb830053">16.2. Demostració resumida</a>
+<ul>
+<li><a href="#org37a3da7">16.2.1. Existència</a></li>
+<li><a href="#orgaa676f7">16.2.2. Lema clau</a></li>
+<li><a href="#orgb80daa8">16.2.3. Unicitat</a></li>
 </ul>
 </li>
-<li><a href="#orga8462fa">26.3. Conclusió</a></li>
-<li><a href="#org0481f81">26.4. Resum final</a></li>
+<li><a href="#org24df457">16.3. Exemples</a></li>
+<li><a href="#org230ed86">16.4. Observacions sobre la unicitat</a></li>
+<li><a href="#orgb08d792">16.5. Importància</a></li>
+</ul>
+</li>
+<li><a href="#org5c0af23">17. 26. Hi ha infinits nombres primers</a>
+<ul>
+<li><a href="#orgd2a535f">17.1. Enunciat</a></li>
+<li><a href="#org7e35fe7">17.2. Demostració (Euclides)</a></li>
+</ul>
+</li>
+<li><a href="#org6d2634f">18. 28. Proposició: mcd i mcm mitjançant la factorització en primers</a>
+<ul>
+<li><a href="#org34629e3">18.1. Enunciat</a></li>
+<li><a href="#orge70b4d3">18.2. Què són \(r_i\) i \(s_i\)?</a></li>
+<li><a href="#orgf1ef075">18.3. Per què funciona?</a>
+<ul>
+<li><a href="#orgf597684">18.3.1. Màxim comú divisor</a></li>
+<li><a href="#org9917623">18.3.2. Mínim comú múltiple</a></li>
+</ul>
+</li>
+<li><a href="#org482dd8a">18.4. Exemple complet</a>
+<ul>
+<li><a href="#org02c0e70">18.4.1. MCD</a></li>
+<li><a href="#org260145f">18.4.2. MCM</a></li>
+</ul>
+</li>
+<li><a href="#org28353c4">18.5. Propietat important</a></li>
+<li><a href="#orge49f005">18.6. Observacions</a></li>
+</ul>
+</li>
+<li><a href="#orgf217dd1">19. 29. Aritmètica modular</a>
+<ul>
+<li><a href="#orgcd68ceb">19.1. Definició</a></li>
+<li><a href="#org468b39f">19.2. Explicació: per què equival a tenir el mateix residu?</a></li>
+<li><a href="#orga65070a">19.3. Exemples amb \(m = 5\)</a>
+<ul>
+<li><a href="#org1bbf3f1">19.3.1. Exemple 1</a></li>
+<li><a href="#org1229118">19.3.2. Exemple 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org3d948f2">20. 30. La congruència mòdul \(m\) és una relació d'equivalència</a>
+<ul>
+<li><a href="#orgf3d1bbc">20.1. Recordatori: què vol dir \(a \equiv b \pmod{m}\)</a></li>
+<li><a href="#org878a9e6">20.2. Què és una relació d'equivalència?</a></li>
+<li><a href="#orgf3aba30">20.3. Propietat reflexiva</a>
+<ul>
+<li><a href="#org181f489">20.3.1. Enunciat</a></li>
+<li><a href="#org8eac33d">20.3.2. Demostració</a></li>
+<li><a href="#orgbdfcfe9">20.3.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#org313882c">20.4. Propietat simètrica</a>
+<ul>
+<li><a href="#orgbaf3f80">20.4.1. Enunciat</a></li>
+<li><a href="#org21794aa">20.4.2. Demostració</a></li>
+<li><a href="#orgec31d25">20.4.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#org2f22d28">20.5. Propietat transitiva</a>
+<ul>
+<li><a href="#orgf0abb7a">20.5.1. Enunciat</a></li>
+<li><a href="#org836c09d">20.5.2. Demostració</a></li>
+<li><a href="#org3241541">20.5.3. Exemple</a></li>
+</ul>
+</li>
+<li><a href="#org92d3842">20.6. Conseqüència: classes de residus</a></li>
+<li><a href="#org31fe30e">20.7. Resum</a></li>
+</ul>
+</li>
+<li><a href="#org79d0f3f">21. 31. Definició: classes d'equivalència mòdul \(m\)</a>
+<ul>
+<li><a href="#org212792e">21.1. Definició</a></li>
+<li><a href="#org4f04237">21.2. Formes equivalents</a></li>
+<li><a href="#orgdc136d0">21.3. Exemple amb \(m = 5\)</a></li>
+<li><a href="#org7823bed">21.4. Observació important</a></li>
+</ul>
+</li>
+<li><a href="#org67da8f8">22. 32. Observació: partició de \(\mathbb{Z}\) en \(m\) classes</a>
+<ul>
+<li><a href="#org2f715d5">22.1. Enunciat</a></li>
+<li><a href="#org82264b9">22.2. Demostració</a>
+<ul>
+<li><a href="#org198c639">22.2.1. 1. Existència</a></li>
+<li><a href="#orgb4ac504">22.2.2. 2. Unicitat</a></li>
+<li><a href="#org3a582cd">22.2.3. 3. Disjunció</a></li>
+</ul>
+</li>
+<li><a href="#org22692ed">22.3. El conjunt quocient \(\mathbb{Z}/m\mathbb{Z}\)</a>
+<ul>
+<li><a href="#orgb5b8549">22.3.1. Exemple amb \(m = 5\)</a></li>
+</ul>
+</li>
+<li><a href="#org193041d">22.4. Nota</a></li>
+</ul>
+</li>
+<li><a href="#org4e79e3c">23. 33. Observació: compatibilitat de la congruència amb la suma i el producte</a>
+<ul>
+<li><a href="#orgc222426">23.1. Enunciat</a>
+<ul>
+<li><a href="#org5fd9fd4">23.1.1. (i) Compatibilitat amb la suma</a></li>
+<li><a href="#org65bb2b8">23.1.2. (ii) Compatibilitat amb el producte</a></li>
+</ul>
+</li>
+<li><a href="#org8adfff4">23.2. Demostració de (i)</a></li>
+<li><a href="#org863186a">23.3. Demostració de (ii)</a></li>
+<li><a href="#orgf4a0531">23.4. Observació addicional: compatibilitat amb la resta</a></li>
+<li><a href="#org01db7bb">23.5. Exemple amb \(m = 5\)</a></li>
+</ul>
+</li>
+<li><a href="#orgb47cd8b">24. 34. Teorema: \(\mathbb{Z}/m\mathbb{Z}\) és un anell commutatiu</a>
+<ul>
+<li><a href="#org6317ade">24.1. Idea</a></li>
+<li><a href="#org02bb166">24.2. Definició de les operacions</a></li>
+<li><a href="#org114af7e">24.3. Primer: les operacions estan ben definides</a></li>
+<li><a href="#org40879eb">24.4. Segon: \(\mathbb{Z}/m\mathbb{Z}\) amb aquestes operacions és un anell commutatiu</a>
+<ul>
+<li><a href="#org3e85c93">24.4.1. Suma</a></li>
+<li><a href="#org3918f11">24.4.2. Producte</a></li>
+<li><a href="#org7dbd2a4">24.4.3. Distributivitat</a></li>
+</ul>
+</li>
+<li><a href="#org2efea02">24.5. Conclusió</a></li>
+<li><a href="#orgf0f2bc7">24.6. Exemple amb \(\mathbb{Z}/5\mathbb{Z}\)</a></li>
+<li><a href="#org9e3b7e9">24.7. Nota final</a></li>
+</ul>
+</li>
+<li><a href="#orgfed5b53">25. 35. Proposició: invertibles, cossos i divisors de zero</a>
+<ul>
+<li><a href="#orga3e68e8">25.1. Recordatori</a></li>
+<li><a href="#orgb5a59e3">25.2. (i) \([a]_m\) és invertible \(\iff\) \(a\) i \(m\) són coprimers</a>
+<ul>
+<li><a href="#org879cbda">25.2.1. Demostració</a></li>
+<li><a href="#org990a8dd">25.2.2. Exemple amb \(m = 5\)</a></li>
+<li><a href="#org234f75c">25.2.3. Exemple amb \(m = 6\)</a></li>
+</ul>
+</li>
+<li><a href="#org2a9d4d8">25.3. (ii) \(\mathbb{Z}/m\mathbb{Z}\) és un cos \(\iff\) \(m\) és primer</a>
+<ul>
+<li><a href="#org3e77963">25.3.1. Demostració</a></li>
+<li><a href="#org73701ca">25.3.2. Exemples</a></li>
+</ul>
+</li>
+<li><a href="#orgb111590">25.4. (iii) Si \([a]_m\) no és invertible, aleshores és un divisor de zero</a>
+<ul>
+<li><a href="#org289269a">25.4.1. Enunciat</a></li>
+<li><a href="#orgd7d0c46">25.4.2. Demostració</a></li>
+<li><a href="#org46ce2d0">25.4.3. Exemple amb \(m = 6\)</a></li>
+<li><a href="#orgcf62052">25.4.4. Conseqüència</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgca8ecab">26. 36. Observació: llei de cancel·lació</a>
+<ul>
+<li><a href="#orgea4b911">26.1. (i) Demostració de la cancel·lació per elements invertibles</a>
+<ul>
+<li><a href="#orgace7756">26.1.1. Exemple amb \(m = 5\)</a></li>
+</ul>
+</li>
+<li><a href="#orgb800c54">26.2. (ii) Si \([a]_m\) no és invertible, la cancel·lació pot fallar</a>
+<ul>
+<li><a href="#org4487b32">26.2.1. Exemple amb \(m = 6\)</a></li>
+</ul>
+</li>
+<li><a href="#orgc32b4fe">26.3. Conclusió</a></li>
+<li><a href="#org284e86d">26.4. Resum final</a></li>
+</ul>
+</li>
+<li><a href="#org8a89cff">27. Introducció</a></li>
+<li><a href="#org1f2732f">28. Anell \(\mathbb{Z}/m\mathbb{Z}\)</a>
+<ul>
+<li><a href="#org15bbc22">28.1. Definicions bàsiques</a></li>
+<li><a href="#orgc976e5a">28.2. Matrius \(M_n(\mathbb{Z}/m\mathbb{Z})\)</a></li>
+</ul>
+</li>
+<li><a href="#orgc1670b0">29. Determinants mòdul \(m\)</a>
+<ul>
+<li><a href="#org39ff715">29.1. Definició</a></li>
+<li><a href="#orgcfa31f9">29.2. Propietats que es conserven</a></li>
+<li><a href="#org0e40174">29.3. Exemple 1: determinant mòdul 6**</a></li>
+<li><a href="#org69a7f54">29.4. Exemple 2: determinant mòdul 5**</a></li>
+</ul>
+</li>
+<li><a href="#org120a779">30. Invertibilitat de matrius mòdul \(m\)</a>
+<ul>
+<li><a href="#org28493a2">30.1. Proposició</a></li>
+<li><a href="#orge87dc27">30.2. Demostració</a></li>
+<li><a href="#orgedb0965">30.3. Fórmula clàssica de la inversa</a></li>
+<li><a href="#orgfc20320">30.4. Exemple 3: inversa mòdul 5**</a></li>
+<li><a href="#orgc1cf7ee">30.5. Exemple 4: inversa mòdul 6 amb determinant unitat**</a></li>
+<li><a href="#org90bdee6">30.6. Exemple 5: determinant no unitat i matriu no invertible**</a></li>
+</ul>
+</li>
+<li><a href="#orge41338c">31. Àlgebra lineal sobre \(\mathbb{Z}/p\mathbb{Z}\) amb \(p\) primer</a>
+<ul>
+<li><a href="#orge3a3472">31.1. El cos \(\mathbb{F}_p\)</a></li>
+<li><a href="#orgaf049f5">31.2. Què funciona exactament igual?</a></li>
+<li><a href="#orgc58f8fe">31.3. Exemple 6: sistema sobre \(\mathbb{F}_5\) per la inversa**</a></li>
+<li><a href="#org2cb65ea">31.4. Exemple 7: regla de Cramer sobre \(\mathbb{F}_5\)</a></li>
+<li><a href="#orgd7b804d">31.5. Exemple 8: dependència lineal sobre \(\mathbb{F}_5\)</a></li>
+</ul>
+</li>
+<li><a href="#org99d799f">32. Quan \(m\) no és primer: complicacions</a>
+<ul>
+<li><a href="#org36eb3df">32.1. No és un cos</a></li>
+<li><a href="#org854b5f7">32.2. Conseqüències</a></li>
+<li><a href="#orgcbbba27">32.3. Exemple 9: sistema sobre \(\mathbb{Z}/6\mathbb{Z}\) sense solució**</a></li>
+<li><a href="#orgf337959">32.4. Exemple 10: sistema sobre \(\mathbb{Z}/6\mathbb{Z}\) amb diverses solucions**</a></li>
+</ul>
+</li>
+<li><a href="#org55c0ada">33. Resum</a></li>
+<li><a href="#orgbb7ec59">34. Exercicis proposats</a></li>
+<li><a href="#orgadfccdc">35. Solucions breus</a>
+<ul>
+<li><a href="#org49c4bfc">35.1. 1a</a></li>
+<li><a href="#org08dd10d">35.2. 1b</a></li>
+<li><a href="#orgc7c8d6a">35.3. 1c</a></li>
+<li><a href="#org0bc2088">35.4. 2</a></li>
+<li><a href="#org92c06e1">35.5. 3</a></li>
+<li><a href="#org26e01a8">35.6. 4</a></li>
+<li><a href="#orgb96c659">35.7. 5</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfd0102a" class="outline-2">
-<h2 id="orgfd0102a"><span class="section-number-2">1.</span> 8. Divisibilitat</h2>
+<div id="outline-container-org1d5b8d6" class="outline-2">
+<h2 id="org1d5b8d6"><span class="section-number-2">1.</span> 8. Divisibilitat</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Siguin \(a,b \in \mathbb{Z}\).
@@ -633,16 +688,16 @@ a \mid b
 \]
 </p>
 </div>
-<div id="outline-container-orgd5f4da7" class="outline-3">
-<h3 id="orgd5f4da7"><span class="section-number-3">1.1.</span> Explicació</h3>
+<div id="outline-container-org8ba330c" class="outline-3">
+<h3 id="org8ba330c"><span class="section-number-3">1.1.</span> Explicació</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
 La divisibilitat és un concepte fonamental que descriu quan un nombre cap dins d'un altre sense deixar residu. La notació \(a \mid b\) es llegeix "a divideix b". Fixa't que la condició principal és que existeixi un enter \(c\) que, multiplicat per \(a\), ens doni exactament \(b\). És a dir, \(b\) es pot construir com a múltiples de \(a\).
 </p>
 </div>
 </div>
-<div id="outline-container-org305ed22" class="outline-3">
-<h3 id="org305ed22"><span class="section-number-3">1.2.</span> Exemples</h3>
+<div id="outline-container-orge52571c" class="outline-3">
+<h3 id="orge52571c"><span class="section-number-3">1.2.</span> Exemples</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
 \[
@@ -658,27 +713,27 @@ La divisibilitat és un concepte fonamental que descriu quan un nombre cap dins 
 </div>
 </div>
 </div>
-<div id="outline-container-org23aeaaa" class="outline-2">
-<h2 id="org23aeaaa"><span class="section-number-2">2.</span> 9. Propietats de la divisibilitat</h2>
+<div id="outline-container-org6b09a57" class="outline-2">
+<h2 id="org6b09a57"><span class="section-number-2">2.</span> 9. Propietats de la divisibilitat</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org5edfcf3" class="outline-3">
-<h3 id="org5edfcf3"><span class="section-number-3">2.1.</span> 9.i) Transitivitat</h3>
+<div id="outline-container-org564f416" class="outline-3">
+<h3 id="org564f416"><span class="section-number-3">2.1.</span> 9.i) Transitivitat</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Siguin \(a,b,c \in \mathbb{Z}\). Si \(a \mid b\) i \(b \mid c\), aleshores \(a \mid c\).
 </p>
 </div>
-<div id="outline-container-org4a28658" class="outline-4">
-<h4 id="org4a28658"><span class="section-number-4">2.1.1.</span> Explicació</h4>
+<div id="outline-container-org68aa83f" class="outline-4">
+<h4 id="org68aa83f"><span class="section-number-4">2.1.1.</span> Explicació</h4>
 <div class="outline-text-4" id="text-2-1-1">
 <p>
 La transitivitat és com una cadena de dominó. Si \(a\) cap dins de \(b\) (és a dir, \(b\) és múltiple de \(a\)), i al seu torn \(b\) cap dins de \(c\), aleshores forçosament \(a\) també ha de cabre dins de \(c\). Això ens permet encadenar divisions i simplificar problemes.
 </p>
 </div>
 </div>
-<div id="outline-container-org2a4a16f" class="outline-4">
-<h4 id="org2a4a16f"><span class="section-number-4">2.1.2.</span> Demostració</h4>
+<div id="outline-container-org54399bb" class="outline-4">
+<h4 id="org54399bb"><span class="section-number-4">2.1.2.</span> Demostració</h4>
 <div class="outline-text-4" id="text-2-1-2">
 <p>
 Si \(a \mid b\), aleshores \(\exists k \in \mathbb{Z}\) tal que \(b = ak\).
@@ -697,8 +752,8 @@ Com que \(km \in \mathbb{Z}\), tenim que \(a \mid c\).
 </p>
 </div>
 </div>
-<div id="outline-container-org3f92302" class="outline-4">
-<h4 id="org3f92302"><span class="section-number-4">2.1.3.</span> Exemple concret (només un cas)</h4>
+<div id="outline-container-orgf60c069" class="outline-4">
+<h4 id="orgf60c069"><span class="section-number-4">2.1.3.</span> Exemple concret (només un cas)</h4>
 <div class="outline-text-4" id="text-2-1-3">
 <p>
 \(2 \mid 4\) i \(4 \mid 12\), per tant \(2 \mid 12\).
@@ -710,8 +765,8 @@ Comprovació: \(4 = 2\cdot 2\) i \(12 = 4\cdot 3 = 2\cdot 2\cdot 3 = 2\cdot 6\),
 </div>
 </div>
 </div>
-<div id="outline-container-orgbe0f77c" class="outline-3">
-<h3 id="orgbe0f77c"><span class="section-number-3">2.2.</span> 9.ii) Linealitat (suma i resta)</h3>
+<div id="outline-container-orgfe9d7cb" class="outline-3">
+<h3 id="orgfe9d7cb"><span class="section-number-3">2.2.</span> 9.ii) Linealitat (suma i resta)</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 Siguin \(a,b,c \in \mathbb{Z}\). Si \(a \mid b\) i \(a \mid c\), aleshores
@@ -720,16 +775,16 @@ a \mid (b+c) \quad \text{i} \quad a \mid (b-c).
 \]
 </p>
 </div>
-<div id="outline-container-org0ecbaf6" class="outline-4">
-<h4 id="org0ecbaf6"><span class="section-number-4">2.2.1.</span> Explicació</h4>
+<div id="outline-container-orgb48564f" class="outline-4">
+<h4 id="orgb48564f"><span class="section-number-4">2.2.1.</span> Explicació</h4>
 <div class="outline-text-4" id="text-2-2-1">
 <p>
 Si un nombre divideix dos nombres diferents, també divideix qualsevol combinació lineal seva. Pensa-hi com a grups d'objectes: si pots agrupar \(b\) objectes en grups de mida \(a\), i també pots agrupar \(c\) objectes en grups de mida \(a\), aleshores si els ajuntes tots, o si en treus una part, la mida del grup \(a\) encara funciona perfectament. Aquesta propietat és la base per a moltes demostracions algebraiques.
 </p>
 </div>
 </div>
-<div id="outline-container-orge6719fd" class="outline-4">
-<h4 id="orge6719fd"><span class="section-number-4">2.2.2.</span> Demostració</h4>
+<div id="outline-container-org69183f5" class="outline-4">
+<h4 id="org69183f5"><span class="section-number-4">2.2.2.</span> Demostració</h4>
 <div class="outline-text-4" id="text-2-2-2">
 <p>
 Si \(a \mid b\), aleshores \(\exists k \in \mathbb{Z}\) tal que \(b = ak\).
@@ -754,8 +809,8 @@ a \mid (b+c) \quad \text{i} \quad a \mid (b-c).
 </p>
 </div>
 </div>
-<div id="outline-container-org5d56f3a" class="outline-4">
-<h4 id="org5d56f3a"><span class="section-number-4">2.2.3.</span> Exemple concret (només un cas)</h4>
+<div id="outline-container-org06c5e95" class="outline-4">
+<h4 id="org06c5e95"><span class="section-number-4">2.2.3.</span> Exemple concret (només un cas)</h4>
 <div class="outline-text-4" id="text-2-2-3">
 <p>
 \(2 \mid 6\) i \(2 \mid 10\), per tant \(2 \mid (6+10) = 16\) i \(2 \mid (10-6) = 4\).
@@ -767,23 +822,23 @@ Comprovació: \(6 = 2\cdot 3\), \(10 = 2\cdot 5\), així \(16 = 2\cdot 8\) i \(4
 </div>
 </div>
 </div>
-<div id="outline-container-org79f2f26" class="outline-3">
-<h3 id="org79f2f26"><span class="section-number-3">2.3.</span> 9.iii) Factor comú</h3>
+<div id="outline-container-org65f2396" class="outline-3">
+<h3 id="org65f2396"><span class="section-number-3">2.3.</span> 9.iii) Factor comú</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 Siguin \(a,b,c \in \mathbb{Z}\). Si \(a \mid b\), aleshores \(a \mid bc\).
 </p>
 </div>
-<div id="outline-container-org89e8a2d" class="outline-4">
-<h4 id="org89e8a2d"><span class="section-number-4">2.3.1.</span> Explicació</h4>
+<div id="outline-container-org5a04317" class="outline-4">
+<h4 id="org5a04317"><span class="section-number-4">2.3.1.</span> Explicació</h4>
 <div class="outline-text-4" id="text-2-3-1">
 <p>
 Si \(a\) ja divideix \(b\), aleshores dividirà qualsevol múltiple de \(b\). És com dir: si 2 divideix 6, aleshores 2 també dividirà 6 multiplicat per qualsevol nombre (per exemple, 6×5=30, i 2 divideix 30). La divisibilitat es propaga cap amunt quan multipliquem.
 </p>
 </div>
 </div>
-<div id="outline-container-orgab347fa" class="outline-4">
-<h4 id="orgab347fa"><span class="section-number-4">2.3.2.</span> Demostració</h4>
+<div id="outline-container-org0d86f07" class="outline-4">
+<h4 id="org0d86f07"><span class="section-number-4">2.3.2.</span> Demostració</h4>
 <div class="outline-text-4" id="text-2-3-2">
 <p>
 Si \(a \mid b\), aleshores \(\exists k \in \mathbb{Z}\) tal que \(b = ak\).
@@ -798,8 +853,8 @@ Com que \(kc \in \mathbb{Z}\), tenim que \(a \mid bc\).
 </p>
 </div>
 </div>
-<div id="outline-container-org29e927a" class="outline-4">
-<h4 id="org29e927a"><span class="section-number-4">2.3.3.</span> Exemple concret</h4>
+<div id="outline-container-orgab578b2" class="outline-4">
+<h4 id="orgab578b2"><span class="section-number-4">2.3.3.</span> Exemple concret</h4>
 <div class="outline-text-4" id="text-2-3-3">
 <p>
 \(2 \mid 6\), per tant \(2 \mid 6\cdot 5 = 30\).
@@ -811,23 +866,23 @@ Comprovació: \(6 = 2\cdot 3\), així \(30 = 6\cdot 5 = 2\cdot 3\cdot 5 = 2\cdot
 </div>
 </div>
 </div>
-<div id="outline-container-org71e5dd1" class="outline-3">
-<h3 id="org71e5dd1"><span class="section-number-3">2.4.</span> 9.iv) Contraexemple: \(a \mid bc \nRightarrow a \mid b\) o \(a \mid c\)</h3>
+<div id="outline-container-orgff55386" class="outline-3">
+<h3 id="orgff55386"><span class="section-number-3">2.4.</span> 9.iv) Contraexemple: \(a \mid bc \nRightarrow a \mid b\) o \(a \mid c\)</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 En general, que \(a\) divideixi un producte \(bc\) <b>no</b> implica que divideixi cap dels factors.
 </p>
 </div>
-<div id="outline-container-org5cc1ed7" class="outline-4">
-<h4 id="org5cc1ed7"><span class="section-number-4">2.4.1.</span> Explicació</h4>
+<div id="outline-container-org408bceb" class="outline-4">
+<h4 id="org408bceb"><span class="section-number-4">2.4.1.</span> Explicació</h4>
 <div class="outline-text-4" id="text-2-4-1">
 <p>
 Aquesta és una trampa molt comuna. El fet que un nombre divideixi un producte <b>no vol dir</b> que divideixi necessàriament cadascun dels factors per separat. El nombre pot estar format per la combinació de parts dels dos factors. Cal anar amb compte i no assumir aquesta propietat sense demostració, perquè és falsa en general.
 </p>
 </div>
 </div>
-<div id="outline-container-org866ccef" class="outline-4">
-<h4 id="org866ccef"><span class="section-number-4">2.4.2.</span> Contraexemple</h4>
+<div id="outline-container-org6384dbe" class="outline-4">
+<h4 id="org6384dbe"><span class="section-number-4">2.4.2.</span> Contraexemple</h4>
 <div class="outline-text-4" id="text-2-4-2">
 <p>
 \[
@@ -845,8 +900,8 @@ Per tant, \(a \mid bc\) no implica \(a \mid b\) ni \(a \mid c\).
 </div>
 </div>
 </div>
-<div id="outline-container-org65aa141" class="outline-3">
-<h3 id="org65aa141"><span class="section-number-3">2.5.</span> 9.v) Antisimetria (llevat de signe)</h3>
+<div id="outline-container-orgcefeda1" class="outline-3">
+<h3 id="orgcefeda1"><span class="section-number-3">2.5.</span> 9.v) Antisimetria (llevat de signe)</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
 Siguin \(a,b \in \mathbb{Z}\). Si \(a \mid b\) i \(b \mid a\), aleshores
@@ -855,16 +910,16 @@ a = \pm b.
 \]
 </p>
 </div>
-<div id="outline-container-orgffdec44" class="outline-4">
-<h4 id="orgffdec44"><span class="section-number-4">2.5.1.</span> Explicació</h4>
+<div id="outline-container-org8e14f1d" class="outline-4">
+<h4 id="org8e14f1d"><span class="section-number-4">2.5.1.</span> Explicació</h4>
 <div class="outline-text-4" id="text-2-5-1">
 <p>
 Si dos nombres es divideixen mútuament, vol dir que tenen exactament la mateixa "grandària" en valor absolut. L'únic que pot canviar és el signe (positiu o negatiu). Per exemple, 2 i -2 es divideixen mútuament, però no podria ser que 2 dividís 4 i 4 dividís 2 alhora (llevat que fossin iguals o oposats). Això ens ajuda a classificar nombres segons la seva divisibilitat.
 </p>
 </div>
 </div>
-<div id="outline-container-org728493f" class="outline-4">
-<h4 id="org728493f"><span class="section-number-4">2.5.2.</span> Demostració</h4>
+<div id="outline-container-orgf5dec47" class="outline-4">
+<h4 id="orgf5dec47"><span class="section-number-4">2.5.2.</span> Demostració</h4>
 <div class="outline-text-4" id="text-2-5-2">
 <p>
 Si \(a \mid b\), aleshores \(\exists k \in \mathbb{Z}\) tal que \(b = ak\).
@@ -893,8 +948,8 @@ Si \(a = 0\), aleshores \(a \mid b\) implica \(b = 0\), i també es compleix \(a
 </p>
 </div>
 </div>
-<div id="outline-container-org81c5dc0" class="outline-4">
-<h4 id="org81c5dc0"><span class="section-number-4">2.5.3.</span> Exemple concret</h4>
+<div id="outline-container-orge4ec99b" class="outline-4">
+<h4 id="orge4ec99b"><span class="section-number-4">2.5.3.</span> Exemple concret</h4>
 <div class="outline-text-4" id="text-2-5-3">
 <p>
 \(2 \mid -2\) i \(-2 \mid 2\), per tant \(2 = -(-2)\).
@@ -903,8 +958,8 @@ Si \(a = 0\), aleshores \(a \mid b\) implica \(b = 0\), i també es compleix \(a
 </div>
 </div>
 </div>
-<div id="outline-container-org651c98c" class="outline-2">
-<h2 id="org651c98c"><span class="section-number-2">3.</span> 10. Definició: màxim comú divisor</h2>
+<div id="outline-container-orgbc600b2" class="outline-2">
+<h2 id="orgbc600b2"><span class="section-number-2">3.</span> 10. Definició: màxim comú divisor</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Siguin \(a,b \in \mathbb{Z}\), no tots dos zero. El màxim comú divisor de \(a\) i \(b\) es denota
@@ -913,8 +968,8 @@ Siguin \(a,b \in \mathbb{Z}\), no tots dos zero. El màxim comú divisor de \(a\
 \]
 </p>
 </div>
-<div id="outline-container-org55887c9" class="outline-3">
-<h3 id="org55887c9"><span class="section-number-3">3.1.</span> Explicació</h3>
+<div id="outline-container-orgf3bf18c" class="outline-3">
+<h3 id="orgf3bf18c"><span class="section-number-3">3.1.</span> Explicació</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 El màxim comú divisor (mcd) és el nombre més gran possible que divideix alhora tant \(a\) com \(b\) sense deixar residu. És una eina fonamental per simplificar fraccions i resoldre equacions diofàntiques. Per definició, sempre és un nombre positiu, i com a mínim sempre existeix l'1 (que divideix tots els enters). La condició "no tots dos zero" és perquè si tots dos fossin zero, qualsevol nombre els dividiria i no tindria sentit parlar d'un "màxim".
@@ -922,8 +977,8 @@ El màxim comú divisor (mcd) és el nombre més gran possible que divideix alho
 </div>
 </div>
 </div>
-<div id="outline-container-org11b85c2" class="outline-2">
-<h2 id="org11b85c2"><span class="section-number-2">4.</span> 11. Teorema (divisió euclidiana) "divisió normal"</h2>
+<div id="outline-container-orgbc642f6" class="outline-2">
+<h2 id="orgbc642f6"><span class="section-number-2">4.</span> 11. Teorema (divisió euclidiana) "divisió normal"</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Siguin \(a \in \mathbb{Z}\) i \(b \in \mathbb{Z}\) amb \(b > 0\). Aleshores existeixen únics \(q,r \in \mathbb{Z}\) tals que
@@ -936,8 +991,8 @@ i
 \]
 </p>
 </div>
-<div id="outline-container-org0bd6eb5" class="outline-3">
-<h3 id="org0bd6eb5"><span class="section-number-3">4.1.</span> Explicació</h3>
+<div id="outline-container-orgc0fe29e" class="outline-3">
+<h3 id="orgc0fe29e"><span class="section-number-3">4.1.</span> Explicació</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 Aquest és el teorema que aprenem a primària quan fem divisions amb residu. Diu que si dividim un nombre enter \(a\) (dividend) per un nombre positiu \(b\) (divisor), obtenim un quocient \(q\) i un residu \(r\). La clau és que el residu sempre ha de ser més petit que el divisor (\(r < b\)) i no pot ser negatiu (\(r \ge 0\)). Els valors de \(q\) i \(r\) són únics per a cada parella \(a\) i \(b\).
@@ -945,8 +1000,8 @@ Aquest és el teorema que aprenem a primària quan fem divisions amb residu. Diu
 </div>
 </div>
 </div>
-<div id="outline-container-org5c4a33c" class="outline-2">
-<h2 id="org5c4a33c"><span class="section-number-2">5.</span> 12. Observació</h2>
+<div id="outline-container-org203be7e" class="outline-2">
+<h2 id="org203be7e"><span class="section-number-2">5.</span> 12. Observació</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 \[
@@ -959,8 +1014,8 @@ Per tant,
 on \(r\) és el residu de la divisió euclidiana de \(a\) per \(b\).
 </p>
 </div>
-<div id="outline-container-org26174cd" class="outline-3">
-<h3 id="org26174cd"><span class="section-number-3">5.1.</span> Explicació</h3>
+<div id="outline-container-orgc5d7522" class="outline-3">
+<h3 id="orgc5d7522"><span class="section-number-3">5.1.</span> Explicació</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 Aquesta observació és la base de l'Algorisme d'Euclides. La primera part diu que si sumem o restem \(b\) a \(a\), el màxim comú divisor no canvia. Això és perquè qualsevol nombre que divideixi \(a\) i \(b\) també dividirà \(a+b\) i \(a-b\) (propietat 9.ii). La segona part és la conseqüència directa d'aplicar la divisió euclidiana: com que \(a = bq + r\), aleshores \(r = a - bq\), i per la propietat anterior, el mcd de \((a,b)\) és el mateix que el mcd de \((b,r)\). Això ens permet anar reduint el problema a nombres cada cop més petits fins que el residu sigui zero, moment en què el divisor actual és el mcd.
@@ -968,8 +1023,8 @@ Aquesta observació és la base de l'Algorisme d'Euclides. La primera part diu q
 </div>
 </div>
 </div>
-<div id="outline-container-org3e25bc7" class="outline-2">
-<h2 id="org3e25bc7"><span class="section-number-2">6.</span> 14. Teorema (Identitat de Bézout)</h2>
+<div id="outline-container-org7a5ad29" class="outline-2">
+<h2 id="org7a5ad29"><span class="section-number-2">6.</span> 14. Teorema (Identitat de Bézout)</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 Siguin \(a, b \in \mathbb{Z}\) amb \(a, b > 0\), i sigui \(d = \operatorname{mcd}(a,b)\). Aleshores existeixen \(\alpha, \beta \in \mathbb{Z}\) tals que:
@@ -986,16 +1041,16 @@ El màxim comú divisor de dos nombres sempre es pot escriure com una combinaci�
 Els coeficients \(\alpha\) i \(\beta\) poden ser positius, negatius o zero. No són únics: si en trobem uns, també en podem trobar infinits afegint múltiples de \(b/d\) i \(-a/d\).
 </p>
 </div>
-<div id="outline-container-orgafe1d78" class="outline-3">
-<h3 id="orgafe1d78"><span class="section-number-3">6.1.</span> Explicació</h3>
+<div id="outline-container-org344bee1" class="outline-3">
+<h3 id="org344bee1"><span class="section-number-3">6.1.</span> Explicació</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
 La Identitat de Bézout ens assegura que el màxim comú divisor de dos nombres sempre es pot "fabricar" sumant i restant múltiples d'aquests dos nombres. És a dir, no és només un nombre que els divideix, sinó que és una combinació lineal d'ells. Això té aplicacions molt potents, com ara trobar l'invers modular d'un nombre, que és essencial en criptografia (com el sistema RSA). Els coeficients \(\alpha\) i \(\beta\) es poden trobar aplicant l'Algorisme d'Euclides "cap enrere", com veurem a l'exemple.
 </p>
 </div>
 </div>
-<div id="outline-container-org7a989e3" class="outline-3">
-<h3 id="org7a989e3"><span class="section-number-3">6.2.</span> Exemple pràctic</h3>
+<div id="outline-container-org22583aa" class="outline-3">
+<h3 id="org22583aa"><span class="section-number-3">6.2.</span> Exemple pràctic</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
 Volem trobar \(\alpha, \beta\) tals que:
@@ -1005,8 +1060,8 @@ d = \operatorname{mcd}(240,46) = \alpha \cdot 240 + \beta \cdot 46.
 </p>
 </div>
 </div>
-<div id="outline-container-org97c3754" class="outline-3">
-<h3 id="org97c3754"><span class="section-number-3">6.3.</span> Algorisme d'Euclides</h3>
+<div id="outline-container-orged1a837" class="outline-3">
+<h3 id="orged1a837"><span class="section-number-3">6.3.</span> Algorisme d'Euclides</h3>
 <div class="outline-text-3" id="text-6-3">
 <p>
 \[
@@ -1031,8 +1086,8 @@ Per tant, \(d = 2\).
 </p>
 </div>
 </div>
-<div id="outline-container-orgb78cd05" class="outline-3">
-<h3 id="orgb78cd05"><span class="section-number-3">6.4.</span> Ara cap enrere</h3>
+<div id="outline-container-org3070c70" class="outline-3">
+<h3 id="org3070c70"><span class="section-number-3">6.4.</span> Ara cap enrere</h3>
 <div class="outline-text-3" id="text-6-4">
 <p>
 \[
@@ -1061,8 +1116,8 @@ Així, \(\alpha = -9\) i \(\beta = 47\).
 </p>
 </div>
 </div>
-<div id="outline-container-org90513d1" class="outline-3">
-<h3 id="org90513d1"><span class="section-number-3">6.5.</span> Explicació de l'exemple</h3>
+<div id="outline-container-org660d34c" class="outline-3">
+<h3 id="org660d34c"><span class="section-number-3">6.5.</span> Explicació de l'exemple</h3>
 <div class="outline-text-3" id="text-6-5">
 <p>
 Primer hem aplicat l'Algorisme d'Euclides per trobar el mcd (que és 2). Després, hem anat "cap enrere" aïllant els residus de cada divisió (començant per l'última divisió no nul·la, que és \(6 = 4 \cdot 1 + 2\)). En cada pas, substituïm el residu anterior per la seva expressió en funció dels nombres originals. Aquest procés de substitucions successives ens permet expressar el 2 final com una combinació de 240 i 46. Els coeficients que acompanyen 240 i 46 són \(\alpha = -9\) i \(\beta = 47\), respectivament.
@@ -1070,8 +1125,8 @@ Primer hem aplicat l'Algorisme d'Euclides per trobar el mcd (que és 2). Despré
 </div>
 </div>
 </div>
-<div id="outline-container-orgb37b293" class="outline-2">
-<h2 id="orgb37b293"><span class="section-number-2">7.</span> 14.1. Mètode matricial \(2\times 2\) per trobar \(\alpha\) i \(\beta\)</h2>
+<div id="outline-container-org2909220" class="outline-2">
+<h2 id="org2909220"><span class="section-number-2">7.</span> 14.1. Mètode matricial \(2\times 2\) per trobar \(\alpha\) i \(\beta\)</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 La Identitat de Bézout diu que, per a \(a,b\in\mathbb Z\) no tots dos zero, existeixen \(\alpha,\beta\in\mathbb Z\) tals que
@@ -1081,8 +1136,8 @@ d=\operatorname{mcd}(a,b)=\alpha a+\beta b.
 Aquests coeficients es poden trobar de manera molt ordenada fent servir matrius \(2\times 2\).
 </p>
 </div>
-<div id="outline-container-orged53f52" class="outline-3">
-<h3 id="orged53f52"><span class="section-number-3">7.1.</span> Idea</h3>
+<div id="outline-container-org4867172" class="outline-3">
+<h3 id="org4867172"><span class="section-number-3">7.1.</span> Idea</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
 Representem la parella \((a,b)\) com un vector fila. Cada divisió euclidiana
@@ -1151,8 +1206,8 @@ Per tant, els coeficients de Bézout són
 <hr />
 </div>
 </div>
-<div id="outline-container-org2afa907" class="outline-3">
-<h3 id="org2afa907"><span class="section-number-3">7.2.</span> Algorisme</h3>
+<div id="outline-container-org9bbf8a8" class="outline-3">
+<h3 id="org9bbf8a8"><span class="section-number-3">7.2.</span> Algorisme</h3>
 <div class="outline-text-3" id="text-7-2">
 <ol class="org-ol">
 <li>Inicialitzem
@@ -1188,8 +1243,8 @@ Per tant, els coeficients de Bézout són
 <hr />
 </div>
 </div>
-<div id="outline-container-org57f5dda" class="outline-3">
-<h3 id="org57f5dda"><span class="section-number-3">7.3.</span> Exemple 1: \(\operatorname{mcd}(240,46)\)</h3>
+<div id="outline-container-orgc14f6db" class="outline-3">
+<h3 id="orgc14f6db"><span class="section-number-3">7.3.</span> Exemple 1: \(\operatorname{mcd}(240,46)\)</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
 Volem
@@ -1198,8 +1253,8 @@ Volem
 \]
 </p>
 </div>
-<div id="outline-container-org0929915" class="outline-4">
-<h4 id="org0929915"><span class="section-number-4">7.3.1.</span> Divisions euclidianes</h4>
+<div id="outline-container-org2129dd5" class="outline-4">
+<h4 id="org2129dd5"><span class="section-number-4">7.3.1.</span> Divisions euclidianes</h4>
 <div class="outline-text-4" id="text-7-3-1">
 <p>
 \[
@@ -1227,8 +1282,8 @@ q_1=5,\quad q_2=4,\quad q_3=1,\quad q_4=1,\quad q_5=2.
 </p>
 </div>
 </div>
-<div id="outline-container-orge63882b" class="outline-4">
-<h4 id="orge63882b"><span class="section-number-4">7.3.2.</span> Matrius associades</h4>
+<div id="outline-container-orgc94f838" class="outline-4">
+<h4 id="orgc94f838"><span class="section-number-4">7.3.2.</span> Matrius associades</h4>
 <div class="outline-text-4" id="text-7-3-2">
 <p>
 \[
@@ -1265,8 +1320,8 @@ M_5=
 </p>
 </div>
 </div>
-<div id="outline-container-org8bd6231" class="outline-4">
-<h4 id="org8bd6231"><span class="section-number-4">7.3.3.</span> Producte total</h4>
+<div id="outline-container-orge4beff7" class="outline-4">
+<h4 id="orge4beff7"><span class="section-number-4">7.3.3.</span> Producte total</h4>
 <div class="outline-text-4" id="text-7-3-3">
 <p>
 \[
@@ -1301,8 +1356,8 @@ Comprovació:
 </div>
 </div>
 </div>
-<div id="outline-container-org7989b61" class="outline-3">
-<h3 id="org7989b61"><span class="section-number-3">7.4.</span> Exemple 2: \(\operatorname{mcd}(31,12)\)</h3>
+<div id="outline-container-orgaf33fb9" class="outline-3">
+<h3 id="orgaf33fb9"><span class="section-number-3">7.4.</span> Exemple 2: \(\operatorname{mcd}(31,12)\)</h3>
 <div class="outline-text-3" id="text-7-4">
 <p>
 Aquest és l’exemple que apareix a la pissarra.
@@ -1315,8 +1370,8 @@ Volem
 \]
 </p>
 </div>
-<div id="outline-container-org36cb23a" class="outline-4">
-<h4 id="org36cb23a"><span class="section-number-4">7.4.1.</span> Divisions euclidianes</h4>
+<div id="outline-container-org4e8d6f3" class="outline-4">
+<h4 id="org4e8d6f3"><span class="section-number-4">7.4.1.</span> Divisions euclidianes</h4>
 <div class="outline-text-4" id="text-7-4-1">
 <p>
 \[
@@ -1344,8 +1399,8 @@ q_1=2,\quad q_2=1,\quad q_3=1,\quad q_4=2,\quad q_5=2.
 </p>
 </div>
 </div>
-<div id="outline-container-org2871fc3" class="outline-4">
-<h4 id="org2871fc3"><span class="section-number-4">7.4.2.</span> Matrius associades</h4>
+<div id="outline-container-org89e255b" class="outline-4">
+<h4 id="org89e255b"><span class="section-number-4">7.4.2.</span> Matrius associades</h4>
 <div class="outline-text-4" id="text-7-4-2">
 <p>
 \[
@@ -1382,8 +1437,8 @@ M_5=
 </p>
 </div>
 </div>
-<div id="outline-container-orgd912645" class="outline-4">
-<h4 id="orgd912645"><span class="section-number-4">7.4.3.</span> Producte total</h4>
+<div id="outline-container-orge48991d" class="outline-4">
+<h4 id="orge48991d"><span class="section-number-4">7.4.3.</span> Producte total</h4>
 <div class="outline-text-4" id="text-7-4-3">
 <p>
 \[
@@ -1418,8 +1473,8 @@ Comprovació:
 </div>
 </div>
 </div>
-<div id="outline-container-org48df9ba" class="outline-3">
-<h3 id="org48df9ba"><span class="section-number-3">7.5.</span> Justificació del mètode</h3>
+<div id="outline-container-org3a41781" class="outline-3">
+<h3 id="org3a41781"><span class="section-number-3">7.5.</span> Justificació del mètode</h3>
 <div class="outline-text-3" id="text-7-5">
 <p>
 Cada matriu
@@ -1460,8 +1515,8 @@ amb
 <hr />
 </div>
 </div>
-<div id="outline-container-org5ff79a3" class="outline-3">
-<h3 id="org5ff79a3"><span class="section-number-3">7.6.</span> Observació</h3>
+<div id="outline-container-org43a59df" class="outline-3">
+<h3 id="org43a59df"><span class="section-number-3">7.6.</span> Observació</h3>
 <div class="outline-text-3" id="text-7-6">
 <p>
 Els coeficients \(\alpha\) i \(\beta\) no són únics. Si
@@ -1479,8 +1534,8 @@ Això dona infinites parelles de coeficients de Bézout per al mateix mcd.
 <hr />
 </div>
 </div>
-<div id="outline-container-orgc074478" class="outline-3">
-<h3 id="orgc074478"><span class="section-number-3">7.7.</span> Resum</h3>
+<div id="outline-container-org0b6d407" class="outline-3">
+<h3 id="org0b6d407"><span class="section-number-3">7.7.</span> Resum</h3>
 <div class="outline-text-3" id="text-7-7">
 <p>
 Per trobar \(\alpha,\beta\) amb matrius \(2\times 2\):
@@ -1507,8 +1562,8 @@ Aquest mètode és equivalent a l’Algorisme d’Euclides estès, però amb un 
 </div>
 </div>
 </div>
-<div id="outline-container-org6740b34" class="outline-2">
-<h2 id="org6740b34"><span class="section-number-2">8.</span> 15. Corol·lari (Caracterització del màxim comú divisor)</h2>
+<div id="outline-container-org27691bf" class="outline-2">
+<h2 id="org27691bf"><span class="section-number-2">8.</span> 15. Corol·lari (Caracterització del màxim comú divisor)</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 Siguin \(a, b, d \in \mathbb{Z}\) amb \(a, b, d > 0\). Aleshores:
@@ -1524,8 +1579,8 @@ d = \operatorname{mcd}(a,b) \iff
 \]
 </p>
 </div>
-<div id="outline-container-orgef48ca4" class="outline-3">
-<h3 id="orgef48ca4"><span class="section-number-3">8.1.</span> Explicació</h3>
+<div id="outline-container-org35f14cb" class="outline-3">
+<h3 id="org35f14cb"><span class="section-number-3">8.1.</span> Explicació</h3>
 <div class="outline-text-3" id="text-8-1">
 <p>
 Aquest corol·lari ens dona la <b>definició formal i rigorosa</b> del màxim comú divisor. No només diu que \(d\) és un divisor comú (condicions 1 i 2), sinó que a més és el <b>més gran</b> possible (condició 3). 
@@ -1540,8 +1595,8 @@ Aquesta caracterització és molt útil perquè ens permet demostrar propietats 
 </p>
 </div>
 </div>
-<div id="outline-container-org3731ac2" class="outline-3">
-<h3 id="org3731ac2"><span class="section-number-3">8.2.</span> Exemple concret</h3>
+<div id="outline-container-org8017e33" class="outline-3">
+<h3 id="org8017e33"><span class="section-number-3">8.2.</span> Exemple concret</h3>
 <div class="outline-text-3" id="text-8-2">
 <p>
 Siguin \(a = 12\) i \(b = 18\). Sabem que \(d = \operatorname{mcd}(12,18) = 6\).
@@ -1566,12 +1621,12 @@ Per tant, es compleix la definició i \(6 = \operatorname{mcd}(12,18)\).
 </div>
 </div>
 </div>
-<div id="outline-container-org6e09aa0" class="outline-2">
-<h2 id="org6e09aa0"><span class="section-number-2">9.</span> 16. Definició: nombres coprimers</h2>
+<div id="outline-container-org2d31259" class="outline-2">
+<h2 id="org2d31259"><span class="section-number-2">9.</span> 16. Definició: nombres coprimers</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div id="outline-container-org705098a" class="outline-3">
-<h3 id="org705098a"><span class="section-number-3">9.1.</span> Enunciat</h3>
+<div id="outline-container-org7fe4045" class="outline-3">
+<h3 id="org7fe4045"><span class="section-number-3">9.1.</span> Enunciat</h3>
 <div class="outline-text-3" id="text-9-1">
 <p>
 Siguin \(a,b>0\) enters. Es diu que \(a\) i \(b\) són <b>coprimers</b> (o <b>primers entre si</b>) si
@@ -1587,8 +1642,8 @@ Equivalentment, \(a\) i \(b\) són coprimers si existeixen \(\alpha,\beta\in\mat
 <hr />
 </div>
 </div>
-<div id="outline-container-org40571a1" class="outline-3">
-<h3 id="org40571a1"><span class="section-number-3">9.2.</span> Explicació</h3>
+<div id="outline-container-org9ef5549" class="outline-3">
+<h3 id="org9ef5549"><span class="section-number-3">9.2.</span> Explicació</h3>
 <div class="outline-text-3" id="text-9-2">
 <p>
 Que dos nombres siguin coprimers vol dir que <b>no tenen cap divisor positiu comú més gran que 1</b>. És a dir, l’únic divisor positiu que comparteixen és l’1.
@@ -1608,23 +1663,23 @@ per tant són coprimers. En canvi, \(6\) i \(10\) no són coprimers perquè
 <hr />
 </div>
 </div>
-<div id="outline-container-org31d9b93" class="outline-3">
-<h3 id="org31d9b93"><span class="section-number-3">9.3.</span> Per què és equivalent a l’existència de \(\alpha,\beta\)?</h3>
+<div id="outline-container-org927387f" class="outline-3">
+<h3 id="org927387f"><span class="section-number-3">9.3.</span> Per què és equivalent a l’existència de \(\alpha,\beta\)?</h3>
 <div class="outline-text-3" id="text-9-3">
 <p>
 Aquesta equivalència és una conseqüència directa de la <b>Identitat de Bézout</b>.
 </p>
 </div>
-<div id="outline-container-org4df9180" class="outline-4">
-<h4 id="org4df9180"><span class="section-number-4">9.3.1.</span> \((\Rightarrow)\) Si \(\operatorname{mcd}(a,b)=1\), aleshores existeixen \(\alpha,\beta\in\mathbb Z\) tals que \(\alpha a+\beta b=1\).</h4>
+<div id="outline-container-org1672ac5" class="outline-4">
+<h4 id="org1672ac5"><span class="section-number-4">9.3.1.</span> \((\Rightarrow)\) Si \(\operatorname{mcd}(a,b)=1\), aleshores existeixen \(\alpha,\beta\in\mathbb Z\) tals que \(\alpha a+\beta b=1\).</h4>
 <div class="outline-text-4" id="text-9-3-1">
 <p>
 Això és exactament la Identitat de Bézout aplicada a \(a\) i \(b\), amb \(d=\operatorname{mcd}(a,b)=1\).
 </p>
 </div>
 </div>
-<div id="outline-container-orge88a3ee" class="outline-4">
-<h4 id="orge88a3ee"><span class="section-number-4">9.3.2.</span> \((\Leftarrow)\) Si existeixen \(\alpha,\beta\in\mathbb Z\) tals que \(\alpha a+\beta b=1\), aleshores \(\operatorname{mcd}(a,b)=1\).</h4>
+<div id="outline-container-orgd5fb0e3" class="outline-4">
+<h4 id="orgd5fb0e3"><span class="section-number-4">9.3.2.</span> \((\Leftarrow)\) Si existeixen \(\alpha,\beta\in\mathbb Z\) tals que \(\alpha a+\beta b=1\), aleshores \(\operatorname{mcd}(a,b)=1\).</h4>
 <div class="outline-text-4" id="text-9-3-2">
 <p>
 Demostració: sigui \(d=\operatorname{mcd}(a,b)\). Com que \(d\mid a\) i \(d\mid b\), tenim
@@ -1645,8 +1700,8 @@ Així, doncs, les dues condicions són equivalents:
 </div>
 </div>
 </div>
-<div id="outline-container-orgc39c774" class="outline-3">
-<h3 id="orgc39c774"><span class="section-number-3">9.4.</span> Exemples</h3>
+<div id="outline-container-org77d81e8" class="outline-3">
+<h3 id="org77d81e8"><span class="section-number-3">9.4.</span> Exemples</h3>
 <div class="outline-text-3" id="text-9-4">
 <ol class="org-ol">
 <li>\(8\) i \(15\) són coprimers:
@@ -1687,12 +1742,12 @@ Per exemple,
 </div>
 </div>
 </div>
-<div id="outline-container-orgde6222f" class="outline-2">
-<h2 id="orgde6222f"><span class="section-number-2">10.</span> 17. Corol·lari: després de dividir pel mcd, els quocients són coprimers</h2>
+<div id="outline-container-org1d487f9" class="outline-2">
+<h2 id="org1d487f9"><span class="section-number-2">10.</span> 17. Corol·lari: després de dividir pel mcd, els quocients són coprimers</h2>
 <div class="outline-text-2" id="text-10">
 </div>
-<div id="outline-container-orgf577cff" class="outline-3">
-<h3 id="orgf577cff"><span class="section-number-3">10.1.</span> Enunciat</h3>
+<div id="outline-container-orga0688b4" class="outline-3">
+<h3 id="orga0688b4"><span class="section-number-3">10.1.</span> Enunciat</h3>
 <div class="outline-text-3" id="text-10-1">
 <p>
 Siguin \(a,b>0\), i sigui
@@ -1713,8 +1768,8 @@ amb \(a',b'\in\mathbb Z\). Aleshores
 <hr />
 </div>
 </div>
-<div id="outline-container-org5440423" class="outline-3">
-<h3 id="org5440423"><span class="section-number-3">10.2.</span> Explicació</h3>
+<div id="outline-container-orga0b0720" class="outline-3">
+<h3 id="orga0b0720"><span class="section-number-3">10.2.</span> Explicació</h3>
 <div class="outline-text-3" id="text-10-2">
 <p>
 Aquest corol·lari diu que si traiem de \(a\) i \(b\) tot el que tenen en comú, és a dir, si els dividim pel seu màxim comú divisor, els nombres que queden <b>ja no tenen res en comú</b> llevat de l’1.
@@ -1753,8 +1808,8 @@ I
 <hr />
 </div>
 </div>
-<div id="outline-container-orge691387" class="outline-3">
-<h3 id="orge691387"><span class="section-number-3">10.3.</span> Demostració</h3>
+<div id="outline-container-org4ed8925" class="outline-3">
+<h3 id="org4ed8925"><span class="section-number-3">10.3.</span> Demostració</h3>
 <div class="outline-text-3" id="text-10-3">
 <p>
 Siguin
@@ -1802,8 +1857,8 @@ Per tant,
 <hr />
 </div>
 </div>
-<div id="outline-container-org7002dd2" class="outline-3">
-<h3 id="org7002dd2"><span class="section-number-3">10.4.</span> Importància</h3>
+<div id="outline-container-org27e4f4d" class="outline-3">
+<h3 id="org27e4f4d"><span class="section-number-3">10.4.</span> Importància</h3>
 <div class="outline-text-3" id="text-10-4">
 <p>
 Aquest corol·lari és la base per simplificar fraccions:
@@ -1817,12 +1872,12 @@ La fracció \(\frac{a'}{b'}\) és irreductible, perquè \(a'\) i \(b'\) són cop
 </div>
 </div>
 </div>
-<div id="outline-container-orgb08cc18" class="outline-2">
-<h2 id="orgb08cc18"><span class="section-number-2">11.</span> 18. Corol·lari: lema d’Euclides</h2>
+<div id="outline-container-org6e0fd2a" class="outline-2">
+<h2 id="org6e0fd2a"><span class="section-number-2">11.</span> 18. Corol·lari: lema d’Euclides</h2>
 <div class="outline-text-2" id="text-11">
 </div>
-<div id="outline-container-orgbea88a2" class="outline-3">
-<h3 id="orgbea88a2"><span class="section-number-3">11.1.</span> Enunciat</h3>
+<div id="outline-container-org910f0b6" class="outline-3">
+<h3 id="org910f0b6"><span class="section-number-3">11.1.</span> Enunciat</h3>
 <div class="outline-text-3" id="text-11-1">
 <p>
 Si \(a\mid bc\) i \(a\) i \(b\) són coprimers, aleshores
@@ -1841,8 +1896,8 @@ a\mid c.
 <hr />
 </div>
 </div>
-<div id="outline-container-orgc7d42cd" class="outline-3">
-<h3 id="orgc7d42cd"><span class="section-number-3">11.2.</span> Explicació</h3>
+<div id="outline-container-org5fcb82f" class="outline-3">
+<h3 id="org5fcb82f"><span class="section-number-3">11.2.</span> Explicació</h3>
 <div class="outline-text-3" id="text-11-2">
 <p>
 Aquest resultat es coneix com el <b>lema d’Euclides</b>. Diu que si un nombre \(a\) divideix un producte \(bc\), i \(a\) no comparteix cap factor amb \(b\), aleshores forçosament \(a\) ha de dividir l’altre factor \(c\).
@@ -1855,8 +1910,8 @@ Intuïtivament: com que \(a\) i \(b\) no tenen factors comuns, tots els factors 
 <hr />
 </div>
 </div>
-<div id="outline-container-org4806c04" class="outline-3">
-<h3 id="org4806c04"><span class="section-number-3">11.3.</span> Demostració</h3>
+<div id="outline-container-org6698cdc" class="outline-3">
+<h3 id="org6698cdc"><span class="section-number-3">11.3.</span> Demostració</h3>
 <div class="outline-text-3" id="text-11-3">
 <p>
 Com que \(\operatorname{mcd}(a,b)=1\), per la Identitat de Bézout existeixen \(\alpha,\beta\in\mathbb Z\) tals que
@@ -1888,8 +1943,8 @@ a\mid c.
 <hr />
 </div>
 </div>
-<div id="outline-container-org9d0d329" class="outline-3">
-<h3 id="org9d0d329"><span class="section-number-3">11.4.</span> Exemple correcte</h3>
+<div id="outline-container-orge4bef79" class="outline-3">
+<h3 id="orge4bef79"><span class="section-number-3">11.4.</span> Exemple correcte</h3>
 <div class="outline-text-3" id="text-11-4">
 <p>
 Siguin
@@ -1930,8 +1985,8 @@ Cert, \(8=4\cdot 2\).
 <hr />
 </div>
 </div>
-<div id="outline-container-org1223373" class="outline-3">
-<h3 id="org1223373"><span class="section-number-3">11.5.</span> Contraexemple si no són coprimers</h3>
+<div id="outline-container-org3a24a7a" class="outline-3">
+<h3 id="org3a24a7a"><span class="section-number-3">11.5.</span> Contraexemple si no són coprimers</h3>
 <div class="outline-text-3" id="text-11-5">
 <p>
 La condició \(\operatorname{mcd}(a,b)=1\) és <b>essencial</b>. Si no es compleix, el resultat pot ser fals.
@@ -1971,8 +2026,8 @@ De nou, \(\operatorname{mcd}(6,8)=2\neq 1\).
 <hr />
 </div>
 </div>
-<div id="outline-container-org558bd13" class="outline-3">
-<h3 id="org558bd13"><span class="section-number-3">11.6.</span> Importància</h3>
+<div id="outline-container-org6d1b441" class="outline-3">
+<h3 id="org6d1b441"><span class="section-number-3">11.6.</span> Importància</h3>
 <div class="outline-text-3" id="text-11-6">
 <p>
 Aquest corol·lari és fonamental per demostrar la <b>unicitat de la factorització en primers</b>. També s’utilitza per resoldre congruències, per simplificar equacions diofàntiques i en criptografia.
@@ -1985,8 +2040,8 @@ A més, es pot combinar amb el corol·lari 17: si \(d=\operatorname{mcd}(a,b)\),
 <hr />
 </div>
 </div>
-<div id="outline-container-org813389b" class="outline-3">
-<h3 id="org813389b"><span class="section-number-3">11.7.</span> Resum</h3>
+<div id="outline-container-org6c67484" class="outline-3">
+<h3 id="org6c67484"><span class="section-number-3">11.7.</span> Resum</h3>
 <div class="outline-text-3" id="text-11-7">
 <ul class="org-ul">
 <li><b>16.</b> \(a\) i \(b\) són coprimers si \(\operatorname{mcd}(a,b)=1\). Equivalentment, si existeixen \(\alpha,\beta\in\mathbb Z\) amb \(\alpha a+\beta b=1\).</li>
@@ -1996,12 +2051,12 @@ A més, es pot combinar amb el corol·lari 17: si \(d=\operatorname{mcd}(a,b)\),
 </div>
 </div>
 </div>
-<div id="outline-container-orgec7bcf2" class="outline-2">
-<h2 id="orgec7bcf2"><span class="section-number-2">12.</span> Exercici: MCD de \(a+b\) i \(a-b\)</h2>
+<div id="outline-container-org47015d4" class="outline-2">
+<h2 id="org47015d4"><span class="section-number-2">12.</span> Exercici: MCD de \(a+b\) i \(a-b\)</h2>
 <div class="outline-text-2" id="text-12">
 </div>
-<div id="outline-container-org9cf27be" class="outline-3">
-<h3 id="org9cf27be"><span class="section-number-3">12.1.</span> Enunciat</h3>
+<div id="outline-container-org504c7a8" class="outline-3">
+<h3 id="org504c7a8"><span class="section-number-3">12.1.</span> Enunciat</h3>
 <div class="outline-text-3" id="text-12-1">
 <p>
 Siguin \(a,b\in\mathbb Z\) amb \(\operatorname{mcd}(a,b)=1\). Aleshores
@@ -2012,8 +2067,8 @@ Siguin \(a,b\in\mathbb Z\) amb \(\operatorname{mcd}(a,b)=1\). Aleshores
 </p>
 </div>
 </div>
-<div id="outline-container-org4495f2f" class="outline-3">
-<h3 id="org4495f2f"><span class="section-number-3">12.2.</span> Solució</h3>
+<div id="outline-container-org2f68060" class="outline-3">
+<h3 id="org2f68060"><span class="section-number-3">12.2.</span> Solució</h3>
 <div class="outline-text-3" id="text-12-2">
 <p>
 Sigui
@@ -2050,8 +2105,8 @@ Per tant,
 </p>
 </div>
 </div>
-<div id="outline-container-org258b423" class="outline-3">
-<h3 id="org258b423"><span class="section-number-3">12.3.</span> Observació sobre la paritat</h3>
+<div id="outline-container-org7704fb7" class="outline-3">
+<h3 id="org7704fb7"><span class="section-number-3">12.3.</span> Observació sobre la paritat</h3>
 <div class="outline-text-3" id="text-12-3">
 <p>
 Com que \(\operatorname{mcd}(a,b)=1\), \(a\) i \(b\) no poden ser tots dos parells. Aleshores:
@@ -2082,8 +2137,8 @@ Així:
 </p>
 </div>
 </div>
-<div id="outline-container-orgf3b7ec6" class="outline-3">
-<h3 id="orgf3b7ec6"><span class="section-number-3">12.4.</span> Exemples</h3>
+<div id="outline-container-orgc3bb0b1" class="outline-3">
+<h3 id="orgc3bb0b1"><span class="section-number-3">12.4.</span> Exemples</h3>
 <div class="outline-text-3" id="text-12-4">
 <ol class="org-ol">
 <li>\(a=31,\ b=12\):
@@ -2131,8 +2186,8 @@ i
 </ol>
 </div>
 </div>
-<div id="outline-container-orgd231c08" class="outline-3">
-<h3 id="orgd231c08"><span class="section-number-3">12.5.</span> Nota</h3>
+<div id="outline-container-org002a71b" class="outline-3">
+<h3 id="org002a71b"><span class="section-number-3">12.5.</span> Nota</h3>
 <div class="outline-text-3" id="text-12-5">
 <p>
 La condició \(\operatorname{mcd}(a,b)=1\) és essencial. Si \(a\) i \(b\) no són coprimers, el mcd de \(a+b\) i \(a-b\) pot ser més gran que \(2\). Per exemple, amb \(a=6\) i \(b=10\):
@@ -2150,8 +2205,8 @@ Per tant, la hipòtesi \(\operatorname{mcd}(a,b)=1\) no es pot eliminar.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc6abede" class="outline-3">
-<h3 id="orgc6abede"><span class="section-number-3">12.6.</span> Resum</h3>
+<div id="outline-container-org73d9fa9" class="outline-3">
+<h3 id="org73d9fa9"><span class="section-number-3">12.6.</span> Resum</h3>
 <div class="outline-text-3" id="text-12-6">
 <p>
 Si \(a\) i \(b\) són coprimers, aleshores
@@ -2171,12 +2226,12 @@ Més concretament:
 </div>
 </div>
 </div>
-<div id="outline-container-org663ecca" class="outline-2">
-<h2 id="org663ecca"><span class="section-number-2">13.</span> Apunts: Exercicis de divisibilitat i mcd</h2>
+<div id="outline-container-org540cec9" class="outline-2">
+<h2 id="org540cec9"><span class="section-number-2">13.</span> Apunts: Exercicis de divisibilitat i mcd</h2>
 <div class="outline-text-2" id="text-13">
 </div>
-<div id="outline-container-org27a7a35" class="outline-3">
-<h3 id="org27a7a35"><span class="section-number-3">13.1.</span> Recordatori: propietat fonamental del mcd (apartat 12)</h3>
+<div id="outline-container-org5a79a91" class="outline-3">
+<h3 id="org5a79a91"><span class="section-number-3">13.1.</span> Recordatori: propietat fonamental del mcd (apartat 12)</h3>
 <div class="outline-text-3" id="text-13-1">
 <p>
 Per a qualsevol \(x,y\in\mathbb Z\) i \(k\in\mathbb Z\),
@@ -2193,12 +2248,12 @@ Aquesta propietat és la que ens permet “eliminar” termes i simplificar el c
 <hr />
 </div>
 </div>
-<div id="outline-container-org409733c" class="outline-3">
-<h3 id="org409733c"><span class="section-number-3">13.2.</span> Exercici 1.3: És cert que \(\operatorname{mcd}(3a-b,\ b-2a)=\operatorname{mcd}(a,b)\)?</h3>
+<div id="outline-container-org0af8490" class="outline-3">
+<h3 id="org0af8490"><span class="section-number-3">13.2.</span> Exercici 1.3: És cert que \(\operatorname{mcd}(3a-b,\ b-2a)=\operatorname{mcd}(a,b)\)?</h3>
 </div>
 
-<div id="outline-container-org4ed8118" class="outline-3">
-<h3 id="org4ed8118"><span class="section-number-3">13.3.</span> Enunciat</h3>
+<div id="outline-container-org6131e95" class="outline-3">
+<h3 id="org6131e95"><span class="section-number-3">13.3.</span> Enunciat</h3>
 <div class="outline-text-3" id="text-13-3">
 <p>
 Per a \(a,b\in\mathbb Z\), volem veure si
@@ -2208,8 +2263,8 @@ Per a \(a,b\in\mathbb Z\), volem veure si
 </p>
 </div>
 </div>
-<div id="outline-container-org9e1929a" class="outline-3">
-<h3 id="org9e1929a"><span class="section-number-3">13.4.</span> Solució pas a pas</h3>
+<div id="outline-container-org84538b0" class="outline-3">
+<h3 id="org84538b0"><span class="section-number-3">13.4.</span> Solució pas a pas</h3>
 <div class="outline-text-3" id="text-13-4">
 <p>
 Apliquem la propietat del mcd. Primer sumem el segon component al primer:
@@ -2242,8 +2297,8 @@ Sí que és cert.
 </p>
 </div>
 </div>
-<div id="outline-container-org41c76bc" class="outline-3">
-<h3 id="org41c76bc"><span class="section-number-3">13.5.</span> Explicació alternativa amb divisors comuns</h3>
+<div id="outline-container-org582c4dc" class="outline-3">
+<h3 id="org582c4dc"><span class="section-number-3">13.5.</span> Explicació alternativa amb divisors comuns</h3>
 <div class="outline-text-3" id="text-13-5">
 <p>
 Si \(d\) és un divisor comú de \(3a-b\) i \(b-2a\), aleshores
@@ -2270,12 +2325,12 @@ Per tant, els conjunts de divisors comuns coincideixen, i en particular el seu m
 <hr />
 </div>
 </div>
-<div id="outline-container-org8093ade" class="outline-3">
-<h3 id="org8093ade"><span class="section-number-3">13.6.</span> Exercici 1.7: Demostra que la fracció \(\dfrac{4n+5}{2n+3}\) és irreductible per a tot \(n\ge 1\).</h3>
+<div id="outline-container-org33b9498" class="outline-3">
+<h3 id="org33b9498"><span class="section-number-3">13.6.</span> Exercici 1.7: Demostra que la fracció \(\dfrac{4n+5}{2n+3}\) és irreductible per a tot \(n\ge 1\).</h3>
 </div>
 
-<div id="outline-container-orga6e669f" class="outline-3">
-<h3 id="orga6e669f"><span class="section-number-3">13.7.</span> Enunciat</h3>
+<div id="outline-container-orgff4868b" class="outline-3">
+<h3 id="orgff4868b"><span class="section-number-3">13.7.</span> Enunciat</h3>
 <div class="outline-text-3" id="text-13-7">
 <p>
 Volem veure que
@@ -2286,8 +2341,8 @@ per a tot \(n\ge 1\). Si el mcd és \(1\), la fracció no es pot simplificar, é
 </p>
 </div>
 </div>
-<div id="outline-container-orgd47086a" class="outline-3">
-<h3 id="orgd47086a"><span class="section-number-3">13.8.</span> Solució pas a pas</h3>
+<div id="outline-container-orgc7f74e3" class="outline-3">
+<h3 id="orgc7f74e3"><span class="section-number-3">13.8.</span> Solució pas a pas</h3>
 <div class="outline-text-3" id="text-13-8">
 <p>
 Apliquem la propietat del mcd per eliminar la \(n\) del primer component. Prenem \(k=2\) i restem \(2\cdot(2n+3)\) al primer component:
@@ -2320,8 +2375,8 @@ Com que el numerador i el denominador són coprimers, la fracció
 </p>
 </div>
 </div>
-<div id="outline-container-orgdceefa5" class="outline-3">
-<h3 id="orgdceefa5"><span class="section-number-3">13.9.</span> Exemples</h3>
+<div id="outline-container-orgac7eda9" class="outline-3">
+<h3 id="orgac7eda9"><span class="section-number-3">13.9.</span> Exemples</h3>
 <div class="outline-text-3" id="text-13-9">
 <ul class="org-ul">
 <li>\(n=1\): \(\dfrac{9}{5}\), i \(\operatorname{mcd}(9,5)=1\).</li>
@@ -2330,8 +2385,8 @@ Com que el numerador i el denominador són coprimers, la fracció
 </ul>
 </div>
 </div>
-<div id="outline-container-org42d788e" class="outline-3">
-<h3 id="org42d788e"><span class="section-number-3">13.10.</span> Nota</h3>
+<div id="outline-container-orga48b4e5" class="outline-3">
+<h3 id="orga48b4e5"><span class="section-number-3">13.10.</span> Nota</h3>
 <div class="outline-text-3" id="text-13-10">
 <p>
 El mateix mètode serveix per a fraccions de la forma
@@ -2347,12 +2402,12 @@ però el que importa és que la combinació \(4n+5-2(2n+3)=-1\), que és una con
 </div>
 </div>
 </div>
-<div id="outline-container-orgd72bafe" class="outline-2">
-<h2 id="orgd72bafe"><span class="section-number-2">14.</span> 19. Equacions diofàntiques (Diofant d'Alexandria)</h2>
+<div id="outline-container-orgfdde2fb" class="outline-2">
+<h2 id="orgfdde2fb"><span class="section-number-2">14.</span> 19. Equacions diofàntiques (Diofant d'Alexandria)</h2>
 <div class="outline-text-2" id="text-14">
 </div>
-<div id="outline-container-org383cfa3" class="outline-3">
-<h3 id="org383cfa3"><span class="section-number-3">14.1.</span> Enunciat</h3>
+<div id="outline-container-org593256d" class="outline-3">
+<h3 id="org593256d"><span class="section-number-3">14.1.</span> Enunciat</h3>
 <div class="outline-text-3" id="text-14-1">
 <p>
 Siguin \(a,b,c \in \mathbb{Z}\), amb \(a\) i \(b\) no tots dos zero. Considerem l'equació
@@ -2376,8 +2431,8 @@ Aleshores:
 <hr />
 </div>
 </div>
-<div id="outline-container-org767f7f2" class="outline-3">
-<h3 id="org767f7f2"><span class="section-number-3">14.2.</span> Explicació</h3>
+<div id="outline-container-orga932b36" class="outline-3">
+<h3 id="orga932b36"><span class="section-number-3">14.2.</span> Explicació</h3>
 <div class="outline-text-3" id="text-14-2">
 <p>
 Els enters són més "fàcils" que els racionals en el sentit que no tenen denominadors, però això mateix fa que resoldre equacions <b>només amb enters</b> sigui més complicat: no sempre podem dividir.
@@ -2394,15 +2449,15 @@ La idea clau és que tot el costat esquerre \(ax+by\) és forçosament un múlti
 <hr />
 </div>
 </div>
-<div id="outline-container-org9c7426a" class="outline-3">
-<h3 id="org9c7426a"><span class="section-number-3">14.3.</span> Demostració</h3>
+<div id="outline-container-org33f8b16" class="outline-3">
+<h3 id="org33f8b16"><span class="section-number-3">14.3.</span> Demostració</h3>
 <div class="outline-text-3" id="text-14-3">
 <p>
 Sigui \(d = \operatorname{mcd}(a,b)\).
 </p>
 </div>
-<div id="outline-container-org6115fb4" class="outline-4">
-<h4 id="org6115fb4"><span class="section-number-4">14.3.1.</span> \((\Rightarrow)\) Si hi ha solució, aleshores \(d \mid c\).</h4>
+<div id="outline-container-org9cddb7b" class="outline-4">
+<h4 id="org9cddb7b"><span class="section-number-4">14.3.1.</span> \((\Rightarrow)\) Si hi ha solució, aleshores \(d \mid c\).</h4>
 <div class="outline-text-4" id="text-14-3-1">
 <p>
 Suposem que existeixen \(x,y \in \mathbb{Z}\) tals que \(ax+by=c\).
@@ -2425,8 +2480,8 @@ Per tant, \(d \mid c\). Això demostra que si \(d \nmid c\), l'equació <b>no t�
 </p>
 </div>
 </div>
-<div id="outline-container-orgec0e664" class="outline-4">
-<h4 id="orgec0e664"><span class="section-number-4">14.3.2.</span> \((\Leftarrow)\) Si \(d \mid c\), aleshores hi ha solució.</h4>
+<div id="outline-container-org0867003" class="outline-4">
+<h4 id="org0867003"><span class="section-number-4">14.3.2.</span> \((\Leftarrow)\) Si \(d \mid c\), aleshores hi ha solució.</h4>
 <div class="outline-text-4" id="text-14-3-2">
 <p>
 Suposem ara que \(d \mid c\). Aleshores existeix \(c' \in \mathbb{Z}\) tal que
@@ -2472,8 +2527,8 @@ Així, \(d \mid c\) és condició necessària i suficient.
 </div>
 </div>
 </div>
-<div id="outline-container-org5e39d3e" class="outline-3">
-<h3 id="org5e39d3e"><span class="section-number-3">14.4.</span> Exemple 1: equació sense solució</h3>
+<div id="outline-container-orgbccad1a" class="outline-3">
+<h3 id="orgbccad1a"><span class="section-number-3">14.4.</span> Exemple 1: equació sense solució</h3>
 <div class="outline-text-3" id="text-14-4">
 <p>
 Volem resoldre en enters:
@@ -2504,8 +2559,8 @@ Intuïtivament: \(2x\) sempre és parell, \(4y\) sempre és parell, i la suma de
 <hr />
 </div>
 </div>
-<div id="outline-container-org7d478eb" class="outline-3">
-<h3 id="org7d478eb"><span class="section-number-3">14.5.</span> Exemple 2: equació amb solució</h3>
+<div id="outline-container-org6fc08f9" class="outline-3">
+<h3 id="org6fc08f9"><span class="section-number-3">14.5.</span> Exemple 2: equació amb solució</h3>
 <div class="outline-text-3" id="text-14-5">
 <p>
 Volem resoldre en enters:
@@ -2514,8 +2569,8 @@ Volem resoldre en enters:
 \]
 </p>
 </div>
-<div id="outline-container-org61b70d7" class="outline-4">
-<h4 id="org61b70d7"><span class="section-number-4">14.5.1.</span> Pas 1: calcular \(d\) i comprovar que divideix \(c\).</h4>
+<div id="outline-container-org9fc7b00" class="outline-4">
+<h4 id="org9fc7b00"><span class="section-number-4">14.5.1.</span> Pas 1: calcular \(d\) i comprovar que divideix \(c\).</h4>
 <div class="outline-text-4" id="text-14-5-1">
 <p>
 \[
@@ -2528,8 +2583,8 @@ Com que \(1 \mid 1250\), el teorema garanteix que sí que hi ha solució.
 </p>
 </div>
 </div>
-<div id="outline-container-orgff488b4" class="outline-4">
-<h4 id="orgff488b4"><span class="section-number-4">14.5.2.</span> Pas 2: trobar coeficients de Bézout.</h4>
+<div id="outline-container-org42e0453" class="outline-4">
+<h4 id="org42e0453"><span class="section-number-4">14.5.2.</span> Pas 2: trobar coeficients de Bézout.</h4>
 <div class="outline-text-4" id="text-14-5-2">
 <p>
 Busquem \(\alpha,\beta \in \mathbb{Z}\) tals que
@@ -2557,8 +2612,8 @@ Per tant, \(\alpha = 1\) i \(\beta = -2\).
 </p>
 </div>
 </div>
-<div id="outline-container-orgdaac617" class="outline-4">
-<h4 id="orgdaac617"><span class="section-number-4">14.5.3.</span> Pas 3: multiplicar per \(c'\).</h4>
+<div id="outline-container-org9f15fce" class="outline-4">
+<h4 id="org9f15fce"><span class="section-number-4">14.5.3.</span> Pas 3: multiplicar per \(c'\).</h4>
 <div class="outline-text-4" id="text-14-5-3">
 <p>
 Escrivim \(c = d c'\):
@@ -2579,8 +2634,8 @@ y_0 = \beta c' = (-2) \cdot 1250 = -2500.
 </p>
 </div>
 </div>
-<div id="outline-container-org4aa675f" class="outline-4">
-<h4 id="org4aa675f"><span class="section-number-4">14.5.4.</span> Pas 4: comprovació.</h4>
+<div id="outline-container-orgdd536d9" class="outline-4">
+<h4 id="orgdd536d9"><span class="section-number-4">14.5.4.</span> Pas 4: comprovació.</h4>
 <div class="outline-text-4" id="text-14-5-4">
 <p>
 \[
@@ -2599,8 +2654,8 @@ Per tant:
 </div>
 </div>
 </div>
-<div id="outline-container-orgfd85a3d" class="outline-3">
-<h3 id="orgfd85a3d"><span class="section-number-3">14.6.</span> Resum</h3>
+<div id="outline-container-orgfacc0fd" class="outline-3">
+<h3 id="orgfacc0fd"><span class="section-number-3">14.6.</span> Resum</h3>
 <div class="outline-text-3" id="text-14-6">
 <ul class="org-ul">
 <li>L'equació \(ax+by=c\) en enters només pot tenir solució si \(d = \operatorname{mcd}(a,b)\) divideix \(c\).</li>
@@ -2613,12 +2668,12 @@ Per tant:
 <hr />
 </div>
 </div>
-<div id="outline-container-orgf731532" class="outline-3">
-<h3 id="orgf731532"><span class="section-number-3">14.7.</span> És l'única solució? Hi ha més solucions?</h3>
+<div id="outline-container-org3ee0d92" class="outline-3">
+<h3 id="org3ee0d92"><span class="section-number-3">14.7.</span> És l'única solució? Hi ha més solucions?</h3>
 <div class="outline-text-3" id="text-14-7">
 </div>
-<div id="outline-container-org4a4cc38" class="outline-4">
-<h4 id="org4a4cc38"><span class="section-number-4">14.7.1.</span> Enunciat</h4>
+<div id="outline-container-orgade1152" class="outline-4">
+<h4 id="orgade1152"><span class="section-number-4">14.7.1.</span> Enunciat</h4>
 <div class="outline-text-4" id="text-14-7-1">
 <p>
 La solució \(x_0 = \alpha c'\), \(y_0 = \beta c'\) que hem construït <b>no és única</b>. De fet, si l'equació té una solució, en té infinites.
@@ -2650,8 +2705,8 @@ En el nostre cas, amb \(x_0 = \alpha c'\) i \(y_0 = \beta c'\):
 <hr />
 </div>
 </div>
-<div id="outline-container-org3752e00" class="outline-4">
-<h4 id="org3752e00"><span class="section-number-4">14.7.2.</span> Explicació</h4>
+<div id="outline-container-org306b4c3" class="outline-4">
+<h4 id="org306b4c3"><span class="section-number-4">14.7.2.</span> Explicació</h4>
 <div class="outline-text-4" id="text-14-7-2">
 <p>
 Un cop tenim una solució, en podem fabricar infinites sumant i restant el mateix valor de manera que es compensi. La idea és sumar a \(x_0\) un múltiple de \(b'\) i restar de \(y_0\) el corresponent múltiple de \(a'\), de manera que l'augment \(a \cdot (\lambda b')\) quedi exactament anul·lat per la disminució \(b \cdot (-\lambda a')\).
@@ -2664,8 +2719,8 @@ Per què funciona amb \(a'\) i \(b'\) i no amb \(a\) i \(b\)? Perquè \(a b' = b
 <hr />
 </div>
 </div>
-<div id="outline-container-org774da77" class="outline-4">
-<h4 id="org774da77"><span class="section-number-4">14.7.3.</span> Demostració que són solucions</h4>
+<div id="outline-container-org285b9c5" class="outline-4">
+<h4 id="org285b9c5"><span class="section-number-4">14.7.3.</span> Demostració que són solucions</h4>
 <div class="outline-text-4" id="text-14-7-3">
 <p>
 Suposem que
@@ -2718,8 +2773,8 @@ Així, \((x,y)\) també és solució per a qualsevol \(\lambda \in \mathbb{Z}\).
 <hr />
 </div>
 </div>
-<div id="outline-container-org27369f2" class="outline-4">
-<h4 id="org27369f2"><span class="section-number-4">14.7.4.</span> Exemple: \(27x+13y=1250\)</h4>
+<div id="outline-container-org7bf6773" class="outline-4">
+<h4 id="org7bf6773"><span class="section-number-4">14.7.4.</span> Exemple: \(27x+13y=1250\)</h4>
 <div class="outline-text-4" id="text-14-7-4">
 <p>
 Ja tenim la solució particular \(x_0 = 1250\), \(y_0 = -2500\).
@@ -2750,8 +2805,8 @@ i es comprova que \(27 \cdot 1263 + 13 \cdot (-2527) = 1250\).
 <hr />
 </div>
 </div>
-<div id="outline-container-org25f465f" class="outline-4">
-<h4 id="org25f465f"><span class="section-number-4">14.7.5.</span> Nota: són totes</h4>
+<div id="outline-container-org16362c4" class="outline-4">
+<h4 id="org16362c4"><span class="section-number-4">14.7.5.</span> Nota: són totes</h4>
 <div class="outline-text-4" id="text-14-7-5">
 <p>
 De fet, aquestes són <b>totes</b> les solucions: si \((x,y)\) és qualsevol altra solució, restant \(a x_0 + b y_0 = c\) s'obté \(a(x-x_0) + b(y-y_0) = 0\), és a dir, \(a'(x-x_0) = -b'(y-y_0)\). Com que \(\operatorname{mcd}(a',b')=1\), el lema d'Euclides obliga \(b' \mid (x-x_0)\), d'on \(x = x_0 + \lambda b'\) per a algun \(\lambda\), i aleshores \(y = y_0 - \lambda a'\).
@@ -2761,8 +2816,8 @@ De fet, aquestes són <b>totes</b> les solucions: si \((x,y)\) és qualsevol alt
 <hr />
 </div>
 </div>
-<div id="outline-container-org01dd89a" class="outline-4">
-<h4 id="org01dd89a"><span class="section-number-4">14.7.6.</span> Demostració que aquestes són totes les solucions</h4>
+<div id="outline-container-org3341e56" class="outline-4">
+<h4 id="org3341e56"><span class="section-number-4">14.7.6.</span> Demostració que aquestes són totes les solucions</h4>
 <div class="outline-text-4" id="text-14-7-6">
 <p>
 Volem veure que no hi ha cap solució fora de la forma \(x_0+\lambda b'\), \(y_0-\lambda a'\). És a dir, que les infinites solucions que hem construït són <b>totes</b>.
@@ -2859,7 +2914,7 @@ per a alguna \(\lambda \in \mathbb{Z}\). Això demostra que les solucions param�
 <hr />
 </div>
 <ol class="org-ol">
-<li><a id="org34868ad"></a>Complement: l'altra divisibilitat i unicitat del paràmetre \(\lambda\)<br />
+<li><a id="orgf6b6861"></a>Complement: l'altra divisibilitat i unicitat del paràmetre \(\lambda\)<br />
 <div class="outline-text-5" id="text-14-7-6-1">
 <p>
 De la igualtat \(a'(e-\alpha c') = b'(\beta c'-f)\) també es pot raonar simètricament: el costat dret és múltiple de \(b'\), així que
@@ -2903,12 +2958,12 @@ Per tant, una sola \(\lambda \in \mathbb{Z}\) parametritza totes les solucions: 
 </ol>
 </div>
 </div>
-<div id="outline-container-orgd5d6f1e" class="outline-3">
-<h3 id="orgd5d6f1e"><span class="section-number-3">14.8.</span> Exercici: endevinar la data de naixement</h3>
+<div id="outline-container-org8af8883" class="outline-3">
+<h3 id="org8af8883"><span class="section-number-3">14.8.</span> Exercici: endevinar la data de naixement</h3>
 <div class="outline-text-3" id="text-14-8">
 </div>
-<div id="outline-container-orgd024a21" class="outline-4">
-<h4 id="orgd024a21"><span class="section-number-4">14.8.1.</span> Enunciat</h4>
+<div id="outline-container-orgd1e712c" class="outline-4">
+<h4 id="orgd1e712c"><span class="section-number-4">14.8.1.</span> Enunciat</h4>
 <div class="outline-text-4" id="text-14-8-1">
 <p>
 Considerem l'equació
@@ -2923,8 +2978,8 @@ Si només ens donen el valor de \(c\), és possible descobrir quin dia va néixe
 </p>
 </div>
 </div>
-<div id="outline-container-orgd662a0d" class="outline-4">
-<h4 id="orgd662a0d"><span class="section-number-4">14.8.2.</span> Explicació</h4>
+<div id="outline-container-orgde493b3" class="outline-4">
+<h4 id="orgde493b3"><span class="section-number-4">14.8.2.</span> Explicació</h4>
 <div class="outline-text-4" id="text-14-8-2">
 <p>
 Sense les cotes \(1 \le x \le 12\) i \(1 \le y \le 31\), l'equació \(12x+31y=c\) té infinites solucions enteres (de la forma \(x = \alpha c'+\lambda b'\), \(y = \beta c'-\lambda a'\)). Per tant, \(c\) sol no determina \((x,y)\).
@@ -2935,8 +2990,8 @@ Però amb les cotes de mes i dia, d'entre les infinites solucions només una cau
 </p>
 </div>
 </div>
-<div id="outline-container-org9144e23" class="outline-4">
-<h4 id="org9144e23"><span class="section-number-4">14.8.3.</span> Resolució pas a pas amb \(c = 256\)</h4>
+<div id="outline-container-org39386aa" class="outline-4">
+<h4 id="org39386aa"><span class="section-number-4">14.8.3.</span> Resolució pas a pas amb \(c = 256\)</h4>
 <div class="outline-text-4" id="text-14-8-3">
 <p>
 Volem resoldre en enters
@@ -2946,7 +3001,7 @@ Volem resoldre en enters
 </p>
 </div>
 <ol class="org-ol">
-<li><a id="orgf337a6d"></a>Pas 1: existeix solució?<br />
+<li><a id="orga70e931"></a>Pas 1: existeix solució?<br />
 <div class="outline-text-5" id="text-14-8-3-1">
 <p>
 \[
@@ -2959,7 +3014,7 @@ Com que \(1 \mid 256\), el teorema garanteix que sí que hi ha solució.
 </p>
 </div>
 </li>
-<li><a id="org1d47a6c"></a>Pas 2: coeficients de Bézout.<br />
+<li><a id="orgc9250e4"></a>Pas 2: coeficients de Bézout.<br />
 <div class="outline-text-5" id="text-14-8-3-2">
 <p>
 Busquem \(\alpha,\beta\) tals que \(12\alpha+31\beta = 1\). Per Euclides:
@@ -2970,7 +3025,7 @@ Per tant, \(\alpha = 13\) i \(\beta = -5\).
 </p>
 </div>
 </li>
-<li><a id="orgbd2c88a"></a>Pas 3: solució particular.<br />
+<li><a id="org3e16f9c"></a>Pas 3: solució particular.<br />
 <div class="outline-text-5" id="text-14-8-3-3">
 <p>
 Com que \(c = 256 = 1 \cdot 256\), tenim \(c' = 256\). Multiplicant Bézout per \(c'\):
@@ -2984,7 +3039,7 @@ Com que \(c = 256 = 1 \cdot 256\), tenim \(c' = 256\). Multiplicant Bézout per 
 </p>
 </div>
 </li>
-<li><a id="org814581c"></a>Pas 4: solució general.<br />
+<li><a id="org5aa1653"></a>Pas 4: solució general.<br />
 <div class="outline-text-5" id="text-14-8-3-4">
 <p>
 Aquí \(a' = 12\), \(b' = 31\) (perquè \(d=1\)). Per tant:
@@ -2994,7 +3049,7 @@ Aquí \(a' = 12\), \(b' = 31\) (perquè \(d=1\)). Per tant:
 </p>
 </div>
 </li>
-<li><a id="org2a50aeb"></a>Pas 5: imposar les cotes.<br />
+<li><a id="org2d805ba"></a>Pas 5: imposar les cotes.<br />
 <div class="outline-text-5" id="text-14-8-3-5">
 <p>
 Busquem \(\lambda\) tal que
@@ -3020,8 +3075,8 @@ Així, \(x = 11\) (novembre) i \(y = 4\) compleixen les cotes.
 </li>
 </ol>
 </div>
-<div id="outline-container-org9de7b93" class="outline-4">
-<h4 id="org9de7b93"><span class="section-number-4">14.8.4.</span> Comprovació</h4>
+<div id="outline-container-orgbf17dfe" class="outline-4">
+<h4 id="orgbf17dfe"><span class="section-number-4">14.8.4.</span> Comprovació</h4>
 <div class="outline-text-4" id="text-14-8-4">
 <p>
 \[
@@ -3036,12 +3091,12 @@ Per tant, la data recuperada és el <b>4 de novembre</b>.
 </div>
 </div>
 </div>
-<div id="outline-container-org1b001e7" class="outline-2">
-<h2 id="org1b001e7"><span class="section-number-2">15.</span> 24. Lema d'Euclides per a primers</h2>
+<div id="outline-container-org6ca3038" class="outline-2">
+<h2 id="org6ca3038"><span class="section-number-2">15.</span> 24. Lema d'Euclides per a primers</h2>
 <div class="outline-text-2" id="text-15">
 </div>
-<div id="outline-container-org41114f6" class="outline-3">
-<h3 id="org41114f6"><span class="section-number-3">15.1.</span> Enunciat</h3>
+<div id="outline-container-orgd58ce05" class="outline-3">
+<h3 id="orgd58ce05"><span class="section-number-3">15.1.</span> Enunciat</h3>
 <div class="outline-text-3" id="text-15-1">
 <p>
 Sigui \(p\) primer. Si \(p \mid ab\), aleshores \(p \mid a\) o \(p \mid b\).
@@ -3057,8 +3112,8 @@ Sigui \(p\) primer. Si \(p \mid ab\), aleshores \(p \mid a\) o \(p \mid b\).
 <hr />
 </div>
 </div>
-<div id="outline-container-orgedba2e0" class="outline-3">
-<h3 id="orgedba2e0"><span class="section-number-3">15.2.</span> Explicació</h3>
+<div id="outline-container-org68b48cb" class="outline-3">
+<h3 id="org68b48cb"><span class="section-number-3">15.2.</span> Explicació</h3>
 <div class="outline-text-3" id="text-15-2">
 <p>
 Aquest és el cas particular del lema d'Euclides (apartat 18) quan \(a = p\) és primer.
@@ -3072,12 +3127,12 @@ Si \(p\) no divideix \(a\), aleshores necessàriament \(\operatorname{mcd}(p,a) 
 </div>
 </div>
 </div>
-<div id="outline-container-orgf2a0b01" class="outline-2">
-<h2 id="orgf2a0b01"><span class="section-number-2">16.</span> 25. Teorema fonamental de l'aritmètica</h2>
+<div id="outline-container-org0a7e80c" class="outline-2">
+<h2 id="org0a7e80c"><span class="section-number-2">16.</span> 25. Teorema fonamental de l'aritmètica</h2>
 <div class="outline-text-2" id="text-16">
 </div>
-<div id="outline-container-orgce14db9" class="outline-3">
-<h3 id="orgce14db9"><span class="section-number-3">16.1.</span> Enunciat</h3>
+<div id="outline-container-org91179c1" class="outline-3">
+<h3 id="org91179c1"><span class="section-number-3">16.1.</span> Enunciat</h3>
 <div class="outline-text-3" id="text-16-1">
 <p>
 Qualsevol nombre enter que no sigui \(0\), \(1\) ni \(-1\) es pot descompondre en producte de potències de nombres primers, tots diferents, i aquesta descomposició és única si no tenim en compte l'ordre dels factors ni el signe.
@@ -3104,28 +3159,28 @@ on:
 <hr />
 </div>
 </div>
-<div id="outline-container-orgc2eee4e" class="outline-3">
-<h3 id="orgc2eee4e"><span class="section-number-3">16.2.</span> Demostració resumida</h3>
+<div id="outline-container-orgb830053" class="outline-3">
+<h3 id="orgb830053"><span class="section-number-3">16.2.</span> Demostració resumida</h3>
 <div class="outline-text-3" id="text-16-2">
 </div>
-<div id="outline-container-orgecfd1be" class="outline-4">
-<h4 id="orgecfd1be"><span class="section-number-4">16.2.1.</span> Existència</h4>
+<div id="outline-container-org37a3da7" class="outline-4">
+<h4 id="org37a3da7"><span class="section-number-4">16.2.1.</span> Existència</h4>
 <div class="outline-text-4" id="text-16-2-1">
 <p>
 Per inducció forta en \(n > 1\): si \(n\) és primer, fet; si \(n = ab\) amb \(1 < a, b < n\), per H.I. \(a\) i \(b\) factoritzen en primers i ajuntant-les s'obté la de \(n\).
 </p>
 </div>
 </div>
-<div id="outline-container-orga16d3b9" class="outline-4">
-<h4 id="orga16d3b9"><span class="section-number-4">16.2.2.</span> Lema clau</h4>
+<div id="outline-container-orgaa676f7" class="outline-4">
+<h4 id="orgaa676f7"><span class="section-number-4">16.2.2.</span> Lema clau</h4>
 <div class="outline-text-4" id="text-16-2-2">
 <p>
 Si \(p\) és primer, \(p \mid uv\) i \(p \nmid u\), llavors \(\operatorname{mcd}(p,u) = 1\). Per Bézout \(1 = px + uy\), d'on \(v = pxv + uyv\) és múltiple de \(p\). Per tant \(p \mid v\).
 </p>
 </div>
 </div>
-<div id="outline-container-org032d178" class="outline-4">
-<h4 id="org032d178"><span class="section-number-4">16.2.3.</span> Unicitat</h4>
+<div id="outline-container-orgb80daa8" class="outline-4">
+<h4 id="orgb80daa8"><span class="section-number-4">16.2.3.</span> Unicitat</h4>
 <div class="outline-text-4" id="text-16-2-3">
 <p>
 Si \(p_1 \cdots p_r = q_1 \cdots q_s\), llavors \(p_1 \mid q_j\) per algun \(j\), i com que són primers \(p_1 = q_j\). Cancel·lem i repetim: les dues llistes coincideixen llevat d'ordre. Agrupant repetits, \(a = p_1^{r_1} \cdots p_n^{r_n}\) amb \(r_i \ge 1\) únics. Si \(a < 0\), factoritzem \(-a > 0\) i hi afegim el signe.
@@ -3135,8 +3190,8 @@ Si \(p_1 \cdots p_r = q_1 \cdots q_s\), llavors \(p_1 \mid q_j\) per algun \(j\)
 </div>
 </div>
 </div>
-<div id="outline-container-orgcdae701" class="outline-3">
-<h3 id="orgcdae701"><span class="section-number-3">16.3.</span> Exemples</h3>
+<div id="outline-container-org24df457" class="outline-3">
+<h3 id="org24df457"><span class="section-number-3">16.3.</span> Exemples</h3>
 <div class="outline-text-3" id="text-16-3">
 <ol class="org-ol">
 <li><p>
@@ -3164,8 +3219,8 @@ O, si es permeten primers negatius, es pot repartir el signe entre els primers, 
 <hr />
 </div>
 </div>
-<div id="outline-container-orge048ec2" class="outline-3">
-<h3 id="orge048ec2"><span class="section-number-3">16.4.</span> Observacions sobre la unicitat</h3>
+<div id="outline-container-org230ed86" class="outline-3">
+<h3 id="org230ed86"><span class="section-number-3">16.4.</span> Observacions sobre la unicitat</h3>
 <div class="outline-text-3" id="text-16-4">
 <p>
 Un exemple de no-unicitat només aparent seria:
@@ -3189,8 +3244,8 @@ amb \(p_1 = 2\), \(p_2 = 2\), perquè no serien diferents. Ho agrupem com:
 <hr />
 </div>
 </div>
-<div id="outline-container-org24b296f" class="outline-3">
-<h3 id="org24b296f"><span class="section-number-3">16.5.</span> Importància</h3>
+<div id="outline-container-orgb08d792" class="outline-3">
+<h3 id="orgb08d792"><span class="section-number-3">16.5.</span> Importància</h3>
 <div class="outline-text-3" id="text-16-5">
 <p>
 Aquest teorema és fonamental perquè diu que els nombres primers són com els "àtoms" dels enters: qualsevol enter no nul ni \(\pm 1\) es construeix multiplicant primers d'una manera única. Serveix per calcular el mcd, el mcm, simplificar fraccions, estudiar divisibilitat, congruències, etc.
@@ -3200,20 +3255,20 @@ Aquest teorema és fonamental perquè diu que els nombres primers són com els "
 </div>
 </div>
 </div>
-<div id="outline-container-org18a8ebf" class="outline-2">
-<h2 id="org18a8ebf"><span class="section-number-2">17.</span> 26. Hi ha infinits nombres primers</h2>
+<div id="outline-container-org5c0af23" class="outline-2">
+<h2 id="org5c0af23"><span class="section-number-2">17.</span> 26. Hi ha infinits nombres primers</h2>
 <div class="outline-text-2" id="text-17">
 </div>
-<div id="outline-container-org92bc557" class="outline-3">
-<h3 id="org92bc557"><span class="section-number-3">17.1.</span> Enunciat</h3>
+<div id="outline-container-orgd2a535f" class="outline-3">
+<h3 id="orgd2a535f"><span class="section-number-3">17.1.</span> Enunciat</h3>
 <div class="outline-text-3" id="text-17-1">
 <p>
 Hi ha infinits nombres primers.
 </p>
 </div>
 </div>
-<div id="outline-container-org515dff7" class="outline-3">
-<h3 id="org515dff7"><span class="section-number-3">17.2.</span> Demostració (Euclides)</h3>
+<div id="outline-container-org7e35fe7" class="outline-3">
+<h3 id="org7e35fe7"><span class="section-number-3">17.2.</span> Demostració (Euclides)</h3>
 <div class="outline-text-3" id="text-17-2">
 <p>
 Suposem que només hi hagués un nombre finit de primers:
@@ -3245,12 +3300,12 @@ Així doncs, no hi pot haver un nombre finit de primers: n'hi ha infinits.
 </div>
 </div>
 </div>
-<div id="outline-container-org4911bab" class="outline-2">
-<h2 id="org4911bab"><span class="section-number-2">18.</span> 28. Proposició: mcd i mcm mitjançant la factorització en primers</h2>
+<div id="outline-container-org6d2634f" class="outline-2">
+<h2 id="org6d2634f"><span class="section-number-2">18.</span> 28. Proposició: mcd i mcm mitjançant la factorització en primers</h2>
 <div class="outline-text-2" id="text-18">
 </div>
-<div id="outline-container-org4c04ec5" class="outline-3">
-<h3 id="org4c04ec5"><span class="section-number-3">18.1.</span> Enunciat</h3>
+<div id="outline-container-org34629e3" class="outline-3">
+<h3 id="org34629e3"><span class="section-number-3">18.1.</span> Enunciat</h3>
 <div class="outline-text-3" id="text-18-1">
 <p>
 Siguin \(0 < a\) i \(0 < b\). Escrivim les seves factoritzacions en primers fent servir la mateixa llista de primers:
@@ -3272,8 +3327,8 @@ i
 </p>
 </div>
 </div>
-<div id="outline-container-orgd6ff254" class="outline-3">
-<h3 id="orgd6ff254"><span class="section-number-3">18.2.</span> Què són \(r_i\) i \(s_i\)?</h3>
+<div id="outline-container-orge70b4d3" class="outline-3">
+<h3 id="orge70b4d3"><span class="section-number-3">18.2.</span> Què són \(r_i\) i \(s_i\)?</h3>
 <div class="outline-text-3" id="text-18-2">
 <ul class="org-ul">
 <li>\(p_1, \dots, p_n\) són tots els primers que apareixen en \(a\), en \(b\), o en tots dos.</li>
@@ -3289,12 +3344,12 @@ Per tant, \(r_i, s_i \ge 0\).
 <hr />
 </div>
 </div>
-<div id="outline-container-org97a2406" class="outline-3">
-<h3 id="org97a2406"><span class="section-number-3">18.3.</span> Per què funciona?</h3>
+<div id="outline-container-orgf1ef075" class="outline-3">
+<h3 id="orgf1ef075"><span class="section-number-3">18.3.</span> Per què funciona?</h3>
 <div class="outline-text-3" id="text-18-3">
 </div>
-<div id="outline-container-org86047de" class="outline-4">
-<h4 id="org86047de"><span class="section-number-4">18.3.1.</span> Màxim comú divisor</h4>
+<div id="outline-container-orgf597684" class="outline-4">
+<h4 id="orgf597684"><span class="section-number-4">18.3.1.</span> Màxim comú divisor</h4>
 <div class="outline-text-4" id="text-18-3-1">
 <p>
 Un divisor comú de \(a\) i \(b\) només pot tenir els primers que apareixen en tots dos. A més, per a cada primer \(p_i\):
@@ -3320,8 +3375,8 @@ Per obtenir el màxim comú divisor, agafem precisament aquest exponent màxim p
 </p>
 </div>
 </div>
-<div id="outline-container-org700d332" class="outline-4">
-<h4 id="org700d332"><span class="section-number-4">18.3.2.</span> Mínim comú múltiple</h4>
+<div id="outline-container-org9917623" class="outline-4">
+<h4 id="org9917623"><span class="section-number-4">18.3.2.</span> Mínim comú múltiple</h4>
 <div class="outline-text-4" id="text-18-3-2">
 <p>
 Un múltiple comú de \(a\) i \(b\) ha de ser divisible per \(a\) i per \(b\). Per tant, per a cada primer \(p_i\), el seu exponent ha de ser com a mínim \(r_i\) i com a mínim \(s_i\). És a dir, com a mínim
@@ -3341,8 +3396,8 @@ Per obtenir el mínim comú múltiple, agafem exactament aquest exponent mínim 
 </div>
 </div>
 </div>
-<div id="outline-container-orgcf610f2" class="outline-3">
-<h3 id="orgcf610f2"><span class="section-number-3">18.4.</span> Exemple complet</h3>
+<div id="outline-container-org482dd8a" class="outline-3">
+<h3 id="org482dd8a"><span class="section-number-3">18.4.</span> Exemple complet</h3>
 <div class="outline-text-3" id="text-18-4">
 <p>
 Siguin
@@ -3420,8 +3475,8 @@ a = 2^3 \cdot 3^2 \cdot 5^1 \cdot 7^0, \qquad b = 2^2 \cdot 3^1 \cdot 5^0 \cdot 
 </tbody>
 </table>
 </div>
-<div id="outline-container-orgd243e83" class="outline-4">
-<h4 id="orgd243e83"><span class="section-number-4">18.4.1.</span> MCD</h4>
+<div id="outline-container-org02c0e70" class="outline-4">
+<h4 id="org02c0e70"><span class="section-number-4">18.4.1.</span> MCD</h4>
 <div class="outline-text-4" id="text-18-4-1">
 <p>
 Agafem els mínims:
@@ -3431,8 +3486,8 @@ Agafem els mínims:
 </p>
 </div>
 </div>
-<div id="outline-container-org134ec42" class="outline-4">
-<h4 id="org134ec42"><span class="section-number-4">18.4.2.</span> MCM</h4>
+<div id="outline-container-org260145f" class="outline-4">
+<h4 id="org260145f"><span class="section-number-4">18.4.2.</span> MCM</h4>
 <div class="outline-text-4" id="text-18-4-2">
 <p>
 Agafem els màxims:
@@ -3445,8 +3500,8 @@ Agafem els màxims:
 </div>
 </div>
 </div>
-<div id="outline-container-orge179b67" class="outline-3">
-<h3 id="orge179b67"><span class="section-number-3">18.5.</span> Propietat important</h3>
+<div id="outline-container-org28353c4" class="outline-3">
+<h3 id="org28353c4"><span class="section-number-3">18.5.</span> Propietat important</h3>
 <div class="outline-text-3" id="text-18-5">
 <p>
 Sempre es compleix:
@@ -3476,8 +3531,8 @@ Aquesta propietat surt del fet que, per a cada primer \(p_i\),
 <hr />
 </div>
 </div>
-<div id="outline-container-org2c3e1cc" class="outline-3">
-<h3 id="org2c3e1cc"><span class="section-number-3">18.6.</span> Observacions</h3>
+<div id="outline-container-orge49f005" class="outline-3">
+<h3 id="orge49f005"><span class="section-number-3">18.6.</span> Observacions</h3>
 <div class="outline-text-3" id="text-18-6">
 <ul class="org-ul">
 <li>Cal escriure els dos nombres amb la mateixa llista de primers. Si un primer no hi és, l'exponent és \(0\).</li>
@@ -3489,12 +3544,12 @@ Aquesta propietat surt del fet que, per a cada primer \(p_i\),
 </div>
 </div>
 </div>
-<div id="outline-container-org5e13e66" class="outline-2">
-<h2 id="org5e13e66"><span class="section-number-2">19.</span> 29. Aritmètica modular</h2>
+<div id="outline-container-orgf217dd1" class="outline-2">
+<h2 id="orgf217dd1"><span class="section-number-2">19.</span> 29. Aritmètica modular</h2>
 <div class="outline-text-2" id="text-19">
 </div>
-<div id="outline-container-org0938fc9" class="outline-3">
-<h3 id="org0938fc9"><span class="section-number-3">19.1.</span> Definició</h3>
+<div id="outline-container-orgcd68ceb" class="outline-3">
+<h3 id="orgcd68ceb"><span class="section-number-3">19.1.</span> Definició</h3>
 <div class="outline-text-3" id="text-19-1">
 <p>
 Suposem que \(m > 0\). Es diu que
@@ -3514,8 +3569,8 @@ Això equival a dir que \(a\) i \(b\) donen el mateix residu quan els dividim pe
 <hr />
 </div>
 </div>
-<div id="outline-container-org2e81381" class="outline-3">
-<h3 id="org2e81381"><span class="section-number-3">19.2.</span> Explicació: per què equival a tenir el mateix residu?</h3>
+<div id="outline-container-org468b39f" class="outline-3">
+<h3 id="org468b39f"><span class="section-number-3">19.2.</span> Explicació: per què equival a tenir el mateix residu?</h3>
 <div class="outline-text-3" id="text-19-2">
 <p>
 Si dividim \(a\) i \(b\) per \(m\):
@@ -3543,12 +3598,12 @@ r - r' = 0,
 <hr />
 </div>
 </div>
-<div id="outline-container-orgad15f72" class="outline-3">
-<h3 id="orgad15f72"><span class="section-number-3">19.3.</span> Exemples amb \(m = 5\)</h3>
+<div id="outline-container-orga65070a" class="outline-3">
+<h3 id="orga65070a"><span class="section-number-3">19.3.</span> Exemples amb \(m = 5\)</h3>
 <div class="outline-text-3" id="text-19-3">
 </div>
-<div id="outline-container-org361f9e9" class="outline-4">
-<h4 id="org361f9e9"><span class="section-number-4">19.3.1.</span> Exemple 1</h4>
+<div id="outline-container-org1bbf3f1" class="outline-4">
+<h4 id="org1bbf3f1"><span class="section-number-4">19.3.1.</span> Exemple 1</h4>
 <div class="outline-text-4" id="text-19-3-1">
 <p>
 \[
@@ -3558,8 +3613,8 @@ perquè \(7 - 2 = 5\), que és múltiple de \(5\). I, efectivament, tant \(7\) c
 </p>
 </div>
 </div>
-<div id="outline-container-orge517461" class="outline-4">
-<h4 id="orge517461"><span class="section-number-4">19.3.2.</span> Exemple 2</h4>
+<div id="outline-container-org1229118" class="outline-4">
+<h4 id="org1229118"><span class="section-number-4">19.3.2.</span> Exemple 2</h4>
 <div class="outline-text-4" id="text-19-3-2">
 <p>
 \[
@@ -3575,12 +3630,12 @@ Podem imaginar-ho com calaixos: cada residu possible (\(0, 1, \dots, m-1\)) és 
 </div>
 </div>
 </div>
-<div id="outline-container-org1cbfe50" class="outline-2">
-<h2 id="org1cbfe50"><span class="section-number-2">20.</span> 30. La congruència mòdul \(m\) és una relació d'equivalència</h2>
+<div id="outline-container-org3d948f2" class="outline-2">
+<h2 id="org3d948f2"><span class="section-number-2">20.</span> 30. La congruència mòdul \(m\) és una relació d'equivalència</h2>
 <div class="outline-text-2" id="text-20">
 </div>
-<div id="outline-container-orgc0a8a78" class="outline-3">
-<h3 id="orgc0a8a78"><span class="section-number-3">20.1.</span> Recordatori: què vol dir \(a \equiv b \pmod{m}\)</h3>
+<div id="outline-container-orgf3d1bbc" class="outline-3">
+<h3 id="orgf3d1bbc"><span class="section-number-3">20.1.</span> Recordatori: què vol dir \(a \equiv b \pmod{m}\)</h3>
 <div class="outline-text-3" id="text-20-1">
 <p>
 Donats \(a, b, m \in \mathbb{Z}\) amb \(m > 0\), diem que
@@ -3600,8 +3655,8 @@ Això equival a dir que \(a\) i \(b\) donen el mateix residu en dividir per \(m\
 <hr />
 </div>
 </div>
-<div id="outline-container-org1abfae4" class="outline-3">
-<h3 id="org1abfae4"><span class="section-number-3">20.2.</span> Què és una relació d'equivalència?</h3>
+<div id="outline-container-org878a9e6" class="outline-3">
+<h3 id="org878a9e6"><span class="section-number-3">20.2.</span> Què és una relació d'equivalència?</h3>
 <div class="outline-text-3" id="text-20-2">
 <p>
 Una relació \(\sim\) sobre un conjunt és una relació d'equivalència si compleix tres propietats:
@@ -3620,12 +3675,12 @@ Volem veure que \(\equiv \pmod{m}\) les compleix totes tres.
 <hr />
 </div>
 </div>
-<div id="outline-container-org739e986" class="outline-3">
-<h3 id="org739e986"><span class="section-number-3">20.3.</span> Propietat reflexiva</h3>
+<div id="outline-container-orgf3aba30" class="outline-3">
+<h3 id="orgf3aba30"><span class="section-number-3">20.3.</span> Propietat reflexiva</h3>
 <div class="outline-text-3" id="text-20-3">
 </div>
-<div id="outline-container-org3009efa" class="outline-4">
-<h4 id="org3009efa"><span class="section-number-4">20.3.1.</span> Enunciat</h4>
+<div id="outline-container-org181f489" class="outline-4">
+<h4 id="org181f489"><span class="section-number-4">20.3.1.</span> Enunciat</h4>
 <div class="outline-text-4" id="text-20-3-1">
 <p>
 \[
@@ -3634,8 +3689,8 @@ a \equiv a \pmod{m} \quad \text{per a tot } a \in \mathbb{Z}.
 </p>
 </div>
 </div>
-<div id="outline-container-org0589bc0" class="outline-4">
-<h4 id="org0589bc0"><span class="section-number-4">20.3.2.</span> Demostració</h4>
+<div id="outline-container-org8eac33d" class="outline-4">
+<h4 id="org8eac33d"><span class="section-number-4">20.3.2.</span> Demostració</h4>
 <div class="outline-text-4" id="text-20-3-2">
 <p>
 Cal veure que \(a - a\) és múltiple de \(m\):
@@ -3650,8 +3705,8 @@ En paraules: tot nombre és al mateix calaix que ell mateix.
 </p>
 </div>
 </div>
-<div id="outline-container-org4b95740" class="outline-4">
-<h4 id="org4b95740"><span class="section-number-4">20.3.3.</span> Exemple</h4>
+<div id="outline-container-orgbdfcfe9" class="outline-4">
+<h4 id="orgbdfcfe9"><span class="section-number-4">20.3.3.</span> Exemple</h4>
 <div class="outline-text-4" id="text-20-3-3">
 <p>
 \[
@@ -3664,20 +3719,20 @@ ja que \(7 - 7 = 0\).
 </div>
 </div>
 </div>
-<div id="outline-container-org34062dd" class="outline-3">
-<h3 id="org34062dd"><span class="section-number-3">20.4.</span> Propietat simètrica</h3>
+<div id="outline-container-org313882c" class="outline-3">
+<h3 id="org313882c"><span class="section-number-3">20.4.</span> Propietat simètrica</h3>
 <div class="outline-text-3" id="text-20-4">
 </div>
-<div id="outline-container-org6037b07" class="outline-4">
-<h4 id="org6037b07"><span class="section-number-4">20.4.1.</span> Enunciat</h4>
+<div id="outline-container-orgbaf3f80" class="outline-4">
+<h4 id="orgbaf3f80"><span class="section-number-4">20.4.1.</span> Enunciat</h4>
 <div class="outline-text-4" id="text-20-4-1">
 <p>
 Si \(a \equiv b \pmod{m}\), llavors \(b \equiv a \pmod{m}\).
 </p>
 </div>
 </div>
-<div id="outline-container-org1fcbfab" class="outline-4">
-<h4 id="org1fcbfab"><span class="section-number-4">20.4.2.</span> Demostració</h4>
+<div id="outline-container-org21794aa" class="outline-4">
+<h4 id="org21794aa"><span class="section-number-4">20.4.2.</span> Demostració</h4>
 <div class="outline-text-4" id="text-20-4-2">
 <p>
 Suposem que \(a \equiv b \pmod{m}\). Això vol dir que \(a - b\) és múltiple de \(m\).
@@ -3699,8 +3754,8 @@ En paraules: si dos nombres són al mateix calaix, l'ordre no importa.
 </p>
 </div>
 </div>
-<div id="outline-container-org5e5818b" class="outline-4">
-<h4 id="org5e5818b"><span class="section-number-4">20.4.3.</span> Exemple</h4>
+<div id="outline-container-orgec31d25" class="outline-4">
+<h4 id="orgec31d25"><span class="section-number-4">20.4.3.</span> Exemple</h4>
 <div class="outline-text-4" id="text-20-4-3">
 <p>
 Com que \(7 \equiv 2 \pmod{5}\) (perquè \(7 - 2 = 5\)), també \(2 \equiv 7 \pmod{5}\) (perquè \(2 - 7 = -5\)).
@@ -3710,20 +3765,20 @@ Com que \(7 \equiv 2 \pmod{5}\) (perquè \(7 - 2 = 5\)), també \(2 \equiv 7 \pm
 </div>
 </div>
 </div>
-<div id="outline-container-org198e865" class="outline-3">
-<h3 id="org198e865"><span class="section-number-3">20.5.</span> Propietat transitiva</h3>
+<div id="outline-container-org2f22d28" class="outline-3">
+<h3 id="org2f22d28"><span class="section-number-3">20.5.</span> Propietat transitiva</h3>
 <div class="outline-text-3" id="text-20-5">
 </div>
-<div id="outline-container-org3e1c5fb" class="outline-4">
-<h4 id="org3e1c5fb"><span class="section-number-4">20.5.1.</span> Enunciat</h4>
+<div id="outline-container-orgf0abb7a" class="outline-4">
+<h4 id="orgf0abb7a"><span class="section-number-4">20.5.1.</span> Enunciat</h4>
 <div class="outline-text-4" id="text-20-5-1">
 <p>
 Si \(a \equiv b \pmod{m}\) i \(b \equiv c \pmod{m}\), llavors \(a \equiv c \pmod{m}\).
 </p>
 </div>
 </div>
-<div id="outline-container-orgd2570d4" class="outline-4">
-<h4 id="orgd2570d4"><span class="section-number-4">20.5.2.</span> Demostració</h4>
+<div id="outline-container-org836c09d" class="outline-4">
+<h4 id="org836c09d"><span class="section-number-4">20.5.2.</span> Demostració</h4>
 <div class="outline-text-4" id="text-20-5-2">
 <p>
 Suposem que \(a - b\) és múltiple de \(m\) i que \(b - c\) també ho és.
@@ -3745,8 +3800,8 @@ En paraules: si \(a\) comparteix calaix amb \(b\), i \(b\) comparteix calaix amb
 </p>
 </div>
 </div>
-<div id="outline-container-org16685df" class="outline-4">
-<h4 id="org16685df"><span class="section-number-4">20.5.3.</span> Exemple</h4>
+<div id="outline-container-org3241541" class="outline-4">
+<h4 id="org3241541"><span class="section-number-4">20.5.3.</span> Exemple</h4>
 <div class="outline-text-4" id="text-20-5-3">
 <p>
 \(7 \equiv 2 \pmod{5}\) i \(2 \equiv -3 \pmod{5}\). Llavors \(7 \equiv -3 \pmod{5}\), ja que \(7 - (-3) = 10\), que és múltiple de \(5\).
@@ -3756,8 +3811,8 @@ En paraules: si \(a\) comparteix calaix amb \(b\), i \(b\) comparteix calaix amb
 </div>
 </div>
 </div>
-<div id="outline-container-org487e2f7" class="outline-3">
-<h3 id="org487e2f7"><span class="section-number-3">20.6.</span> Conseqüència: classes de residus</h3>
+<div id="outline-container-org92d3842" class="outline-3">
+<h3 id="org92d3842"><span class="section-number-3">20.6.</span> Conseqüència: classes de residus</h3>
 <div class="outline-text-3" id="text-20-6">
 <p>
 Com que \(\equiv \pmod{m}\) és una relació d'equivalència, parteix \(\mathbb{Z}\) en classes d'equivalència disjuntes, una per a cada residu possible.
@@ -3782,8 +3837,8 @@ El conjunt d'aquestes classes s'escriu \(\mathbb{Z}/m\mathbb{Z}\) (o \(\mathbb{Z
 <hr />
 </div>
 </div>
-<div id="outline-container-org6a6bcdd" class="outline-3">
-<h3 id="org6a6bcdd"><span class="section-number-3">20.7.</span> Resum</h3>
+<div id="outline-container-org31fe30e" class="outline-3">
+<h3 id="org31fe30e"><span class="section-number-3">20.7.</span> Resum</h3>
 <div class="outline-text-3" id="text-20-7">
 <ul class="org-ul">
 <li>\(\equiv \pmod{m}\) és una relació d'equivalència perquè compleix:
@@ -3798,12 +3853,12 @@ El conjunt d'aquestes classes s'escriu \(\mathbb{Z}/m\mathbb{Z}\) (o \(\mathbb{Z
 </div>
 </div>
 </div>
-<div id="outline-container-org9c9a89c" class="outline-2">
-<h2 id="org9c9a89c"><span class="section-number-2">21.</span> 31. Definició: classes d'equivalència mòdul \(m\)</h2>
+<div id="outline-container-org79d0f3f" class="outline-2">
+<h2 id="org79d0f3f"><span class="section-number-2">21.</span> 31. Definició: classes d'equivalència mòdul \(m\)</h2>
 <div class="outline-text-2" id="text-21">
 </div>
-<div id="outline-container-orgef1e3b3" class="outline-3">
-<h3 id="orgef1e3b3"><span class="section-number-3">21.1.</span> Definició</h3>
+<div id="outline-container-org212792e" class="outline-3">
+<h3 id="org212792e"><span class="section-number-3">21.1.</span> Definició</h3>
 <div class="outline-text-3" id="text-21-1">
 <p>
 Donat un enter \(a \in \mathbb{Z}\), la classe d'equivalència de \(a\) mòdul \(m\) es defineix com:
@@ -3816,8 +3871,8 @@ Donat un enter \(a \in \mathbb{Z}\), la classe d'equivalència de \(a\) mòdul \
 <hr />
 </div>
 </div>
-<div id="outline-container-orgc8b7499" class="outline-3">
-<h3 id="orgc8b7499"><span class="section-number-3">21.2.</span> Formes equivalents</h3>
+<div id="outline-container-org4f04237" class="outline-3">
+<h3 id="org4f04237"><span class="section-number-3">21.2.</span> Formes equivalents</h3>
 <div class="outline-text-3" id="text-21-2">
 <p>
 La mateixa classe es pot escriure com:
@@ -3834,8 +3889,8 @@ Intuïció: \([a]_m\) és el "calaix" del residu de \(a\). Conté tots els enter
 <hr />
 </div>
 </div>
-<div id="outline-container-orgf347d84" class="outline-3">
-<h3 id="orgf347d84"><span class="section-number-3">21.3.</span> Exemple amb \(m = 5\)</h3>
+<div id="outline-container-orgdc136d0" class="outline-3">
+<h3 id="orgdc136d0"><span class="section-number-3">21.3.</span> Exemple amb \(m = 5\)</h3>
 <div class="outline-text-3" id="text-21-3">
 <p>
 \[
@@ -3858,8 +3913,8 @@ Intuïció: \([a]_m\) és el "calaix" del residu de \(a\). Conté tots els enter
 <hr />
 </div>
 </div>
-<div id="outline-container-org77e57b1" class="outline-3">
-<h3 id="org77e57b1"><span class="section-number-3">21.4.</span> Observació important</h3>
+<div id="outline-container-org7823bed" class="outline-3">
+<h3 id="org7823bed"><span class="section-number-3">21.4.</span> Observació important</h3>
 <div class="outline-text-3" id="text-21-4">
 <p>
 \[
@@ -3880,12 +3935,12 @@ Per tant, una mateixa classe es pot representar amb qualsevol dels seus elements
 </div>
 </div>
 </div>
-<div id="outline-container-org6263437" class="outline-2">
-<h2 id="org6263437"><span class="section-number-2">22.</span> 32. Observació: partició de \(\mathbb{Z}\) en \(m\) classes</h2>
+<div id="outline-container-org67da8f8" class="outline-2">
+<h2 id="org67da8f8"><span class="section-number-2">22.</span> 32. Observació: partició de \(\mathbb{Z}\) en \(m\) classes</h2>
 <div class="outline-text-2" id="text-22">
 </div>
-<div id="outline-container-orgf12a72c" class="outline-3">
-<h3 id="orgf12a72c"><span class="section-number-3">22.1.</span> Enunciat</h3>
+<div id="outline-container-org2f715d5" class="outline-3">
+<h3 id="org2f715d5"><span class="section-number-3">22.1.</span> Enunciat</h3>
 <div class="outline-text-3" id="text-22-1">
 <p>
 Les \(m\) classes
@@ -3906,12 +3961,12 @@ Això vol dir que tenim una partició de \(\mathbb{Z}\) en \(m\) classes.
 <hr />
 </div>
 </div>
-<div id="outline-container-org5c7c2b0" class="outline-3">
-<h3 id="org5c7c2b0"><span class="section-number-3">22.2.</span> Demostració</h3>
+<div id="outline-container-org82264b9" class="outline-3">
+<h3 id="org82264b9"><span class="section-number-3">22.2.</span> Demostració</h3>
 <div class="outline-text-3" id="text-22-2">
 </div>
-<div id="outline-container-orgfae9be9" class="outline-4">
-<h4 id="orgfae9be9"><span class="section-number-4">22.2.1.</span> 1. Existència</h4>
+<div id="outline-container-org198c639" class="outline-4">
+<h4 id="org198c639"><span class="section-number-4">22.2.1.</span> 1. Existència</h4>
 <div class="outline-text-4" id="text-22-2-1">
 <p>
 Per a qualsevol \(a \in \mathbb{Z}\), dividim \(a\) per \(m\):
@@ -3923,8 +3978,8 @@ Per tant, tot enter pertany com a mínim a una classe.
 </p>
 </div>
 </div>
-<div id="outline-container-org2954b20" class="outline-4">
-<h4 id="org2954b20"><span class="section-number-4">22.2.2.</span> 2. Unicitat</h4>
+<div id="outline-container-orgb4ac504" class="outline-4">
+<h4 id="orgb4ac504"><span class="section-number-4">22.2.2.</span> 2. Unicitat</h4>
 <div class="outline-text-4" id="text-22-2-2">
 <p>
 Si \(a \in [r]_m\) i \(a \in [s]_m\) amb \(0 \le r, s < m\), llavors
@@ -3937,8 +3992,8 @@ Per tant, cada enter pertany exactament a una classe.
 </p>
 </div>
 </div>
-<div id="outline-container-org6b82891" class="outline-4">
-<h4 id="org6b82891"><span class="section-number-4">22.2.3.</span> 3. Disjunció</h4>
+<div id="outline-container-org3a582cd" class="outline-4">
+<h4 id="org3a582cd"><span class="section-number-4">22.2.3.</span> 3. Disjunció</h4>
 <div class="outline-text-4" id="text-22-2-3">
 <p>
 Si \([r]_m \cap [s]_m \neq \varnothing\), aleshores existeix algun \(b\) que és congruent amb \(r\) i amb \(s\).
@@ -3950,8 +4005,8 @@ Així, classes diferents no es tallen.
 </div>
 </div>
 </div>
-<div id="outline-container-org2d154da" class="outline-3">
-<h3 id="org2d154da"><span class="section-number-3">22.3.</span> El conjunt quocient \(\mathbb{Z}/m\mathbb{Z}\)</h3>
+<div id="outline-container-org22692ed" class="outline-3">
+<h3 id="org22692ed"><span class="section-number-3">22.3.</span> El conjunt quocient \(\mathbb{Z}/m\mathbb{Z}\)</h3>
 <div class="outline-text-3" id="text-22-3">
 <p>
 El conjunt de totes les classes d'equivalència mòdul \(m\) s'escriu:
@@ -3961,8 +4016,8 @@ El conjunt de totes les classes d'equivalència mòdul \(m\) s'escriu:
 Aquest conjunt té exactament \(m\) elements.
 </p>
 </div>
-<div id="outline-container-org0f3b9c8" class="outline-4">
-<h4 id="org0f3b9c8"><span class="section-number-4">22.3.1.</span> Exemple amb \(m = 5\)</h4>
+<div id="outline-container-orgb5b8549" class="outline-4">
+<h4 id="orgb5b8549"><span class="section-number-4">22.3.1.</span> Exemple amb \(m = 5\)</h4>
 <div class="outline-text-4" id="text-22-3-1">
 <p>
 \[
@@ -3978,8 +4033,8 @@ Cada classe és un conjunt infinit, però el conjunt de classes \(\mathbb{Z}/5\m
 </div>
 </div>
 </div>
-<div id="outline-container-orgdb62c1b" class="outline-3">
-<h3 id="orgdb62c1b"><span class="section-number-3">22.4.</span> Nota</h3>
+<div id="outline-container-org193041d" class="outline-3">
+<h3 id="org193041d"><span class="section-number-3">22.4.</span> Nota</h3>
 <div class="outline-text-3" id="text-22-4">
 <ul class="org-ul">
 <li>Si \(m = 1\), hi ha una sola classe: \([0]_1 = \mathbb{Z}\).</li>
@@ -4000,19 +4055,19 @@ Però això ja seria el següent tema.
 </div>
 </div>
 </div>
-<div id="outline-container-org31bb474" class="outline-2">
-<h2 id="org31bb474"><span class="section-number-2">23.</span> 33. Observació: compatibilitat de la congruència amb la suma i el producte</h2>
+<div id="outline-container-org4e79e3c" class="outline-2">
+<h2 id="org4e79e3c"><span class="section-number-2">23.</span> 33. Observació: compatibilitat de la congruència amb la suma i el producte</h2>
 <div class="outline-text-2" id="text-23">
 </div>
-<div id="outline-container-org6f54e0d" class="outline-3">
-<h3 id="org6f54e0d"><span class="section-number-3">23.1.</span> Enunciat</h3>
+<div id="outline-container-orgc222426" class="outline-3">
+<h3 id="orgc222426"><span class="section-number-3">23.1.</span> Enunciat</h3>
 <div class="outline-text-3" id="text-23-1">
 <p>
 Siguin \(a, a_0, b, b_0 \in \mathbb{Z}\) i \(m > 0\). Aleshores:
 </p>
 </div>
-<div id="outline-container-org2e3999a" class="outline-4">
-<h4 id="org2e3999a"><span class="section-number-4">23.1.1.</span> (i) Compatibilitat amb la suma</h4>
+<div id="outline-container-org5fd9fd4" class="outline-4">
+<h4 id="org5fd9fd4"><span class="section-number-4">23.1.1.</span> (i) Compatibilitat amb la suma</h4>
 <div class="outline-text-4" id="text-23-1-1">
 <p>
 Si \(a \equiv a_0 \pmod{m}\) i \(b \equiv b_0 \pmod{m}\), llavors
@@ -4022,8 +4077,8 @@ a + b \equiv a_0 + b_0 \pmod{m}.
 </p>
 </div>
 </div>
-<div id="outline-container-org6da3944" class="outline-4">
-<h4 id="org6da3944"><span class="section-number-4">23.1.2.</span> (ii) Compatibilitat amb el producte</h4>
+<div id="outline-container-org65bb2b8" class="outline-4">
+<h4 id="org65bb2b8"><span class="section-number-4">23.1.2.</span> (ii) Compatibilitat amb el producte</h4>
 <div class="outline-text-4" id="text-23-1-2">
 <p>
 Si \(a \equiv a_0 \pmod{m}\) i \(b \equiv b_0 \pmod{m}\), llavors
@@ -4040,8 +4095,8 @@ a \cdot b \equiv a_0 \cdot b_0 \pmod{m}.
 </div>
 </div>
 </div>
-<div id="outline-container-orga7a795b" class="outline-3">
-<h3 id="orga7a795b"><span class="section-number-3">23.2.</span> Demostració de (i)</h3>
+<div id="outline-container-org8adfff4" class="outline-3">
+<h3 id="org8adfff4"><span class="section-number-3">23.2.</span> Demostració de (i)</h3>
 <div class="outline-text-3" id="text-23-2">
 <p>
 Suposem que \(a \equiv a_0 \pmod{m}\) i \(b \equiv b_0 \pmod{m}\). Això vol dir que
@@ -4067,8 +4122,8 @@ a + b \equiv a_0 + b_0 \pmod{m}.
 <hr />
 </div>
 </div>
-<div id="outline-container-org034d2d7" class="outline-3">
-<h3 id="org034d2d7"><span class="section-number-3">23.3.</span> Demostració de (ii)</h3>
+<div id="outline-container-org863186a" class="outline-3">
+<h3 id="org863186a"><span class="section-number-3">23.3.</span> Demostració de (ii)</h3>
 <div class="outline-text-3" id="text-23-3">
 <p>
 Suposem igualment que \(a \equiv a_0 \pmod{m}\) i \(b \equiv b_0 \pmod{m}\). Volem veure que
@@ -4100,8 +4155,8 @@ a \cdot b \equiv a_0 \cdot b_0 \pmod{m}.
 <hr />
 </div>
 </div>
-<div id="outline-container-orgfdc5680" class="outline-3">
-<h3 id="orgfdc5680"><span class="section-number-3">23.4.</span> Observació addicional: compatibilitat amb la resta</h3>
+<div id="outline-container-orgf4a0531" class="outline-3">
+<h3 id="orgf4a0531"><span class="section-number-3">23.4.</span> Observació addicional: compatibilitat amb la resta</h3>
 <div class="outline-text-3" id="text-23-4">
 <p>
 També es compleix:
@@ -4114,8 +4169,8 @@ Això surt de (i) aplicat a \(b\) i \(-b\), o directament fent la diferència.
 <hr />
 </div>
 </div>
-<div id="outline-container-orgf78adf0" class="outline-3">
-<h3 id="orgf78adf0"><span class="section-number-3">23.5.</span> Exemple amb \(m = 5\)</h3>
+<div id="outline-container-org01db7bb" class="outline-3">
+<h3 id="org01db7bb"><span class="section-number-3">23.5.</span> Exemple amb \(m = 5\)</h3>
 <div class="outline-text-3" id="text-23-5">
 <p>
 Tenim \(7 \equiv 2 \pmod{5}\) i \(8 \equiv 3 \pmod{5}\). Llavors:
@@ -4132,12 +4187,12 @@ Els resultats són congruents, com diu l'observació.
 </div>
 </div>
 </div>
-<div id="outline-container-orgda99d93" class="outline-2">
-<h2 id="orgda99d93"><span class="section-number-2">24.</span> 34. Teorema: \(\mathbb{Z}/m\mathbb{Z}\) és un anell commutatiu</h2>
+<div id="outline-container-orgb47cd8b" class="outline-2">
+<h2 id="orgb47cd8b"><span class="section-number-2">24.</span> 34. Teorema: \(\mathbb{Z}/m\mathbb{Z}\) és un anell commutatiu</h2>
 <div class="outline-text-2" id="text-24">
 </div>
-<div id="outline-container-orgad71841" class="outline-3">
-<h3 id="orgad71841"><span class="section-number-3">24.1.</span> Idea</h3>
+<div id="outline-container-org6317ade" class="outline-3">
+<h3 id="org6317ade"><span class="section-number-3">24.1.</span> Idea</h3>
 <div class="outline-text-3" id="text-24-1">
 <p>
 A la secció anterior hem vist que la congruència respecta la suma i el producte. Això permet definir operacions sobre el conjunt de classes \(\mathbb{Z}/m\mathbb{Z}\).
@@ -4146,8 +4201,8 @@ A la secció anterior hem vist que la congruència respecta la suma i el product
 <hr />
 </div>
 </div>
-<div id="outline-container-org35c3606" class="outline-3">
-<h3 id="org35c3606"><span class="section-number-3">24.2.</span> Definició de les operacions</h3>
+<div id="outline-container-org02bb166" class="outline-3">
+<h3 id="org02bb166"><span class="section-number-3">24.2.</span> Definició de les operacions</h3>
 <div class="outline-text-3" id="text-24-2">
 <p>
 A \(\mathbb{Z}/m\mathbb{Z}\) definim:
@@ -4163,8 +4218,8 @@ A \(\mathbb{Z}/m\mathbb{Z}\) definim:
 <hr />
 </div>
 </div>
-<div id="outline-container-org257790b" class="outline-3">
-<h3 id="org257790b"><span class="section-number-3">24.3.</span> Primer: les operacions estan ben definides</h3>
+<div id="outline-container-org114af7e" class="outline-3">
+<h3 id="org114af7e"><span class="section-number-3">24.3.</span> Primer: les operacions estan ben definides</h3>
 <div class="outline-text-3" id="text-24-3">
 <p>
 Que una operació estigui ben definida vol dir que el resultat no depèn dels representants triats. És a dir, si canviem \(a\) per un altre \(a_0\) amb \([a]_m = [a_0]_m\), i \(b\) per un altre \(b_0\) amb \([b]_m = [b_0]_m\), el resultat ha de ser el mateix.
@@ -4208,8 +4263,8 @@ Així, les operacions no depenen dels representants. Estan ben definides.
 <hr />
 </div>
 </div>
-<div id="outline-container-org19dacf3" class="outline-3">
-<h3 id="org19dacf3"><span class="section-number-3">24.4.</span> Segon: \(\mathbb{Z}/m\mathbb{Z}\) amb aquestes operacions és un anell commutatiu</h3>
+<div id="outline-container-org40879eb" class="outline-3">
+<h3 id="org40879eb"><span class="section-number-3">24.4.</span> Segon: \(\mathbb{Z}/m\mathbb{Z}\) amb aquestes operacions és un anell commutatiu</h3>
 <div class="outline-text-3" id="text-24-4">
 <p>
 Un anell commutatiu és un conjunt amb dues operacions, suma i producte, que compleixen les propietats habituals: associativitat, commutativitat, element neutre, element oposat per a la suma, i distributivitat del producte respecte de la suma.
@@ -4219,8 +4274,8 @@ Un anell commutatiu és un conjunt amb dues operacions, suma i producte, que com
 Comprovem-les per a \(\mathbb{Z}/m\mathbb{Z}\).
 </p>
 </div>
-<div id="outline-container-orgf783fb4" class="outline-4">
-<h4 id="orgf783fb4"><span class="section-number-4">24.4.1.</span> Suma</h4>
+<div id="outline-container-org3e85c93" class="outline-4">
+<h4 id="org3e85c93"><span class="section-number-4">24.4.1.</span> Suma</h4>
 <div class="outline-text-4" id="text-24-4-1">
 <ol class="org-ol">
 <li>Associativa:</li>
@@ -4259,8 +4314,8 @@ Comprovem-les per a \(\mathbb{Z}/m\mathbb{Z}\).
 </p>
 </div>
 </div>
-<div id="outline-container-org5b63b15" class="outline-4">
-<h4 id="org5b63b15"><span class="section-number-4">24.4.2.</span> Producte</h4>
+<div id="outline-container-org3918f11" class="outline-4">
+<h4 id="org3918f11"><span class="section-number-4">24.4.2.</span> Producte</h4>
 <div class="outline-text-4" id="text-24-4-2">
 <ol class="org-ol">
 <li>Associatiu:</li>
@@ -4290,8 +4345,8 @@ Comprovem-les per a \(\mathbb{Z}/m\mathbb{Z}\).
 </p>
 </div>
 </div>
-<div id="outline-container-org236d45c" class="outline-4">
-<h4 id="org236d45c"><span class="section-number-4">24.4.3.</span> Distributivitat</h4>
+<div id="outline-container-org7dbd2a4" class="outline-4">
+<h4 id="org7dbd2a4"><span class="section-number-4">24.4.3.</span> Distributivitat</h4>
 <div class="outline-text-4" id="text-24-4-3">
 <p>
 El producte és distributiu respecte de la suma:
@@ -4305,8 +4360,8 @@ Igualment per l'altre costat, però com que el producte és commutatiu, ja queda
 </div>
 </div>
 </div>
-<div id="outline-container-orgffc98b0" class="outline-3">
-<h3 id="orgffc98b0"><span class="section-number-3">24.5.</span> Conclusió</h3>
+<div id="outline-container-org2efea02" class="outline-3">
+<h3 id="org2efea02"><span class="section-number-3">24.5.</span> Conclusió</h3>
 <div class="outline-text-3" id="text-24-5">
 <p>
 Amb les operacions
@@ -4322,8 +4377,8 @@ el conjunt \(\mathbb{Z}/m\mathbb{Z}\) té estructura d'anell commutatiu amb unit
 <hr />
 </div>
 </div>
-<div id="outline-container-org61b6f72" class="outline-3">
-<h3 id="org61b6f72"><span class="section-number-3">24.6.</span> Exemple amb \(\mathbb{Z}/5\mathbb{Z}\)</h3>
+<div id="outline-container-orgf0f2bc7" class="outline-3">
+<h3 id="orgf0f2bc7"><span class="section-number-3">24.6.</span> Exemple amb \(\mathbb{Z}/5\mathbb{Z}\)</h3>
 <div class="outline-text-3" id="text-24-6">
 <p>
 A \(\mathbb{Z}/5\mathbb{Z}\):
@@ -4355,8 +4410,8 @@ Coincideix.
 <hr />
 </div>
 </div>
-<div id="outline-container-orgac7a3f0" class="outline-3">
-<h3 id="orgac7a3f0"><span class="section-number-3">24.7.</span> Nota final</h3>
+<div id="outline-container-org9e3b7e9" class="outline-3">
+<h3 id="org9e3b7e9"><span class="section-number-3">24.7.</span> Nota final</h3>
 <div class="outline-text-3" id="text-24-7">
 <p>
 Si \(m\) és primer, aleshores \(\mathbb{Z}/m\mathbb{Z}\) no només és un anell commutatiu, sinó que a més tot element no nul té invers multiplicatiu, i per tant és un cos. Per exemple, \(\mathbb{Z}/5\mathbb{Z}\) és un cos. En canvi, \(\mathbb{Z}/6\mathbb{Z}\) no és un cos, perquè, per exemple, \([2]\) no té invers: no existeix cap \([x]\) tal que \([2]\cdot[x] = [1]\).
@@ -4368,15 +4423,15 @@ Però això ja correspondria a un tema posterior.
 </div>
 </div>
 </div>
-<div id="outline-container-org55fbfcc" class="outline-2">
-<h2 id="org55fbfcc"><span class="section-number-2">25.</span> 35. Proposició: invertibles, cossos i divisors de zero</h2>
+<div id="outline-container-orgfed5b53" class="outline-2">
+<h2 id="orgfed5b53"><span class="section-number-2">25.</span> 35. Proposició: invertibles, cossos i divisors de zero</h2>
 <div class="outline-text-2" id="text-25">
 <p>
 Suposem \(m > 1\) i treballem a l'anell \(\mathbb{Z}/m\mathbb{Z}\).
 </p>
 </div>
-<div id="outline-container-org67d35e0" class="outline-3">
-<h3 id="org67d35e0"><span class="section-number-3">25.1.</span> Recordatori</h3>
+<div id="outline-container-orga3e68e8" class="outline-3">
+<h3 id="orga3e68e8"><span class="section-number-3">25.1.</span> Recordatori</h3>
 <div class="outline-text-3" id="text-25-1">
 <ul class="org-ul">
 <li>\([a]_m\) és invertible (o una unitat) si existeix \([x]_m\) tal que</li>
@@ -4393,12 +4448,12 @@ Suposem \(m > 1\) i treballem a l'anell \(\mathbb{Z}/m\mathbb{Z}\).
 <hr />
 </div>
 </div>
-<div id="outline-container-org705c448" class="outline-3">
-<h3 id="org705c448"><span class="section-number-3">25.2.</span> (i) \([a]_m\) és invertible \(\iff\) \(a\) i \(m\) són coprimers</h3>
+<div id="outline-container-orgb5a59e3" class="outline-3">
+<h3 id="orgb5a59e3"><span class="section-number-3">25.2.</span> (i) \([a]_m\) és invertible \(\iff\) \(a\) i \(m\) són coprimers</h3>
 <div class="outline-text-3" id="text-25-2">
 </div>
-<div id="outline-container-org7aeee7e" class="outline-4">
-<h4 id="org7aeee7e"><span class="section-number-4">25.2.1.</span> Demostració</h4>
+<div id="outline-container-org879cbda" class="outline-4">
+<h4 id="org879cbda"><span class="section-number-4">25.2.1.</span> Demostració</h4>
 <div class="outline-text-4" id="text-25-2-1">
 <p>
 \[
@@ -4431,8 +4486,8 @@ Per tant, \([a]_m\) té invers si i només si \(a\) i \(m\) són coprimers.
 </p>
 </div>
 </div>
-<div id="outline-container-orgd498d6d" class="outline-4">
-<h4 id="orgd498d6d"><span class="section-number-4">25.2.2.</span> Exemple amb \(m = 5\)</h4>
+<div id="outline-container-org990a8dd" class="outline-4">
+<h4 id="org990a8dd"><span class="section-number-4">25.2.2.</span> Exemple amb \(m = 5\)</h4>
 <div class="outline-text-4" id="text-25-2-2">
 <ul class="org-ul">
 <li>\([2]_5\) és invertible perquè \(\operatorname{mcd}(2,5) = 1\). El seu invers és \([3]_5\), ja que \(2 \cdot 3 = 6 \equiv 1 \pmod{5}\).</li>
@@ -4440,8 +4495,8 @@ Per tant, \([a]_m\) té invers si i només si \(a\) i \(m\) són coprimers.
 </ul>
 </div>
 </div>
-<div id="outline-container-org7a12305" class="outline-4">
-<h4 id="org7a12305"><span class="section-number-4">25.2.3.</span> Exemple amb \(m = 6\)</h4>
+<div id="outline-container-org234f75c" class="outline-4">
+<h4 id="org234f75c"><span class="section-number-4">25.2.3.</span> Exemple amb \(m = 6\)</h4>
 <div class="outline-text-4" id="text-25-2-3">
 <ul class="org-ul">
 <li>\([2]_6\) no és invertible perquè \(\operatorname{mcd}(2,6) = 2 \neq 1\).</li>
@@ -4453,22 +4508,22 @@ Per tant, \([a]_m\) té invers si i només si \(a\) i \(m\) són coprimers.
 </div>
 </div>
 </div>
-<div id="outline-container-orgcc3e890" class="outline-3">
-<h3 id="orgcc3e890"><span class="section-number-3">25.3.</span> (ii) \(\mathbb{Z}/m\mathbb{Z}\) és un cos \(\iff\) \(m\) és primer</h3>
+<div id="outline-container-org2a9d4d8" class="outline-3">
+<h3 id="org2a9d4d8"><span class="section-number-3">25.3.</span> (ii) \(\mathbb{Z}/m\mathbb{Z}\) és un cos \(\iff\) \(m\) és primer</h3>
 <div class="outline-text-3" id="text-25-3">
 </div>
-<div id="outline-container-org7ae6a2d" class="outline-4">
-<h4 id="org7ae6a2d"><span class="section-number-4">25.3.1.</span> Demostració</h4>
+<div id="outline-container-org3e77963" class="outline-4">
+<h4 id="org3e77963"><span class="section-number-4">25.3.1.</span> Demostració</h4>
 <div class="outline-text-4" id="text-25-3-1">
 </div>
 <ol class="org-ol">
-<li><a id="orgb717d7d"></a>(\(\Rightarrow\)) Si \(\mathbb{Z}/m\mathbb{Z}\) és un cos, tot element no nul és invertible. Si \(m\) no fos primer, podríem escriure \(m = d \cdot n\) amb \(1 < d < m\). Llavors \([d]_m \neq [0]_m\), però \(\operatorname{mcd}(d,m) = d > 1\), així que per (i) \([d]_m\) no seria invertible. Contradicció. Per tant, \(m\) ha de ser primer.<br /></li>
+<li><a id="org48a79bf"></a>(\(\Rightarrow\)) Si \(\mathbb{Z}/m\mathbb{Z}\) és un cos, tot element no nul és invertible. Si \(m\) no fos primer, podríem escriure \(m = d \cdot n\) amb \(1 < d < m\). Llavors \([d]_m \neq [0]_m\), però \(\operatorname{mcd}(d,m) = d > 1\), així que per (i) \([d]_m\) no seria invertible. Contradicció. Per tant, \(m\) ha de ser primer.<br /></li>
 
-<li><a id="org6a33875"></a>(\(\Leftarrow\)) Si \(m\) és primer, prenem qualsevol \([a]_m \neq [0]_m\). Això vol dir que \(m\) no divideix \(a\). Com que \(m\) és primer, \(\operatorname{mcd}(a,m) = 1\). Per (i), \([a]_m\) és invertible. Per tant, tot element no nul té invers, i \(\mathbb{Z}/m\mathbb{Z}\) és un cos.<br /></li>
+<li><a id="org2517aad"></a>(\(\Leftarrow\)) Si \(m\) és primer, prenem qualsevol \([a]_m \neq [0]_m\). Això vol dir que \(m\) no divideix \(a\). Com que \(m\) és primer, \(\operatorname{mcd}(a,m) = 1\). Per (i), \([a]_m\) és invertible. Per tant, tot element no nul té invers, i \(\mathbb{Z}/m\mathbb{Z}\) és un cos.<br /></li>
 </ol>
 </div>
-<div id="outline-container-org20a00ef" class="outline-4">
-<h4 id="org20a00ef"><span class="section-number-4">25.3.2.</span> Exemples</h4>
+<div id="outline-container-org73701ca" class="outline-4">
+<h4 id="org73701ca"><span class="section-number-4">25.3.2.</span> Exemples</h4>
 <div class="outline-text-4" id="text-25-3-2">
 <ul class="org-ul">
 <li>\(\mathbb{Z}/5\mathbb{Z}\) és un cos, perquè \(5\) és primer.</li>
@@ -4480,12 +4535,12 @@ Per tant, \([a]_m\) té invers si i només si \(a\) i \(m\) són coprimers.
 </div>
 </div>
 </div>
-<div id="outline-container-org3f47073" class="outline-3">
-<h3 id="org3f47073"><span class="section-number-3">25.4.</span> (iii) Si \([a]_m\) no és invertible, aleshores és un divisor de zero</h3>
+<div id="outline-container-orgb111590" class="outline-3">
+<h3 id="orgb111590"><span class="section-number-3">25.4.</span> (iii) Si \([a]_m\) no és invertible, aleshores és un divisor de zero</h3>
 <div class="outline-text-3" id="text-25-4">
 </div>
-<div id="outline-container-org310e004" class="outline-4">
-<h4 id="org310e004"><span class="section-number-4">25.4.1.</span> Enunciat</h4>
+<div id="outline-container-org289269a" class="outline-4">
+<h4 id="org289269a"><span class="section-number-4">25.4.1.</span> Enunciat</h4>
 <div class="outline-text-4" id="text-25-4-1">
 <p>
 Si \([a]_m\) no és invertible, aleshores existeix \([b]_m \neq [0]_m\) tal que \([a]_m \cdot [b]_m = [0]_m\).
@@ -4496,8 +4551,8 @@ Si \([a]_m\) no és invertible, aleshores existeix \([b]_m \neq [0]_m\) tal que 
 </p>
 </div>
 </div>
-<div id="outline-container-org4049c6b" class="outline-4">
-<h4 id="org4049c6b"><span class="section-number-4">25.4.2.</span> Demostració</h4>
+<div id="outline-container-orgd7d0c46" class="outline-4">
+<h4 id="orgd7d0c46"><span class="section-number-4">25.4.2.</span> Demostració</h4>
 <div class="outline-text-4" id="text-25-4-2">
 <p>
 Si \([a]_m\) no és invertible, per (i) tenim \(\operatorname{mcd}(a,m) = d > 1\).
@@ -4524,8 +4579,8 @@ Per tant, existeix \([b]_m = [n]_m \neq [0]_m\) amb \([a]_m \cdot [b]_m = [0]_m\
 </p>
 </div>
 </div>
-<div id="outline-container-org38ba95c" class="outline-4">
-<h4 id="org38ba95c"><span class="section-number-4">25.4.3.</span> Exemple amb \(m = 6\)</h4>
+<div id="outline-container-org46ce2d0" class="outline-4">
+<h4 id="org46ce2d0"><span class="section-number-4">25.4.3.</span> Exemple amb \(m = 6\)</h4>
 <div class="outline-text-4" id="text-25-4-3">
 <ul class="org-ul">
 <li>\([2]_6\) no és invertible. Prenem \(n = 6/2 = 3\). Llavors:</li>
@@ -4556,8 +4611,8 @@ I \([3]_6 \neq [0]_6\).
 </p>
 </div>
 </div>
-<div id="outline-container-orgd331fa0" class="outline-4">
-<h4 id="orgd331fa0"><span class="section-number-4">25.4.4.</span> Conseqüència</h4>
+<div id="outline-container-orgcf62052" class="outline-4">
+<h4 id="orgcf62052"><span class="section-number-4">25.4.4.</span> Conseqüència</h4>
 <div class="outline-text-4" id="text-25-4-4">
 <p>
 A \(\mathbb{Z}/m\mathbb{Z}\), els elements invertibles són exactament les classes \([a]_m\) amb \(\operatorname{mcd}(a,m) = 1\). Els elements no invertibles i no nuls són divisors de zero.
@@ -4566,8 +4621,8 @@ A \(\mathbb{Z}/m\mathbb{Z}\), els elements invertibles són exactament les class
 </div>
 </div>
 </div>
-<div id="outline-container-org364057d" class="outline-2">
-<h2 id="org364057d"><span class="section-number-2">26.</span> 36. Observació: llei de cancel·lació</h2>
+<div id="outline-container-orgca8ecab" class="outline-2">
+<h2 id="orgca8ecab"><span class="section-number-2">26.</span> 36. Observació: llei de cancel·lació</h2>
 <div class="outline-text-2" id="text-26">
 <p>
 A l'anell \(\mathbb{Z}/m\mathbb{Z}\):
@@ -4587,8 +4642,8 @@ A l'anell \(\mathbb{Z}/m\mathbb{Z}\):
 
 <hr />
 </div>
-<div id="outline-container-orga9e9d90" class="outline-3">
-<h3 id="orga9e9d90"><span class="section-number-3">26.1.</span> (i) Demostració de la cancel·lació per elements invertibles</h3>
+<div id="outline-container-orgea4b911" class="outline-3">
+<h3 id="orgea4b911"><span class="section-number-3">26.1.</span> (i) Demostració de la cancel·lació per elements invertibles</h3>
 <div class="outline-text-3" id="text-26-1">
 <p>
 Suposem que \([a]_m\) és invertible. Això vol dir que existeix \([a]^{-1}_m\) tal que
@@ -4636,8 +4691,8 @@ Per tant:
 Així, els elements invertibles es poden cancel·lar.
 </p>
 </div>
-<div id="outline-container-org65b7f71" class="outline-4">
-<h4 id="org65b7f71"><span class="section-number-4">26.1.1.</span> Exemple amb \(m = 5\)</h4>
+<div id="outline-container-orgace7756" class="outline-4">
+<h4 id="orgace7756"><span class="section-number-4">26.1.1.</span> Exemple amb \(m = 5\)</h4>
 <div class="outline-text-4" id="text-26-1-1">
 <p>
 Com que \([2]_5\) és invertible, si
@@ -4651,12 +4706,12 @@ llavors necessàriament \([b]_5 = [c]_5\).
 </div>
 </div>
 </div>
-<div id="outline-container-org7d32e2c" class="outline-3">
-<h3 id="org7d32e2c"><span class="section-number-3">26.2.</span> (ii) Si \([a]_m\) no és invertible, la cancel·lació pot fallar</h3>
+<div id="outline-container-orgb800c54" class="outline-3">
+<h3 id="orgb800c54"><span class="section-number-3">26.2.</span> (ii) Si \([a]_m\) no és invertible, la cancel·lació pot fallar</h3>
 <div class="outline-text-3" id="text-26-2">
 </div>
-<div id="outline-container-org3a4f511" class="outline-4">
-<h4 id="org3a4f511"><span class="section-number-4">26.2.1.</span> Exemple amb \(m = 6\)</h4>
+<div id="outline-container-org4487b32" class="outline-4">
+<h4 id="org4487b32"><span class="section-number-4">26.2.1.</span> Exemple amb \(m = 6\)</h4>
 <div class="outline-text-4" id="text-26-2-1">
 <p>
 Prenem \([a]_6 = [2]_6\), que no és invertible perquè \(\operatorname{mcd}(2,6) = 2\).
@@ -4709,8 +4764,8 @@ però
 </div>
 </div>
 </div>
-<div id="outline-container-orga8462fa" class="outline-3">
-<h3 id="orga8462fa"><span class="section-number-3">26.3.</span> Conclusió</h3>
+<div id="outline-container-orgc32b4fe" class="outline-3">
+<h3 id="orgc32b4fe"><span class="section-number-3">26.3.</span> Conclusió</h3>
 <div class="outline-text-3" id="text-26-3">
 <ul class="org-ul">
 <li>Si \([a]_m\) és invertible, podem cancel·lar-lo.</li>
@@ -4720,8 +4775,8 @@ però
 <hr />
 </div>
 </div>
-<div id="outline-container-org0481f81" class="outline-3">
-<h3 id="org0481f81"><span class="section-number-3">26.4.</span> Resum final</h3>
+<div id="outline-container-org284e86d" class="outline-3">
+<h3 id="org284e86d"><span class="section-number-3">26.4.</span> Resum final</h3>
 <div class="outline-text-3" id="text-26-4">
 <p>
 A \(\mathbb{Z}/m\mathbb{Z}\), amb \(m > 1\):
@@ -4737,10 +4792,698 @@ A \(\mathbb{Z}/m\mathbb{Z}\), amb \(m > 1\):
 </div>
 </div>
 </div>
+<div id="outline-container-org8a89cff" class="outline-2">
+<h2 id="org8a89cff"><span class="section-number-2">27.</span> Introducció</h2>
+<div class="outline-text-2" id="text-27">
+<p>
+Estudiem matrius amb entrades a l'anell \(\mathbb{Z}/m\mathbb{Z}\). La idea central és que el determinant es defineix exactament igual que sobre \(\mathbb{Z}\), i moltes propietats es conserven. Quan \(m\) és primer, \(\mathbb{Z}/m\mathbb{Z}\) és un cos i tota l'àlgebra lineal estàndard funciona. Quan \(m\) no és primer, apareixen divisors de zero i tot es complica.
+</p>
+</div>
+</div>
+<div id="outline-container-org1f2732f" class="outline-2">
+<h2 id="org1f2732f"><span class="section-number-2">28.</span> Anell \(\mathbb{Z}/m\mathbb{Z}\)</h2>
+<div class="outline-text-2" id="text-28">
+</div>
+<div id="outline-container-org15bbc22" class="outline-3">
+<h3 id="org15bbc22"><span class="section-number-3">28.1.</span> Definicions bàsiques</h3>
+<div class="outline-text-3" id="text-28-1">
+<p>
+\(\mathbb{Z}/m\mathbb{Z}\) és el conjunt de classes de congruència mòdul \(m\):
+\[
+\mathbb{Z}/m\mathbb{Z} = \{\overline{0},\overline{1},\dots,\overline{m-1}\}.
+\]
+La suma i el producte es fan mòdul \(m\).
+</p>
+
+<ul class="org-ul">
+<li>Un element \(a\in\mathbb{Z}/m\mathbb{Z}\) és una <b>unitat</b> si té invers multiplicatiu, és a dir, si existeix \(b\) tal que
+\[
+  ab\equiv 1 \pmod m.
+  \]
+Això passa si i només si \(\gcd(a,m)=1\).</li>
+
+<li>Un element \(a\neq 0\) és un <b>divisor de zero</b> si existeix \(b\neq 0\) tal que
+\[
+  ab\equiv 0 \pmod m.
+  \]
+Exemple: a \(\mathbb{Z}/6\mathbb{Z}\), \(2\cdot 3=6\equiv 0\), però \(2\neq 0\) i \(3\neq 0\).</li>
+
+<li>\(\mathbb{Z}/m\mathbb{Z}\) és un cos si i només si \(m\) és primer. En aquest cas l'escriurem \(\mathbb{F}_p=\mathbb{Z}/p\mathbb{Z}\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc976e5a" class="outline-3">
+<h3 id="orgc976e5a"><span class="section-number-3">28.2.</span> Matrius \(M_n(\mathbb{Z}/m\mathbb{Z})\)</h3>
+<div class="outline-text-3" id="text-28-2">
+<p>
+\(M_n(\mathbb{Z}/m\mathbb{Z})\) és el conjunt de matrius \(n\times n\) amb entrades a \(\mathbb{Z}/m\mathbb{Z}\). La suma i el producte es defineixen igual que sobre \(\mathbb{Z}\), reduint el resultat mòdul \(m\).
+</p>
+
+<p>
+Una matriu \(A\in M_n(\mathbb{Z}/m\mathbb{Z})\) és <b>invertible</b> si existeix \(B\in M_n(\mathbb{Z}/m\mathbb{Z})\) tal que
+\[
+AB=BA=I_n.
+\]
+En aquest cas escrivim \(A^{-1}=B\). El conjunt de matrius invertibles forma el grup lineal \(GL_n(\mathbb{Z}/m\mathbb{Z})\).
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc1670b0" class="outline-2">
+<h2 id="orgc1670b0"><span class="section-number-2">29.</span> Determinants mòdul \(m\)</h2>
+<div class="outline-text-2" id="text-29">
+</div>
+<div id="outline-container-org39ff715" class="outline-3">
+<h3 id="org39ff715"><span class="section-number-3">29.1.</span> Definició</h3>
+<div class="outline-text-3" id="text-29-1">
+<p>
+El determinant es defineix amb la mateixa fórmula que a \(\mathbb{Z}\):
+\[
+\det(A)=\sum_{\sigma\in S_n} \operatorname{sgn}(\sigma)\prod_{i=1}^n a_{i,\sigma(i)} \pmod m.
+\]
+Com que el determinant és un polinomi amb coeficients enters, reduir mòdul \(m\) commuta amb el càlcul del determinant.
+</p>
+</div>
+</div>
+<div id="outline-container-orgcfa31f9" class="outline-3">
+<h3 id="orgcfa31f9"><span class="section-number-3">29.2.</span> Propietats que es conserven</h3>
+<div class="outline-text-3" id="text-29-2">
+<ul class="org-ul">
+<li>\(\det(I_n)=1\).</li>
+<li>\(\det(AB)=\det(A)\det(B)\).</li>
+<li>\(\det(A^T)=\det(A)\).</li>
+<li>Multilinealitat i alternança per files i columnes.</li>
+<li>Desenvolupament per menors i matriu adjunta.</li>
+<li>Si \(A\) és triangular, \(\det(A)=\prod_{i=1}^n a_{ii}\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0e40174" class="outline-3">
+<h3 id="org0e40174"><span class="section-number-3">29.3.</span> Exemple 1: determinant mòdul 6**</h3>
+<div class="outline-text-3" id="text-29-3">
+<p>
+\[
+A=\begin{pmatrix}1&2\\3&4\end{pmatrix}\in M_2(\mathbb{Z}/6\mathbb{Z}).
+\]
+\[
+\det(A)=1\cdot 4-2\cdot 3=4-6=-2\equiv 4 \pmod 6.
+\]
+Com \(\gcd(4,6)=2\), l'element \(4\) no és una unitat mòdul \(6\). Per tant, \(A\) no és invertible.
+</p>
+</div>
+</div>
+<div id="outline-container-org69a7f54" class="outline-3">
+<h3 id="org69a7f54"><span class="section-number-3">29.4.</span> Exemple 2: determinant mòdul 5**</h3>
+<div class="outline-text-3" id="text-29-4">
+<p>
+\[
+A=\begin{pmatrix}1&2\\3&4\end{pmatrix}\in M_2(\mathbb{Z}/5\mathbb{Z}).
+\]
+\[
+\det(A)=4-6=-2\equiv 3 \pmod 5.
+\]
+Com \(\gcd(3,5)=1\), \(3\) és una unitat mòdul \(5\). Per tant, \(A\) és invertible.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org120a779" class="outline-2">
+<h2 id="org120a779"><span class="section-number-2">30.</span> Invertibilitat de matrius mòdul \(m\)</h2>
+<div class="outline-text-2" id="text-30">
+</div>
+<div id="outline-container-org28493a2" class="outline-3">
+<h3 id="org28493a2"><span class="section-number-3">30.1.</span> Proposició</h3>
+<div class="outline-text-3" id="text-30-1">
+<p>
+Sigui \(A\in M_n(\mathbb{Z}/m\mathbb{Z})\). Aleshores
+\[
+A \text{ invertible} \iff \det(A)\in (\mathbb{Z}/m\mathbb{Z})^*.
+\]
+Equivalentment, si representem \(\det(A)\) per un enter,
+\[
+A \text{ invertible} \iff \gcd(\det(A),m)=1.
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-orge87dc27" class="outline-3">
+<h3 id="orge87dc27"><span class="section-number-3">30.2.</span> Demostració</h3>
+<div class="outline-text-3" id="text-30-2">
+<ul class="org-ul">
+<li>\((\Rightarrow)\) Si \(A\) és invertible, existeix \(B\) amb \(AB=I_n\). Prenent determinants:
+\[
+  \det(A)\det(B)=\det(I_n)=1.
+  \]
+Per tant, \(\det(A)\) té invers \(\det(B)\) a \(\mathbb{Z}/m\mathbb{Z}\). Així \(\det(A)\) és una unitat.</li>
+
+<li>\((\Leftarrow)\) Sigui \(d=\det(A)\) una unitat mòdul \(m\). Sigui \(d^{-1}\) el seu invers. Definim
+\[
+  B=d^{-1}\operatorname{adj}(A).
+  \]
+Usant la propietat de la matriu adjunta:
+\[
+  A\operatorname{adj}(A)=\operatorname{adj}(A)A=\det(A)I_n=dI_n,
+  \]
+tenim
+\[
+  AB=d^{-1}A\operatorname{adj}(A)=d^{-1}dI_n=I_n.
+  \]
+Igualment \(BA=I_n\). Per tant, \(A^{-1}=d^{-1}\operatorname{adj}(A)\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgedb0965" class="outline-3">
+<h3 id="orgedb0965"><span class="section-number-3">30.3.</span> Fórmula clàssica de la inversa</h3>
+<div class="outline-text-3" id="text-30-3">
+<p>
+Si \(\det(A)\) és una unitat mòdul \(m\),
+\[
+A^{-1}=(\det A)^{-1}\operatorname{adj}(A) \pmod m.
+\]
+Aquesta és la mateixa fórmula que sobre \(\mathbb{Q}\) o \(\mathbb{R}\), però la divisió per \(\det A\) es fa multiplicant pel seu invers mòdul \(m\).
+</p>
+</div>
+</div>
+<div id="outline-container-orgfc20320" class="outline-3">
+<h3 id="orgfc20320"><span class="section-number-3">30.4.</span> Exemple 3: inversa mòdul 5**</h3>
+<div class="outline-text-3" id="text-30-4">
+<p>
+\[
+A=\begin{pmatrix}1&2\\3&4\end{pmatrix}\in M_2(\mathbb{Z}/5\mathbb{Z}).
+\]
+\[
+\det(A)=3.
+\]
+Invers de \(3\) mòdul \(5\): \(3^{-1}=2\), perquè \(3\cdot 2=6\equiv 1\).
+</p>
+
+<p>
+\[
+\operatorname{adj}(A)=\begin{pmatrix}4&-2\\-3&1\end{pmatrix}
+\equiv \begin{pmatrix}4&3\\2&1\end{pmatrix}\pmod 5.
+\]
+\[
+A^{-1}=2\begin{pmatrix}4&3\\2&1\end{pmatrix}
+=\begin{pmatrix}8&6\\4&2\end{pmatrix}
+\equiv \begin{pmatrix}3&1\\4&2\end{pmatrix}\pmod 5.
+\]
+Comprovació:
+\[
+</p>
+\begin{pmatrix}1&2\\3&4\end{pmatrix}
+\begin{pmatrix}3&1\\4&2\end{pmatrix}
+<p>
+=
+</p>
+\begin{pmatrix}11&5\\25&11\end{pmatrix}
+<p>
+&equiv; \begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}\pmod 5.
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-orgc1cf7ee" class="outline-3">
+<h3 id="orgc1cf7ee"><span class="section-number-3">30.5.</span> Exemple 4: inversa mòdul 6 amb determinant unitat**</h3>
+<div class="outline-text-3" id="text-30-5">
+<p>
+\[
+A=\begin{pmatrix}1&2\\3&5\end{pmatrix}\in M_2(\mathbb{Z}/6\mathbb{Z}).
+\]
+\[
+\det(A)=1\cdot 5-2\cdot 3=5-6=-1\equiv 5\pmod 6.
+\]
+\(5\) és unitat mòdul \(6\), ja que \(5\cdot 5=25\equiv 1\). Així \(5^{-1}=5\).
+</p>
+
+<p>
+\[
+\operatorname{adj}(A)=\begin{pmatrix}5&-2\\-3&1\end{pmatrix}
+\equiv \begin{pmatrix}5&4\\3&1\end{pmatrix}\pmod 6.
+\]
+\[
+A^{-1}=5\begin{pmatrix}5&4\\3&1\end{pmatrix}
+=\begin{pmatrix}25&20\\15&5\end{pmatrix}
+\equiv \begin{pmatrix}1&2\\3&5\end{pmatrix}=A\pmod 6.
+\]
+Per tant, \(A\) és la seva pròpia inversa mòdul \(6\):
+\[
+A^2\equiv I_2\pmod 6.
+\]
+Comprovació:
+\[
+A^2=\begin{pmatrix}7&12\\18&31\end{pmatrix}
+\equiv \begin{pmatrix}1&0\\0&1\end{pmatrix}\pmod 6.
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-org90bdee6" class="outline-3">
+<h3 id="org90bdee6"><span class="section-number-3">30.6.</span> Exemple 5: determinant no unitat i matriu no invertible**</h3>
+<div class="outline-text-3" id="text-30-6">
+<p>
+\[
+A=\begin{pmatrix}2&1\\1&2\end{pmatrix}\in M_2(\mathbb{Z}/6\mathbb{Z}).
+\]
+\[
+\det(A)=2\cdot 2-1\cdot 1=4-1=3\pmod 6.
+\]
+\(\gcd(3,6)=3\neq 1\), per tant \(3\) no és unitat. Així \(A\) no és invertible.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orge41338c" class="outline-2">
+<h2 id="orge41338c"><span class="section-number-2">31.</span> Àlgebra lineal sobre \(\mathbb{Z}/p\mathbb{Z}\) amb \(p\) primer</h2>
+<div class="outline-text-2" id="text-31">
+</div>
+<div id="outline-container-orge3a3472" class="outline-3">
+<h3 id="orge3a3472"><span class="section-number-3">31.1.</span> El cos \(\mathbb{F}_p\)</h3>
+<div class="outline-text-3" id="text-31-1">
+<p>
+Si \(p\) és primer, tot element no nul de \(\mathbb{Z}/p\mathbb{Z}\) té invers multiplicatiu. Per tant, \(\mathbb{Z}/p\mathbb{Z}\) és un cos, que denotem \(\mathbb{F}_p\).
+</p>
+
+<p>
+Això fa que tota l'àlgebra lineal estàndard funcioni exactament igual que sobre \(\mathbb{R}\) o \(\mathbb{Q}\).
+</p>
+</div>
+</div>
+<div id="outline-container-orgaf049f5" class="outline-3">
+<h3 id="orgaf049f5"><span class="section-number-3">31.2.</span> Què funciona exactament igual?</h3>
+<div class="outline-text-3" id="text-31-2">
+<ul class="org-ul">
+<li>Vectors, combinacions lineals i subespais.</li>
+<li>Independència lineal, bases i dimensió.</li>
+<li>Sistemes d'equacions lineals: mètode de Gauss i eliminació.</li>
+<li>Rang d'una matriu.</li>
+<li>Determinants i invertibilitat.</li>
+<li>Regla de Cramer.</li>
+<li>Espais vectorials \(\mathbb{F}_p^n\).</li>
+<li>Teorema de Rouché–Capelli: un sistema és compatible si i només si \(\operatorname{rang}(A)=\operatorname{rang}(A|b)\). Si és compatible i el rang és igual al nombre d'incògnites, la solució és única. Si el rang és més petit, hi ha \(p^{n-r}\) solucions.</li>
+<li>Una matriu és invertible si i només si \(\det(A)\neq 0\), si i només si les seves files/columnes són linealment independents, si i només si té rang \(n\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc58f8fe" class="outline-3">
+<h3 id="orgc58f8fe"><span class="section-number-3">31.3.</span> Exemple 6: sistema sobre \(\mathbb{F}_5\) per la inversa**</h3>
+<div class="outline-text-3" id="text-31-3">
+<p>
+Resoldre
+\[
+</p>
+\begin{cases}
+x+2y=0\\
+3x+4y=1
+\end{cases}
+<p>
+\pmod 5.
+\]
+Matriu:
+\[
+A=\begin{pmatrix}1&2\\3&4\end{pmatrix},\quad
+b=\begin{pmatrix}0\\1\end{pmatrix}.
+\]
+\(\det(A)=3\neq 0\) a \(\mathbb{F}_5\), així que hi ha solució única.
+</p>
+
+<p>
+\[
+A^{-1}=\begin{pmatrix}3&1\\4&2\end{pmatrix}\pmod 5.
+\]
+\[
+</p>
+\begin{pmatrix}x\\y\end{pmatrix}
+<p>
+=A<sup>-1</sup>b
+=\begin{pmatrix}3&amp;1\\4&amp;2\end{pmatrix}
+</p>
+\begin{pmatrix}0\\1\end{pmatrix}
+<p>
+=
+\begin{pmatrix}1\\2\end{pmatrix}\pmod 5.
+\]
+Comprovació:
+\[
+x+2y=1+2\cdot 2=5\equiv 0,
+\]
+\[
+3x+4y=3+8=11\equiv 1\pmod 5.
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-org2cb65ea" class="outline-3">
+<h3 id="org2cb65ea"><span class="section-number-3">31.4.</span> Exemple 7: regla de Cramer sobre \(\mathbb{F}_5\)</h3>
+<div class="outline-text-3" id="text-31-4">
+<p>
+Pel mateix sistema:
+\[
+x=\frac{\det\begin{pmatrix}0&2\\1&4\end{pmatrix}}{\det A}
+=\frac{0\cdot 4-2\cdot 1}{3}
+=\frac{-2}{3}
+=\frac{3}{3}
+=1\pmod 5.
+\]
+\[
+y=\frac{\det\begin{pmatrix}1&0\\3&1\end{pmatrix}}{\det A}
+=\frac{1\cdot 1-0\cdot 3}{3}
+=\frac{1}{3}
+=1\cdot 2=2\pmod 5.
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-orgd7b804d" class="outline-3">
+<h3 id="orgd7b804d"><span class="section-number-3">31.5.</span> Exemple 8: dependència lineal sobre \(\mathbb{F}_5\)</h3>
+<div class="outline-text-3" id="text-31-5">
+<p>
+Al cos \(\mathbb{F}_5\), els vectors
+\[
+v_1=(1,2),\quad v_2=(3,4)
+\]
+són linealment independents? Mirem \(a v_1+b v_2=0\).
+\[
+a(1,2)+b(3,4)=(0,0)
+\iff
+</p>
+\begin{cases}
+a+3b=0\\
+2a+4b=0
+\end{cases}
+<p>
+\]
+El determinant de la matriu de coeficients és
+\[
+\det\begin{pmatrix}1&3\\2&4\end{pmatrix}=4-6=-2\equiv 3\neq 0.
+\]
+Per tant, l'única solució és \(a=b=0\). Són linealment independents.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org99d799f" class="outline-2">
+<h2 id="org99d799f"><span class="section-number-2">32.</span> Quan \(m\) no és primer: complicacions</h2>
+<div class="outline-text-2" id="text-32">
+</div>
+<div id="outline-container-org36eb3df" class="outline-3">
+<h3 id="org36eb3df"><span class="section-number-3">32.1.</span> No és un cos</h3>
+<div class="outline-text-3" id="text-32-1">
+<p>
+Si \(m\) no és primer, \(\mathbb{Z}/m\mathbb{Z}\) no és un cos. Hi ha divisors de zero.
+</p>
+
+<p>
+Exemple \(m=6\):
+\[
+2\cdot 3=6\equiv 0\pmod 6,
+\]
+però \(2\neq 0\) i \(3\neq 0\). Ni \(2\) ni \(3\) són unitats.
+</p>
+</div>
+</div>
+<div id="outline-container-org854b5f7" class="outline-3">
+<h3 id="org854b5f7"><span class="section-number-3">32.2.</span> Conseqüències</h3>
+<div class="outline-text-3" id="text-32-2">
+<ul class="org-ul">
+<li>No podem dividir per qualsevol element no nul. Només podem dividir per unitats.</li>
+<li>Una matriu pot tenir determinant no nul i, tot i així, no ser invertible.
+Exemple:
+\[
+  A=\begin{pmatrix}1&2\\3&4\end{pmatrix}\pmod 6,
+  \]
+\(\det A=4\neq 0\), però \(4\) no és unitat mòdul \(6\), així que \(A\) no és invertible.</li>
+<li>El rang d'una matriu sobre un anell no és tan senzill com sobre un cos.</li>
+<li>La independència lineal canvia: un vector no nul pot ser linealment dependent.
+Exemple a \(\mathbb{Z}/6\mathbb{Z}\): \(v=(2,0)\). Tenim
+\[
+  3v=(6,0)=(0,0),
+  \]
+amb \(3\neq 0\). Així \(v\) és linealment dependent, tot i que \(v\neq 0\).</li>
+<li>Els sistemes d'equacions poden tenir comportaments estranys: poden no tenir solució, tenir-ne una, o tenir-ne diverses. La regla de Cramer només s'aplica si el determinant és una unitat.</li>
+<li>La noció de base i dimensió sobre anells no és tan neta; cal parlar de mòduls lliures, torsió, etc.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgcbbba27" class="outline-3">
+<h3 id="orgcbbba27"><span class="section-number-3">32.3.</span> Exemple 9: sistema sobre \(\mathbb{Z}/6\mathbb{Z}\) sense solució**</h3>
+<div class="outline-text-3" id="text-32-3">
+<p>
+\[
+</p>
+\begin{cases}
+x+2y=1\\
+3x+4y=2
+\end{cases}
+<p>
+\pmod 6.
+\]
+Matriu:
+\[
+A=\begin{pmatrix}1&2\\3&4\end{pmatrix},\quad \det A=4.
+\]
+Com \(4\) no és unitat, no podem usar \(A^{-1}\). De fet, \(A\) no és invertible.
+</p>
+
+<p>
+De la primera equació:
+\[
+x\equiv 1-2y.
+\]
+Substituïm a la segona:
+\[
+3(1-2y)+4y\equiv 2\pmod 6
+\]
+\[
+3-6y+4y\equiv 2
+\]
+\[
+3-2y\equiv 2\pmod 6
+\]
+\[
+-2y\equiv -1\equiv 5\pmod 6
+\]
+\[
+2y\equiv 1\pmod 6.
+\]
+Però \(2y\) mòdul \(6\) només pot valer \(0,2,4\). Mai \(1\). Per tant, el sistema no té solució.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf337959" class="outline-3">
+<h3 id="orgf337959"><span class="section-number-3">32.4.</span> Exemple 10: sistema sobre \(\mathbb{Z}/6\mathbb{Z}\) amb diverses solucions**</h3>
+<div class="outline-text-3" id="text-32-4">
+<p>
+\[
+</p>
+\begin{cases}
+x+2y=0\\
+3x+4y=0
+\end{cases}
+<p>
+\pmod 6.
+\]
+Mateixa matriu \(A\). De la primera:
+\[
+x=-2y.
+\]
+Substituïm a la segona:
+\[
+3(-2y)+4y=-6y+4y=4y\equiv 0\pmod 6.
+\]
+Ara,
+\[
+4y\equiv 0\pmod 6
+\iff 6\mid 4y
+\iff 3\mid 2y
+\iff 3\mid y.
+\]
+Per tant, \(y\equiv 0,3\pmod 6\).
+</p>
+
+<ul class="org-ul">
+<li>Si \(y=0\), aleshores \(x=0\).</li>
+<li>Si \(y=3\), aleshores \(x=-6\equiv 0\).</li>
+</ul>
+
+<p>
+Solucions: \((0,0)\) i \((0,3)\). El sistema és compatible indeterminat, però amb un nombre finit de solucions.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org55c0ada" class="outline-2">
+<h2 id="org55c0ada"><span class="section-number-2">33.</span> Resum</h2>
+<div class="outline-text-2" id="text-33">
+<ul class="org-ul">
+<li>El determinant mòdul \(m\) es calcula igual que a \(\mathbb{Z}\) i compleix
+\[
+  \det(AB)=\det(A)\det(B).
+  \]</li>
+<li>\(A\in M_n(\mathbb{Z}/m\mathbb{Z})\) és invertible si i només si \(\det(A)\) és una unitat mòdul \(m\), és a dir, \(\gcd(\det(A),m)=1\).</li>
+<li>Si \(\det(A)\) és unitat,
+\[
+  A^{-1}=(\det A)^{-1}\operatorname{adj}(A).
+  \]</li>
+<li>Si \(m=p\) és primer, \(\mathbb{Z}/p\mathbb{Z}\) és cos i tota l'àlgebra lineal estàndard funciona: vectors, independència lineal, sistemes, Cramer, rang, determinants, etc.</li>
+<li>Si \(m\) no és primer, hi ha divisors de zero i l'àlgebra lineal és més complicada: cal anar amb compte amb divisions, rangs, independència i sistemes.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbb7ec59" class="outline-2">
+<h2 id="orgbb7ec59"><span class="section-number-2">34.</span> Exercicis proposats</h2>
+<div class="outline-text-2" id="text-34">
+<ol class="org-ol">
+<li>Calcula el determinant i digues si la matriu és invertible mòdul \(m\):
+a) \(A=\begin{pmatrix}2&1\\5&3\end{pmatrix}\pmod 7\).
+b) \(B=\begin{pmatrix}2&1\\5&3\end{pmatrix}\pmod 8\).
+c) \(C=\begin{pmatrix}1&2&3\\0&1&4\\5&6&0\end{pmatrix}\pmod 5\).</li>
+
+<li>Troba la inversa, si existeix, de
+\[
+   A=\begin{pmatrix}2&1\\5&3\end{pmatrix}\pmod 7.
+   \]</li>
+
+<li><p>
+Resol sobre \(\mathbb{F}_7\):
+\[
+</p>
+\begin{cases}
+2x+y=3\\
+5x+3y=1
+\end{cases}
+<p>
+\]
+</p></li>
+
+<li>Sobre \(\mathbb{Z}/8\mathbb{Z}\), troba una matriu \(A\) amb \(\det A=4\) i comprova que no és invertible.</li>
+
+<li>Sobre \(\mathbb{Z}/6\mathbb{Z}\), dóna un exemple de vector no nul linealment dependent.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgadfccdc" class="outline-2">
+<h2 id="orgadfccdc"><span class="section-number-2">35.</span> Solucions breus</h2>
+<div class="outline-text-2" id="text-35">
+</div>
+<div id="outline-container-org49c4bfc" class="outline-3">
+<h3 id="org49c4bfc"><span class="section-number-3">35.1.</span> 1a</h3>
+<div class="outline-text-3" id="text-35-1">
+<p>
+\[
+\det A=2\cdot 3-1\cdot 5=6-5=1\pmod 7.
+\]
+\(\gcd(1,7)=1\), per tant és invertible.
+</p>
+</div>
+</div>
+<div id="outline-container-org08dd10d" class="outline-3">
+<h3 id="org08dd10d"><span class="section-number-3">35.2.</span> 1b</h3>
+<div class="outline-text-3" id="text-35-2">
+<p>
+\[
+\det B=6-5=1\pmod 8.
+\]
+\(\gcd(1,8)=1\), per tant és invertible.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc7c8d6a" class="outline-3">
+<h3 id="orgc7c8d6a"><span class="section-number-3">35.3.</span> 1c</h3>
+<div class="outline-text-3" id="text-35-3">
+<p>
+\[
+\det C=1(1\cdot 0-4\cdot 6)-2(0\cdot 0-4\cdot 5)+3(0\cdot 6-1\cdot 5)
+\]
+\[
+=1(0-24)-2(0-20)+3(0-5)
+=-24+40-15=1\pmod 5.
+\]
+\(1\) és unitat, per tant és invertible.
+</p>
+</div>
+</div>
+<div id="outline-container-org0bc2088" class="outline-3">
+<h3 id="org0bc2088"><span class="section-number-3">35.4.</span> 2</h3>
+<div class="outline-text-3" id="text-35-4">
+<p>
+\(\det A=1\), així \(A^{-1}=\operatorname{adj}(A)\).
+\[
+\operatorname{adj}(A)=\begin{pmatrix}3&-1\\-5&2\end{pmatrix}
+\equiv \begin{pmatrix}3&6\\2&2\end{pmatrix}\pmod 7.
+\]
+Comprovació:
+\[
+</p>
+\begin{pmatrix}2&1\\5&3\end{pmatrix}
+\begin{pmatrix}3&6\\2&2\end{pmatrix}
+<p>
+=
+</p>
+\begin{pmatrix}8&14\\21&36\end{pmatrix}
+<p>
+&equiv; \begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}\pmod 7.
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-org92c06e1" class="outline-3">
+<h3 id="org92c06e1"><span class="section-number-3">35.5.</span> 3</h3>
+<div class="outline-text-3" id="text-35-5">
+<p>
+\[
+A=\begin{pmatrix}2&1\\5&3\end{pmatrix},\quad \det A=1.
+\]
+\[
+A^{-1}=\begin{pmatrix}3&6\\2&2\end{pmatrix}.
+\]
+\[
+</p>
+\begin{pmatrix}x\\y\end{pmatrix}
+<p>
+=A<sup>-1</sup>\begin{pmatrix}3\\1\end{pmatrix}
+=\begin{pmatrix}3&sdot; 3+6&sdot; 1\\2&sdot; 3+2&sdot; 1\end{pmatrix}
+=\begin{pmatrix}15\\8\end{pmatrix}
+&equiv; \begin{pmatrix}1\\1\end{pmatrix}\pmod 7.
+\]
+Comprovació:
+\[
+2\cdot 1+1=3,\qquad 5\cdot 1+3\cdot 1=8\equiv 1\pmod 7.
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-org26e01a8" class="outline-3">
+<h3 id="org26e01a8"><span class="section-number-3">35.6.</span> 4</h3>
+<div class="outline-text-3" id="text-35-6">
+<p>
+\[
+A=\begin{pmatrix}2&0\\0&2\end{pmatrix}\pmod 8,\quad \det A=4.
+\]
+Com \(\gcd(4,8)=4\neq 1\), \(4\) no és unitat mòdul \(8\). Per tant, \(A\) no és invertible.
+</p>
+</div>
+</div>
+<div id="outline-container-orgb96c659" class="outline-3">
+<h3 id="orgb96c659"><span class="section-number-3">35.7.</span> 5</h3>
+<div class="outline-text-3" id="text-35-7">
+<p>
+A \((\mathbb{Z}/6\mathbb{Z})^2\), prenem
+\[
+v=(2,0).
+\]
+Aleshores
+\[
+3v=(6,0)=(0,0),
+\]
+amb \(3\neq 0\). Per tant, \(v\) és linealment dependent tot i ser no nul.
+</p>
+</div>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
-<p class="author">Autor: Joaquim</p>
-<p class="date">Created: 2026-09-28 lun 11:48</p>
+<p class="author">Autor: Apunts</p>
+<p class="date">Created: 2026-10-01 jue 09:48</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

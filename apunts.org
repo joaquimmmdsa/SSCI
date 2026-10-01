@@ -2766,3 +2766,509 @@ A \(\mathbb{Z}/m\mathbb{Z}\), amb \(m > 1\):
 - Si \([a]_m\) no és invertible, aleshores és un divisor de zero: existeix \([b]_m \neq [0]_m\) amb \([a]_m \cdot [b]_m = [0]_m\).
 - Si \([a]_m\) és invertible, es pot cancel·lar en igualtats: \([a]\cdot[b] = [a]\cdot[c] \Rightarrow [b] = [c]\).
 - Si \([a]_m\) no és invertible, la cancel·lació falla en general.
+
+
+
+#+TITLE: Apunts: Matrius mòdul \(m\), determinants i invertibilitat
+#+AUTHOR: Apunts
+#+OPTIONS: toc:t
+
+* Introducció
+
+Estudiem matrius amb entrades a l'anell \(\mathbb{Z}/m\mathbb{Z}\). La idea central és que el determinant es defineix exactament igual que sobre \(\mathbb{Z}\), i moltes propietats es conserven. Quan \(m\) és primer, \(\mathbb{Z}/m\mathbb{Z}\) és un cos i tota l'àlgebra lineal estàndard funciona. Quan \(m\) no és primer, apareixen divisors de zero i tot es complica.
+
+* Anell \(\mathbb{Z}/m\mathbb{Z}\)
+
+** Definicions bàsiques
+
+\(\mathbb{Z}/m\mathbb{Z}\) és el conjunt de classes de congruència mòdul \(m\):
+\[
+\mathbb{Z}/m\mathbb{Z} = \{\overline{0},\overline{1},\dots,\overline{m-1}\}.
+\]
+La suma i el producte es fan mòdul \(m\).
+
+- Un element \(a\in\mathbb{Z}/m\mathbb{Z}\) és una *unitat* si té invers multiplicatiu, és a dir, si existeix \(b\) tal que
+  \[
+  ab\equiv 1 \pmod m.
+  \]
+  Això passa si i només si \(\gcd(a,m)=1\).
+
+- Un element \(a\neq 0\) és un *divisor de zero* si existeix \(b\neq 0\) tal que
+  \[
+  ab\equiv 0 \pmod m.
+  \]
+  Exemple: a \(\mathbb{Z}/6\mathbb{Z}\), \(2\cdot 3=6\equiv 0\), però \(2\neq 0\) i \(3\neq 0\).
+
+- \(\mathbb{Z}/m\mathbb{Z}\) és un cos si i només si \(m\) és primer. En aquest cas l'escriurem \(\mathbb{F}_p=\mathbb{Z}/p\mathbb{Z}\).
+
+** Matrius \(M_n(\mathbb{Z}/m\mathbb{Z})\)
+
+\(M_n(\mathbb{Z}/m\mathbb{Z})\) és el conjunt de matrius \(n\times n\) amb entrades a \(\mathbb{Z}/m\mathbb{Z}\). La suma i el producte es defineixen igual que sobre \(\mathbb{Z}\), reduint el resultat mòdul \(m\).
+
+Una matriu \(A\in M_n(\mathbb{Z}/m\mathbb{Z})\) és *invertible* si existeix \(B\in M_n(\mathbb{Z}/m\mathbb{Z})\) tal que
+\[
+AB=BA=I_n.
+\]
+En aquest cas escrivim \(A^{-1}=B\). El conjunt de matrius invertibles forma el grup lineal \(GL_n(\mathbb{Z}/m\mathbb{Z})\).
+
+* Determinants mòdul \(m\)
+
+** Definició
+
+El determinant es defineix amb la mateixa fórmula que a \(\mathbb{Z}\):
+\[
+\det(A)=\sum_{\sigma\in S_n} \operatorname{sgn}(\sigma)\prod_{i=1}^n a_{i,\sigma(i)} \pmod m.
+\]
+Com que el determinant és un polinomi amb coeficients enters, reduir mòdul \(m\) commuta amb el càlcul del determinant.
+
+** Propietats que es conserven
+
+- \(\det(I_n)=1\).
+- \(\det(AB)=\det(A)\det(B)\).
+- \(\det(A^T)=\det(A)\).
+- Multilinealitat i alternança per files i columnes.
+- Desenvolupament per menors i matriu adjunta.
+- Si \(A\) és triangular, \(\det(A)=\prod_{i=1}^n a_{ii}\).
+
+** Exemple 1: determinant mòdul 6**
+
+\[
+A=\begin{pmatrix}1&2\\3&4\end{pmatrix}\in M_2(\mathbb{Z}/6\mathbb{Z}).
+\]
+\[
+\det(A)=1\cdot 4-2\cdot 3=4-6=-2\equiv 4 \pmod 6.
+\]
+Com \(\gcd(4,6)=2\), l'element \(4\) no és una unitat mòdul \(6\). Per tant, \(A\) no és invertible.
+
+** Exemple 2: determinant mòdul 5**
+
+\[
+A=\begin{pmatrix}1&2\\3&4\end{pmatrix}\in M_2(\mathbb{Z}/5\mathbb{Z}).
+\]
+\[
+\det(A)=4-6=-2\equiv 3 \pmod 5.
+\]
+Com \(\gcd(3,5)=1\), \(3\) és una unitat mòdul \(5\). Per tant, \(A\) és invertible.
+
+* Invertibilitat de matrius mòdul \(m\)
+
+** Proposició
+
+Sigui \(A\in M_n(\mathbb{Z}/m\mathbb{Z})\). Aleshores
+\[
+A \text{ invertible} \iff \det(A)\in (\mathbb{Z}/m\mathbb{Z})^*.
+\]
+Equivalentment, si representem \(\det(A)\) per un enter,
+\[
+A \text{ invertible} \iff \gcd(\det(A),m)=1.
+\]
+
+** Demostració
+
+- \((\Rightarrow)\) Si \(A\) és invertible, existeix \(B\) amb \(AB=I_n\). Prenent determinants:
+  \[
+  \det(A)\det(B)=\det(I_n)=1.
+  \]
+  Per tant, \(\det(A)\) té invers \(\det(B)\) a \(\mathbb{Z}/m\mathbb{Z}\). Així \(\det(A)\) és una unitat.
+
+- \((\Leftarrow)\) Sigui \(d=\det(A)\) una unitat mòdul \(m\). Sigui \(d^{-1}\) el seu invers. Definim
+  \[
+  B=d^{-1}\operatorname{adj}(A).
+  \]
+  Usant la propietat de la matriu adjunta:
+  \[
+  A\operatorname{adj}(A)=\operatorname{adj}(A)A=\det(A)I_n=dI_n,
+  \]
+  tenim
+  \[
+  AB=d^{-1}A\operatorname{adj}(A)=d^{-1}dI_n=I_n.
+  \]
+  Igualment \(BA=I_n\). Per tant, \(A^{-1}=d^{-1}\operatorname{adj}(A)\).
+
+** Fórmula clàssica de la inversa
+
+Si \(\det(A)\) és una unitat mòdul \(m\),
+\[
+A^{-1}=(\det A)^{-1}\operatorname{adj}(A) \pmod m.
+\]
+Aquesta és la mateixa fórmula que sobre \(\mathbb{Q}\) o \(\mathbb{R}\), però la divisió per \(\det A\) es fa multiplicant pel seu invers mòdul \(m\).
+
+** Exemple 3: inversa mòdul 5**
+
+\[
+A=\begin{pmatrix}1&2\\3&4\end{pmatrix}\in M_2(\mathbb{Z}/5\mathbb{Z}).
+\]
+\[
+\det(A)=3.
+\]
+Invers de \(3\) mòdul \(5\): \(3^{-1}=2\), perquè \(3\cdot 2=6\equiv 1\).
+
+\[
+\operatorname{adj}(A)=\begin{pmatrix}4&-2\\-3&1\end{pmatrix}
+\equiv \begin{pmatrix}4&3\\2&1\end{pmatrix}\pmod 5.
+\]
+\[
+A^{-1}=2\begin{pmatrix}4&3\\2&1\end{pmatrix}
+=\begin{pmatrix}8&6\\4&2\end{pmatrix}
+\equiv \begin{pmatrix}3&1\\4&2\end{pmatrix}\pmod 5.
+\]
+Comprovació:
+\[
+\begin{pmatrix}1&2\\3&4\end{pmatrix}
+\begin{pmatrix}3&1\\4&2\end{pmatrix}
+=
+\begin{pmatrix}11&5\\25&11\end{pmatrix}
+\equiv \begin{pmatrix}1&0\\0&1\end{pmatrix}\pmod 5.
+\]
+
+** Exemple 4: inversa mòdul 6 amb determinant unitat**
+
+\[
+A=\begin{pmatrix}1&2\\3&5\end{pmatrix}\in M_2(\mathbb{Z}/6\mathbb{Z}).
+\]
+\[
+\det(A)=1\cdot 5-2\cdot 3=5-6=-1\equiv 5\pmod 6.
+\]
+\(5\) és unitat mòdul \(6\), ja que \(5\cdot 5=25\equiv 1\). Així \(5^{-1}=5\).
+
+\[
+\operatorname{adj}(A)=\begin{pmatrix}5&-2\\-3&1\end{pmatrix}
+\equiv \begin{pmatrix}5&4\\3&1\end{pmatrix}\pmod 6.
+\]
+\[
+A^{-1}=5\begin{pmatrix}5&4\\3&1\end{pmatrix}
+=\begin{pmatrix}25&20\\15&5\end{pmatrix}
+\equiv \begin{pmatrix}1&2\\3&5\end{pmatrix}=A\pmod 6.
+\]
+Per tant, \(A\) és la seva pròpia inversa mòdul \(6\):
+\[
+A^2\equiv I_2\pmod 6.
+\]
+Comprovació:
+\[
+A^2=\begin{pmatrix}7&12\\18&31\end{pmatrix}
+\equiv \begin{pmatrix}1&0\\0&1\end{pmatrix}\pmod 6.
+\]
+
+** Exemple 5: determinant no unitat i matriu no invertible**
+
+\[
+A=\begin{pmatrix}2&1\\1&2\end{pmatrix}\in M_2(\mathbb{Z}/6\mathbb{Z}).
+\]
+\[
+\det(A)=2\cdot 2-1\cdot 1=4-1=3\pmod 6.
+\]
+\(\gcd(3,6)=3\neq 1\), per tant \(3\) no és unitat. Així \(A\) no és invertible.
+
+* Àlgebra lineal sobre \(\mathbb{Z}/p\mathbb{Z}\) amb \(p\) primer
+
+** El cos \(\mathbb{F}_p\)
+
+Si \(p\) és primer, tot element no nul de \(\mathbb{Z}/p\mathbb{Z}\) té invers multiplicatiu. Per tant, \(\mathbb{Z}/p\mathbb{Z}\) és un cos, que denotem \(\mathbb{F}_p\).
+
+Això fa que tota l'àlgebra lineal estàndard funcioni exactament igual que sobre \(\mathbb{R}\) o \(\mathbb{Q}\).
+
+** Què funciona exactament igual?
+
+- Vectors, combinacions lineals i subespais.
+- Independència lineal, bases i dimensió.
+- Sistemes d'equacions lineals: mètode de Gauss i eliminació.
+- Rang d'una matriu.
+- Determinants i invertibilitat.
+- Regla de Cramer.
+- Espais vectorials \(\mathbb{F}_p^n\).
+- Teorema de Rouché–Capelli: un sistema és compatible si i només si \(\operatorname{rang}(A)=\operatorname{rang}(A|b)\). Si és compatible i el rang és igual al nombre d'incògnites, la solució és única. Si el rang és més petit, hi ha \(p^{n-r}\) solucions.
+- Una matriu és invertible si i només si \(\det(A)\neq 0\), si i només si les seves files/columnes són linealment independents, si i només si té rang \(n\).
+
+** Exemple 6: sistema sobre \(\mathbb{F}_5\) per la inversa**
+
+Resoldre
+\[
+\begin{cases}
+x+2y=0\\
+3x+4y=1
+\end{cases}
+\pmod 5.
+\]
+Matriu:
+\[
+A=\begin{pmatrix}1&2\\3&4\end{pmatrix},\quad
+b=\begin{pmatrix}0\\1\end{pmatrix}.
+\]
+\(\det(A)=3\neq 0\) a \(\mathbb{F}_5\), així que hi ha solució única.
+
+\[
+A^{-1}=\begin{pmatrix}3&1\\4&2\end{pmatrix}\pmod 5.
+\]
+\[
+\begin{pmatrix}x\\y\end{pmatrix}
+=A^{-1}b
+=\begin{pmatrix}3&1\\4&2\end{pmatrix}
+\begin{pmatrix}0\\1\end{pmatrix}
+=
+\begin{pmatrix}1\\2\end{pmatrix}\pmod 5.
+\]
+Comprovació:
+\[
+x+2y=1+2\cdot 2=5\equiv 0,
+\]
+\[
+3x+4y=3+8=11\equiv 1\pmod 5.
+\]
+
+** Exemple 7: regla de Cramer sobre \(\mathbb{F}_5\)
+
+Pel mateix sistema:
+\[
+x=\frac{\det\begin{pmatrix}0&2\\1&4\end{pmatrix}}{\det A}
+=\frac{0\cdot 4-2\cdot 1}{3}
+=\frac{-2}{3}
+=\frac{3}{3}
+=1\pmod 5.
+\]
+\[
+y=\frac{\det\begin{pmatrix}1&0\\3&1\end{pmatrix}}{\det A}
+=\frac{1\cdot 1-0\cdot 3}{3}
+=\frac{1}{3}
+=1\cdot 2=2\pmod 5.
+\]
+
+** Exemple 8: dependència lineal sobre \(\mathbb{F}_5\)
+
+Al cos \(\mathbb{F}_5\), els vectors
+\[
+v_1=(1,2),\quad v_2=(3,4)
+\]
+són linealment independents? Mirem \(a v_1+b v_2=0\).
+\[
+a(1,2)+b(3,4)=(0,0)
+\iff
+\begin{cases}
+a+3b=0\\
+2a+4b=0
+\end{cases}
+\]
+El determinant de la matriu de coeficients és
+\[
+\det\begin{pmatrix}1&3\\2&4\end{pmatrix}=4-6=-2\equiv 3\neq 0.
+\]
+Per tant, l'única solució és \(a=b=0\). Són linealment independents.
+
+* Quan \(m\) no és primer: complicacions
+
+** No és un cos
+
+Si \(m\) no és primer, \(\mathbb{Z}/m\mathbb{Z}\) no és un cos. Hi ha divisors de zero.
+
+Exemple \(m=6\):
+\[
+2\cdot 3=6\equiv 0\pmod 6,
+\]
+però \(2\neq 0\) i \(3\neq 0\). Ni \(2\) ni \(3\) són unitats.
+
+** Conseqüències
+
+- No podem dividir per qualsevol element no nul. Només podem dividir per unitats.
+- Una matriu pot tenir determinant no nul i, tot i així, no ser invertible.
+  Exemple:
+  \[
+  A=\begin{pmatrix}1&2\\3&4\end{pmatrix}\pmod 6,
+  \]
+  \(\det A=4\neq 0\), però \(4\) no és unitat mòdul \(6\), així que \(A\) no és invertible.
+- El rang d'una matriu sobre un anell no és tan senzill com sobre un cos.
+- La independència lineal canvia: un vector no nul pot ser linealment dependent.
+  Exemple a \(\mathbb{Z}/6\mathbb{Z}\): \(v=(2,0)\). Tenim
+  \[
+  3v=(6,0)=(0,0),
+  \]
+  amb \(3\neq 0\). Així \(v\) és linealment dependent, tot i que \(v\neq 0\).
+- Els sistemes d'equacions poden tenir comportaments estranys: poden no tenir solució, tenir-ne una, o tenir-ne diverses. La regla de Cramer només s'aplica si el determinant és una unitat.
+- La noció de base i dimensió sobre anells no és tan neta; cal parlar de mòduls lliures, torsió, etc.
+
+** Exemple 9: sistema sobre \(\mathbb{Z}/6\mathbb{Z}\) sense solució**
+
+\[
+\begin{cases}
+x+2y=1\\
+3x+4y=2
+\end{cases}
+\pmod 6.
+\]
+Matriu:
+\[
+A=\begin{pmatrix}1&2\\3&4\end{pmatrix},\quad \det A=4.
+\]
+Com \(4\) no és unitat, no podem usar \(A^{-1}\). De fet, \(A\) no és invertible.
+
+De la primera equació:
+\[
+x\equiv 1-2y.
+\]
+Substituïm a la segona:
+\[
+3(1-2y)+4y\equiv 2\pmod 6
+\]
+\[
+3-6y+4y\equiv 2
+\]
+\[
+3-2y\equiv 2\pmod 6
+\]
+\[
+-2y\equiv -1\equiv 5\pmod 6
+\]
+\[
+2y\equiv 1\pmod 6.
+\]
+Però \(2y\) mòdul \(6\) només pot valer \(0,2,4\). Mai \(1\). Per tant, el sistema no té solució.
+
+** Exemple 10: sistema sobre \(\mathbb{Z}/6\mathbb{Z}\) amb diverses solucions**
+
+\[
+\begin{cases}
+x+2y=0\\
+3x+4y=0
+\end{cases}
+\pmod 6.
+\]
+Mateixa matriu \(A\). De la primera:
+\[
+x=-2y.
+\]
+Substituïm a la segona:
+\[
+3(-2y)+4y=-6y+4y=4y\equiv 0\pmod 6.
+\]
+Ara,
+\[
+4y\equiv 0\pmod 6
+\iff 6\mid 4y
+\iff 3\mid 2y
+\iff 3\mid y.
+\]
+Per tant, \(y\equiv 0,3\pmod 6\).
+
+- Si \(y=0\), aleshores \(x=0\).
+- Si \(y=3\), aleshores \(x=-6\equiv 0\).
+
+Solucions: \((0,0)\) i \((0,3)\). El sistema és compatible indeterminat, però amb un nombre finit de solucions.
+
+* Resum
+
+- El determinant mòdul \(m\) es calcula igual que a \(\mathbb{Z}\) i compleix
+  \[
+  \det(AB)=\det(A)\det(B).
+  \]
+- \(A\in M_n(\mathbb{Z}/m\mathbb{Z})\) és invertible si i només si \(\det(A)\) és una unitat mòdul \(m\), és a dir, \(\gcd(\det(A),m)=1\).
+- Si \(\det(A)\) és unitat,
+  \[
+  A^{-1}=(\det A)^{-1}\operatorname{adj}(A).
+  \]
+- Si \(m=p\) és primer, \(\mathbb{Z}/p\mathbb{Z}\) és cos i tota l'àlgebra lineal estàndard funciona: vectors, independència lineal, sistemes, Cramer, rang, determinants, etc.
+- Si \(m\) no és primer, hi ha divisors de zero i l'àlgebra lineal és més complicada: cal anar amb compte amb divisions, rangs, independència i sistemes.
+
+* Exercicis proposats
+
+1. Calcula el determinant i digues si la matriu és invertible mòdul \(m\):
+   a) \(A=\begin{pmatrix}2&1\\5&3\end{pmatrix}\pmod 7\).
+   b) \(B=\begin{pmatrix}2&1\\5&3\end{pmatrix}\pmod 8\).
+   c) \(C=\begin{pmatrix}1&2&3\\0&1&4\\5&6&0\end{pmatrix}\pmod 5\).
+
+2. Troba la inversa, si existeix, de
+   \[
+   A=\begin{pmatrix}2&1\\5&3\end{pmatrix}\pmod 7.
+   \]
+
+3. Resol sobre \(\mathbb{F}_7\):
+   \[
+   \begin{cases}
+   2x+y=3\\
+   5x+3y=1
+   \end{cases}
+   \]
+
+4. Sobre \(\mathbb{Z}/8\mathbb{Z}\), troba una matriu \(A\) amb \(\det A=4\) i comprova que no és invertible.
+
+5. Sobre \(\mathbb{Z}/6\mathbb{Z}\), dóna un exemple de vector no nul linealment dependent.
+
+* Solucions breus
+
+** 1a
+
+\[
+\det A=2\cdot 3-1\cdot 5=6-5=1\pmod 7.
+\]
+\(\gcd(1,7)=1\), per tant és invertible.
+
+** 1b
+
+\[
+\det B=6-5=1\pmod 8.
+\]
+\(\gcd(1,8)=1\), per tant és invertible.
+
+** 1c
+
+\[
+\det C=1(1\cdot 0-4\cdot 6)-2(0\cdot 0-4\cdot 5)+3(0\cdot 6-1\cdot 5)
+\]
+\[
+=1(0-24)-2(0-20)+3(0-5)
+=-24+40-15=1\pmod 5.
+\]
+\(1\) és unitat, per tant és invertible.
+
+** 2
+
+\(\det A=1\), així \(A^{-1}=\operatorname{adj}(A)\).
+\[
+\operatorname{adj}(A)=\begin{pmatrix}3&-1\\-5&2\end{pmatrix}
+\equiv \begin{pmatrix}3&6\\2&2\end{pmatrix}\pmod 7.
+\]
+Comprovació:
+\[
+\begin{pmatrix}2&1\\5&3\end{pmatrix}
+\begin{pmatrix}3&6\\2&2\end{pmatrix}
+=
+\begin{pmatrix}8&14\\21&36\end{pmatrix}
+\equiv \begin{pmatrix}1&0\\0&1\end{pmatrix}\pmod 7.
+\]
+
+** 3
+
+\[
+A=\begin{pmatrix}2&1\\5&3\end{pmatrix},\quad \det A=1.
+\]
+\[
+A^{-1}=\begin{pmatrix}3&6\\2&2\end{pmatrix}.
+\]
+\[
+\begin{pmatrix}x\\y\end{pmatrix}
+=A^{-1}\begin{pmatrix}3\\1\end{pmatrix}
+=\begin{pmatrix}3\cdot 3+6\cdot 1\\2\cdot 3+2\cdot 1\end{pmatrix}
+=\begin{pmatrix}15\\8\end{pmatrix}
+\equiv \begin{pmatrix}1\\1\end{pmatrix}\pmod 7.
+\]
+Comprovació:
+\[
+2\cdot 1+1=3,\qquad 5\cdot 1+3\cdot 1=8\equiv 1\pmod 7.
+\]
+
+** 4
+
+\[
+A=\begin{pmatrix}2&0\\0&2\end{pmatrix}\pmod 8,\quad \det A=4.
+\]
+Com \(\gcd(4,8)=4\neq 1\), \(4\) no és unitat mòdul \(8\). Per tant, \(A\) no és invertible.
+
+** 5
+
+A \((\mathbb{Z}/6\mathbb{Z})^2\), prenem
+\[
+v=(2,0).
+\]
+Aleshores
+\[
+3v=(6,0)=(0,0),
+\]
+amb \(3\neq 0\). Per tant, \(v\) és linealment dependent tot i ser no nul.
