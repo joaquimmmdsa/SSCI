@@ -3272,3 +3272,181 @@ Aleshores
 3v=(6,0)=(0,0),
 \]
 amb \(3\neq 0\). Per tant, \(v\) és linealment dependent tot i ser no nul.
+
+
+
+* 40. Teorema xinès del residu (Chinese remainder theorem)
+
+** Explicació
+
+El problema clàssic és el següent:
+Tenim un cert nombre d'objectes. Si els
+comptem de tres en tres, en sobren dos; si els comptem de cinc en
+cinc, en sobren tres; si els comptem de set en set, en sobren
+dos. Quants objectes hi ha?
+
+És a dir, busquem \(x \in \mathbb{Z}\) tal que:
+\[
+x \equiv 2 \pmod{3},
+\]
+\[
+x \equiv 3 \pmod{5},
+\]
+\[
+x \equiv 2 \pmod{7}.
+\]
+Com trobar una d'aquestes solucions? Ho fem per substitució successiva.
+
+** Resolució pas a pas
+
+*** Pas 1: combinar les dues primeres congruències
+
+Partim de:
+\[
+x \equiv 2 \pmod{3}.
+\]
+Això vol dir que:
+\[
+x = 2 + 3k, \quad k \in \mathbb{Z}.
+\]
+
+Imposem la segona congruència:
+\[
+x \equiv 3 \pmod{5}.
+\]
+Substituint:
+\[
+2 + 3k \equiv 3 \pmod{5},
+\]
+\[
+3k \equiv 1 \pmod{5}.
+\]
+
+Ara necessitem l'invers de \(3\) mòdul \(5\), que és \(2\), perquè:
+\[
+3 \cdot 2 = 6 \equiv 1 \pmod{5}.
+\]
+Per tant:
+\[
+k \equiv 2 \pmod{5}.
+\]
+
+Això vol dir que \(k\) és de la forma:
+\[
+k = 2 + 5t, \quad t \in \mathbb{Z}.
+\]
+
+Substituint a \(x\):
+\[
+x = 2 + 3k = 2 + 3(2 + 5t) = 2 + 6 + 15t = 8 + 15t.
+\]
+És a dir:
+\[
+x \equiv 8 \pmod{15}.
+\]
+
+*** Pas 2: imposar la tercera congruència
+
+Ara imposem:
+\[
+x \equiv 2 \pmod{7}.
+\]
+Amb l'expressió anterior:
+\[
+8 + 15t \equiv 2 \pmod{7}.
+\]
+
+Reduïm mòdul \(7\) (\(8 \equiv 1\), \(15 \equiv 1\)):
+\[
+1 + t \equiv 2 \pmod{7},
+\]
+\[
+t \equiv 1 \pmod{7}.
+\]
+
+Per tant:
+\[
+t = 1 + 7s, \quad s \in \mathbb{Z}.
+\]
+
+Substituint:
+\[
+x = 8 + 15t = 8 + 15(1 + 7s) = 8 + 15 + 105s = 23 + 105s.
+\]
+És a dir:
+\[
+\boxed{x \equiv 23 \pmod{105}.}
+\]
+
+** Solució general
+
+La solució és:
+\[
+\boxed{x = 23 + 105k, \quad k \in \mathbb{Z}.}
+\]
+on \(105 = 3 \cdot 5 \cdot 7\).
+
+** Comprovació
+
+\[
+23 = 3 \cdot 7 + 2 \implies 23 \equiv 2 \pmod{3},
+\]
+\[
+23 = 5 \cdot 4 + 3 \implies 23 \equiv 3 \pmod{5},
+\]
+\[
+23 = 7 \cdot 3 + 2 \implies 23 \equiv 2 \pmod{7}.
+\]
+
+
+
+41 observacio:
+unicitat modul M = mcm(m1, ..., mn)
+
+siguin m1, ..., mn > 1 i a1, ..., an dins dels enters. Si el sistema
+x=_ a1 mod(m1)
+.
+.
+.
+x=_ an mod(mn)
+te solucio, aleshores es unica modul
+M = mcm(m1, ..., mn)
+
+
+Demostracio:
+suposem que x iy son dues solucions del sistema. Aleshores per a cada i = 1,...,n
+x=_ ai mod(mi), y=_ai mod(mi)
+per tant x=_y mod (mi)
+aixo vol dir que
+mi|(x-y)
+per tot i = 1,...,n per tant x-y es multiple comu de tots els mi com que M=mcm(m1,...,mn) es el minim comu multiple, tenim
+M|(x-y)
+per tant x=_y mod(m)
+la solucio no es unica
+x+kM=_x mod(mi)
+
+42 corol·lari: cas homogeni
+el cas homogen es aquell en que es aquell en que
+a1=a2=...=an=0
+el sistema queda
+x=_ 0 mod(m1)
+.
+.
+.
+x=_0 mod(mn)
+aixo vol dir que x es multiple de cada mi per tant x es multiple de
+M = mcm(m1,..., mn)
+per tant la solucio es:
+x=_0 mod(M)
+es a dir la classe solucio es [0]_M Aquest sistema sempre te solucio independentment de si els moduls son copirmers o no.
+a mes la unicitat modul M es exactament la de l'observacio 41
+
+
+43. Teorema xines del residu:
+Siguin m1,...,mn>1  entre coprimers dos a dos es a dir:
+mcd(mi,mj)=1 tal que i!=j
+aleshores per a qualsevol a1,...,an dins dels enters el sistema
+x =_ a1 mod(m1)
+...
+x=_ an mod(mn)
+demostracio constructiva
