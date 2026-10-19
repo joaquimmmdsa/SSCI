@@ -1,0 +1,1976 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Sol-Aritmetica.html</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)'],['$','$']], displayMath: [['\\[','\\]'],['$$','$$']] } };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+
+<h1 id="solutions-modular-arithmetic-tools">Solutions — Modular
+Arithmetic Tools</h1>
+<p><strong>Course:</strong> <em>Seguretat i Secret en la Codificació de
+la Informació</em> (EPSEM), curs 26–27–Q1 <strong>Problem
+sheet:</strong> <code>Prob-Aritmetica</code> (Tema 1)</p>
+<hr />
+<h2 id="notes-on-this-document">Notes on this document</h2>
+<ul>
+<li><strong>Restored statements.</strong> The markdown file
+<code>Prob-Aritmetica.md</code> lost the formulas of exercises
+<strong>1.22, 1.23, 1.25</strong> and <strong>1.27</strong>. They have
+been recovered from the original <code>Prob-Aritmetica.pdf</code> and
+are restated below.</li>
+<li><strong>Notation.</strong> <span class="math inline">\(\gcd\)</span>
+= greatest common divisor (mcd), <span
+class="math inline">\(\operatorname{lcm}\)</span> = least common
+multiple (mcm); <span class="math inline">\([a]_m\)</span> is the class
+of <span class="math inline">\(a\)</span> modulo <span
+class="math inline">\(m\)</span>. Ring units are listed as residue
+classes.</li>
+<li><strong>Typo in 1.11.</strong> The statement says <span
+class="math inline">\(\gcd(m,n)=1\)</span>; the hypothesis that makes
+sense (and the one solved here) is <span
+class="math inline">\(\gcd(a,b)=1\)</span>.</li>
+<li><strong>Typo in 1.18.</strong> Read literally the statement is false
+for the even prime <span class="math inline">\(p=2\)</span> (indeed
+<span class="math inline">\(2=1^2+1^2\)</span> but <span
+class="math inline">\(2\equiv 2 \pmod 4\)</span>). What is true — and is
+proved below — is the intended statement: <strong>every odd
+prime</strong> that is a sum of two squares satisfies <span
+class="math inline">\(p\equiv 1\pmod 4\)</span>.</li>
+<li><strong>Items 1.38 (u) and (v).</strong> As written they are false
+(counterexamples below); the standard true statements obtained by
+swapping the roles of <span class="math inline">\(\gcd\)</span> and
+<span class="math inline">\(\operatorname{lcm}\)</span> are recorded
+next to each answer.</li>
+<li>Every numerical result in this document was independently checked by
+computer.</li>
+</ul>
+<hr />
+<h2 id="divisibility-in-mathbbz">1.1 Divisibility in <span
+class="math inline">\(\mathbb{Z}\)</span></h2>
+<h3 id="section">1.1</h3>
+<p><em>Let <span class="math inline">\(a,b\in\mathbb Z\)</span> with
+<span class="math inline">\(\gcd(a,b)=1\)</span>. Show that <span
+class="math inline">\(\gcd(a+b,\,a-b)\in\{1,2\}\)</span>.</em></p>
+<p><strong>Solution.</strong> Let <span
+class="math inline">\(d=\gcd(a+b,\,a-b)\)</span>. Then <span
+class="math inline">\(d\mid a+b\)</span> and <span
+class="math inline">\(d\mid a-b\)</span>, hence <span
+class="math display">\[d\mid (a+b)+(a-b)=2a \qquad\text{and}\qquad d\mid
+(a+b)-(a-b)=2b.\]</span> So <span class="math inline">\(d\)</span> is a
+common divisor of <span class="math inline">\(2a\)</span> and <span
+class="math inline">\(2b\)</span>: <span class="math display">\[d\mid
+\gcd(2a,2b)=2\gcd(a,b)=2.\]</span> As <span
+class="math inline">\(d&gt;0\)</span>, we get <span
+class="math inline">\(d\in\{1,2\}\)</span>. Both cases really occur:
+<span class="math inline">\(a=2,\,b=1\)</span> gives <span
+class="math inline">\(\gcd(3,1)=1\)</span>, while <span
+class="math inline">\(a=3,\,b=1\)</span> gives <span
+class="math inline">\(\gcd(4,2)=2\)</span>. <span
+class="math inline">\(\blacksquare\)</span></p>
+<h3 id="section-1">1.2</h3>
+<p><em>Show that <span
+class="math inline">\(\gcd(ma,mb)=m\cdot\gcd(a,b)\)</span> for all <span
+class="math inline">\(a,b,m\in\mathbb Z\)</span>.</em></p>
+<p><strong>Solution.</strong> If <span
+class="math inline">\(m=0\)</span> both sides are <span
+class="math inline">\(0\)</span>. Assume first <span
+class="math inline">\(m&gt;0\)</span>. For every prime <span
+class="math inline">\(p\)</span>, let <span
+class="math inline">\(v_p(x)\)</span> be the exponent of <span
+class="math inline">\(p\)</span> in <span
+class="math inline">\(x\)</span> (with <span
+class="math inline">\(v_p(0)=+\infty\)</span>, which also covers <span
+class="math inline">\(a=0\)</span> or <span
+class="math inline">\(b=0\)</span>). Using <span
+class="math inline">\(\min(\alpha+t,\beta+t)=t+\min(\alpha,\beta)\)</span>:
+<span
+class="math display">\[v_p\bigl(\gcd(ma,mb)\bigr)=\min\bigl(v_p(m)+v_p(a),\,v_p(m)+v_p(b)\bigr)
+=v_p(m)+\min\bigl(v_p(a),v_p(b)\bigr)=v_p\bigl(m\gcd(a,b)\bigr).\]</span>
+Two nonnegative integers with the same valuation at every prime are
+equal, so <span class="math inline">\(\gcd(ma,mb)=m\gcd(a,b)\)</span>
+for <span class="math inline">\(m&gt;0\)</span>.</p>
+<p><em>Sign convention (small remark).</em> With the standard convention
+that gcds are nonnegative, for <span
+class="math inline">\(m&lt;0\)</span> the general identity reads <span
+class="math inline">\(\gcd(ma,mb)=|m|\cdot\gcd(a,b)\)</span> (gcds only
+see <span class="math inline">\(|ma|,|mb|\)</span>); the formula <span
+class="math inline">\(m\,\gcd(a,b)\)</span> is then correct as an
+identity “up to sign”, and is literally true whenever <span
+class="math inline">\(m\ge 0\)</span> or when one declares gcds up to
+sign. <span class="math inline">\(\blacksquare\)</span></p>
+<p><em>Bézout alternative.</em> Write <span
+class="math inline">\(\gcd(a,b)=ax+by\)</span>. Then <span
+class="math inline">\(m\gcd(a,b)=(ma)x+(mb)y\)</span>, which shows <span
+class="math inline">\(m\gcd(a,b)\)</span> is a common divisor of <span
+class="math inline">\(ma,mb\)</span> (both positive multiples), and the
+converse divisibility follows by the same computation with the roles of
+<span class="math inline">\((a,b)\)</span> and <span
+class="math inline">\((ma,mb)\)</span> swapped; the valuation proof
+avoids all case distinctions.</p>
+<h3 id="section-2">1.3</h3>
+<p><em>Is <span
+class="math inline">\(\gcd(3a-b,\,b-2a)=\gcd(a,b)\)</span> for all <span
+class="math inline">\(a,b\in\mathbb Z\)</span>?</em></p>
+<p><strong>Solution.</strong> <strong>Yes, it is true.</strong> Let
+<span class="math inline">\(d=\gcd(a,b)\)</span> and <span
+class="math inline">\(g=\gcd(3a-b,\,b-2a)\)</span>.</p>
+<ul>
+<li>Since <span class="math inline">\(d\mid a\)</span> and <span
+class="math inline">\(d\mid b\)</span>, we have <span
+class="math inline">\(d\mid 3a-b\)</span> and <span
+class="math inline">\(d\mid b-2a\)</span>, so <span
+class="math inline">\(d\)</span> is a common divisor of the two numbers
+and therefore <span class="math inline">\(d\mid g\)</span>.</li>
+<li>Conversely, <span class="math inline">\(g\)</span> divides <span
+class="math display">\[(3a-b)+(b-2a)=a \qquad\text{and}\qquad
+2(3a-b)+3(b-2a)=(6a-2b)+(3b-6a)=b,\]</span> so <span
+class="math inline">\(g\mid a\)</span> and <span
+class="math inline">\(g\mid b\)</span>, hence <span
+class="math inline">\(g\mid d\)</span>.</li>
+</ul>
+<p>Therefore <span class="math inline">\(d=g\)</span> (both are
+positive). Equivalently, the change of pair <span
+class="math inline">\((a,b)\mapsto(3a-b,\,b-2a)\)</span> is given by the
+matrix <span
+class="math inline">\(\begin{pmatrix}3&amp;-1\\-2&amp;1\end{pmatrix}\)</span>
+of determinant <span class="math inline">\(3\cdot 1-(-1)(-2)=1\)</span>,
+i.e. it is unimodular, and unimodular transformations preserve the gcd.
+<span class="math inline">\(\blacksquare\)</span></p>
+<h3 id="section-3">1.4</h3>
+<p><em>Compute <span class="math inline">\(\gcd(28n-5,\,35n-8)\)</span>
+for <span class="math inline">\(n\ge 1\)</span>.</em></p>
+<p><strong>Solution.</strong> Form the combination that cancels <span
+class="math inline">\(n\)</span>: <span
+class="math display">\[5(28n-5)-4(35n-8)=140n-25-140n+32=7.\]</span>
+Hence <span class="math inline">\(\gcd(28n-5,35n-8)\mid 7\)</span>, so
+the gcd is <span class="math inline">\(1\)</span> or <span
+class="math inline">\(7\)</span>. But <span
+class="math display">\[28n-5\equiv -5\equiv 2 \pmod 7,\]</span> so <span
+class="math inline">\(7\nmid 28n-5\)</span>; therefore the gcd cannot be
+<span class="math inline">\(7\)</span>.</p>
+<p><strong>Answer:</strong> <span
+class="math inline">\(\gcd(28n-5,\,35n-8)=1\)</span> for every <span
+class="math inline">\(n\ge 1\)</span>.</p>
+<h3 id="section-4">1.5</h3>
+<p><em>Find the gcd and Bézout coefficients of each pair (and
+check).</em></p>
+<p><strong>Solution.</strong></p>
+<p><strong>a) <span class="math inline">\(1492,\,1776\)</span>.</strong>
+Euclidean algorithm: <span class="math display">\[1776=1\cdot
+1492+284,\quad 1492=5\cdot 284+72,\quad 284=3\cdot 72+68,\quad 72=1\cdot
+68+4,\quad 68=17\cdot 4+0.\]</span> So <span
+class="math inline">\(\gcd=4\)</span>. Back-substitution: <span
+class="math display">\[4=72-68=72-(284-3\cdot72)=4\cdot72-284=4(1492-5\cdot284)-284=4\cdot1492-21\cdot284\]</span>
+<span
+class="math display">\[=4\cdot1492-21(1776-1492)=25\cdot1492-21\cdot1776.\]</span>
+<strong>Answer:</strong> <span
+class="math inline">\(\gcd(1492,1776)=4\)</span> and <span
+class="math inline">\(25\cdot 1492+(-21)\cdot 1776=4\)</span>.
+<em>Check:</em> <span class="math inline">\(25\cdot1492=37300\)</span>,
+<span class="math inline">\(21\cdot1776=37296\)</span>, difference <span
+class="math inline">\(4\)</span>. ✔</p>
+<p><strong>b) <span class="math inline">\(7469,\,2464\)</span>.</strong>
+<span class="math display">\[7469=3\cdot2464+77,\qquad 2464=32\cdot 77+0
+.\]</span> So <span class="math inline">\(\gcd=77\)</span>. Reading the
+first identity backwards: <span class="math display">\[77=1\cdot
+7469-3\cdot 2464.\]</span> <strong>Answer:</strong> <span
+class="math inline">\(\gcd(7469,2464)=77\)</span> and <span
+class="math inline">\(1\cdot7469+(-3)\cdot2464=77\)</span>.
+<em>Check:</em> <span class="math inline">\(7469-7392=77\)</span>. ✔</p>
+<p><strong>c) <span class="math inline">\(500,\,11312\)</span>.</strong>
+<span class="math display">\[11312=22\cdot500+312,\quad
+500=312+188,\quad 312=188+124,\quad 188=124+64,\]</span> <span
+class="math display">\[124=64+60,\quad 64=60+4,\quad 60=15\cdot4+0
+.\]</span> So <span class="math inline">\(\gcd=4\)</span>.
+Back-substitution: <span
+class="math display">\[4=64-60=2\cdot64-124=2\cdot188-3\cdot124=5\cdot188-3\cdot312=5\cdot500-8\cdot312\]</span>
+<span
+class="math display">\[=5\cdot500-8(11312-22\cdot500)=181\cdot500-8\cdot11312.\]</span>
+<strong>Answer:</strong> <span
+class="math inline">\(\gcd(500,11312)=4\)</span> and <span
+class="math inline">\(181\cdot500+(-8)\cdot11312=4\)</span>.
+<em>Check:</em> <span class="math inline">\(90500-90496=4\)</span>.
+✔</p>
+<h3 id="section-5">1.6</h3>
+<p><em>Compute the least common multiple of each pair from 1.5.</em></p>
+<p><strong>Solution.</strong> Use <span
+class="math inline">\(\operatorname{lcm}(a,b)=\dfrac{|ab|}{\gcd(a,b)}\)</span>.</p>
+<ul>
+<li><span
+class="math inline">\(\operatorname{lcm}(1492,1776)=\dfrac{1492\cdot1776}{4}=373\cdot1776=662448.\)</span></li>
+<li><span
+class="math inline">\(\operatorname{lcm}(7469,2464)=\dfrac{7469\cdot2464}{77}=97\cdot2464=239008.\)</span></li>
+<li><span
+class="math inline">\(\operatorname{lcm}(500,11312)=\dfrac{500\cdot11312}{4}=125\cdot11312=1414000.\)</span></li>
+</ul>
+<h3 id="section-6">1.7</h3>
+<p><em>Show that <span class="math inline">\(\dfrac{4n+5}{2n+3}\)</span>
+is irreducible for every <span class="math inline">\(n\ge
+1\)</span>.</em></p>
+<p><strong>Solution.</strong> Any common divisor <span
+class="math inline">\(d\)</span> of numerator and denominator must
+divide <span class="math display">\[(4n+5)-2(2n+3)=(4n+5)-(4n+6)=-1
+.\]</span> Hence <span class="math inline">\(d=\pm1\)</span> and the
+fraction is irreducible (it is already in lowest terms, since <span
+class="math inline">\(2n+3&gt;0\)</span>). <span
+class="math inline">\(\blacksquare\)</span></p>
+<h3 id="section-7">1.8</h3>
+<p><em>Solve the Diophantine equations.</em></p>
+<p><strong>Solution.</strong> Recall: <span
+class="math inline">\(ax+by=c\)</span> has integer solutions iff <span
+class="math inline">\(\gcd(a,b)\mid c\)</span>; if <span
+class="math inline">\((x_0,y_0)\)</span> is one solution, all are <span
+class="math inline">\(x=x_0+\frac{b}{g}t,\; y=y_0-\frac{a}{g}t\)</span>
+(<span class="math inline">\(g=\gcd(a,b)\)</span>, <span
+class="math inline">\(t\in\mathbb Z\)</span>).</p>
+<p><strong>a) <span class="math inline">\(93x-81y=3\)</span>.</strong>
+Dividing by <span class="math inline">\(3\)</span>: <span
+class="math inline">\(31x-27y=1\)</span>. Euclidean algorithm: <span
+class="math display">\[31=1\cdot27+4,\quad 27=6\cdot4+3,\quad
+4=1\cdot3+1 .\]</span> Back-substitution: <span
+class="math inline">\(1=4-3=4-(27-6\cdot4)=7\cdot4-27=7(31-27)-27=7\cdot31-8\cdot27\)</span>.
+So <span class="math inline">\((x_0,y_0)=(7,8)\)</span>. From <span
+class="math inline">\(31(x-7)=27(y-8)\)</span> and <span
+class="math inline">\(\gcd(31,27)=1\)</span> we get <span
+class="math inline">\(x-7=27t\)</span>: <span
+class="math display">\[\boxed{x=7+27t,\qquad y=8+31t,\qquad t\in\mathbb
+Z.}\]</span> <em>Check:</em> <span
+class="math inline">\(93(7)-81(8)=651-648=3\)</span>. ✔</p>
+<p><strong>b) <span class="math inline">\(71x-50y=1\)</span>.</strong>
+Euclid: <span class="math display">\[71=1\cdot50+21,\quad
+50=2\cdot21+8,\quad 21=2\cdot8+5,\quad 8=1\cdot5+3,\quad
+5=1\cdot3+2,\quad 3=1\cdot2+1 .\]</span> Back-substitution: <span
+class="math display">\[1=3-2=2\cdot3-5=2\cdot8-3\cdot5=8\cdot8-3\cdot21=8\cdot50-19\cdot21=27\cdot50-19\cdot71
+.\]</span> So <span
+class="math inline">\(71\cdot(-19)-50\cdot(-27)=1\)</span>, i.e. <span
+class="math inline">\((x_0,y_0)=(-19,-27)\)</span>: <span
+class="math display">\[\boxed{x=-19+50t,\qquad y=-27+71t,\qquad
+t\in\mathbb Z.}\]</span> <em>Check:</em> <span
+class="math inline">\(71(-19)-50(-27)=-1349+1350=1\)</span>. ✔</p>
+<p><strong>c) <span class="math inline">\(42x+18y=34\)</span>.</strong>
+<span class="math inline">\(\gcd(42,18)=6\)</span>, but <span
+class="math inline">\(6\nmid 34\)</span>. <strong>No integer
+solutions.</strong> <span
+class="math inline">\(\blacksquare\)</span></p>
+<p><strong>d) <span
+class="math inline">\(283x-1722y=31\)</span>.</strong> Euclid: <span
+class="math display">\[1722=6\cdot283+24,\quad 283=11\cdot24+19,\quad
+24=1\cdot19+5,\quad 19=3\cdot5+4,\quad 5=1\cdot4+1 .\]</span>
+Back-substitution: <span
+class="math display">\[1=5-4=4\cdot5-19=4\cdot24-5\cdot19=59\cdot24-5\cdot283=59\cdot1722-359\cdot283
+.\]</span> So <span
+class="math inline">\(1=(-359)\cdot283+59\cdot1722\)</span>, i.e. <span
+class="math inline">\(283\cdot(-359)-1722\cdot(-59)=1\)</span>.
+Multiplying by <span class="math inline">\(31\)</span>: <span
+class="math display">\[283\cdot(-11129)-1722\cdot(-1829)=31 .\]</span>
+Reducing the particular solution modulo <span
+class="math inline">\(1722\)</span>: <span
+class="math inline">\(-11129+7\cdot1722=925\)</span>, and
+correspondingly <span
+class="math inline">\(y=-1829+7\cdot283=152\)</span>: <span
+class="math display">\[\boxed{x=925+1722t,\qquad y=152+283t,\qquad
+t\in\mathbb Z.}\]</span> <em>Check:</em> <span
+class="math inline">\(283\cdot925-1722\cdot152=261775-261744=31\)</span>.
+✔</p>
+<h3 id="section-8">1.9</h3>
+<p><em>a) Compute <span class="math inline">\(\gcd(1911,65)\)</span> by
+the Euclidean algorithm. b) Decide whether <span
+class="math inline">\(3822x+65y=26\)</span> has solutions and, if so,
+describe them all.</em></p>
+<p><strong>Solution.</strong></p>
+<p><strong>a)</strong> <span
+class="math inline">\(1911=29\cdot65+26\)</span>; <span
+class="math inline">\(\quad 65=2\cdot26+13\)</span>; <span
+class="math inline">\(\quad 26=2\cdot13+0\)</span>. Hence <span
+class="math display">\[\gcd(1911,65)=13 .\]</span> Bézout coefficients:
+<span
+class="math inline">\(13=65-2\cdot26=65-2(1911-29\cdot65)=59\cdot65-2\cdot1911\)</span>,
+that is <span class="math display">\[(-2)\cdot1911+59\cdot65=13
+.\]</span></p>
+<p><strong>b)</strong> <span
+class="math inline">\(3822=2\cdot1911\)</span>. Since <span
+class="math inline">\(\gcd(2,65)=1\)</span>, <span
+class="math display">\[\gcd(3822,65)=\gcd(2\cdot1911,65)=\gcd(1911,65)=13
+.\]</span> Because <span class="math inline">\(13\mid 26\)</span>,
+<strong>there are solutions.</strong> Multiplying the Bézout identity of
+(a) by <span class="math inline">\(2\)</span>: <span
+class="math display">\[26=(-4)\cdot1911+118\cdot65=(-2)\cdot3822+118\cdot65
+.\]</span> So <span class="math inline">\((x_0,y_0)=(-2,118)\)</span> is
+a particular solution. From <span
+class="math inline">\(3822(x+2)=-65(y-118)\)</span> and <span
+class="math inline">\(3822=13\cdot294,\ 65=13\cdot5\)</span>, we get
+<span class="math inline">\(294(x+2)=-5(y-118)\)</span>; since <span
+class="math inline">\(\gcd(294,5)=1\)</span>, <span
+class="math inline">\(x+2=5s\)</span>: <span
+class="math display">\[\boxed{x=-2+5s,\qquad y=118-294s,\qquad
+s\in\mathbb Z.}\]</span> <em>Check for <span
+class="math inline">\(s=1\)</span>:</em> <span
+class="math inline">\((x,y)=(3,-176)\)</span>, and <span
+class="math inline">\(3822\cdot3+65\cdot(-176)=11466-11440=26\)</span>.
+✔</p>
+<h3 id="section-9">1.10</h3>
+<p><em>The birthday game: day times 12, month times 31, and only the sum
+<span class="math inline">\(S\)</span> is told. Guess the
+birthday.</em></p>
+<p><strong>Solution.</strong> Let <span
+class="math inline">\(d\in\{1,\dots,31\}\)</span> be the day and <span
+class="math inline">\(m\in\{1,\dots,12\}\)</span> the month. We know
+only <span class="math display">\[S=12d+31m .\]</span></p>
+<p><em>Uniqueness:</em> if <span
+class="math inline">\(12d_1+31m_1=12d_2+31m_2\)</span>, then <span
+class="math inline">\(12(d_1-d_2)=31(m_2-m_1)\)</span>. Thus <span
+class="math inline">\(12\mid 31(m_2-m_1)\)</span>, and since <span
+class="math inline">\(\gcd(12,31)=1\)</span>, <span
+class="math inline">\(12\mid m_2-m_1\)</span>. But <span
+class="math inline">\(|m_2-m_1|\le 11&lt;12\)</span>, so <span
+class="math inline">\(m_1=m_2\)</span>, and then <span
+class="math inline">\(d_1=d_2\)</span>. So the pair <span
+class="math inline">\((d,m)\)</span> is uniquely determined by <span
+class="math inline">\(S\)</span> (indeed no two birthdays give the same
+sum).</p>
+<p><em>Recovering the date:</em> reduce the equation modulo <span
+class="math inline">\(12\)</span>: <span class="math inline">\(S\equiv
+31m\equiv 7m \pmod{12}\)</span>. Since <span
+class="math inline">\(7\cdot7=49\equiv1\pmod{12}\)</span>, <span
+class="math display">\[m\equiv 7S \pmod{12},\]</span> and <span
+class="math inline">\(m\)</span> is the representative of this class in
+<span class="math inline">\(\{1,\dots,12\}\)</span> (take <span
+class="math inline">\(12\)</span> if the residue is <span
+class="math inline">\(0\)</span>). Then <span
+class="math display">\[d=\frac{S-31m}{12},\]</span> which is an integer
+between <span class="math inline">\(1\)</span> and <span
+class="math inline">\(31\)</span> automatically (the possible sums are
+<span class="math inline">\(43\le S\le744\)</span>).</p>
+<p><em>Example.</em> For <span class="math inline">\(S=353\)</span>:
+<span class="math inline">\(7\cdot353=2471\equiv 11 \pmod{12}\)</span>,
+so <span class="math inline">\(m=11\)</span> (November) and <span
+class="math inline">\(d=(353-341)/12=1\)</span>, i.e. the birthday is
+<strong>November 1st</strong>. ✔</p>
+<h3 id="section-10">1.11</h3>
+<p><em>Show that if <span class="math inline">\(ab\)</span> is a perfect
+square and <span class="math inline">\(\gcd(a,b)=1\)</span> (the sheet
+writes <span class="math inline">\(\gcd(m,n)=1\)</span>, a typo), then
+<span class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span> are both perfect squares.</em></p>
+<p><strong>Solution.</strong> If <span
+class="math inline">\(a=0\)</span> (then <span
+class="math inline">\(b=\pm1\)</span>) or <span
+class="math inline">\(b=0\)</span>, the claim is immediate; assume <span
+class="math inline">\(ab\ne0\)</span>. Write <span
+class="math inline">\(a=\prod_p p^{\alpha_p}\)</span>, <span
+class="math inline">\(b=\prod_p p^{\beta_p}\)</span>. Two facts:</p>
+<ol type="1">
+<li><span class="math inline">\(\gcd(a,b)=1\)</span> means that for each
+prime <span class="math inline">\(p\)</span>, at most one of <span
+class="math inline">\(\alpha_p,\beta_p\)</span> is positive.</li>
+<li><span class="math inline">\(ab=c^2\)</span> means <span
+class="math inline">\(\alpha_p+\beta_p=v_p(c^2)\)</span> is
+<strong>even</strong> for every <span
+class="math inline">\(p\)</span>.</li>
+</ol>
+<p>By (1), for each prime <span class="math inline">\(p\)</span> one of
+<span class="math inline">\(\alpha_p,\beta_p\)</span> is <span
+class="math inline">\(0\)</span>, so by (2) the other one equals the
+even number <span class="math inline">\(\alpha_p+\beta_p\)</span> (up to
+sign, i.e. both exponents are even). Hence <span
+class="math inline">\(a=\prod_p p^{\alpha_p}\)</span> and <span
+class="math inline">\(b=\prod_p p^{\beta_p}\)</span> are products of
+primes with even exponents: <span class="math display">\[a=\Bigl(\prod_p
+p^{\alpha_p/2}\Bigr)^2,\qquad b=\Bigl(\prod_p
+p^{\beta_p/2}\Bigr)^2\]</span> are both perfect squares. <span
+class="math inline">\(\blacksquare\)</span></p>
+<h3 id="section-11">1.12</h3>
+<p><em>Show that if <span class="math inline">\(a^2\mid b^2\)</span>
+then <span class="math inline">\(a\mid b\)</span>.</em></p>
+<p><strong>Solution.</strong> Let <span
+class="math inline">\(g=\gcd(a,b)\)</span>, and write <span
+class="math inline">\(a=ga&#39;\)</span>, <span
+class="math inline">\(b=gb&#39;\)</span> with <span
+class="math inline">\(\gcd(a&#39;,b&#39;)=1\)</span>. Then <span
+class="math inline">\(a^2\mid b^2\)</span> becomes <span
+class="math inline">\(g^2a&#39;^2\mid g^2b&#39;^2\)</span>, hence
+(cancelling <span class="math inline">\(g^2\ne0\)</span>) <span
+class="math display">\[a&#39;^2\mid b&#39;^2 .\]</span> If <span
+class="math inline">\(|a&#39;|&gt;1\)</span>, take a prime <span
+class="math inline">\(p\mid a&#39;\)</span>. Then <span
+class="math inline">\(p\mid a&#39;^2\mid b&#39;^2\)</span>, so <span
+class="math inline">\(p\mid b&#39;\)</span>, contradicting <span
+class="math inline">\(\gcd(a&#39;,b&#39;)=1\)</span>. Therefore <span
+class="math inline">\(a&#39;=\pm1\)</span>, i.e. <span
+class="math inline">\(a=\pm g\)</span>, and so <span
+class="math inline">\(a\mid b\)</span>. <span
+class="math inline">\(\blacksquare\)</span></p>
+<p><em>Valuation alternative:</em> <span class="math inline">\(a^2\mid
+b^2 \Rightarrow 2v_p(a)\le 2v_p(b) \Rightarrow v_p(a)\le v_p(b)\)</span>
+for all <span class="math inline">\(p\)</span>, i.e. <span
+class="math inline">\(a\mid b\)</span>.</p>
+<h3 id="section-12">1.13</h3>
+<p><em>Find the smallest <span class="math inline">\(n\)</span> such
+that <span class="math inline">\(n/2\)</span> is a square, <span
+class="math inline">\(n/3\)</span> is a cube and <span
+class="math inline">\(n/5\)</span> is a fifth power.</em></p>
+<p><strong>Solution.</strong> Write <span
+class="math inline">\(n=\prod_p p^{e_p}\)</span>. The three conditions
+say, for every prime <span class="math inline">\(p\)</span>:</p>
+<ul>
+<li><span class="math inline">\(n/2\)</span> square: <span
+class="math inline">\(e_2-1\)</span> even and <span
+class="math inline">\(e_p\)</span> even for <span
+class="math inline">\(p\ne2\)</span>;</li>
+<li><span class="math inline">\(n/3\)</span> cube: <span
+class="math inline">\(e_3-1\)</span> divisible by <span
+class="math inline">\(3\)</span> and <span
+class="math inline">\(e_p\)</span> divisible by <span
+class="math inline">\(3\)</span> for <span
+class="math inline">\(p\ne3\)</span>;</li>
+<li><span class="math inline">\(n/5\)</span> fifth power: <span
+class="math inline">\(e_5-1\)</span> divisible by <span
+class="math inline">\(5\)</span> and <span
+class="math inline">\(e_p\)</span> divisible by <span
+class="math inline">\(5\)</span> for <span
+class="math inline">\(p\ne5\)</span>.</li>
+</ul>
+<p>So, by CRT-type reasoning on each exponent (the smallest nonnegative
+solution of a congruence):</p>
+<table>
+<thead>
+<tr>
+<th>prime</th>
+<th>conditions</th>
+<th>smallest <span class="math inline">\(e_p\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math inline">\(2\)</span></td>
+<td><span class="math inline">\(e\equiv1\pmod2,\; e\equiv0\pmod3,\;
+e\equiv0\pmod5\)</span></td>
+<td><span class="math inline">\(15\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(3\)</span></td>
+<td><span class="math inline">\(e\equiv1\pmod3,\; e\equiv0\pmod2,\;
+e\equiv0\pmod5\)</span></td>
+<td><span class="math inline">\(10\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(5\)</span></td>
+<td><span class="math inline">\(e\equiv1\pmod5,\; e\equiv0\pmod2,\;
+e\equiv0\pmod3\)</span></td>
+<td><span class="math inline">\(6\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(p\ne2,3,5\)</span></td>
+<td><span class="math inline">\(e\equiv0\pmod{2,3,5}\)</span></td>
+<td><span class="math inline">\(0\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Hence <span
+class="math display">\[\boxed{n=2^{15}\cdot3^{10}\cdot5^{6}=30233088000000
+.}\]</span></p>
+<p><em>Check:</em> <span class="math display">\[\frac
+n2=2^{14}3^{10}5^6=(2^7\,3^5\,5^3)^2=3888000^2,\qquad
+\frac n3=2^{15}3^{9}5^6=(2^5\,3^3\,5^2)^3=21600^3,\]</span> <span
+class="math display">\[\frac n5=2^{15}3^{10}5^{5}=(2^3\,3^2\,5)^5=360^5.
+\;✔\]</span></p>
+<h3 id="section-13">1.14</h3>
+<p><em>Prime decompositions of the six integers of 1.5, and check of the
+gcd/lcm formulas.</em></p>
+<p><strong>Solution.</strong> The prime factorizations are <span
+class="math display">\[1492=2^2\cdot373,\qquad
+1776=2^4\cdot3\cdot37,\qquad 7469=7\cdot11\cdot97,\]</span> <span
+class="math display">\[2464=2^5\cdot7\cdot11,\qquad
+500=2^2\cdot5^3,\qquad 11312=2^4\cdot7\cdot101 .\]</span> (Indeed <span
+class="math inline">\(373\)</span>, <span
+class="math inline">\(37\)</span>, <span
+class="math inline">\(97\)</span>, <span
+class="math inline">\(101\)</span> are prime.) The formulas read <span
+class="math inline">\(\gcd=\prod p^{\min(\alpha_p,\beta_p)}\)</span>,
+<span class="math inline">\(\operatorname{lcm}=\prod
+p^{\max(\alpha_p,\beta_p)}\)</span>.</p>
+<ul>
+<li><strong><span class="math inline">\(1492,1776\)</span>:</strong>
+<span class="math inline">\(\gcd=2^{\min(2,4)}=2^2=4\)</span> and <span
+class="math inline">\(\operatorname{lcm}=2^{\max(2,4)}\cdot3\cdot37\cdot373=2^4\cdot3\cdot37\cdot373=1776\cdot373=662448\)</span>.
+✔</li>
+<li><strong><span class="math inline">\(7469,2464\)</span>:</strong>
+<span class="math inline">\(\gcd=7\cdot11=77\)</span> and <span
+class="math inline">\(\operatorname{lcm}=2^5\cdot7\cdot11\cdot97=2464\cdot97=239008\)</span>.
+✔</li>
+<li><strong><span class="math inline">\(500,11312\)</span>:</strong>
+<span class="math inline">\(\gcd=2^2=4\)</span> and <span
+class="math inline">\(\operatorname{lcm}=2^4\cdot5^3\cdot7\cdot101 =
+2000\cdot707=1414000\)</span>. ✔</li>
+</ul>
+<p>All values agree with exercises 1.5 and 1.6.</p>
+<h2 id="congruences">1.2 Congruences</h2>
+<h3 id="section-14">1.15</h3>
+<p><em>Compute in the indicated modular arithmetic.</em></p>
+<p><strong>Solution.</strong></p>
+<p><strong>a) <span class="math inline">\(8\cdot(7^2-2)+6\)</span> in
+<span class="math inline">\(\mathbb Z/12\mathbb Z\)</span>:</strong>
+<span class="math inline">\(7^2=49\equiv1\)</span>, so <span
+class="math inline">\(7^2-2\equiv-1\equiv11\)</span> and <span
+class="math display">\[8\cdot11+6=88+6=94\equiv 94-84=10 \pmod{12}.
+\qquad \boxed{10}\]</span></p>
+<p><strong>b) <span class="math inline">\((8^3-1)^4\)</span> in <span
+class="math inline">\(\mathbb Z/6\mathbb Z\)</span>:</strong> <span
+class="math inline">\(8\equiv2\)</span>, <span
+class="math inline">\(8^3\equiv2^3=8\equiv2\)</span>, so <span
+class="math inline">\(8^3-1\equiv1\)</span> and <span
+class="math display">\[(8^3-1)^4\equiv 1^4=1 \pmod 6. \qquad
+\boxed{1}\]</span></p>
+<p><strong>c) <span
+class="math inline">\(\bigl((4^3)^5-1\bigr)^4+2^4(3^4-1)\)</span> in
+<span class="math inline">\(\mathbb Z/10\mathbb Z\)</span>:</strong>
+<span class="math inline">\(4^2\equiv6\)</span>, <span
+class="math inline">\(4^3\equiv4\)</span>, <span
+class="math inline">\(4^4\equiv6\)</span>, <span
+class="math inline">\(4^5\equiv4\)</span>, so <span
+class="math inline">\((4^3)^5\equiv4\)</span> and <span
+class="math inline">\((4^3)^5-1\equiv3\)</span>, giving <span
+class="math inline">\(3^4=81\equiv1\)</span>. Also <span
+class="math inline">\(3^4\equiv1\)</span> yields <span
+class="math inline">\(2^4(3^4-1)\equiv16\cdot 0=0\)</span>. Total: <span
+class="math display">\[1+0=1 \pmod{10}. \qquad \boxed{1}\]</span></p>
+<h3 id="section-15">1.16</h3>
+<p><em>Prove: <span class="math inline">\(a\equiv b \pmod m\Rightarrow
+ka\equiv kb\pmod m\)</span> for every <span
+class="math inline">\(k\)</span>. Is the converse true? What if <span
+class="math inline">\(k\)</span> is prime?</em></p>
+<p><strong>Solution.</strong> If <span class="math inline">\(m\mid
+a-b\)</span>, then <span class="math inline">\(m\mid
+k(a-b)=ka-kb\)</span>, so <span class="math inline">\(ka\equiv kb\pmod
+m\)</span>.</p>
+<p><strong>The converse is false in general.</strong> Counterexample:
+<span class="math inline">\(k=2\)</span>, <span
+class="math inline">\(m=6\)</span>, <span
+class="math inline">\(a=1\)</span>, <span
+class="math inline">\(b=4\)</span>: <span
+class="math display">\[2\cdot1=2\equiv 2\cdot4=8 \pmod
+6,\qquad\text{but}\qquad 1\not\equiv 4 \pmod 6 .\]</span> The
+cancellation is only valid when <span
+class="math inline">\(\gcd(k,m)=1\)</span> (then <span
+class="math inline">\(k\)</span> is a unit mod <span
+class="math inline">\(m\)</span>). By Bézout, <span
+class="math inline">\(ku+mv=1\)</span>, so <span
+class="math inline">\(a\equiv kua\equiv kub\equiv b\pmod m\)</span>.</p>
+<p><strong>Being prime is not enough.</strong> Take <span
+class="math inline">\(k=2\)</span> (prime), <span
+class="math inline">\(m=4\)</span>, <span
+class="math inline">\(a=1\)</span>, <span
+class="math inline">\(b=3\)</span>: <span class="math inline">\(2\equiv
+6\equiv 2\pmod 4\)</span> but <span
+class="math inline">\(1\not\equiv3\pmod4\)</span>. The correct
+hypothesis is <span class="math inline">\(\gcd(k,m)=1\)</span>, not
+primeness of <span class="math inline">\(k\)</span>. <span
+class="math inline">\(\blacksquare\)</span></p>
+<h3 id="section-16">1.17</h3>
+<p><em>Prove: <span class="math inline">\(a\equiv b \pmod m\Rightarrow
+a^n\equiv b^n\pmod m\)</span> for every <span
+class="math inline">\(n\)</span>. Is the converse true?</em></p>
+<p><strong>Solution.</strong> For <span
+class="math inline">\(n\ge0\)</span> use induction on <span
+class="math inline">\(n\)</span>: <span
+class="math inline">\(n=0\)</span> is <span
+class="math inline">\(1\equiv1\)</span>; if <span
+class="math inline">\(a^n\equiv b^n\)</span>, then multiplying by <span
+class="math inline">\(a\equiv b\)</span> (exercise 1.16) gives <span
+class="math inline">\(a^{n+1}=a\cdot a^n\equiv b\cdot
+b^n=b^{n+1}\)</span>. (For negative exponents one first needs <span
+class="math inline">\(a\)</span> invertible; the statement is meant for
+<span class="math inline">\(n\ge0\)</span>.)</p>
+<p><strong>The converse is false.</strong> Counterexample: <span
+class="math inline">\(m=3\)</span>, <span
+class="math inline">\(a=1\)</span>, <span
+class="math inline">\(b=2\)</span> (taking <span
+class="math inline">\(n=2\)</span>): <span
+class="math display">\[1^2=1\equiv4=2^2 \pmod 3,\qquad\text{but}\qquad
+1\not\equiv2\pmod3 . \qquad\blacksquare\]</span></p>
+<h3 id="section-17">1.18</h3>
+<p><em>Prove that every odd prime that is a sum of two squares satisfies
+<span class="math inline">\(p\equiv1\pmod4\)</span>.</em></p>
+<p><strong>Solution.</strong> <em>Preliminary note.</em> Stated
+literally with “even prime” it is false: the only even prime is <span
+class="math inline">\(2=1^2+1^2\)</span>, and <span
+class="math inline">\(2\equiv2\not\equiv1\pmod4\)</span>. The true
+statement (proved here) is for <strong>odd</strong> primes, with <span
+class="math inline">\(2=1^2+1^2\)</span> the single exceptional prime
+representable as a sum of two squares.</p>
+<p>Squares modulo <span class="math inline">\(4\)</span> are <span
+class="math inline">\(0^2\equiv0\)</span> and <span
+class="math inline">\(1^2\equiv1\)</span>. Hence a sum of two squares is
+congruent to <span class="math display">\[0,\;1 \text{ or } 2 \pmod 4
+.\]</span> Let <span class="math inline">\(p\)</span> be an odd prime
+with <span class="math inline">\(p=a^2+b^2\)</span>. Since <span
+class="math inline">\(p\)</span> is odd, <span
+class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span> have opposite parity; the square of the
+even one is <span class="math inline">\(\equiv0\)</span> and of the odd
+one is <span class="math inline">\(\equiv1\pmod4\)</span>. Therefore
+<span class="math display">\[p=a^2+b^2\equiv1\pmod4 .
+\qquad\blacksquare\]</span> (Equivalently: no prime <span
+class="math inline">\(p\equiv3\pmod4\)</span> is a sum of two squares.)
+<span class="math inline">\(\blacksquare\)</span></p>
+<h3 id="section-18">1.19</h3>
+<p><em>Complete list of invertible elements modulo <span
+class="math inline">\(2,3,4,5,6,7,8,9,10\)</span>.</em></p>
+<p><strong>Solution.</strong> An element <span
+class="math inline">\([a]_m\)</span> is invertible iff <span
+class="math inline">\(\gcd(a,m)=1\)</span>:</p>
+<table>
+<thead>
+<tr>
+<th><span class="math inline">\(m\)</span></th>
+<th>invertible elements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math inline">\(2\)</span></td>
+<td><span class="math inline">\(\{1\}\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(3\)</span></td>
+<td><span class="math inline">\(\{1,2\}\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(4\)</span></td>
+<td><span class="math inline">\(\{1,3\}\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(5\)</span></td>
+<td><span class="math inline">\(\{1,2,3,4\}\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(6\)</span></td>
+<td><span class="math inline">\(\{1,5\}\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(7\)</span></td>
+<td><span class="math inline">\(\{1,2,3,4,5,6\}\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(8\)</span></td>
+<td><span class="math inline">\(\{1,3,5,7\}\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(9\)</span></td>
+<td><span class="math inline">\(\{1,2,4,5,7,8\}\)</span></td>
+</tr>
+<tr>
+<td><span class="math inline">\(10\)</span></td>
+<td><span class="math inline">\(\{1,3,7,9\}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The counts are the Euler values <span
+class="math inline">\(\varphi(2),\dots,\varphi(10)=1,2,2,4,2,6,4,6,4\)</span>.</p>
+<h3 id="section-19">1.20</h3>
+<p><em>Are <span class="math inline">\(29\)</span>, <span
+class="math inline">\(234\)</span>, <span
+class="math inline">\(512\)</span> invertible modulo <span
+class="math inline">\(1170\)</span>? Find the inverses when
+possible.</em></p>
+<p><strong>Solution.</strong> <span
+class="math inline">\(1170=2\cdot3^2\cdot5\cdot13\)</span> (so <span
+class="math inline">\(\gcd(a,1170)=1\)</span> iff <span
+class="math inline">\(a\)</span> is coprime to <span
+class="math inline">\(2,3,5,13\)</span>).</p>
+<ul>
+<li><strong><span class="math inline">\(29\)</span>:</strong> <span
+class="math inline">\(29\)</span> is prime, <span
+class="math inline">\(29\ne2,3,5,13\)</span>, so <span
+class="math inline">\(\gcd(29,1170)=1\)</span>:
+<strong>invertible.</strong> Euclid: <span
+class="math inline">\(1170=40\cdot29+10\)</span>; <span
+class="math inline">\(29=2\cdot10+9\)</span>; <span
+class="math inline">\(10=1\cdot9+1\)</span>. Back-substitution: <span
+class="math display">\[1=10-9=3\cdot10-29=3(1170-40\cdot29)-29=3\cdot1170-121\cdot29
+.\]</span> So <span class="math inline">\(29^{-1}\equiv-121\equiv
+1049\pmod{1170}\)</span>. <em>Check:</em> <span
+class="math inline">\(29\cdot1049=30421=26\cdot1170+1\)</span>. ✔</li>
+<li><strong><span class="math inline">\(234\)</span>:</strong> <span
+class="math inline">\(234=2\cdot3^2\cdot13\)</span> and <span
+class="math inline">\(1170=5\cdot234\)</span>, so <span
+class="math inline">\(\gcd(234,1170)=234\ne1\)</span>: <strong>not
+invertible.</strong></li>
+<li><strong><span class="math inline">\(512\)</span>:</strong> <span
+class="math inline">\(512=2^9\)</span>, so <span
+class="math inline">\(\gcd(512,1170)=2\ne1\)</span>: <strong>not
+invertible.</strong></li>
+</ul>
+<h3 id="section-20">1.21</h3>
+<p><em>Find all solutions.</em></p>
+<p><strong>Solution.</strong></p>
+<p><strong>a) <span class="math inline">\(31x=1\)</span> in <span
+class="math inline">\(\mathbb Z/101\mathbb Z\)</span>.</strong> Euclid:
+<span class="math inline">\(101=3\cdot31+8\)</span>; <span
+class="math inline">\(31=3\cdot8+7\)</span>; <span
+class="math inline">\(8=1\cdot7+1\)</span>. Back-substitution: <span
+class="math display">\[1=8-7=8-(31-3\cdot8)=4\cdot8-31=4(101-3\cdot31)-31=4\cdot101-13\cdot31
+.\]</span> Hence <span class="math inline">\(-13\cdot31\equiv1\)</span>,
+i.e. <span class="math inline">\(x\equiv-13\equiv88\pmod{101}\)</span>.
+<em>Check:</em> <span
+class="math inline">\(31\cdot88=2728=27\cdot101+1\)</span>. ✔ <span
+class="math inline">\(\;\boxed{x\equiv88\pmod{101}}\)</span></p>
+<p><strong>b) <span class="math inline">\(4x\equiv0
+\pmod{18}\)</span>.</strong> <span
+class="math inline">\(18\mid4x\iff9\mid x\)</span> (cancel <span
+class="math inline">\(2\)</span>, coprime to <span
+class="math inline">\(9\)</span>). In <span
+class="math inline">\(\mathbb Z/18\mathbb Z\)</span>: <span
+class="math inline">\(x\in\{0,9\}\)</span>. <span
+class="math inline">\(\;\boxed{x\equiv0 \text{ or } 9
+\pmod{18}}\)</span></p>
+<p><strong>c) <span class="math inline">\(6x\equiv0
+\pmod{30}\)</span>.</strong> <span
+class="math inline">\(30\mid6x\iff5\mid x\)</span>. In <span
+class="math inline">\(\mathbb Z/30\mathbb Z\)</span>: <span
+class="math display">\[x\in\{0,5,10,15,20,25\}. \qquad \boxed{x\equiv0
+\bmod 5}\]</span></p>
+<h3 id="section-21">1.22</h3>
+<p><em>Solve the systems over the indicated rings (the systems were lost
+in the .md; restored from the PDF).</em></p>
+<blockquote>
+<p><strong>a)</strong> in <span class="math inline">\(\mathbb
+Z/17\mathbb Z\)</span>: <span class="math inline">\(\begin{cases}
+x+3y=15\\ -2x+14y=1\end{cases}\)</span> <strong>b)</strong> in <span
+class="math inline">\(\mathbb Z/5\mathbb Z\)</span> and <span
+class="math inline">\(\mathbb Z/25\mathbb Z\)</span>: <span
+class="math inline">\(\begin{cases} 3x+2y=0\\
+2x-4y=2\end{cases}\)</span> <strong>c)</strong> in <span
+class="math inline">\(\mathbb Z/5\mathbb Z\)</span> and <span
+class="math inline">\(\mathbb Z/25\mathbb Z\)</span>: <span
+class="math inline">\(\begin{cases} 3x+2y=0\\
+4x-4y=2\end{cases}\)</span> <strong>d)</strong> in <span
+class="math inline">\(\mathbb Z/2\mathbb Z\)</span> and <span
+class="math inline">\(\mathbb Z/7\mathbb Z\)</span>: <span
+class="math inline">\(\begin{cases}3x+2y+z=0\\ x-y-4z=2\\
+-x+2y+3z=3\end{cases}\)</span></p>
+</blockquote>
+<p><strong>Solution.</strong></p>
+<p><strong>a)</strong> Determinant <span
+class="math inline">\(\Delta=1\cdot14-3\cdot(-2)=20\equiv3\pmod{17}\)</span>,
+a unit (<span class="math inline">\(3^{-1}=6\)</span>). Cramer: <span
+class="math display">\[x=\frac{\begin{vmatrix}15&amp;3\\1&amp;14\end{vmatrix}}{\Delta}=\frac{207}{3}\equiv
+\frac{3}{3}\equiv 3\cdot6=18\equiv1,
+\qquad
+y=\frac{\begin{vmatrix}1&amp;15\\-2&amp;1\end{vmatrix}}{\Delta}=\frac{31}{3}\equiv
+14\cdot6=84\equiv16 .\]</span> <em>Substitution method (check):</em>
+<span class="math inline">\(x=15-3y\Rightarrow
+-2(15-3y)+14y=1\Rightarrow 20y\equiv31\equiv14\)</span>, and <span
+class="math inline">\(20\equiv3\)</span>, <span
+class="math inline">\(y\equiv 14\cdot6=84\equiv16\)</span>, <span
+class="math inline">\(x=15-48=-33\equiv1\)</span>. <em>Check:</em> <span
+class="math inline">\(1+3\cdot16=49\equiv15\)</span>; <span
+class="math inline">\(-2+14\cdot16=222\equiv1\)</span>. <span
+class="math display">\[\boxed{(x,y)=(1,16)\ \text{in }\mathbb
+Z/17\mathbb Z}\]</span></p>
+<p><strong>b)</strong> Determinant <span
+class="math inline">\(\Delta=3\cdot(-4)-2\cdot2=-16\)</span>. In <span
+class="math inline">\(\mathbb Z/5\mathbb Z\)</span>: <span
+class="math inline">\(\Delta\equiv-16\equiv4\)</span> (unit, <span
+class="math inline">\(4^{-1}=4\)</span>). From <span
+class="math inline">\(2x=2+4y\)</span>: <span
+class="math inline">\(x=1+2y\)</span> (<span
+class="math inline">\(2^{-1}=3\)</span>). Substituting in the first
+equation: <span class="math inline">\(3(1+2y)+2y=0\Rightarrow
+8y\equiv-3\equiv2
+\Rightarrow 3y\equiv2\Rightarrow y\equiv4\)</span>, <span
+class="math inline">\(x\equiv1+8\equiv4\)</span>. <em>Cramer check:</em>
+<span
+class="math inline">\(x=\frac{-4}{-16}=\frac{1}{4}\equiv4\)</span>,
+<span class="math inline">\(y=\frac{6}{-16}=\frac{1}{4}\equiv4\)</span>.
+<span class="math display">\[\boxed{(x,y)=(4,4)\ \text{in }\mathbb
+Z/5\mathbb Z}\]</span></p>
+<p>In <span class="math inline">\(\mathbb Z/25\mathbb Z\)</span>: <span
+class="math inline">\(\Delta\equiv9\)</span>, <span
+class="math inline">\(9^{-1}=14\)</span>. Substitution: <span
+class="math inline">\(x=1+2y\)</span> (<span
+class="math inline">\(2^{-1}=13\)</span>), <span
+class="math inline">\(3(1+2y)+2y=0\Rightarrow
+8y\equiv-3\equiv22\Rightarrow y\equiv22\cdot22=484\equiv9\)</span>
+(<span class="math inline">\(8^{-1}=22\)</span>), hence <span
+class="math inline">\(x\equiv1+18=19\)</span>. <em>Cramer check:</em>
+<span
+class="math inline">\(x=\frac{-4}{9}=-4\cdot14=-56\equiv19\)</span>,
+<span class="math inline">\(y=\frac{6}{9}=6\cdot14=84\equiv9\)</span>.
+<span class="math display">\[\boxed{(x,y)=(19,9)\ \text{in }\mathbb
+Z/25\mathbb Z}\]</span></p>
+<p><strong>c)</strong> <strong>No solutions, in either ring.</strong>
+Add the two equations: <span
+class="math inline">\((3x+2y)+(4x-4y)\equiv0+2\)</span>, i.e. <span
+class="math inline">\(7x-2y\equiv2\)</span>; a cleaner elimination:
+multiply the first equation by <span class="math inline">\(4\)</span>
+and the second by <span class="math inline">\(3\)</span>: <span
+class="math display">\[12x+8y\equiv0,\qquad 12x-12y\equiv6 .\]</span>
+Subtracting: <span class="math inline">\(20y\equiv-6\)</span>.</p>
+<ul>
+<li>Modulo <span class="math inline">\(5\)</span>: <span
+class="math inline">\(20y\equiv0\)</span> but <span
+class="math inline">\(-6\equiv4\)</span>, so <span
+class="math inline">\(0\equiv4\)</span>: contradiction (equivalently,
+modulo <span class="math inline">\(5\)</span> the two left-hand sides
+become proportional, <span class="math inline">\(2x+3y\)</span>, with
+right sides <span class="math inline">\(0\)</span> and <span
+class="math inline">\(1\)</span>).</li>
+<li>Modulo <span class="math inline">\(25\)</span>: the values of <span
+class="math inline">\(20y\)</span> are <span
+class="math inline">\(0,5,10,15,20\)</span>, never <span
+class="math inline">\(-6\equiv19\)</span>: contradiction.</li>
+</ul>
+<p><strong>d)</strong> In <span class="math inline">\(\mathbb Z/2\mathbb
+Z\)</span> (where <span class="math inline">\(3\equiv1\)</span>, <span
+class="math inline">\(2\equiv0\)</span>, <span
+class="math inline">\(-1\equiv1\)</span>, <span
+class="math inline">\(-4\equiv0\)</span>) the system becomes <span
+class="math display">\[x+z=0,\qquad x+y=0,\qquad x+z=1,\]</span> and the
+first and third equations contradict each other: <strong>no
+solutions.</strong></p>
+<p>In <span class="math inline">\(\mathbb Z/7\mathbb Z\)</span>: from
+<span class="math inline">\(x-y-4z=2\)</span> we get <span
+class="math inline">\(x=2+y+4z\)</span>. Substituting into the first
+equation: <span class="math display">\[3(2+y+4z)+2y+z=6+5y+13z\equiv0
+\;\Rightarrow\; 5y+13z\equiv1 .\]</span> Substituting into the third:
+<span class="math inline">\(-(2+y+4z)+2y+3z=-2+y-z\equiv3\Rightarrow
+y-z\equiv5\Rightarrow y=5+z\)</span>. Then <span
+class="math display">\[5(5+z)+13z=25+18z\equiv1 \Rightarrow
+18z\equiv-24\Rightarrow 4z\equiv4 \Rightarrow z=1,\]</span> so <span
+class="math inline">\(y=6\)</span> and <span
+class="math inline">\(x=2+6+4=12\equiv5\)</span>. <em>Check:</em> <span
+class="math inline">\(3\cdot5+2\cdot6+1=28\equiv0\)</span>; <span
+class="math inline">\(5-6-4=-5\equiv2\)</span>; <span
+class="math inline">\(-5+12+3=10\equiv3\)</span>. ✔ <span
+class="math display">\[\boxed{(x,y,z)=(5,6,1)\ \text{in }\mathbb
+Z/7\mathbb Z}\]</span></p>
+<h3 id="section-22">1.23</h3>
+<p><em>Which matrices are invertible over the indicated rings? Find the
+inverses (matrices restored from the PDF).</em></p>
+<blockquote>
+<p><strong>a)</strong> <span
+class="math inline">\(A=\begin{pmatrix}1&amp;2\\3&amp;4\end{pmatrix}\)</span>
+in <span class="math inline">\(\mathbb Z/3\mathbb Z\)</span>;
+<strong>b)</strong> <span class="math inline">\(A\)</span> in <span
+class="math inline">\(\mathbb Z/10\mathbb Z\)</span>;
+<strong>c)</strong> <span
+class="math inline">\(B=\begin{pmatrix}3&amp;2&amp;1\\1&amp;-1&amp;-4\\-1&amp;2&amp;3\end{pmatrix}\)</span>
+in <span class="math inline">\(\mathbb Z/3\mathbb Z\)</span>, <span
+class="math inline">\(\mathbb Z/5\mathbb Z\)</span>, <span
+class="math inline">\(\mathbb Z/10\mathbb Z\)</span>;
+<strong>d)</strong> <span
+class="math inline">\(D=\begin{pmatrix}1&amp;2&amp;0&amp;0\\3&amp;-4&amp;0&amp;1\\0&amp;0&amp;2&amp;-1\\0&amp;3&amp;2&amp;5\end{pmatrix}\)</span>
+in <span class="math inline">\(\mathbb Z/2\mathbb Z,\mathbb Z/3\mathbb
+Z,\mathbb Z/5\mathbb Z,\mathbb Z/7\mathbb Z,\mathbb Z/9\mathbb Z,\mathbb
+Z/55\mathbb Z\)</span>.</p>
+</blockquote>
+<p><strong>Solution.</strong> <em>Criterion:</em> a square matrix over
+<span class="math inline">\(\mathbb Z/n\mathbb Z\)</span> is invertible
+iff <span class="math inline">\(\det A\)</span> is a unit modulo <span
+class="math inline">\(n\)</span>, i.e. <span
+class="math inline">\(\gcd(\det A,n)=1\)</span> (if <span
+class="math inline">\(\det A\)</span> is a unit, <span
+class="math inline">\(A^{-1}=(\det A)^{-1}\operatorname{adj}A\)</span>;
+if <span class="math inline">\(A\)</span> is invertible, <span
+class="math inline">\(1=\det(AA^{-1})=\det A\det A^{-1}\)</span> shows
+<span class="math inline">\(\det A\)</span> is a unit).</p>
+<p><strong>a)</strong> <span class="math inline">\(\det
+A=1\cdot4-2\cdot3=-2\equiv1\pmod3\)</span>: a unit, so <span
+class="math inline">\(A\)</span> is invertible in <span
+class="math inline">\(\mathbb Z/3\mathbb Z\)</span>. Moreover <span
+class="math inline">\(A\equiv\begin{pmatrix}1&amp;2\\0&amp;1\end{pmatrix}\)</span>
+and <span
+class="math display">\[\begin{pmatrix}1&amp;2\\0&amp;1\end{pmatrix}^{-1}=\begin{pmatrix}1&amp;-2\\0&amp;1\end{pmatrix}
+\equiv\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\pmod3 .\]</span>
+<span
+class="math display">\[\boxed{A^{-1}=\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}\
+\text{in }\mathbb Z/3\mathbb Z}\]</span> <em>Check:</em> <span
+class="math inline">\(\begin{pmatrix}1&amp;2\\0&amp;1\end{pmatrix}\begin{pmatrix}1&amp;1\\0&amp;1\end{pmatrix}
+=\begin{pmatrix}1&amp;3\\0&amp;1\end{pmatrix}\equiv I\)</span>. ✔</p>
+<p><strong>b)</strong> <span class="math inline">\(\det A=-2\)</span>,
+and <span class="math inline">\(\gcd(2,10)=2\ne1\)</span>: <strong>not
+invertible in <span class="math inline">\(\mathbb Z/10\mathbb
+Z\)</span>.</strong> (Indeed over <span class="math inline">\(\mathbb
+Z/2\mathbb Z\)</span> both rows coincide: <span
+class="math inline">\(A\equiv\begin{pmatrix}1&amp;0\\1&amp;0\end{pmatrix}\)</span>.)</p>
+<p><strong>c)</strong> <span class="math inline">\(\det
+B=3\bigl((-1)\cdot3-(-4)\cdot2\bigr)-2\bigl(1\cdot3-(-4)\cdot(-1)\bigr)
++1\bigl(1\cdot2-(-1)\cdot(-1)\bigr)=3\cdot5-2\cdot(-1)+1\cdot1=18
+.\)</span></p>
+<ul>
+<li>In <span class="math inline">\(\mathbb Z/3\mathbb Z\)</span>: <span
+class="math inline">\(\det B\equiv0\)</span>: <strong>not
+invertible.</strong></li>
+<li>In <span class="math inline">\(\mathbb Z/5\mathbb Z\)</span>: <span
+class="math inline">\(\det B\equiv3\)</span>, a unit (<span
+class="math inline">\(3^{-1}=2\)</span>). Gauss–Jordan elimination (or
+<span class="math inline">\(B^{-1}=2\cdot\operatorname{adj}B\)</span>)
+gives <span
+class="math display">\[\boxed{B^{-1}=\begin{pmatrix}0&amp;2&amp;1\\2&amp;0&amp;1\\2&amp;4&amp;0\end{pmatrix}\
+\text{in }\mathbb Z/5\mathbb Z}\]</span> <em>Check</em> (products mod
+5): row 1 of <span class="math inline">\(B\)</span> times columns: <span
+class="math inline">\(3\cdot0+2\cdot2+1\cdot2=6\equiv1\)</span>, <span
+class="math inline">\(3\cdot2+2\cdot0+1\cdot4=10\equiv0\)</span>, <span
+class="math inline">\(3\cdot1+2\cdot1+1\cdot0=5\equiv0\)</span>; row 2:
+<span class="math inline">\(1\cdot0-1\cdot2-4\cdot2=-10\equiv0\)</span>,
+<span class="math inline">\(1\cdot2-1\cdot0-4\cdot4=-14\equiv1\)</span>,
+<span class="math inline">\(1\cdot1-1\cdot1-4\cdot0=0\)</span>; row 3:
+<span class="math inline">\(-1\cdot0+2\cdot2+3\cdot2=10\equiv0\)</span>,
+<span class="math inline">\(-1\cdot2+2\cdot0+3\cdot4=10\equiv0\)</span>,
+<span class="math inline">\(-1\cdot1+2\cdot1+3\cdot0=1\)</span>. Thus
+<span class="math inline">\(B\,B^{-1}=I\)</span>. ✔</li>
+<li>In <span class="math inline">\(\mathbb Z/10\mathbb Z\)</span>: <span
+class="math inline">\(\det B=18\)</span>, <span
+class="math inline">\(\gcd(18,10)=2\ne1\)</span>: <strong>not
+invertible.</strong></li>
+</ul>
+<p><strong>d)</strong> Expanding <span class="math inline">\(\det
+D\)</span> along the first row: <span class="math display">\[\det
+D=1\cdot\begin{vmatrix}-4&amp;0&amp;1\\0&amp;2&amp;-1\\3&amp;2&amp;5\end{vmatrix}
+-2\cdot\begin{vmatrix}3&amp;0&amp;1\\0&amp;2&amp;-1\\0&amp;2&amp;5\end{vmatrix}
+=\bigl(-4\cdot12-6\bigr)-2\cdot(3\cdot12)=-54-72=-126 .\]</span> So
+<span class="math inline">\(\det D=-126=-2\cdot3^2\cdot7\)</span>.</p>
+<ul>
+<li><span class="math inline">\(\mathbb Z/2\mathbb Z,\ \mathbb
+Z/3\mathbb Z,\ \mathbb Z/7\mathbb Z,\ \mathbb Z/9\mathbb Z\)</span>:
+<span class="math inline">\(\det D\equiv0\)</span> modulo each of <span
+class="math inline">\(2,3,7,9\)</span>: <strong>not invertible</strong>
+in any of these rings.</li>
+<li><span class="math inline">\(\mathbb Z/5\mathbb Z\)</span>: <span
+class="math inline">\(\det D\equiv-126\equiv4\)</span>, a unit:
+<strong>invertible</strong>, and <span
+class="math display">\[\boxed{D^{-1}=\begin{pmatrix}4&amp;4&amp;4&amp;1\\1&amp;3&amp;3&amp;2\\1&amp;3&amp;3&amp;0\\2&amp;1&amp;0&amp;0\end{pmatrix}\
+\text{in }\mathbb Z/5\mathbb Z}\]</span></li>
+<li><span class="math inline">\(\mathbb Z/55\mathbb Z\)</span> (<span
+class="math inline">\(55=5\cdot11\)</span>): <span
+class="math inline">\(\gcd(126,55)=1\)</span>, so <span
+class="math inline">\(D\)</span> is <strong>invertible</strong>, and
+<span
+class="math display">\[\boxed{D^{-1}=\begin{pmatrix}24&amp;29&amp;14&amp;41\\16&amp;13&amp;48&amp;7\\51&amp;38&amp;48&amp;35\\47&amp;21&amp;40&amp;15\end{pmatrix}\
+\text{in }\mathbb Z/55\mathbb Z}\]</span></li>
+</ul>
+<p>In both cases the inverse was obtained by Gauss–Jordan elimination
+and verified by direct multiplication <span
+class="math inline">\(D\,D^{-1}=D^{-1}D=I\)</span> (mod <span
+class="math inline">\(5\)</span> and mod <span
+class="math inline">\(55\)</span> respectively). ✔</p>
+<h2 id="the-chinese-remainder-theorem">1.3 The Chinese remainder
+theorem</h2>
+<h3 id="section-23">1.24</h3>
+<p><em>(Sun Tsu Suan-Ching) Counted in threes, two remain; in fives,
+three remain; in sevens, two remain. How many objects?</em></p>
+<p><strong>Solution.</strong> We must solve <span
+class="math display">\[x\equiv2\ (\mathrm{mod}\ 3),\qquad x\equiv3\
+(\mathrm{mod}\ 5),\qquad x\equiv2\ (\mathrm{mod}\ 7).\]</span> The
+moduli <span class="math inline">\(3,5,7\)</span> are pairwise coprime,
+so the solution is unique modulo <span
+class="math inline">\(3\cdot5\cdot7=105\)</span>. Sequential
+substitution: <span class="math inline">\(x=2+3k\)</span>; then <span
+class="math inline">\(2+3k\equiv3\pmod5\Rightarrow 3k\equiv1\Rightarrow
+k\equiv2\)</span> (<span class="math inline">\(3^{-1}=2\)</span>), so
+<span class="math inline">\(k=2+5m\)</span> and <span
+class="math inline">\(x=8+15m\)</span>. Then <span
+class="math inline">\(8+15m\equiv2\pmod7\Rightarrow
+1+m\equiv2\Rightarrow m\equiv1\)</span>, so <span
+class="math inline">\(x=23+105t\)</span>. <em>Check:</em> <span
+class="math inline">\(23=3\cdot7+2\)</span>, <span
+class="math inline">\(23=5\cdot4+3\)</span>, <span
+class="math inline">\(23=7\cdot3+2\)</span>. ✔ <span
+class="math display">\[\boxed{x\equiv23\pmod{105}}\]</span> (The
+smallest positive answer is the classical <strong>23</strong>.)</p>
+<h3 id="section-24">1.25</h3>
+<p><em>Solve the systems of congruences (restored from the
+PDF).</em></p>
+<blockquote>
+<p><strong>a)</strong> <span class="math inline">\(x\equiv10\pmod7,\
+x\equiv6\pmod9,\ x\equiv1\pmod{10}\)</span>. <strong>b)</strong> <span
+class="math inline">\(x\equiv3\pmod4,\ x\equiv1\pmod{15},\
+x\equiv2\pmod7\)</span>. <strong>c)</strong> <span
+class="math inline">\(3x\equiv2\pmod4,\ 4x\equiv7\pmod{15},\
+8x\equiv-1\pmod7\)</span>.</p>
+</blockquote>
+<p><strong>Solution.</strong></p>
+<p><strong>a)</strong> Moduli <span
+class="math inline">\(7,9,10\)</span> pairwise coprime, <span
+class="math inline">\(M=630\)</span>. Solve <span
+class="math inline">\(x\equiv6\pmod9\)</span>, <span
+class="math inline">\(x\equiv1\pmod{10}\)</span> first: <span
+class="math inline">\(x=1+10k\)</span>; <span
+class="math inline">\(1+10k\equiv6\pmod9\Rightarrow
+k\equiv5\pmod9\)</span> (as <span
+class="math inline">\(10\equiv1\)</span>), so <span
+class="math inline">\(x=51+90m\)</span>. Impose <span
+class="math inline">\(x\equiv10\equiv3\pmod7\)</span>: <span
+class="math inline">\(51+90m\equiv3\Rightarrow 2-m\equiv3\Rightarrow
+m\equiv6\pmod7\)</span> (<span
+class="math inline">\(90\equiv-1\)</span>), so <span
+class="math inline">\(x=51+90\cdot6+630t=591+630t\)</span>.
+<em>Check:</em> <span class="math inline">\(591\equiv3\pmod7\)</span>,
+<span class="math inline">\(\equiv6\pmod9\)</span> (<span
+class="math inline">\(9\cdot65=585\)</span>), <span
+class="math inline">\(\equiv1\pmod{10}\)</span>. ✔ <span
+class="math display">\[\boxed{x\equiv591\pmod{630}}\]</span></p>
+<p><strong>b)</strong> Moduli <span
+class="math inline">\(4,15,7\)</span> pairwise coprime, <span
+class="math inline">\(M=420\)</span>. Start from <span
+class="math inline">\(x\equiv2\pmod7\)</span>: <span
+class="math inline">\(x=2+7k\)</span>. Then <span
+class="math inline">\(2+7k\equiv1\pmod{15}\Rightarrow
+7k\equiv-1\equiv14\Rightarrow
+k\equiv14\cdot13=182\equiv2\pmod{15}\)</span> (<span
+class="math inline">\(7^{-1}=13\)</span>), so <span
+class="math inline">\(x=16+105m\)</span>. Impose <span
+class="math inline">\(x\equiv3\pmod4\)</span>: <span
+class="math inline">\(16+105m\equiv m\equiv3\pmod4\)</span>, so <span
+class="math inline">\(x=16+315+420t=331+420t\)</span>. <em>Check:</em>
+<span class="math inline">\(331\equiv3\pmod4\)</span>, <span
+class="math inline">\(\equiv1\pmod{15}\)</span>, <span
+class="math inline">\(\equiv2\pmod7\)</span> (<span
+class="math inline">\(7\cdot47=329\)</span>). ✔ <span
+class="math display">\[\boxed{x\equiv331\pmod{420}}\]</span></p>
+<p><strong>c)</strong> Simplify each congruence (multiply by the inverse
+of the coefficient): <span class="math display">\[3x\equiv2\
+(4)\Rightarrow x\equiv2\cdot3\equiv2;\qquad 4x\equiv7\ (15)\Rightarrow
+x\equiv7\cdot4=28\equiv13;\]</span> <span
+class="math display">\[8x\equiv-1\equiv6\ (7)\Rightarrow
+x\equiv6\quad(8\equiv1).\]</span> So <span
+class="math inline">\(x\equiv2\pmod4\)</span>, <span
+class="math inline">\(x\equiv13\pmod{15}\)</span>, <span
+class="math inline">\(x\equiv6\pmod7\)</span> (moduli coprime, <span
+class="math inline">\(M=420\)</span>). From <span
+class="math inline">\(x=6+7k\)</span>: <span
+class="math inline">\(6+7k\equiv13\pmod{15}\Rightarrow
+7k\equiv7\Rightarrow k\equiv1\)</span>, so <span
+class="math inline">\(x=13+105m\)</span>; <span
+class="math inline">\(x\equiv2\pmod4\Rightarrow 1+m\equiv2\Rightarrow
+m\equiv1\)</span>, so <span class="math inline">\(x=118+420t\)</span>.
+<em>Check against the original congruences:</em> <span
+class="math inline">\(3\cdot118=354\equiv2\pmod4\)</span>; <span
+class="math inline">\(4\cdot118=472\equiv7\pmod{15}\)</span>; <span
+class="math inline">\(8\cdot118=944\equiv-1\pmod7\)</span> (<span
+class="math inline">\(944=135\cdot7-1\)</span>). ✔ <span
+class="math display">\[\boxed{x\equiv118\pmod{420}}\]</span></p>
+<h3 id="section-25">1.26</h3>
+<p><em>Let <span class="math inline">\(m_1,\dots,m_n&gt;1\)</span> be
+pairwise coprime and <span class="math inline">\(M=m_1\cdots
+m_n\)</span>. Prove that <span class="math inline">\(a\equiv b\pmod
+M\)</span> iff <span class="math inline">\(a\equiv b\pmod{m_i}\)</span>
+for all <span class="math inline">\(i\)</span>. Relation with
+CRT?</em></p>
+<p><strong>Solution.</strong> <em>(<span
+class="math inline">\(\Rightarrow\)</span>)</em> If <span
+class="math inline">\(M\mid a-b\)</span>, then since <span
+class="math inline">\(m_i\mid M\)</span> also <span
+class="math inline">\(m_i\mid a-b\)</span>.</p>
+<p><em>(<span class="math inline">\(\Leftarrow\)</span>)</em> Suppose
+<span class="math inline">\(m_i\mid a-b\)</span> for every <span
+class="math inline">\(i\)</span>. We show <span
+class="math inline">\(M=m_1\cdots m_n\mid a-b\)</span> by induction on
+<span class="math inline">\(n\)</span>. For <span
+class="math inline">\(n=2\)</span>: <span class="math inline">\(m_1\mid
+a-b\)</span> and <span class="math inline">\(m_2\mid a-b\)</span> with
+<span class="math inline">\(\gcd(m_1,m_2)=1\)</span> imply <span
+class="math inline">\(m_1m_2\mid a-b\)</span>. Inductive step: if <span
+class="math inline">\(m_1\cdots m_{n-1}\mid a-b\)</span> and <span
+class="math inline">\(m_n\mid a-b\)</span>, the two factors are coprime,
+so their product <span class="math inline">\(M\)</span> divides <span
+class="math inline">\(a-b\)</span>.</p>
+<p><strong>Relation with CRT.</strong> The map <span
+class="math display">\[\varphi:\mathbb Z/M\mathbb Z\longrightarrow
+\mathbb Z/m_1\mathbb Z\times\cdots\times\mathbb Z/m_n\mathbb Z,
+\qquad [a]_M\mapsto([a]_{m_1},\dots,[a]_{m_n})\]</span> is well defined,
+and this exercise says exactly that <span
+class="math inline">\(\varphi\)</span> is <strong>injective</strong>
+(two classes with the same image everywhere coincide, i.e. <span
+class="math inline">\(\#\mathbb Z/M\mathbb Z=M=m_1\cdots m_n\)</span>).
+Since domain and codomain both have <span
+class="math inline">\(M\)</span> elements, injectivity is equivalent to
+bijectivity — this is one of the standard formulations of the
+<strong>Chinese Remainder Theorem</strong>: <span
+class="math inline">\(\varphi\)</span> is an isomorphism iff the <span
+class="math inline">\(m_i\)</span> are pairwise coprime. <span
+class="math inline">\(\blacksquare\)</span></p>
+<h3 id="section-26">1.27</h3>
+<p><em>Decide whether the maps (restored from the PDF) are
+bijective:</em> <span class="math display">\[f:\mathbb Z/18\mathbb
+Z\to\mathbb Z/2\mathbb Z\times\mathbb Z/6\mathbb Z\times\mathbb
+Z/9\mathbb Z,
+\quad [x]_{18}\mapsto([x]_2,[x]_6,[x]_9);\]</span> <span
+class="math display">\[g:\mathbb Z/18\mathbb Z\to\mathbb Z/2\mathbb
+Z\times\mathbb Z/9\mathbb Z,
+\quad [x]_{18}\mapsto([x]_2,[x]_9).\]</span></p>
+<p><strong>Solution.</strong></p>
+<p><strong><span class="math inline">\(g\)</span> is bijective.</strong>
+Indeed <span class="math inline">\(g([x])=g([y])\)</span> means <span
+class="math inline">\(x\equiv y\pmod2\)</span> and <span
+class="math inline">\(x\equiv y\pmod9\)</span>, and since <span
+class="math inline">\(\gcd(2,9)=1\)</span> this is equivalent (exercise
+1.26) to <span class="math inline">\(x\equiv y\pmod{18}\)</span>. So
+<span class="math inline">\(g\)</span> is injective, and both sets have
+<span class="math inline">\(18\)</span> elements, hence <span
+class="math inline">\(g\)</span> is bijective. This matches the CRT:
+<span class="math inline">\(2\)</span> and <span
+class="math inline">\(9\)</span> are coprime, and <span
+class="math inline">\(2\cdot9=18\)</span>.</p>
+<p><strong><span class="math inline">\(f\)</span> is not
+bijective.</strong> It is injective: <span
+class="math inline">\(f([x])=f([y])\)</span> means <span
+class="math inline">\(x\equiv y\)</span> modulo <span
+class="math inline">\(2\)</span>, <span class="math inline">\(6\)</span>
+and <span class="math inline">\(9\)</span>, which is equivalent to <span
+class="math inline">\(x\equiv y\)</span> modulo their least common
+multiple <span
+class="math inline">\(\operatorname{lcm}(2,6,9)=18\)</span>; hence <span
+class="math inline">\([x]_{18}=[y]_{18}\)</span>. However <span
+class="math inline">\(f\)</span> is <strong>not surjective</strong>: the
+codomain has <span class="math inline">\(2\cdot6\cdot9=108\)</span>
+elements while the domain has <span class="math inline">\(18\)</span>.
+Explicitly, the triple <span class="math inline">\((0,1,0)\)</span> is
+not in the image: <span class="math inline">\(x\equiv1\pmod6\)</span>
+forces <span class="math inline">\(x\)</span> odd, while <span
+class="math inline">\(x\equiv0\pmod2\)</span> forces <span
+class="math inline">\(x\)</span> even.</p>
+<p>This mismatch is exactly what CRT warns about: the theorem needs the
+moduli to be <strong>pairwise coprime</strong>, and here <span
+class="math inline">\(\gcd(2,6)=2\ne1\)</span>, so there is no reason
+for <span class="math inline">\(f\)</span> to be onto (and indeed it is
+not). The projection <span class="math inline">\(([x]_2,[x]_6)\)</span>
+alone would be injective into a <span
+class="math inline">\(12\)</span>-element set, and for <span
+class="math inline">\(f\)</span> the “surplus” is the redundancy: once
+<span class="math inline">\([x]_6\)</span> is known, <span
+class="math inline">\([x]_2\)</span> is determined.</p>
+<h2 id="fermat-and-eulers-theorems">1.4 Fermat and Euler’s theorems</h2>
+<h3 id="section-27">1.28</h3>
+<p><em>a) Find the inverse of <span class="math inline">\(37\)</span> in
+<span class="math inline">\(\mathbb Z/98\mathbb Z\)</span>. b) Compute
+<span
+class="math inline">\(37^{55}\cdot53^{13}\pmod{98}\)</span>.</em></p>
+<p><strong>Solution.</strong></p>
+<p><strong>a)</strong> Euclid: <span
+class="math inline">\(98=2\cdot37+24\)</span>; <span
+class="math inline">\(37=1\cdot24+13\)</span>; <span
+class="math inline">\(24=1\cdot13+11\)</span>; <span
+class="math inline">\(13=1\cdot11+2\)</span>; <span
+class="math inline">\(11=5\cdot2+1\)</span>. Back-substitution: <span
+class="math display">\[1=11-5\cdot2=11-5(13-11)=6\cdot11-5\cdot13=6(24-13)-5\cdot13=6\cdot24-11\cdot13\]</span>
+<span
+class="math display">\[=6(37-24)-11\cdot13=17\cdot24-11\cdot37=17(98-2\cdot37)-11\cdot37=17\cdot98-45\cdot37
+.\]</span> So <span class="math inline">\(-45\cdot37\equiv1\)</span>,
+i.e. <span
+class="math display">\[\boxed{37^{-1}\equiv-45\equiv53\pmod{98}}\]</span>
+<em>Check:</em> <span
+class="math inline">\(37\cdot53=1961=20\cdot98+1\)</span>. ✔</p>
+<p><strong>b)</strong> Since <span
+class="math inline">\(53\equiv37^{-1}\pmod{98}\)</span>, <span
+class="math display">\[37^{55}\cdot53^{13}\equiv37^{55}\cdot37^{-13}=37^{42}\pmod{98}.\]</span>
+Now <span
+class="math inline">\(\varphi(98)=\varphi(2)\varphi(49)=1\cdot42=42\)</span>
+and <span class="math inline">\(\gcd(37,98)=1\)</span>, so by
+<strong>Euler’s theorem</strong> <span
+class="math inline">\(37^{42}\equiv1\pmod{98}\)</span>: <span
+class="math display">\[\boxed{37^{55}\cdot53^{13}\equiv1\pmod{98}}\]</span></p>
+<h3 id="section-28">1.29</h3>
+<p><em>Compute (a) <span
+class="math inline">\(513^{1017}\pmod6\)</span>; (b) <span
+class="math inline">\(2^{154}\pmod5\)</span>; (c) <span
+class="math inline">\(3^{178}\pmod{12}\)</span>.</em></p>
+<p><strong>Solution.</strong></p>
+<p><strong>a)</strong> <span
+class="math inline">\(513\equiv3\pmod6\)</span>, and <span
+class="math inline">\(3^n\equiv3\pmod6\)</span> for all <span
+class="math inline">\(n\ge1\)</span> ( <span
+class="math inline">\(3\cdot3=9\equiv3\)</span>; by induction). <span
+class="math display">\[\boxed{513^{1017}\equiv3\pmod6}\]</span></p>
+<p><strong>b)</strong> <span
+class="math inline">\(2^4=16\equiv1\pmod5\)</span>, and <span
+class="math inline">\(154=4\cdot38+2\)</span>: <span
+class="math display">\[2^{154}=(2^4)^{38}\cdot2^2\equiv1\cdot4=4\pmod5
+.\qquad \boxed{4}\]</span></p>
+<p><strong>c)</strong> <span class="math inline">\(3^2=9\)</span>, <span
+class="math inline">\(3^3=27\equiv3\)</span>, <span
+class="math inline">\(3^4=81\equiv9 \pmod{12}\)</span>: for <span
+class="math inline">\(n\ge2\)</span>, <span
+class="math inline">\(3^n\equiv3\)</span> if <span
+class="math inline">\(n\)</span> is odd and <span
+class="math inline">\(\equiv9\)</span> if <span
+class="math inline">\(n\)</span> is even. Since <span
+class="math inline">\(178\)</span> is even, <span
+class="math display">\[\boxed{3^{178}\equiv9\pmod{12}}\]</span></p>
+<h3 id="section-29">1.30</h3>
+<p><em>Last two digits of <span
+class="math inline">\(103^{1243}\)</span>.</em></p>
+<p><strong>Solution.</strong> The last two digits are the residue mod
+<span class="math inline">\(100\)</span>. As <span
+class="math inline">\(103\equiv3\pmod{100}\)</span>, compute <span
+class="math inline">\(3^{1243}\bmod100\)</span>. We have <span
+class="math display">\[3^{10}=59049\equiv49,\qquad
+3^{20}\equiv49^2=2401\equiv1\pmod{100}.\]</span> Since <span
+class="math inline">\(1243=20\cdot62+3\)</span>: <span
+class="math display">\[3^{1243}\equiv
+(3^{20})^{62}\cdot3^3\equiv1\cdot27=27\pmod{100}.\]</span> <span
+class="math display">\[\boxed{\text{The last two digits are
+}27}\]</span></p>
+<h3 id="section-30">1.31</h3>
+<p><em>Find all <span class="math inline">\(n\)</span> with <span
+class="math inline">\(10^n+3\)</span> a multiple of <span
+class="math inline">\(7\)</span>.</em></p>
+<p><strong>Solution.</strong> Modulo <span
+class="math inline">\(7\)</span>, <span
+class="math inline">\(10\equiv3\)</span>, so the condition is <span
+class="math inline">\(3^n+3\equiv0\)</span>, i.e. <span
+class="math display">\[3^n\equiv4\pmod7 .\]</span> The powers of <span
+class="math inline">\(3\)</span> modulo <span
+class="math inline">\(7\)</span> are <span
+class="math display">\[3^1=3,\quad 3^2=2,\quad 3^3=6,\quad 3^4=4,\quad
+3^5=5,\quad 3^6=1,\]</span> and the sequence is periodic of period <span
+class="math inline">\(6\)</span> (by Fermat, <span
+class="math inline">\(3^6\equiv1\)</span>). The value <span
+class="math inline">\(4\)</span> appears exactly at the exponent <span
+class="math inline">\(4\)</span>: <span
+class="math display">\[\boxed{n\equiv4\pmod6}\]</span></p>
+<h3 id="section-31">1.32</h3>
+<p><em>Find all <span class="math inline">\(n\)</span> with <span
+class="math inline">\(4^n+5\)</span> a multiple of <span
+class="math inline">\(15\)</span>.</em></p>
+<p><strong>Solution.</strong> A multiple of <span
+class="math inline">\(15\)</span> must in particular be a multiple of
+<span class="math inline">\(5\)</span>. But modulo <span
+class="math inline">\(5\)</span>, <span
+class="math display">\[4^n\equiv(-1)^n\equiv\pm1,\qquad\text{so}\qquad
+4^n+5\equiv4^n\equiv\pm1\not\equiv0\pmod5 .\]</span> Hence <strong>there
+is no such <span class="math inline">\(n\)</span>.</strong> (Indeed
+<span class="math inline">\(4^n\bmod15\)</span> equals <span
+class="math inline">\(4\)</span> or <span
+class="math inline">\(1\)</span> for every <span
+class="math inline">\(n\)</span>, never the needed <span
+class="math inline">\(10\equiv-5\)</span>.) <span
+class="math inline">\(\blacksquare\)</span></p>
+<h3 id="section-32">1.33</h3>
+<p><em>a) Solve <span
+class="math inline">\(2^{2021}(x-2^{2022})=4^{2023}\pmod{13}\)</span>.
+b) Deduce a description of all solutions of <span
+class="math inline">\(2^{2021}(10\cdot3^n-2^{2022})=4^{2023}\pmod{13}\)</span>.</em></p>
+<p><strong>Solution.</strong></p>
+<p><strong>a)</strong> Fermat: <span
+class="math inline">\(2^{12}\equiv1\pmod{13}\)</span>. Reduce the
+exponents modulo <span class="math inline">\(12\)</span>: <span
+class="math display">\[2021=12\cdot168+5\;\Rightarrow\;2^{2021}\equiv2^5=32\equiv6,\]</span>
+<span
+class="math display">\[2022=12\cdot168+6\;\Rightarrow\;2^{2022}\equiv2^6=64\equiv12\equiv-1,\]</span>
+<span
+class="math display">\[4046=12\cdot337+2\;\Rightarrow\;4^{2023}=2^{4046}\equiv2^2=4
+.\]</span> The equation becomes <span
+class="math inline">\(6\,(x+1)\equiv4\pmod{13}\)</span>. Since <span
+class="math inline">\(6^{-1}=11\)</span> (<span
+class="math inline">\(6\cdot11=66\equiv1\)</span>), <span
+class="math display">\[x+1\equiv4\cdot11=44\equiv5\pmod{13}\;\Longrightarrow\;
+\boxed{x\equiv4\pmod{13}}\]</span> <em>Check:</em> <span
+class="math inline">\(2^{2021}(4-2^{2022})\equiv6\,(4+1)=30\equiv4\equiv4^{2023}\)</span>.
+✔</p>
+<p><strong>b)</strong> By part (a), the congruence holds iff <span
+class="math inline">\(10\cdot3^n\equiv4\pmod{13}\)</span>. As <span
+class="math inline">\(10^{-1}=4\)</span> (<span
+class="math inline">\(10\cdot4=40\equiv1\)</span>): <span
+class="math display">\[3^n\equiv4\cdot4=16\equiv3\pmod{13}.\]</span> The
+powers of <span class="math inline">\(3\)</span> modulo <span
+class="math inline">\(13\)</span> are <span
+class="math inline">\(3^1=3,\ 3^2=9,\ 3^3=27\equiv1\)</span>, so <span
+class="math inline">\(3\)</span> has order <span
+class="math inline">\(3\)</span> and <span
+class="math inline">\(3^n\equiv3\)</span> iff <span
+class="math inline">\(n\equiv1\pmod3\)</span>: <span
+class="math display">\[\boxed{n\equiv1\pmod3\qquad(n=1,4,7,10,\dots)}\]</span></p>
+<h3 id="section-33">1.34</h3>
+<p><em>Compute <span
+class="math inline">\(2022^{20222022}\pmod{19}\)</span> and <span
+class="math inline">\(\pmod{21}\)</span>.</em></p>
+<p><strong>Solution.</strong> <strong>Modulo 19.</strong> <span
+class="math inline">\(2022=19\cdot106+8\)</span>, so <span
+class="math inline">\(2022\equiv8\)</span>. Compute the order of <span
+class="math inline">\(8\)</span>: <span
+class="math display">\[8^1=8,\quad 8^2=64\equiv7,\quad
+8^3=7\cdot8=56\equiv-1\pmod{19},\]</span> so <span
+class="math inline">\(8^6\equiv1\)</span>. Since <span
+class="math display">\[20222022=6\cdot3370337,\]</span> the exponent is
+a multiple of <span class="math inline">\(6\)</span>, hence <span
+class="math display">\[2022^{20222022}\equiv8^{20222022}\equiv(8^6)^{3370337}\equiv1\pmod{19}.
+\qquad \boxed{1}\]</span></p>
+<p><strong>Modulo 21.</strong> <span
+class="math inline">\(21=3\cdot7\)</span>, with <span
+class="math inline">\(\gcd(3,7)=1\)</span>. - Modulo <span
+class="math inline">\(3\)</span>: <span
+class="math inline">\(2022\equiv0\)</span>, so <span
+class="math inline">\(2022^{20222022}\equiv0\pmod3\)</span>. - Modulo
+<span class="math inline">\(7\)</span>: <span
+class="math inline">\(2022=7\cdot288+6\equiv-1\)</span>, and the
+exponent <span class="math inline">\(20222022\)</span> is even, so <span
+class="math inline">\(2022^{20222022}\equiv(-1)^{\text{even}}=1\pmod7\)</span>.</p>
+<p>Solve <span class="math inline">\(N\equiv0\pmod3\)</span>, <span
+class="math inline">\(N\equiv1\pmod7\)</span>: <span
+class="math inline">\(N=3k\)</span> with <span
+class="math inline">\(3k\equiv1\pmod7\)</span>, i.e. <span
+class="math inline">\(k\equiv5\)</span> (<span
+class="math inline">\(3^{-1}=5\)</span>), so <span
+class="math inline">\(N\equiv15\pmod{21}\)</span>. <span
+class="math display">\[\boxed{2022^{20222022}\equiv15\pmod{21}}\]</span></p>
+<h3 id="section-34">1.35</h3>
+<p><em>Compute <span class="math inline">\(\varphi(128)\)</span>, <span
+class="math inline">\(\varphi(1123)\)</span>, <span
+class="math inline">\(\varphi(1125)\)</span>, <span
+class="math inline">\(\varphi(29270241)\)</span>, <span
+class="math inline">\(\varphi(12648925575)\)</span>.</em></p>
+<p><strong>Solution.</strong> Use the formulas <span
+class="math inline">\(\varphi(p^e)=p^{e-1}(p-1)\)</span> and
+multiplicativity on coprime factors (equivalently <span
+class="math inline">\(\varphi(n)=n\prod_{p\mid
+n}(1-\tfrac1p)\)</span>).</p>
+<ul>
+<li><span
+class="math inline">\(\varphi(128)=\varphi(2^7)=2^7-2^6=128-64=\boxed{64}\)</span>.</li>
+<li><span class="math inline">\(1123\)</span> is prime (no prime <span
+class="math inline">\(\le\sqrt{1123}\approx33.5\)</span> divides it), so
+<span class="math inline">\(\varphi(1123)=\boxed{1122}\)</span>.</li>
+<li><span class="math inline">\(1125=3^2\cdot5^3\)</span>: <span
+class="math display">\[\varphi(1125)=\varphi(3^2)\varphi(5^3)=3\cdot(3-1)\cdot5^2\cdot(5-1)=6\cdot100=\boxed{600}.\]</span></li>
+<li><span
+class="math inline">\(29270241=3^4\cdot7\cdot11\cdot13\cdot19^2\)</span>.
+Indeed <span class="math inline">\(29270241=81\cdot361361\)</span>,
+<span
+class="math inline">\(361361=7\cdot51623=7\cdot11\cdot4693=7\cdot11\cdot13\cdot361\)</span>,
+<span class="math inline">\(361=19^2\)</span>. Then <span
+class="math display">\[\varphi(29270241)=\prod \varphi(p^{e}):
+\underbrace{54}_{3^3(3-1)}\cdot 6\cdot 10\cdot 12\cdot
+\underbrace{342}_{19\cdot18}
+=\boxed{13\,296\,960}.\]</span></li>
+<li><span
+class="math inline">\(12648925575=3^4\cdot5^2\cdot11^3\cdot13\cdot19^2\)</span>
+(<span
+class="math inline">\(=81\cdot25\cdot1331\cdot13\cdot361\)</span>). Then
+<span
+class="math display">\[\varphi(12648925575)=54\cdot20\cdot(11^2\cdot10)\cdot12\cdot342
+=\boxed{5\,363\,107\,200}.\]</span></li>
+</ul>
+<h3 id="section-35">1.36</h3>
+<p><em>Order <span class="math inline">\(\mathbb Z\)</span>, <span
+class="math inline">\(\mathbb Z/11\mathbb Z\)</span>, <span
+class="math inline">\(\mathbb Z/12\mathbb Z\)</span>, <span
+class="math inline">\(\mathbb Z/18\mathbb Z\)</span>, <span
+class="math inline">\(\mathbb Q\)</span> by decreasing number of
+invertible elements.</em></p>
+<p><strong>Solution.</strong> The invertible elements are the units:
+<span class="math inline">\(\mathbb Q^\times=\mathbb
+Q\setminus\{0\}\)</span> (infinitely many); <span
+class="math inline">\(\mathbb Z^\times=\{\pm1\}\)</span> (<span
+class="math inline">\(2\)</span> elements); and for the finite rings the
+count is <span class="math inline">\(\varphi(m)\)</span>: <span
+class="math display">\[\varphi(11)=10,\qquad
+\varphi(18)=\varphi(2)\varphi(9)=6,\qquad
+\varphi(12)=\varphi(4)\varphi(3)=2\cdot2=4 .\]</span> Hence, in
+decreasing order: <span class="math display">\[\boxed{\mathbb Q\ \succ\
+\mathbb Z\ \succ\ \mathbb Z/11\mathbb Z\ \succ\ \mathbb Z/18\mathbb Z\
+\succ\ \mathbb Z/12\mathbb Z}\]</span> (with counts <span
+class="math inline">\(\infty,\ 2,\ 10,\ 6,\ 4\)</span>). Note <span
+class="math inline">\(\mathbb Z/11\mathbb Z\)</span> is a field, so all
+its nonzero elements are invertible.</p>
+<h3 id="section-36">1.37</h3>
+<p><em>Mersenne numbers <span class="math inline">\(M_q=2^q-1\)</span>.
+(a) <span class="math inline">\(M_q\)</span> prime <span
+class="math inline">\(\Rightarrow q\)</span> prime. (b) Smallest
+counterexample to the converse. (c) If <span
+class="math inline">\(q\)</span> prime and <span
+class="math inline">\(p\mid M_q\)</span> (<span
+class="math inline">\(p\)</span> prime) then <span
+class="math inline">\(p\equiv1\pmod q\)</span>. (d) Decide whether <span
+class="math inline">\(M_{13}\)</span>, <span
+class="math inline">\(M_{17}\)</span> are prime.</em></p>
+<p><strong>Solution.</strong></p>
+<p><strong>a)</strong> If <span class="math inline">\(q\)</span> is not
+prime, write <span class="math inline">\(q=ab\)</span> with <span
+class="math inline">\(1&lt;a,b&lt;q\)</span> (and <span
+class="math inline">\(a&gt;1\)</span>). Using the hint with <span
+class="math inline">\(x=2^a\)</span>: <span
+class="math display">\[M_q=2^{ab}-1=(2^a)^b-1=(2^a-1)\bigl((2^a)^{b-1}+(2^a)^{b-2}+\cdots+2^a+1\bigr).\]</span>
+Both factors are <span class="math inline">\(&gt;1\)</span>, so <span
+class="math inline">\(M_q\)</span> is composite. Taking the
+contrapositive: <span class="math display">\[M_q\text{
+prime}\;\Longrightarrow\;q\text{ prime}. \qquad\blacksquare\]</span></p>
+<p><strong>b)</strong> The first primes give <span
+class="math inline">\(M_2=3\)</span>, <span
+class="math inline">\(M_3=7\)</span>, <span
+class="math inline">\(M_5=31\)</span>, <span
+class="math inline">\(M_7=127\)</span>, all prime, but <span
+class="math display">\[\boxed{M_{11}=2^{11}-1=2047=23\cdot89}\]</span>
+is composite: the converse of (a) fails, with <span
+class="math inline">\(q=11\)</span> the smallest possible
+counterexample. (Note <span
+class="math inline">\(23\equiv1\pmod{11}\)</span>, as predicted by
+(c).)</p>
+<p><strong>c)</strong> Let <span class="math inline">\(p\)</span> be a
+prime with <span class="math inline">\(p\mid 2^q-1\)</span>, i.e. <span
+class="math inline">\(2^q\equiv1\pmod p\)</span>. Then <span
+class="math inline">\(p\ne2\)</span> (as <span
+class="math inline">\(M_q\)</span> is odd), so <span
+class="math inline">\(\gcd(2,p)=1\)</span> and the multiplicative order
+<span class="math inline">\(\operatorname{ord}_p(2)\)</span> of <span
+class="math inline">\(2\)</span> modulo <span
+class="math inline">\(p\)</span> is defined, and it divides <span
+class="math inline">\(q\)</span>. As <span
+class="math inline">\(q\)</span> is prime, <span
+class="math inline">\(\operatorname{ord}_p(2)\in\{1,q\}\)</span>. The
+value <span class="math inline">\(1\)</span> would mean <span
+class="math inline">\(2\equiv1\pmod p\)</span>, i.e. <span
+class="math inline">\(p=1\)</span>, impossible. Hence <span
+class="math display">\[\operatorname{ord}_p(2)=q .\]</span> By Fermat’s
+little theorem <span class="math inline">\(\operatorname{ord}_p(2)\mid
+p-1\)</span>, so <span class="math inline">\(q\mid p-1\)</span>: <span
+class="math display">\[\boxed{p\equiv1\pmod q}\]</span> (Moreover <span
+class="math inline">\(p\)</span> is odd and <span
+class="math inline">\(q\)</span> is odd, so in fact <span
+class="math inline">\(p\equiv1\pmod{2q}\)</span>.)</p>
+<p><strong>d)</strong> Any prime divisor of <span
+class="math inline">\(M_q\)</span> is <span
+class="math inline">\(\le\sqrt{M_q}\)</span> and <span
+class="math inline">\(\equiv1\pmod q\)</span> (and odd, hence <span
+class="math inline">\(\equiv1\pmod{2q}\)</span>), which leaves very few
+candidates.</p>
+<ul>
+<li><span class="math inline">\(M_{13}=8191\)</span>, <span
+class="math inline">\(\sqrt{8191}\approx90.5\)</span>. Candidates <span
+class="math inline">\(p\equiv1\pmod{26}\)</span> below <span
+class="math inline">\(90.5\)</span>: <span class="math inline">\(p=53,\
+79\)</span>. Check: <span
+class="math inline">\(8191=53\cdot154+29\)</span>, so <span
+class="math inline">\(53\nmid8191\)</span>; <span
+class="math inline">\(8191=79\cdot103+54\)</span>, so <span
+class="math inline">\(79\nmid8191\)</span>. Therefore <span
+class="math inline">\(M_{13}=8191\)</span> <strong>is
+prime</strong>.</li>
+<li><span class="math inline">\(M_{17}=131071\)</span>, <span
+class="math inline">\(\sqrt{131071}\approx362\)</span>. Candidates <span
+class="math inline">\(p\equiv1\pmod{34}\)</span> below <span
+class="math inline">\(362\)</span>: <span class="math inline">\(p=103,\
+137,\ 239,\ 307\)</span> (note <span
+class="math inline">\(341=11\cdot31\)</span>, not prime). Check: <span
+class="math display">\[131071=103\cdot1272+55,\quad
+=137\cdot956+99,\quad =239\cdot548+99,\quad =307\cdot426+289,\]</span>
+so none divides <span class="math inline">\(M_{17}\)</span>. Therefore
+<span class="math inline">\(M_{17}=131071\)</span> <strong>is
+prime</strong>.</li>
+</ul>
+<h2 id="truefalse-problems">1.5 True/false problems</h2>
+<h3 id="section-37">1.38</h3>
+<p><em>True or false, with justification.</em></p>
+<p><strong>a) TRUE.</strong> E.g. <span
+class="math inline">\(A=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)</span>,
+<span
+class="math inline">\(B=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}\)</span>:
+<span
+class="math inline">\(AB=\begin{pmatrix}0&amp;0\\0&amp;0\end{pmatrix}\)</span>
+with <span class="math inline">\(A,B\ne0\)</span> (zero divisors exist
+in <span class="math inline">\(M_2(\mathbb Z)\)</span>, which is
+therefore not a domain).</p>
+<p><strong>b) FALSE.</strong> Cancellation fails for non-invertible
+<span class="math inline">\(A\)</span>: take <span
+class="math inline">\(A=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)</span>,
+<span
+class="math inline">\(B=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}\)</span>,
+<span class="math inline">\(C=0\)</span>. Then <span
+class="math inline">\(AB=0=AC\)</span> but <span
+class="math inline">\(B\ne C\)</span>. (The implication is true when
+<span class="math inline">\(A\)</span> is invertible.)</p>
+<p><strong>c) TRUE.</strong> In every ring <span
+class="math inline">\(0=-0\)</span>, so <span
+class="math inline">\(0\)</span> is opposed to itself. (In <span
+class="math inline">\(\mathbb Z/2\mathbb Z\)</span> also <span
+class="math inline">\(1=-1\)</span>.)</p>
+<p><strong>d) FALSE as stated for a general ring.</strong> The correct
+identity is <span class="math inline">\((ab)^{-1}=b^{-1}a^{-1}\)</span>,
+and the given one fails in non-commutative rings. In <span
+class="math inline">\(M_2(\mathbb Q)\)</span>, take <span
+class="math inline">\(a=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)</span>
+(<span class="math inline">\(a^{-1}=a\)</span>) and <span
+class="math inline">\(b=\begin{pmatrix}1&amp;0\\0&amp;2\end{pmatrix}\)</span>
+(<span
+class="math inline">\(b^{-1}=\begin{pmatrix}1&amp;0\\0&amp;\frac12\end{pmatrix}\)</span>).
+Then <span
+class="math inline">\(ab=\begin{pmatrix}0&amp;2\\1&amp;0\end{pmatrix}\)</span>,
+<span
+class="math inline">\((ab)^{-1}=\begin{pmatrix}0&amp;1\\\frac12&amp;0\end{pmatrix}\)</span>,
+and <span
+class="math inline">\(a^{-1}b^{-1}=\begin{pmatrix}0&amp;\frac12\\1&amp;0\end{pmatrix}\ne(ab)^{-1}\)</span>.
+In a <strong>commutative</strong> ring the statement is true, as <span
+class="math inline">\(ab\cdot
+a^{-1}b^{-1}=aa^{-1}bb^{-1}=1\)</span>.</p>
+<p><strong>e) TRUE.</strong> In <span class="math inline">\(M_2(\mathbb
+Q)\)</span> take <span
+class="math inline">\(a=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)</span>
+and <span
+class="math inline">\(b=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\)</span>:
+<span class="math inline">\(a^2=I\)</span>, <span
+class="math inline">\(b^2=I\)</span>, but <span
+class="math inline">\(ab=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}\)</span>
+and <span
+class="math inline">\((ab)^2=\begin{pmatrix}-1&amp;0\\0&amp;-1\end{pmatrix}=-I\ne
+I\)</span>.</p>
+<p><strong>f) TRUE.</strong> Euclidean algorithm for <span
+class="math inline">\(\gcd(249018,34650)\)</span>: <span
+class="math display">\[249018=7\cdot34650+6468,\quad
+34650=5\cdot6468+2310,\quad 6468=2\cdot2310+1848,\]</span> <span
+class="math display">\[2310=1\cdot1848+462,\quad 1848=4\cdot462+0
+.\]</span> So the gcd is <span class="math inline">\(462\)</span> (and
+indeed <span class="math inline">\(249018=539\cdot462\)</span>, <span
+class="math inline">\(34650=75\cdot462\)</span>). ✔</p>
+<p><strong>g) FALSE.</strong> <span class="math inline">\(a=4\)</span>,
+<span class="math inline">\(b=c=2\)</span>: <span
+class="math inline">\(4\mid(b+c)=4\)</span> and <span
+class="math inline">\(4\mid(b-c)=0\)</span>, but <span
+class="math inline">\(4\nmid2\)</span>. (The condition <span
+class="math inline">\(a\ne2\)</span> is not enough; the statement
+becomes true for <strong>odd</strong> <span
+class="math inline">\(a\)</span>, see (h).)</p>
+<p><strong>h) TRUE.</strong> If <span class="math inline">\(a\mid
+b+c\)</span> and <span class="math inline">\(a\mid b-c\)</span>, then
+<span class="math inline">\(a\)</span> divides their sum <span
+class="math inline">\(2b\)</span> and their difference <span
+class="math inline">\(2c\)</span>. As <span
+class="math inline">\(a\)</span> is odd, <span
+class="math inline">\(\gcd(a,2)=1\)</span>, so <span
+class="math inline">\(a\mid b\)</span> and <span
+class="math inline">\(a\mid c\)</span>.</p>
+<p><strong>i) FALSE.</strong> The claim is that <span
+class="math inline">\(a&#39;=a/d\)</span> and <span
+class="math inline">\(b&#39;=b/d\)</span> are always coprime; not so:
+<span class="math inline">\(a=12\)</span>, <span
+class="math inline">\(b=8\)</span>, <span
+class="math inline">\(d=2\)</span> gives <span
+class="math inline">\(a&#39;=6\)</span>, <span
+class="math inline">\(b&#39;=4\)</span> with <span
+class="math inline">\(\gcd(6,4)=2\)</span>. (It is true when <span
+class="math inline">\(d=\gcd(a,b)\)</span> — that is precisely the
+definition of the gcd.)</p>
+<p><strong>j) FALSE.</strong> <span
+class="math inline">\(\gcd(13,23)=1\)</span> divides <span
+class="math inline">\(4\)</span>, so there are solutions. One of them is
+<span class="math inline">\((x,y)=(-28,16)\)</span>: <span
+class="math inline">\(13\cdot(-28)+23\cdot16=-364+368=4\)</span>. All of
+them: <span class="math display">\[x=-28+23t,\qquad y=16-13t,\quad
+t\in\mathbb Z .\]</span></p>
+<p><strong>k) TRUE.</strong> Plug in: <span
+class="math inline">\(2(16+3\lambda)-6(4+\lambda)=32+6\lambda-24-6\lambda=8\)</span>
+for every <span class="math inline">\(\lambda\)</span>. Conversely every
+integer solution has the form <span class="math inline">\(x=4+3s,\
+y=s\)</span> (from <span class="math inline">\(x-3y=4\)</span>); writing
+<span class="math inline">\(s=4+\lambda\)</span> recovers <span
+class="math inline">\(x=16+3\lambda,\ y=4+\lambda\)</span>. So exactly
+the stated family.</p>
+<p><strong>l) TRUE.</strong> This is the distributive law relating gcd
+and lcm, <span
+class="math inline">\(\gcd(a,\operatorname{lcm}(b,c))=\operatorname{lcm}(\gcd(a,b),\gcd(a,c))\)</span>,
+valid in any lattice of divisibility. Proof with valuations: for each
+prime <span class="math inline">\(p\)</span>, <span
+class="math display">\[\min\bigl(v_p(a),\max(v_p(b),v_p(c))\bigr)=\max\bigl(\min(v_p(a),v_p(b)),\min(v_p(a),v_p(c))\bigr),\]</span>
+which is the elementary identity <span
+class="math inline">\(\min(x,\max(y,z))=\max(\min(x,y),\min(x,z))\)</span>.</p>
+<p><strong>m) FALSE.</strong> A fourth of <span
+class="math inline">\(100\)</span> is <span
+class="math inline">\(25\)</span>, and the primes <span
+class="math inline">\(\le100\)</span> number exactly <span
+class="math inline">\(25\)</span> (<span
+class="math inline">\(2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97\)</span>).
+So the amount of primes is <em>equal to</em> a fourth, not less.</p>
+<p><strong>n) TRUE.</strong> <span class="math inline">\(2347\)</span>
+is prime. Indeed <span
+class="math inline">\(\sqrt{2347}\approx48.4\)</span>, so it suffices to
+test primes <span class="math inline">\(\le47\)</span>; the remainders
+are <span
+class="math display">\[2347=7\cdot335+2=11\cdot213+4=13\cdot180+7=17\cdot138+1=19\cdot123+10=23\cdot102+1\]</span>
+<span
+class="math display">\[=29\cdot80+27=31\cdot75+22=37\cdot63+16=41\cdot57+10=43\cdot54+25=47\cdot49+44,\]</span>
+and <span class="math inline">\(2347\)</span> is odd with digit sum
+<span class="math inline">\(16\)</span>, so <span
+class="math inline">\(2,3,5\)</span> do not divide it either. No prime
+<span class="math inline">\(\le\sqrt{2347}\)</span> divides it: it is
+prime.</p>
+<p><strong>o) TRUE.</strong> If <span
+class="math inline">\([a]_m\cap[b]_m\ne\emptyset\)</span> there is <span
+class="math inline">\(c\)</span> with <span
+class="math inline">\(c\equiv a\)</span> and <span
+class="math inline">\(c\equiv b\pmod m\)</span>; then <span
+class="math inline">\(m\mid c-a\)</span> and <span
+class="math inline">\(m\mid c-b\)</span>, hence <span
+class="math inline">\(m\mid (c-a)-(c-b)=b-a\)</span>, i.e. <span
+class="math inline">\(m\mid(a-b)\)</span>.</p>
+<p><strong>p) TRUE.</strong> If <span
+class="math inline">\(x\in[a]_{2m}\)</span>, then <span
+class="math inline">\(x-a=2mk\)</span> for some <span
+class="math inline">\(k\)</span>, so <span
+class="math inline">\(x-a=m(2k)\)</span> and <span
+class="math inline">\(x\in[a]_m\)</span>; thus <span
+class="math inline">\([a]_{2m}\subseteq[a]_m\)</span>. The inclusion is
+strict: <span class="math inline">\(a+m\in[a]_m\)</span> but <span
+class="math inline">\((a+m)-a=m\notin 2m\mathbb Z\)</span>, so <span
+class="math inline">\(a+m\notin[a]_{2m}\)</span>.</p>
+<p><strong>q) FALSE.</strong> Take <span
+class="math inline">\(m=3\)</span>, <span
+class="math inline">\(a=0\)</span>, <span
+class="math inline">\(b=3\)</span>: the classes <span
+class="math inline">\([0]_3\)</span> (multiples of <span
+class="math inline">\(3\)</span>) and <span
+class="math inline">\([3]_6\)</span> (numbers <span
+class="math inline">\(\equiv3\pmod6\)</span>) intersect (e.g. <span
+class="math inline">\(3\)</span>), but <span
+class="math inline">\([0]_6\ne[3]_6\)</span> (multiples of <span
+class="math inline">\(6\)</span> vs. odd multiples of <span
+class="math inline">\(3\)</span>). What is true: if they intersect then
+<span class="math inline">\([b]_{2m}\subseteq[a]_m\)</span>.</p>
+<p><strong>r) FALSE.</strong> In <span class="math inline">\(\mathbb
+Z/6\mathbb Z\)</span>, <span class="math inline">\(2\cdot2=4\)</span>
+and <span class="math inline">\(2\cdot(-1)=-2\equiv4\)</span> are indeed
+equal, but the step “<span class="math inline">\(2=(-1)\)</span>” is an
+illegal cancellation: <span class="math inline">\(2\)</span> is not
+invertible modulo <span class="math inline">\(6\)</span> (<span
+class="math inline">\(\gcd(2,6)=2\ne1\)</span>). And in fact <span
+class="math inline">\(2\not\equiv-1\pmod6\)</span>, so <span
+class="math inline">\(3\ne0\)</span>. (The correct conclusion would be
+<span class="math inline">\(2\mid 2\cdot 3\)</span> in <span
+class="math inline">\(\mathbb Z\)</span>, i.e. nothing about <span
+class="math inline">\(3\equiv0\)</span>.)</p>
+<p><strong>s) TRUE.</strong> <span
+class="math inline">\(2x\equiv7\pmod{10}\)</span>: the left side is
+always even modulo <span class="math inline">\(10\)</span> (values <span
+class="math inline">\(0,2,4,6,8\)</span>), so it can never equal <span
+class="math inline">\(7\)</span>: no solutions. <span
+class="math inline">\(2x\equiv6\pmod{10}\iff5\mid x-3\iff
+x\equiv3\pmod5\)</span>, i.e. <span
+class="math inline">\(x=3,8\)</span>: exactly two solutions.</p>
+<p><strong>t) TRUE.</strong> The coefficient determinant is <span
+class="math inline">\(1\cdot2-3\cdot1=-1\equiv12\not\equiv0\pmod{13}\)</span>,
+so Cramer applies and the solution is unique (determined) if it exists.
+From <span class="math inline">\(x=4-2y\)</span> and <span
+class="math inline">\(2x+3y=3\)</span>: <span
+class="math inline">\(2(4-2y)+3y=3\Rightarrow8-y=3\Rightarrow
+y=5\)</span>, <span class="math inline">\(x=4-10=-6\equiv7\)</span>.
+Check in the third equation: <span
+class="math inline">\(5\cdot7-4\cdot5=15\equiv2\)</span>. So <span
+class="math inline">\((x,y)=(7,5)\)</span> works, and the system is
+compatible and determined.</p>
+<p><strong>u) FALSE.</strong> Counterexample: <span
+class="math inline">\(r=2\)</span>, <span
+class="math inline">\(s=3\)</span>, <span
+class="math inline">\(a=b=0\)</span>, <span
+class="math inline">\(c=d=1\)</span>. Then <span
+class="math inline">\(a\equiv b\pmod2\)</span> and <span
+class="math inline">\(c\equiv d\pmod3\)</span>, and <span
+class="math inline">\(t=\operatorname{lcm}(2,3)=6\)</span>, but <span
+class="math inline">\(a+b=0\not\equiv2=c+d\pmod6\)</span>. (Corrected
+version, which is true: <span class="math inline">\(a+c\equiv
+b+d\pmod{\gcd(r,s)}\)</span>, since <span class="math inline">\(a\equiv
+b\)</span> and <span class="math inline">\(c\equiv d\)</span> both hold
+modulo <span class="math inline">\(t=\gcd(r,s)\)</span>.)</p>
+<p><strong>v) FALSE.</strong> Counterexample: <span
+class="math inline">\(r=10\)</span>, <span
+class="math inline">\(s=15\)</span>, <span
+class="math inline">\(a=b=2\)</span>, <span
+class="math inline">\(c=d=1\)</span>; then <span
+class="math inline">\(t=\gcd(10,15)=5\)</span>, but <span
+class="math inline">\(ab=4\not\equiv1=cd\pmod5\)</span>. (Corrected
+version, true: <span class="math inline">\(ac\equiv
+bd\pmod{\gcd(r,s)}\)</span>.)</p>
+<p><strong>w) TRUE.</strong> <span
+class="math inline">\(11\equiv-2\pmod{13}\)</span>, and <span
+class="math inline">\(11111=12\cdot925+11\)</span> with <span
+class="math inline">\(2^{12}\equiv1\)</span> (Fermat), so <span
+class="math display">\[11^{11111}\equiv(-2)^{11111}=-2^{11111}\equiv-2^{11}=-2048
+.\]</span> Now <span class="math inline">\(2048=13\cdot157+7\)</span>,
+so <span class="math inline">\(-2048\equiv-7\equiv6\pmod{13}\)</span>.
+Hence <span class="math inline">\(11^{11111}\equiv6\pmod{13}\)</span>.
+✔</p>
+<p><strong>x) FALSE.</strong> <span
+class="math inline">\(22\equiv5\)</span> and <span
+class="math inline">\(33\equiv-1\pmod{17}\)</span>. Since <span
+class="math inline">\(2222=16\cdot138+14\)</span>, <span
+class="math display">\[22^{2222}\equiv5^{14}=5^8\cdot5^4\cdot5^2\equiv(-1)\cdot13\cdot8=-104\equiv-2\equiv15\pmod{17},\]</span>
+where <span class="math inline">\(5^2\equiv8\)</span>, <span
+class="math inline">\(5^4\equiv13\)</span>, <span
+class="math inline">\(5^8\equiv-1\)</span>. On the other side <span
+class="math inline">\(33^{3333}\equiv(-1)^{3333}=-1\equiv16\pmod{17}\)</span>.
+Since <span class="math inline">\(15\ne16\)</span>, the claimed
+congruence fails.</p>
+<p><strong>y) FALSE.</strong> Take <span
+class="math inline">\(p=5\)</span>, <span
+class="math inline">\(a=2\)</span>, <span
+class="math inline">\(r=1\)</span>, <span
+class="math inline">\(s=6\)</span>: then <span
+class="math inline">\(r\equiv s\pmod5\)</span>, but <span
+class="math inline">\(a^{r-1}=2^0=1\)</span> while <span
+class="math inline">\(a^{s-1}=2^5=32\equiv2\pmod5\)</span>, and <span
+class="math inline">\(1\not\equiv2\)</span>. The correct statement: if
+<span class="math inline">\(r\equiv s\pmod{p-1}\)</span> and <span
+class="math inline">\(p\nmid a\)</span> then <span
+class="math inline">\(a^{r-1}\equiv a^{s-1}\pmod p\)</span> (the
+exponent lives modulo the order of <span
+class="math inline">\(a\)</span>, which divides <span
+class="math inline">\(p-1\)</span>, not modulo <span
+class="math inline">\(p\)</span>).</p>
+<p><strong>z) TRUE.</strong> Since <span class="math inline">\(p\ne
+q\)</span>, <span class="math inline">\(\gcd(a,pq)=1\)</span>, and <span
+class="math inline">\(\varphi(pq)=(p-1)(q-1)\)</span>. By
+<strong>Euler’s theorem</strong> <span
+class="math inline">\(a^{\varphi(pq)}=a^{(p-1)(q-1)}\equiv1\pmod{pq}\)</span>.
+<span class="math inline">\(\blacksquare\)</span></p>
+<hr />
+<h2 id="summary-of-final-answers">Summary of final answers</h2>
+<table>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1</td>
+<td><span class="math inline">\(\gcd(a+b,a-b)\in\{1,2\}\)</span> (both
+values occur)</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td><span class="math inline">\(\gcd(ma,mb)=m\gcd(a,b)\)</span> for
+<span class="math inline">\(m\ge0\)</span>; in general <span
+class="math inline">\(\gcd(ma,mb)=\lvert m\rvert\gcd(a,b)\)</span>
+(proved)</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>Yes: <span
+class="math inline">\(\gcd(3a-b,b-2a)=\gcd(a,b)\)</span></td>
+</tr>
+<tr>
+<td>1.4</td>
+<td><span class="math inline">\(\gcd(28n-5,35n-8)=1\)</span></td>
+</tr>
+<tr>
+<td>1.5</td>
+<td>a) <span class="math inline">\(4\)</span>, <span
+class="math inline">\(\;25\cdot1492-21\cdot1776\)</span>; b) <span
+class="math inline">\(77\)</span>, <span
+class="math inline">\(\;7469-3\cdot2464\)</span>; c) <span
+class="math inline">\(4\)</span>, <span
+class="math inline">\(\;181\cdot500-8\cdot11312\)</span></td>
+</tr>
+<tr>
+<td>1.6</td>
+<td><span class="math inline">\(662448\)</span>; <span
+class="math inline">\(239008\)</span>; <span
+class="math inline">\(1414000\)</span></td>
+</tr>
+<tr>
+<td>1.7</td>
+<td>Irreducible, since <span
+class="math inline">\(\gcd(4n+5,2n+3)\mid1\)</span></td>
+</tr>
+<tr>
+<td>1.8</td>
+<td>a) <span class="math inline">\(x=7+27t,\ y=8+31t\)</span>; b) <span
+class="math inline">\(x=-19+50t,\ y=-27+71t\)</span>; c) none; d) <span
+class="math inline">\(x=925+1722t,\ y=152+283t\)</span></td>
+</tr>
+<tr>
+<td>1.9</td>
+<td>a) <span class="math inline">\(\gcd=13\)</span>; b) <span
+class="math inline">\(x=-2+5s,\ y=118-294s\)</span></td>
+</tr>
+<tr>
+<td>1.10</td>
+<td><span
+class="math inline">\(m\equiv7S\pmod{12}\in\{1,\dots,12\}\)</span>, then
+<span class="math inline">\(d=(S-31m)/12\)</span> (unique)</td>
+</tr>
+<tr>
+<td>1.11</td>
+<td>Both are squares (with <span
+class="math inline">\(\gcd(a,b)=1\)</span>)</td>
+</tr>
+<tr>
+<td>1.12</td>
+<td><span class="math inline">\(a^2\mid b^2\Rightarrow a\mid b\)</span>
+(proved)</td>
+</tr>
+<tr>
+<td>1.13</td>
+<td><span
+class="math inline">\(n=2^{15}3^{10}5^{6}=30\,233\,088\,000\,000\)</span></td>
+</tr>
+<tr>
+<td>1.14</td>
+<td><span class="math inline">\(2^2\!\cdot\!373\)</span>, <span
+class="math inline">\(2^4\!\cdot\!3\!\cdot\!37\)</span>, <span
+class="math inline">\(7\!\cdot\!11\!\cdot\!97\)</span>, <span
+class="math inline">\(2^5\!\cdot\!7\!\cdot\!11\)</span>, <span
+class="math inline">\(2^2\!\cdot\!5^3\)</span>, <span
+class="math inline">\(2^4\!\cdot\!7\!\cdot\!101\)</span>; min/max
+formulas verified</td>
+</tr>
+<tr>
+<td>1.15</td>
+<td>a) <span class="math inline">\(10\)</span>; b) <span
+class="math inline">\(1\)</span>; c) <span
+class="math inline">\(1\)</span></td>
+</tr>
+<tr>
+<td>1.16</td>
+<td>Direct implication true; converse false (true iff <span
+class="math inline">\(\gcd(k,m)=1\)</span>; primeness insufficient)</td>
+</tr>
+<tr>
+<td>1.17</td>
+<td>Direct implication true; converse false</td>
+</tr>
+<tr>
+<td>1.18</td>
+<td>Odd primes that are sums of two squares: <span
+class="math inline">\(p\equiv1\pmod4\)</span>; <span
+class="math inline">\(2=1^2+1^2\)</span> is the exception</td>
+</tr>
+<tr>
+<td>1.19</td>
+<td><span
+class="math inline">\(\{1\};\{1,2\};\{1,3\};\{1,2,3,4\};\{1,5\};\{1,\dots,6\};\{1,3,5,7\};\{1,2,4,5,7,8\};\{1,3,7,9\}\)</span></td>
+</tr>
+<tr>
+<td>1.20</td>
+<td><span class="math inline">\(29\)</span> invertible with inverse
+<span class="math inline">\(1049\)</span>; <span
+class="math inline">\(234\)</span>, <span
+class="math inline">\(512\)</span> not invertible</td>
+</tr>
+<tr>
+<td>1.21</td>
+<td>a) <span class="math inline">\(x\equiv88\)</span>; b) <span
+class="math inline">\(x\equiv0,9\)</span>; c) <span
+class="math inline">\(x\equiv0\pmod5\)</span> (<span
+class="math inline">\(6\)</span> classes)</td>
+</tr>
+<tr>
+<td>1.22</td>
+<td>a) <span class="math inline">\((1,16)\)</span>; b) <span
+class="math inline">\((4,4)\)</span> mod 5 and <span
+class="math inline">\((19,9)\)</span> mod 25; c) no solution; d) no
+solution mod 2, <span class="math inline">\((5,6,1)\)</span> mod 7</td>
+</tr>
+<tr>
+<td>1.23</td>
+<td>a) invertible, <span
+class="math inline">\(\left(\begin{smallmatrix}1&amp;1\\0&amp;1\end{smallmatrix}\right)\)</span>;
+b) no; c) invertible only mod 5, <span
+class="math inline">\(\left(\begin{smallmatrix}0&amp;2&amp;1\\2&amp;0&amp;1\\2&amp;4&amp;0\end{smallmatrix}\right)\)</span>;
+d) invertible only mod 5 and mod 55 (inverses in §1.23)</td>
+</tr>
+<tr>
+<td>1.24</td>
+<td><span class="math inline">\(x\equiv23\pmod{105}\)</span> (smallest:
+<span class="math inline">\(23\)</span>)</td>
+</tr>
+<tr>
+<td>1.25</td>
+<td>a) <span class="math inline">\(x\equiv591\pmod{630}\)</span>; b)
+<span class="math inline">\(x\equiv331\pmod{420}\)</span>; c) <span
+class="math inline">\(x\equiv118\pmod{420}\)</span></td>
+</tr>
+<tr>
+<td>1.26</td>
+<td>Equivalence proved; it is the injectivity half of the CRT
+isomorphism</td>
+</tr>
+<tr>
+<td>1.27</td>
+<td><span class="math inline">\(f\)</span> injective but not surjective
+(not bijective); <span class="math inline">\(g\)</span> bijective; CRT
+needs pairwise coprime moduli</td>
+</tr>
+<tr>
+<td>1.28</td>
+<td>a) <span class="math inline">\(37^{-1}\equiv53\)</span>; b) <span
+class="math inline">\(37^{55}53^{13}\equiv1\pmod{98}\)</span></td>
+</tr>
+<tr>
+<td>1.29</td>
+<td>a) <span class="math inline">\(3\)</span>; b) <span
+class="math inline">\(4\)</span>; c) <span
+class="math inline">\(9\)</span></td>
+</tr>
+<tr>
+<td>1.30</td>
+<td>Last two digits: <span class="math inline">\(27\)</span></td>
+</tr>
+<tr>
+<td>1.31</td>
+<td><span class="math inline">\(n\equiv4\pmod6\)</span></td>
+</tr>
+<tr>
+<td>1.32</td>
+<td>No such <span class="math inline">\(n\)</span></td>
+</tr>
+<tr>
+<td>1.33</td>
+<td>a) <span class="math inline">\(x\equiv4\pmod{13}\)</span>; b) <span
+class="math inline">\(n\equiv1\pmod3\)</span></td>
+</tr>
+<tr>
+<td>1.34</td>
+<td><span class="math inline">\(\equiv1\pmod{19}\)</span> and <span
+class="math inline">\(\equiv15\pmod{21}\)</span></td>
+</tr>
+<tr>
+<td>1.35</td>
+<td><span class="math inline">\(64\)</span>, <span
+class="math inline">\(1122\)</span>, <span
+class="math inline">\(600\)</span>, <span
+class="math inline">\(13\,296\,960\)</span>, <span
+class="math inline">\(5\,363\,107\,200\)</span></td>
+</tr>
+<tr>
+<td>1.36</td>
+<td><span class="math inline">\(\mathbb Q\succ\mathbb Z\succ\mathbb
+Z/11\mathbb Z\succ\mathbb Z/18\mathbb Z\succ\mathbb Z/12\mathbb
+Z\)</span></td>
+</tr>
+<tr>
+<td>1.37</td>
+<td>a) proved; b) <span
+class="math inline">\(M_{11}=2047=23\cdot89\)</span>; c) <span
+class="math inline">\(p\equiv1\pmod q\)</span>; d) <span
+class="math inline">\(M_{13}=8191\)</span> and <span
+class="math inline">\(M_{17}=131071\)</span> are both prime</td>
+</tr>
+<tr>
+<td>1.38</td>
+<td>T: a, c, e, f, h, k, l, n, o, p, s, t, w, z — F: b, d, g, i, j, m,
+q, r, u, v, x, y</td>
+</tr>
+</tbody>
+</table>
+<p><em>All computations were verified independently (Python + exact
+integer arithmetic).</em></p>
+
+</body>
+</html>
