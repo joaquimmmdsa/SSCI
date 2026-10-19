@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Propietats-Temari.html</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script>
+window.MathJax = { tex: { inlineMath: [['\\(','\\)'],['$','$']], displayMath: [['\\[','\\]'],['$$','$$']] } };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+
+<h1 id="propietats-del-temari">Propietats del temari</h1>
+<h2 id="anells-i-cossos">1. Anells i cossos</h2>
+<h3 id="anell">1.1 Anell</h3>
+<ul>
+<li><strong>Anell:</strong> <span
+class="math inline">\((R,+,\cdot)\)</span> amb <span
+class="math inline">\((R,+)\)</span> grup abelià, producte associatiu i
+distributiu respecte de la suma.</li>
+<li><strong>Anell commutatiu:</strong> <span
+class="math inline">\(ab=ba\)</span> per a tots <span
+class="math inline">\(a,b\in R\)</span>.</li>
+<li><strong>Anell amb unitat:</strong> existeix <span
+class="math inline">\(1\ne0\)</span> amb <span
+class="math inline">\(1a=a1=a\)</span>.</li>
+<li><strong>Domini d’integritat:</strong> anell commutatiu amb unitat,
+<span class="math inline">\(1\ne0\)</span>, sense divisors de zero.</li>
+<li><strong>Cos:</strong> anell commutatiu amb unitat, <span
+class="math inline">\(1\ne0\)</span>, on tot element no nul és
+invertible.</li>
+<li><strong>Divisor de zero:</strong> <span
+class="math inline">\(a\ne0\)</span> tal que existeix <span
+class="math inline">\(b\ne0\)</span> amb <span
+class="math inline">\(ab=0\)</span>.</li>
+<li><strong>Unitat:</strong> <span class="math inline">\(a\)</span> tal
+que existeix <span class="math inline">\(b\)</span> amb <span
+class="math inline">\(ab=ba=1\)</span>; s’escriu <span
+class="math inline">\(b=a^{-1}\)</span>.</li>
+</ul>
+<h3 id="propietats-bàsiques-dels-anells">1.2 Propietats bàsiques dels
+anells</h3>
+<ul>
+<li><span class="math inline">\(a0=0a=0\)</span>.</li>
+<li><span class="math inline">\((-a)b=-(ab)\)</span>, <span
+class="math inline">\(a(-b)=-(ab)\)</span>, <span
+class="math inline">\((-a)(-b)=ab\)</span>.</li>
+<li><span class="math inline">\(a(b-c)=ab-ac\)</span>, <span
+class="math inline">\((a-b)c=ac-bc\)</span>.</li>
+<li>Si <span class="math inline">\(a\)</span> és unitat i <span
+class="math inline">\(ab=ac\)</span>, aleshores <span
+class="math inline">\(b=c\)</span>.</li>
+<li>En un domini, si <span class="math inline">\(a\ne0\)</span> i <span
+class="math inline">\(ab=ac\)</span>, aleshores <span
+class="math inline">\(b=c\)</span>.</li>
+<li><span class="math inline">\((a+b)^n=\sum_{k=0}^n\binom nk a^k
+b^{n-k}\)</span> en un anell commutatiu.</li>
+<li>Si <span class="math inline">\(p\)</span> és primer i <span
+class="math inline">\(\operatorname{char}(R)=p\)</span>, aleshores <span
+class="math inline">\((a+b)^p=a^p+b^p\)</span> i <span
+class="math inline">\((a+b)^{p^k}=a^{p^k}+b^{p^k}\)</span>.</li>
+<li><span class="math inline">\((a^{-1})^{-1}=a\)</span>.</li>
+<li><span class="math inline">\((ab)^{-1}=b^{-1}a^{-1}\)</span>; en un
+anell commutatiu, <span
+class="math inline">\((ab)^{-1}=a^{-1}b^{-1}\)</span>.</li>
+<li><span class="math inline">\(R^\times\)</span> és un grup amb el
+producte.</li>
+<li><span class="math inline">\(0\notin R^\times\)</span> si <span
+class="math inline">\(1\ne0\)</span>.</li>
+<li>En un cos, <span
+class="math inline">\(R^\times=R\setminus\{0\}\)</span>.</li>
+</ul>
+<h2 id="divisibilitat-a-mathbb-z">2. Divisibilitat a <span
+class="math inline">\(\mathbb Z\)</span></h2>
+<ul>
+<li><strong>Definició:</strong> <span class="math inline">\(a\mid b\iff
+\exists c\in\mathbb Z:\ b=ac\)</span>.</li>
+<li><span class="math inline">\(a\mid a\)</span>.</li>
+<li><span class="math inline">\(a\mid b\)</span> i <span
+class="math inline">\(b\mid c\Rightarrow a\mid c\)</span>.</li>
+<li><span class="math inline">\(a\mid b\)</span> i <span
+class="math inline">\(a\mid c\Rightarrow a\mid(ub+vc)\)</span> per a
+tots <span class="math inline">\(u,v\in\mathbb Z\)</span>.</li>
+<li><span class="math inline">\(a\mid b\Rightarrow a\mid bc\)</span> per
+a tot <span class="math inline">\(c\in\mathbb Z\)</span>.</li>
+<li><span class="math inline">\(a\mid b\)</span> i <span
+class="math inline">\(c\mid d\Rightarrow ac\mid bd\)</span>.</li>
+<li><span class="math inline">\(a\mid b\Rightarrow ac\mid
+bc\)</span>.</li>
+<li><span class="math inline">\(a\mid b\Rightarrow a^n\mid b^n\)</span>
+per a tot <span class="math inline">\(n\ge1\)</span>.</li>
+<li><span class="math inline">\(a^n\mid b^n\Rightarrow a\mid b\)</span>
+per a tot <span class="math inline">\(n\ge1\)</span>.</li>
+<li><span class="math inline">\(a\mid b\)</span> i <span
+class="math inline">\(b\mid a\iff b=\pm a\)</span>.</li>
+<li>Si <span class="math inline">\(a\mid b\)</span> i <span
+class="math inline">\(b\ne0\)</span>, aleshores <span
+class="math inline">\(|a|\le|b|\)</span>.</li>
+<li><span class="math inline">\(\pm1\mid a\)</span> per a tot <span
+class="math inline">\(a\in\mathbb Z\)</span>.</li>
+<li><span class="math inline">\(a\mid0\)</span> per a tot <span
+class="math inline">\(a\in\mathbb Z\)</span>.</li>
+<li><span class="math inline">\(0\mid b\iff b=0\)</span>.</li>
+<li><span class="math inline">\(a\mid b\iff |a|\mid|b|\)</span>.</li>
+<li><span class="math inline">\(a\mid b\)</span> i <span
+class="math inline">\(a\mid c\Rightarrow a\mid(b+c)\)</span> i <span
+class="math inline">\(a\mid(b-c)\)</span>.</li>
+<li>Si <span class="math inline">\(a\)</span> és senar, <span
+class="math inline">\(a\mid(b+c)\)</span> i <span
+class="math inline">\(a\mid(b-c)\Rightarrow a\mid b\)</span> i <span
+class="math inline">\(a\mid c\)</span>.</li>
+<li><strong>Lema d’Euclides general:</strong> si <span
+class="math inline">\(a\mid bc\)</span> i <span
+class="math inline">\(\operatorname{mcd}(a,b)=1\)</span>, aleshores
+<span class="math inline">\(a\mid c\)</span>.</li>
+<li>Si <span class="math inline">\(d=\operatorname{mcd}(a,b)\)</span>,
+aleshores <span class="math inline">\(d\mid(ua+vb)\)</span> per a tots
+<span class="math inline">\(u,v\in\mathbb Z\)</span>.</li>
+</ul>
+<h2 id="màxim-comú-divisor-i-mínim-comú-múltiple">3. Màxim comú divisor
+i mínim comú múltiple</h2>
+<ul>
+<li><strong>Definició de mcd:</strong> <span
+class="math inline">\(d=\operatorname{mcd}(a,b)\)</span> si <span
+class="math inline">\(d\mid a\)</span>, <span
+class="math inline">\(d\mid b\)</span> i tot divisor comú de <span
+class="math inline">\(a\)</span> i <span
+class="math inline">\(b\)</span> divideix <span
+class="math inline">\(d\)</span>.</li>
+<li><strong>Definició de mcm:</strong> <span
+class="math inline">\(m=\operatorname{mcm}(a,b)\)</span> si <span
+class="math inline">\(a\mid m\)</span>, <span
+class="math inline">\(b\mid m\)</span> i <span
+class="math inline">\(m\)</span> divideix tot múltiple comú de <span
+class="math inline">\(a\)</span> i <span
+class="math inline">\(b\)</span>.</li>
+<li><span
+class="math inline">\(\operatorname{mcd}(a,b)=\operatorname{mcd}(|a|,|b|)\)</span>.</li>
+<li><span
+class="math inline">\(\operatorname{mcm}(a,b)=\operatorname{mcm}(|a|,|b|)\)</span>.</li>
+<li><span class="math inline">\(\operatorname{mcd}(a,0)=|a|\)</span> si
+<span class="math inline">\(a\ne0\)</span>.</li>
+<li><span class="math inline">\(\operatorname{mcm}(a,0)=0\)</span>.</li>
+<li><span class="math inline">\(\operatorname{mcd}(a,a)=|a|\)</span>,
+<span class="math inline">\(\operatorname{mcm}(a,a)=|a|\)</span>.</li>
+<li><span class="math inline">\(\operatorname{mcd}(a,1)=1\)</span>.</li>
+<li><span
+class="math inline">\(\operatorname{mcd}(a,b)=\operatorname{mcd}(b,a)\)</span>,
+<span
+class="math inline">\(\operatorname{mcm}(a,b)=\operatorname{mcm}(b,a)\)</span>.</li>
+<li><span
+class="math inline">\(\operatorname{mcd}(a,b)=\operatorname{mcd}(a+kb,b)\)</span>
+per a tot <span class="math inline">\(k\in\mathbb Z\)</span>.</li>
+<li><span
+class="math inline">\(\operatorname{mcd}(ma,mb)=|m|\operatorname{mcd}(a,b)\)</span>.</li>
+<li><span
+class="math inline">\(\operatorname{mcm}(ma,mb)=|m|\operatorname{mcm}(a,b)\)</span>
+si <span class="math inline">\(m\ne0\)</span>.</li>
+<li>Si <span class="math inline">\(d=\operatorname{mcd}(a,b)\)</span>,
+aleshores <span
+class="math inline">\(\operatorname{mcd}(a/d,b/d)=1\)</span>.</li>
+<li><span
+class="math inline">\(\operatorname{mcd}(a,b)\operatorname{mcm}(a,b)=|ab|\)</span>
+si <span class="math inline">\(a,b\ne0\)</span>.</li>
+<li><span
+class="math inline">\(\operatorname{mcm}(a,b)=\dfrac{|ab|}{\operatorname{mcd}(a,b)}\)</span>
+si <span class="math inline">\(a,b\ne0\)</span>.</li>
+<li>Tot divisor comú de <span class="math inline">\(a\)</span> i <span
+class="math inline">\(b\)</span> divideix <span
+class="math inline">\(\operatorname{mcd}(a,b)\)</span>.</li>
+<li><span class="math inline">\(\operatorname{mcm}(a,b)\)</span>
+divideix tot múltiple comú de <span class="math inline">\(a\)</span> i
+<span class="math inline">\(b\)</span>.</li>
+<li><span
+class="math inline">\(\operatorname{mcd}(a,b,c)=\operatorname{mcd}(\operatorname{mcd}(a,b),c)\)</span>.</li>
+<li><span
+class="math inline">\(\operatorname{mcm}(a,b,c)=\operatorname{mcm}(\operatorname{mcm}(a,b),c)\)</span>.</li>
+<li>Si <span class="math inline">\(a_1,\dots,a_n\)</span> són coprimers
+dos a dos, aleshores <span
+class="math inline">\(\operatorname{mcm}(a_1,\dots,a_n)=a_1\cdots
+a_n\)</span>.</li>
+<li><span
+class="math inline">\(\operatorname{mcd}(a,\operatorname{mcm}(b,c))=\operatorname{mcm}(\operatorname{mcd}(a,b),\operatorname{mcd}(a,c))\)</span>.</li>
+<li><span
+class="math inline">\(\operatorname{mcm}(a,\operatorname{mcd}(b,c))=\operatorname{mcd}(\operatorname{mcm}(a,b),\operatorname{mcm}(a,c))\)</span>.</li>
+<li>Si <span class="math inline">\(a=\prod_p p^{r_p}\)</span> i <span
+class="math inline">\(b=\prod_p p^{s_p}\)</span>, aleshores <span
+class="math display">\[
+\operatorname{mcd}(a,b)=\prod_p p^{\min(r_p,s_p)},\qquad
+\operatorname{mcm}(a,b)=\prod_p p^{\max(r_p,s_p)}.
+\]</span></li>
+</ul>
+<h2 id="divisió-euclidiana-algorisme-deuclides-i-bézout">4. Divisió
+euclidiana, algorisme d’Euclides i Bézout</h2>
+<ul>
+<li><strong>Divisió euclidiana:</strong> per a <span
+class="math inline">\(a\in\mathbb Z\)</span> i <span
+class="math inline">\(b&gt;0\)</span>, existeixen únics <span
+class="math inline">\(q,r\in\mathbb Z\)</span> amb <span
+class="math inline">\(a=bq+r\)</span> i <span class="math inline">\(0\le
+r&lt;b\)</span>.</li>
+<li><span
+class="math inline">\(\operatorname{mcd}(a,b)=\operatorname{mcd}(b,a\bmod
+b)\)</span> si <span class="math inline">\(b\ne0\)</span>.</li>
+<li><strong>Algorisme d’Euclides:</strong> l’últim residu no nul de les
+divisions successives és <span
+class="math inline">\(\operatorname{mcd}(a,b)\)</span>.</li>
+<li><strong>Identitat de Bézout:</strong> si <span
+class="math inline">\(d=\operatorname{mcd}(a,b)\)</span>, existeixen
+<span class="math inline">\(\alpha,\beta\in\mathbb Z\)</span> amb <span
+class="math inline">\(d=\alpha a+\beta b\)</span>.</li>
+<li><span class="math inline">\(\{ua+vb:u,v\in\mathbb Z\}=d\mathbb
+Z\)</span>, on <span
+class="math inline">\(d=\operatorname{mcd}(a,b)\)</span>.</li>
+<li><span class="math inline">\(\operatorname{mcd}(a,b)\)</span> és el
+menor enter positiu de la forma <span
+class="math inline">\(ua+vb\)</span>.</li>
+<li><span class="math inline">\(\operatorname{mcd}(a,b)=1\iff
+\exists\alpha,\beta\in\mathbb Z:\ \alpha a+\beta b=1\)</span>.</li>
+<li>Si <span class="math inline">\(d=\alpha a+\beta b\)</span>,
+aleshores per a tot <span class="math inline">\(t\in\mathbb Z\)</span>,
+<span class="math display">\[
+d=\left(\alpha+t\frac bd\right)a+\left(\beta-t\frac ad\right)b.
+\]</span></li>
+<li>Si <span class="math inline">\(\operatorname{mcd}(a,b)=1\)</span> i
+<span class="math inline">\(1=\alpha a+\beta b\)</span>, aleshores <span
+class="math inline">\(\alpha&#39;=\alpha+tb\)</span>, <span
+class="math inline">\(\beta&#39;=\beta-ta\)</span> també compleixen
+<span class="math inline">\(1=\alpha&#39;a+\beta&#39;b\)</span>.</li>
+<li>Si <span class="math inline">\(\operatorname{mcd}(a,m)=1\)</span> i
+<span class="math inline">\(\alpha a+\beta m=1\)</span>, aleshores <span
+class="math inline">\(a^{-1}\equiv\alpha\pmod m\)</span>.</li>
+<li>El nombre de divisions de l’algorisme d’Euclides és <span
+class="math inline">\(O(\log(\min(|a|,|b|)))\)</span>.</li>
+</ul>
+<h2 id="equacions-diofàntiques-lineals">5. Equacions diofàntiques
+lineals</h2>
+<ul>
+<li><strong>Equació:</strong> <span
+class="math inline">\(ax+by=c\)</span>, amb <span
+class="math inline">\(a,b,c\in\mathbb Z\)</span> i <span
+class="math inline">\(x,y\in\mathbb Z\)</span>.</li>
+<li><span class="math inline">\(ax+by=c\)</span> té solució entera <span
+class="math inline">\(\iff \operatorname{mcd}(a,b)\mid c\)</span>.</li>
+<li>Si <span class="math inline">\((x_0,y_0)\)</span> és una solució
+particular de <span class="math inline">\(ax+by=c\)</span> i <span
+class="math inline">\(d=\operatorname{mcd}(a,b)\)</span>, aleshores
+totes les solucions són <span class="math display">\[
+x=x_0+\frac bd t,\qquad y=y_0-\frac ad t,\qquad t\in\mathbb Z.
+\]</span></li>
+<li>Les solucions de <span class="math inline">\(ax+by=0\)</span> són
+<span class="math display">\[
+x=\frac bd t,\qquad y=-\frac ad t,\qquad t\in\mathbb Z.
+\]</span></li>
+<li>La solució general de <span class="math inline">\(ax+by=c\)</span>
+és una solució particular més la solució general de l’equació homogènia
+<span class="math inline">\(ax+by=0\)</span>.</li>
+</ul>
+<h2 id="nombres-primers-i-factorització">6. Nombres primers i
+factorització</h2>
+<ul>
+<li><strong>Primer:</strong> <span class="math inline">\(p&gt;1\)</span>
+amb únics divisors positius <span class="math inline">\(1\)</span> i
+<span class="math inline">\(p\)</span>.</li>
+<li><span class="math inline">\(p\)</span> és primer <span
+class="math inline">\(\iff\)</span> per a tots <span
+class="math inline">\(a,b\in\mathbb Z\)</span>, <span
+class="math inline">\(p\mid ab\Rightarrow p\mid a\)</span> o <span
+class="math inline">\(p\mid b\)</span>.</li>
+<li><span class="math inline">\(1\)</span> no és primer.</li>
+<li><span class="math inline">\(2\)</span> és l’únic primer parell.</li>
+<li><strong>Lema d’Euclides:</strong> si <span
+class="math inline">\(p\)</span> és primer i <span
+class="math inline">\(p\mid ab\)</span>, aleshores <span
+class="math inline">\(p\mid a\)</span> o <span
+class="math inline">\(p\mid b\)</span>.</li>
+<li>Si <span class="math inline">\(p\)</span> és primer i <span
+class="math inline">\(p\mid a_1a_2\cdots a_n\)</span>, aleshores <span
+class="math inline">\(p\mid a_i\)</span> per a algun <span
+class="math inline">\(i\)</span>.</li>
+<li><strong>Teorema fonamental de l’aritmètica:</strong> tot <span
+class="math inline">\(n\ne0,\pm1\)</span> s’escriu de manera única,
+llevat de l’ordre i el signe, com <span class="math display">\[
+n=\pm p_1^{r_1}p_2^{r_2}\cdots p_k^{r_k},
+\]</span> amb <span class="math inline">\(p_i\)</span> primers positius
+diferents i <span class="math inline">\(r_i\ge1\)</span>.</li>
+<li><span class="math inline">\(v_p(ab)=v_p(a)+v_p(b)\)</span>.</li>
+<li><span
+class="math inline">\(v_p(a+b)\ge\min(v_p(a),v_p(b))\)</span>.</li>
+<li>Si <span class="math inline">\(v_p(a)\ne v_p(b)\)</span>, aleshores
+<span class="math inline">\(v_p(a+b)=\min(v_p(a),v_p(b))\)</span>.</li>
+<li><span class="math inline">\(a\mid b\iff v_p(a)\le v_p(b)\)</span>
+per a tot primer <span class="math inline">\(p\)</span>.</li>
+<li><span class="math inline">\(\operatorname{mcd}(a,b)=\prod_p
+p^{\min(v_p(a),v_p(b))}\)</span>.</li>
+<li><span class="math inline">\(\operatorname{mcm}(a,b)=\prod_p
+p^{\max(v_p(a),v_p(b))}\)</span>.</li>
+<li><span class="math inline">\(a^2\mid b^2\Rightarrow a\mid
+b\)</span>.</li>
+<li>Hi ha infinits nombres primers.</li>
+<li>Si <span class="math inline">\(n&gt;1\)</span> no és divisible per
+cap primer <span class="math inline">\(p\le\sqrt n\)</span>, aleshores
+<span class="math inline">\(n\)</span> és primer.</li>
+<li><strong>Criteris de divisibilitat:</strong>
+<ul>
+<li><span class="math inline">\(2\mid n\iff\)</span> l’última xifra és
+parell.</li>
+<li><span class="math inline">\(3\mid n\iff\)</span> la suma de les
+xifres és divisible per <span class="math inline">\(3\)</span>.</li>
+<li><span class="math inline">\(4\mid n\iff\)</span> les dues últimes
+xifres formen un múltiple de <span
+class="math inline">\(4\)</span>.</li>
+<li><span class="math inline">\(5\mid n\iff\)</span> l’última xifra és
+<span class="math inline">\(0\)</span> o <span
+class="math inline">\(5\)</span>.</li>
+<li><span class="math inline">\(6\mid n\iff 2\mid n\)</span> i <span
+class="math inline">\(3\mid n\)</span>.</li>
+<li><span class="math inline">\(8\mid n\iff\)</span> les tres últimes
+xifres formen un múltiple de <span
+class="math inline">\(8\)</span>.</li>
+<li><span class="math inline">\(9\mid n\iff\)</span> la suma de les
+xifres és divisible per <span class="math inline">\(9\)</span>.</li>
+<li><span class="math inline">\(10\mid n\iff\)</span> l’última xifra és
+<span class="math inline">\(0\)</span>.</li>
+<li><span class="math inline">\(11\mid n\iff\)</span> la suma alternada
+de les xifres és divisible per <span
+class="math inline">\(11\)</span>.</li>
+</ul></li>
+<li>Si <span class="math inline">\(M_q=2^q-1\)</span> és primer,
+aleshores <span class="math inline">\(q\)</span> és primer.</li>
+<li>Si <span class="math inline">\(q\)</span> és primer i <span
+class="math inline">\(p\)</span> és un primer que divideix <span
+class="math inline">\(2^q-1\)</span>, aleshores <span
+class="math inline">\(p\equiv1\pmod q\)</span>; si <span
+class="math inline">\(p,q\)</span> són senars, <span
+class="math inline">\(p\equiv1\pmod{2q}\)</span>.</li>
+<li>Si <span class="math inline">\(p\)</span> és primer senar i <span
+class="math inline">\(p=a^2+b^2\)</span>, aleshores <span
+class="math inline">\(p\equiv1\pmod4\)</span>.</li>
+</ul>
+<h2 id="congruències">7. Congruències</h2>
+<ul>
+<li><strong>Definició:</strong> <span class="math inline">\(a\equiv
+b\pmod m\iff m\mid(a-b)\iff \exists k\in\mathbb Z:\ a=b+km\iff a\bmod
+m=b\bmod m\)</span>.</li>
+<li><span class="math inline">\(a\equiv b\pmod1\)</span> per a tots
+<span class="math inline">\(a,b\in\mathbb Z\)</span>.</li>
+<li><strong>Reflexiva:</strong> <span class="math inline">\(a\equiv
+a\pmod m\)</span>.</li>
+<li><strong>Simètrica:</strong> <span class="math inline">\(a\equiv
+b\pmod m\Rightarrow b\equiv a\pmod m\)</span>.</li>
+<li><strong>Transitiva:</strong> <span class="math inline">\(a\equiv
+b\pmod m\)</span> i <span class="math inline">\(b\equiv c\pmod
+m\Rightarrow a\equiv c\pmod m\)</span>.</li>
+<li><strong>Suma:</strong> <span class="math inline">\(a\equiv a_0\pmod
+m\)</span> i <span class="math inline">\(b\equiv b_0\pmod m\Rightarrow
+a+b\equiv a_0+b_0\pmod m\)</span>.</li>
+<li><strong>Resta:</strong> <span class="math inline">\(a\equiv a_0\pmod
+m\)</span> i <span class="math inline">\(b\equiv b_0\pmod m\Rightarrow
+a-b\equiv a_0-b_0\pmod m\)</span>.</li>
+<li><strong>Producte:</strong> <span class="math inline">\(a\equiv
+a_0\pmod m\)</span> i <span class="math inline">\(b\equiv b_0\pmod
+m\Rightarrow ab\equiv a_0b_0\pmod m\)</span>.</li>
+<li><span class="math inline">\(a\equiv b\pmod m\Rightarrow a^n\equiv
+b^n\pmod m\)</span> per a tot <span
+class="math inline">\(n\ge0\)</span>.</li>
+<li><span class="math inline">\(a\equiv b\pmod m\Rightarrow f(a)\equiv
+f(b)\pmod m\)</span> per a tot <span class="math inline">\(f\in\mathbb
+Z[x]\)</span>.</li>
+<li><span class="math inline">\(a\equiv b\pmod m\Rightarrow ac\equiv
+bc\pmod m\)</span>.</li>
+<li><span class="math inline">\(ac\equiv bc\pmod m\iff a\equiv
+b\pmod{\dfrac{m}{\operatorname{mcd}(c,m)}}\)</span>.</li>
+<li>Si <span class="math inline">\(\operatorname{mcd}(c,m)=1\)</span>,
+aleshores <span class="math inline">\(ac\equiv bc\pmod m\Rightarrow
+a\equiv b\pmod m\)</span>.</li>
+<li>Si <span class="math inline">\(d\mid m\)</span>, aleshores <span
+class="math inline">\(a\equiv b\pmod m\Rightarrow a\equiv b\pmod
+d\)</span>.</li>
+<li><span class="math inline">\(a\equiv b\pmod m\)</span> i <span
+class="math inline">\(a\equiv b\pmod n\iff a\equiv
+b\pmod{\operatorname{mcm}(m,n)}\)</span>.</li>
+<li>Si <span class="math inline">\(\operatorname{mcd}(m,n)=1\)</span>,
+aleshores <span class="math inline">\(a\equiv b\pmod m\)</span> i <span
+class="math inline">\(a\equiv b\pmod n\iff a\equiv
+b\pmod{mn}\)</span>.</li>
+<li><span class="math inline">\(a\equiv b\pmod m\Rightarrow
+\operatorname{mcd}(a,m)=\operatorname{mcd}(b,m)\)</span>.</li>
+<li><strong>Equació lineal:</strong> <span
+class="math inline">\(ax\equiv b\pmod m\)</span> té solució <span
+class="math inline">\(\iff d=\operatorname{mcd}(a,m)\mid
+b\)</span>.</li>
+<li>Si <span class="math inline">\(d=\operatorname{mcd}(a,m)\mid
+b\)</span>, aleshores <span class="math display">\[
+x\equiv x_0\pmod{\frac md},\qquad
+x_0\equiv\left(\frac ad\right)^{-1}\frac bd\pmod{\frac md}.
+\]</span></li>
+<li>Si <span class="math inline">\(d=\operatorname{mcd}(a,m)\mid
+b\)</span>, hi ha exactament <span class="math inline">\(d\)</span>
+solucions mòdul <span class="math inline">\(m\)</span>: <span
+class="math display">\[
+x=x_0+k\frac md,\qquad k=0,1,\dots,d-1.
+\]</span></li>
+<li><span class="math inline">\(ax\equiv1\pmod m\)</span> té solució
+<span class="math inline">\(\iff
+\operatorname{mcd}(a,m)=1\)</span>.</li>
+<li><strong>Classe de residus:</strong> <span
+class="math inline">\([a]_m=\{b\in\mathbb Z:a\equiv b\pmod
+m\}=a+m\mathbb Z\)</span>.</li>
+<li><span class="math inline">\([a]_m=[b]_m\iff a\equiv b\pmod
+m\)</span>.</li>
+<li><span class="math inline">\(\mathbb
+Z=\bigsqcup_{r=0}^{m-1}[r]_m\)</span>.</li>
+<li><span class="math inline">\(|\mathbb Z/m\mathbb Z|=m\)</span>.</li>
+<li><span class="math inline">\([a]_{km}\subseteq[a]_m\)</span> per a
+tot <span class="math inline">\(k\ge1\)</span>.</li>
+<li><span class="math inline">\([a]_m\cap[b]_n\ne\varnothing\iff a\equiv
+b\pmod{\operatorname{mcd}(m,n)}\)</span>.</li>
+<li>Si <span
+class="math inline">\([a]_m\cap[b]_n\ne\varnothing\)</span>, aleshores
+<span
+class="math inline">\([a]_m\cap[b]_n=[c]_{\operatorname{mcm}(m,n)}\)</span>
+per a qualsevol <span
+class="math inline">\(c\in[a]_m\cap[b]_n\)</span>.</li>
+</ul>
+<h2 id="anell-mathbb-zmmathbb-z">8. Anell <span
+class="math inline">\(\mathbb Z/m\mathbb Z\)</span></h2>
+<ul>
+<li><span class="math inline">\([a]_m+[b]_m=[a+b]_m\)</span>, <span
+class="math inline">\([a]_m[b]_m=[ab]_m\)</span>.</li>
+<li>Les operacions de suma i producte estan ben definides.</li>
+<li><span class="math inline">\(\mathbb Z/m\mathbb Z\)</span> és un
+anell commutatiu amb unitat.</li>
+<li><span class="math inline">\(\operatorname{char}(\mathbb Z/m\mathbb
+Z)=m\)</span>.</li>
+<li><span class="math inline">\([a]_m\)</span> és invertible <span
+class="math inline">\(\iff \operatorname{mcd}(a,m)=1\)</span>.</li>
+<li>El nombre d’elements invertibles de <span
+class="math inline">\(\mathbb Z/m\mathbb Z\)</span> és <span
+class="math inline">\(\varphi(m)\)</span>.</li>
+<li><span class="math inline">\(\mathbb Z/m\mathbb Z\)</span> és un cos
+<span class="math inline">\(\iff m\)</span> és primer.</li>
+<li><span class="math inline">\(\mathbb Z/m\mathbb Z\)</span> és un
+domini <span class="math inline">\(\iff m\)</span> és primer.</li>
+<li>Si <span class="math inline">\(m&gt;1\)</span> i <span
+class="math inline">\([a]_m\ne[0]_m\)</span> no és invertible, aleshores
+<span class="math inline">\([a]_m\)</span> és un divisor de zero.</li>
+<li>La cancel·lació per <span class="math inline">\([a]_m\)</span> és
+vàlida <span class="math inline">\(\iff
+\operatorname{mcd}(a,m)=1\)</span>.</li>
+<li>Si <span class="math inline">\(m=1\)</span>, <span
+class="math inline">\(\mathbb Z/1\mathbb Z\)</span> és l’anell zero i no
+és un cos.</li>
+<li>Si <span class="math inline">\(m=p_1^{e_1}\cdots p_r^{e_r}\)</span>
+amb <span class="math inline">\(p_i\)</span> primers diferents,
+aleshores <span class="math display">\[
+\mathbb Z/m\mathbb Z\cong \mathbb Z/p_1^{e_1}\mathbb
+Z\times\cdots\times\mathbb Z/p_r^{e_r}\mathbb Z.
+\]</span></li>
+<li>A <span class="math inline">\(\mathbb Z/p^e\mathbb Z\)</span>, <span
+class="math inline">\([p]^e=[0]\)</span>.</li>
+</ul>
+<h2 id="teorema-xinès-del-residu">9. Teorema xinès del residu</h2>
+<ul>
+<li><span class="math inline">\(x\equiv a\pmod m\)</span> i <span
+class="math inline">\(x\equiv b\pmod n\)</span> tenen solució <span
+class="math inline">\(\iff a\equiv
+b\pmod{\operatorname{mcd}(m,n)}\)</span>.</li>
+<li>Si el sistema anterior té solució, aquesta és única mòdul <span
+class="math inline">\(\operatorname{mcm}(m,n)\)</span>.</li>
+<li><span class="math inline">\(x\equiv a_i\pmod{m_i}\)</span>, <span
+class="math inline">\(i=1,\dots,r\)</span>, té solució <span
+class="math inline">\(\iff a_i\equiv
+a_j\pmod{\operatorname{mcd}(m_i,m_j)}\)</span> per a tots <span
+class="math inline">\(i,j\)</span>.</li>
+<li>Si el sistema anterior té solució, aquesta és única mòdul <span
+class="math inline">\(\operatorname{mcm}(m_1,\dots,m_r)\)</span>.</li>
+<li>Si <span
+class="math inline">\(\operatorname{mcd}(m_i,m_j)=1\)</span> per a <span
+class="math inline">\(i\ne j\)</span>, aleshores el sistema té solució
+única mòdul <span class="math inline">\(m_1m_2\cdots m_r\)</span>.</li>
+<li><strong>Fórmula directa:</strong> si <span
+class="math inline">\(M=m_1\cdots m_r\)</span>, <span
+class="math inline">\(M_i=M/m_i\)</span> i <span
+class="math inline">\(y_iM_i\equiv1\pmod{m_i}\)</span>, aleshores <span
+class="math display">\[
+x\equiv\sum_{i=1}^r a_iM_iy_i\pmod M.
+\]</span></li>
+<li>Si <span
+class="math inline">\(\operatorname{mcd}(m_i,m_j)=1\)</span> per a <span
+class="math inline">\(i\ne j\)</span>, aleshores <span
+class="math display">\[
+\mathbb Z/(m_1\cdots m_r)\mathbb Z\cong
+\mathbb Z/m_1\mathbb Z\times\cdots\times\mathbb Z/m_r\mathbb Z.
+\]</span></li>
+</ul>
+<h2 id="fermat-euler-i-ordre">10. Fermat, Euler i ordre</h2>
+<ul>
+<li><strong>Funció <span
+class="math inline">\(\varphi\)</span>:</strong> <span
+class="math inline">\(\varphi(n)=|\{1\le k\le
+n:\operatorname{mcd}(k,n)=1\}|\)</span>.</li>
+<li><span class="math inline">\(\varphi(1)=1\)</span>.</li>
+<li><span class="math inline">\(\varphi(p)=p-1\)</span> si <span
+class="math inline">\(p\)</span> és primer.</li>
+<li><span
+class="math inline">\(\varphi(p^e)=p^e-p^{e-1}=p^{e-1}(p-1)\)</span> si
+<span class="math inline">\(p\)</span> és primer i <span
+class="math inline">\(e\ge1\)</span>.</li>
+<li><span
+class="math inline">\(\varphi(mn)=\varphi(m)\varphi(n)\)</span> si <span
+class="math inline">\(\operatorname{mcd}(m,n)=1\)</span>.</li>
+<li><span class="math inline">\(\varphi(n)=n\prod_{p\mid
+n}\left(1-\dfrac1p\right)\)</span>.</li>
+<li><span class="math inline">\(\varphi(n)\)</span> és parell per a
+<span class="math inline">\(n&gt;2\)</span>.</li>
+<li><span class="math inline">\(\sum_{d\mid
+n}\varphi(d)=n\)</span>.</li>
+<li><strong>Petit teorema de Fermat:</strong> si <span
+class="math inline">\(p\)</span> és primer i <span
+class="math inline">\(p\nmid a\)</span>, aleshores <span
+class="math inline">\(a^{p-1}\equiv1\pmod p\)</span>.</li>
+<li>Si <span class="math inline">\(p\)</span> és primer, aleshores <span
+class="math inline">\(a^p\equiv a\pmod p\)</span> per a tot <span
+class="math inline">\(a\in\mathbb Z\)</span>.</li>
+<li><strong>Teorema d’Euler:</strong> si <span
+class="math inline">\(\operatorname{mcd}(a,m)=1\)</span>, aleshores
+<span class="math inline">\(a^{\varphi(m)}\equiv1\pmod m\)</span>.</li>
+<li><strong>Ordre:</strong> <span
+class="math inline">\(\operatorname{ord}_m(a)\)</span> és el menor <span
+class="math inline">\(k&gt;0\)</span> amb <span
+class="math inline">\(a^k\equiv1\pmod m\)</span>, si <span
+class="math inline">\(\operatorname{mcd}(a,m)=1\)</span>.</li>
+<li><span
+class="math inline">\(\operatorname{ord}_m(a)\mid\varphi(m)\)</span> si
+<span class="math inline">\(\operatorname{mcd}(a,m)=1\)</span>.</li>
+<li>Si <span class="math inline">\(\operatorname{mcd}(a,m)=1\)</span>,
+aleshores <span class="math display">\[
+a^r\equiv a^s\pmod m\iff r\equiv s\pmod{\operatorname{ord}_m(a)}.
+\]</span></li>
+<li>Si <span class="math inline">\(\operatorname{mcd}(a,m)=1\)</span> i
+<span class="math inline">\(r\equiv s\pmod{\varphi(m)}\)</span>,
+aleshores <span class="math inline">\(a^r\equiv a^s\pmod
+m\)</span>.</li>
+<li>Si <span class="math inline">\(p\)</span> és primer i <span
+class="math inline">\(p\nmid a\)</span>, aleshores <span
+class="math inline">\(a^{-1}\equiv a^{p-2}\pmod p\)</span>.</li>
+<li>Si <span class="math inline">\(\operatorname{mcd}(a,m)=1\)</span>,
+aleshores <span class="math inline">\(a^{-1}\equiv a^{\varphi(m)-1}\pmod
+m\)</span>.</li>
+</ul>
+<h2 id="matrius-mòdul-m">11. Matrius mòdul <span
+class="math inline">\(m\)</span></h2>
+<ul>
+<li><span class="math inline">\(M_n(\mathbb Z/m\mathbb Z)\)</span> és
+l’anell de matrius <span class="math inline">\(n\times n\)</span> amb
+entrades mòdul <span class="math inline">\(m\)</span>.</li>
+<li><span class="math inline">\(GL_n(\mathbb Z/m\mathbb Z)=\{A\in
+M_n(\mathbb Z/m\mathbb Z):\det A\in(\mathbb Z/m\mathbb
+Z)^\times\}\)</span>.</li>
+<li><span class="math inline">\(\det I_n=1\)</span>.</li>
+<li><span class="math inline">\(\det(AB)=\det A\det B\)</span>.</li>
+<li><span class="math inline">\(\det(A^T)=\det A\)</span>.</li>
+<li><span class="math inline">\(\det(cA)=c^n\det A\)</span>.</li>
+<li>Si <span class="math inline">\(A\)</span> és triangular, <span
+class="math inline">\(\det A=\prod_i a_{ii}\)</span>.</li>
+<li>El determinant és multilineal en cada fila o columna.</li>
+<li>Si es permuten dues files, el determinant canvia de signe.</li>
+<li>Si dues files o columnes coincideixen, <span
+class="math inline">\(\det A=0\)</span>.</li>
+<li>Si una fila o columna és zero, <span class="math inline">\(\det
+A=0\)</span>.</li>
+<li>Sumar a una fila un múltiple d’una altra no canvia el
+determinant.</li>
+<li>Multiplicar una fila per <span class="math inline">\(c\)</span>
+multiplica el determinant per <span
+class="math inline">\(c\)</span>.</li>
+<li>Es pot desenvolupar el determinant per qualsevol fila o
+columna.</li>
+<li><span
+class="math inline">\(A\operatorname{adj}(A)=\operatorname{adj}(A)A=\det(A)I_n\)</span>.</li>
+<li>Si <span class="math inline">\(\det A\)</span> és una unitat,
+aleshores <span class="math display">\[
+A^{-1}=(\det A)^{-1}\operatorname{adj}(A).
+\]</span></li>
+<li>Per a <span
+class="math inline">\(A=\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}\)</span>
+amb <span class="math inline">\(\det A=ad-bc\)</span> unitat, <span
+class="math display">\[
+A^{-1}=(\det A)^{-1}\begin{pmatrix}d&amp;-b\\-c&amp;a\end{pmatrix}.
+\]</span></li>
+<li><span class="math inline">\(A\)</span> és invertible <span
+class="math inline">\(\iff \det A\)</span> és una unitat <span
+class="math inline">\(\iff \operatorname{mcd}(\det A,m)=1\)</span>.</li>
+<li>Si <span class="math inline">\(m=p\)</span> és primer, <span
+class="math inline">\(A\)</span> és invertible <span
+class="math inline">\(\iff \det A\ne0\)</span> en <span
+class="math inline">\(\mathbb F_p\)</span>.</li>
+<li><strong>Sistemes sobre un cos <span class="math inline">\(\mathbb
+F_p\)</span>:</strong> <span class="math inline">\(A\mathbf x=\mathbf
+b\)</span> és compatible <span class="math inline">\(\iff
+\operatorname{rang}(A)=\operatorname{rang}(A\mid\mathbf
+b)\)</span>.</li>
+<li>Si <span class="math inline">\(A\mathbf x=\mathbf b\)</span> és
+compatible i <span
+class="math inline">\(\operatorname{rang}(A)=n\)</span>, la solució és
+única.</li>
+<li>Si <span class="math inline">\(A\mathbf x=\mathbf b\)</span> és
+compatible i <span
+class="math inline">\(\operatorname{rang}(A)=r&lt;n\)</span>, hi ha
+<span class="math inline">\(p^{n-r}\)</span> solucions.</li>
+<li>Si <span class="math inline">\(A\)</span> és quadrada i <span
+class="math inline">\(\det A\ne0\)</span>, aleshores <span
+class="math inline">\(\mathbf x=A^{-1}\mathbf b\)</span> és l’única
+solució.</li>
+<li><strong>Regla de Cramer:</strong> si <span
+class="math inline">\(\det A\ne0\)</span>, aleshores <span
+class="math display">\[
+x_i=\frac{\det A_i}{\det A},
+\]</span> on <span class="math inline">\(A_i\)</span> és la matriu que
+resulta de substituir la columna <span class="math inline">\(i\)</span>
+de <span class="math inline">\(A\)</span> per <span
+class="math inline">\(\mathbf b\)</span>.</li>
+<li>Si <span class="math inline">\(\det A\)</span> és una unitat mòdul
+<span class="math inline">\(m\)</span>, el sistema <span
+class="math inline">\(A\mathbf x=\mathbf b\)</span> té solució única
+<span class="math inline">\(\mathbf x=A^{-1}\mathbf b\)</span>.</li>
+<li>Si <span class="math inline">\(\det A\)</span> no és una unitat
+mòdul <span class="math inline">\(m\)</span>, el sistema pot tenir cap,
+una o diverses solucions.</li>
+<li>Per resoldre un sistema mòdul <span class="math inline">\(m\)</span>
+compost: es resol mòdul cada <span
+class="math inline">\(p_i^{e_i}\)</span> i es combinen les solucions amb
+el teorema xinès del residu.</li>
+</ul>
+
+</body>
+</html>
