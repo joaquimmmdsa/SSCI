@@ -161,7 +161,48 @@ La distància mínima és el paràmetre més important per mesurar la capacitat 
   Codi de repeticio:
   Rep__q(n) = {(a,...,a): a dins de A}
   te paramentres (n,q,n)__q: dues paraules diferents difereixen a totes les coordenades 
-
+Exemple:
+Rep 
+2
+​
+ (3)={(0,0,0),(1,1,1)}⊆{0,1} 
+3
+ .
   Codi binari amb bit de paritat: donat un codi binari C, s’hi afegeix un bit final perquè el nombre total d’uns sigui parell. La distància mínima passa a ser delta o delta + 1 i de fet esdevé parella.
-Falta BOLES DE HAMMING 6.
+
+Bola de Hamming:
+
+1. Definició de bola de Hamming
+
+Donada una paraula centre x ∈ A^n i un radi enter r ≥ 0, la bola de Hamming de centre x i radi r és:
+
+B(x, r) = { y ∈ A^n : d(x, y) ≤ r }.
+
+És a dir, és el conjunt de totes les paraules que estan a distància com a molt r de x.
+
+Exemple:
+B(101,1) --> bola de hamming
+tot el que esta a 1 de radi d'aquest codi 101:
+100,111,001
+
+
+Quantes paraules hi ha dins una bola de hamming?
+
+|B(x,r)|
+Contem les paraules y ⊆ A^n que estan a distancia r de x
+
+si d(x,y) = i llavors y difereix de x en exactament i coordenades.
+Per a construir una paraula y a distancia exactament i de x:
+1. Tries quines i coordenades seran diferents de les de x:
+binom(n, i)
+2. A cadascuna d'aquestes i coordenades, hi poses un simbol diferent del que hi ha a x. Com que l'alfabet te q simbols, hi ha q-1 possibilitats per a cada coordenada.
+   per tant, per a les i coordenades hi ha (q-1)^i possibilitats.
+
+Aixi, el nombre de paraules a exactament distancia i de x es:
+binom(n, i)*(q-1)^i
+per tant el nombre de paraules dins la bola de radi r es la suma per a i = 0,1,...,r:
+|B(x, r)| = Sum_{i=0}^{r} C(n, i) * (q - 1)^i
+
+Aquesta formula no depen de x, nomes de n,q,r per aixo totes les boles de mateix radi tenen el mateix nombre de paraules.
+exemple:
 
