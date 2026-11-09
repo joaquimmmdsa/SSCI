@@ -1,134 +1,167 @@
-- Alfabet A: conjunt finit de símbols. Cardinal q = |A|.
-- Paraula de longitud n: tupla x = (x1,...,xn) amb xi ∈ A.
-- A^n: conjunt de totes les paraules de longitud n sobre A. |A^n| = q^n.
-- Codi C: subconjunt C ⊆ A^n. Les seves paraules són paraules codi. Mida M = |C|.
-- Codi de bloc: codi on totes les paraules tenen la mateixa longitud n.
+#+TITLE: Apunts de codis de Hamming
+#+SUBTITLE: Capítol 6: Codis de bloc
+#+LANGUAGE: ca
+#+OPTIONS: toc:2 num:nil tex:t H:4 html-postamble:nil
+#+HTML_HEAD: <meta name="viewport" content="width=device-width, initial-scale=1">
+#+HTML_HEAD: <style>body{max-width:52rem;margin:2rem auto;padding:0 1.25rem;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.65;color:#222}h1,h2,h3,h4,h5{line-height:1.25;margin-top:2rem}h1{border-bottom:2px solid #ddd;padding-bottom:.3rem}#table-of-contents{border:1px solid #e5e5e5;border-radius:6px;padding:1rem 1.5rem;background:#fafafa}code,pre{background:#f5f5f5;border-radius:4px}pre{padding:.75rem;overflow-x:auto}code{padding:.1rem .3rem}table{border-collapse:collapse;margin:1rem 0}th,td{border:1px solid #ccc;padding:.4rem .7rem;text-align:left}th{background:#f0f0f0}blockquote{border-left:4px solid #ddd;margin-left:0;padding-left:1rem;color:#555}@media(max-width:600px){body{margin:1rem auto;padding:0 .8rem}}</style>
 
+* Introducció
 
-Los códigos Hamming son un tipo de código de bloque lineal utilizado para la detección y corrección de errores en la transmisión o almacenamiento de datos digitales.
+Els codis Hamming són un tipus de codi de bloc lineal utilitzat per a la detecció i correcció d'errors en la transmissió o emmagatzematge de dades digitals.
 
+En essència, un codi Hamming pren un bloc de \(k\) bits de dades i afegeix \(m\) bits de paritat per formar una paraula de codi de \(n = k + m\) bits. Aquesta redundància permet que el receptor no només detecti que hi ha hagut un error, sinó que també determini exactament en quin bit s'ha produït i el corregeixi.
 
-En esencia, un código Hamming toma un bloque de k bits de datos y añade m bits de paridad para formar una palabra de código de n=k+m bits. Esta redundancia permite que el receptor no solo detecte que ha ocurrido un error, sino que también determine exactamente en qué bit se produjo y lo corrija.
+* Conceptes bàsics
 
+- *Alfabet* \(A\): conjunt finit de símbols. Cardinalitat \(q = |A|\).
+- *Paraula de longitud* \(n\): tupla \(x = (x_1, \ldots, x_n)\) amb \(x_i \in A\).
+- *Conjunt de paraules* \(A^n\): conjunt de totes les paraules de longitud \(n\) sobre \(A\). Es compleix \(|A^n| = q^n\).
+- *Codi* \(C\): subconjunt \(C \subseteq A^n\). Les seves paraules són paraules codi. Mida \(M = |C|\).
+- *Codi de bloc*: codi on totes les paraules tenen la mateixa longitud \(n\).
 
+* Capítol 6: Codis de bloc
 
-Capitol 6: codis de bloc.
+** 6.1 Distància de Hamming
 
-6.1 Distancia de hamming
+*** Alfabet i paraules
 
-En el context dels codis de bloc, treballam amb paraules de la mateixa longitud "n" sobre un alfabet "A"
-de cardinalitat "q"
+En el context dels codis de bloc, treballam amb paraules de la mateixa longitud \(n\) sobre un alfabet \(A\) de cardinalitat \(q\).
 
-Alfabet es "l'idioma amb q elements diferents" per exemple codi binari: A = {0,1}, i llavors q = 2.
-codi ternari A = {0,1,2}, i llavors q = 3.
-A^n es el conjunt de totes les paraules possibles de longitud n sobre l'alfabet A.
-Exemple 1: alfabet binari
+Un alfabet és el conjunt de \(q\) elements diferents. Per exemple:
 
-Sigui
-A = {0,1}, n = 3.
+- codi binari: \(A = \{0,1\}\), i llavors \(q = 2\);
+- codi ternari: \(A = \{0,1,2\}\), i llavors \(q = 3\).
 
-Aleshores
-A^3 = {(x1,x2,x3) : xi ∈ {0,1}},
+El conjunt \(A^n\) és el conjunt de totes les paraules possibles de longitud \(n\) sobre l'alfabet \(A\).
 
+*** Exemple 1: alfabet binari
+
+Siguin \(A = \{0,1\}\) i \(n = 3\). Aleshores
+\[
+A^3 = \{(x_1,x_2,x_3) : x_i \in \{0,1\}\},
+\]
 o sigui,
-A^3 = {000, 001, 010, 011, 100, 101, 110, 111}.
+\[
+A^3 = \{000, 001, 010, 011, 100, 101, 110, 111\}.
+\]
 
-Són totes les paraules binàries de longitud 3.
-Com que q = |A| = 2, hi ha
+Són totes les paraules binàries de longitud 3. Com que \(q = |A| = 2\), hi ha
+\[
 |A^3| = q^n = 2^3 = 8
+\]
 paraules.
 
+*** Definició de la distància de Hamming
 
-x = (x1,...,xn), y = (y1,...,yn) dins de A^n
+Siguin \(x = (x_1,\ldots,x_n)\) i \(y = (y_1,\ldots,y_n)\) dins de \(A^n\). La distància de Hamming entre \(x\) i \(y\), denotada \(d(x,y)\), és el nombre de coordenades en què les dues paraules són diferents:
+\[
+d(x,y) = \#\{ i \in [n] : x_i \neq y_i \},
+\]
+on \([n] = \{1,\ldots,n\}\).
 
-Definicio de distancia de hamming:
+Exemple:
+\[
+d(10110, 10011) = 3,
+\]
+perquè difereixen en les posicions 3, 4 i 5.
 
-La distancia de hamming entre x i y, denotada d(x,y) es el nombre de coordenades en que les dues paraules son diferents:
-d(x,y) = #{ i ∈ [n] : x_i ≠ y_i }
-exemple:
-d(10110, 10011) = 3
-difereix en les posicions 3, 4 i 5
+*** Propietats mètriques
 
-Proposicions/ Propietats metriques
-La distància de Hamming compleix les propietats bàsiques d’una distància:
+La distància de Hamming compleix les propietats bàsiques d'una distància:
 
-1. No negativa:
-   d(x,y) ≥ 0.
+1. *No negativa:* \(d(x,y) \ge 0\).
+2. *Nul·la si i només si les paraules coincideixen:* \(d(x,y) = 0 \iff x = y\).
+3. *Simètrica:* \(d(x,y) = d(y,x)\).
+4. *Desigualtat triangular:* \(d(x,y) \le d(x,z) + d(z,y)\).
 
-2. Nul·la si i només si les paraules coincideixen:
-   d(x,y) = 0  ⟺  x = y.
+La desigualtat triangular diu que, per anar de \(x\) a \(y\), no pots necessitar més «canvis» que els que necessites per anar de \(x\) a una paraula intermèdia \(z\) i després de \(z\) a \(y\).
 
-3. Simètrica:
-   d(x,y) = d(y,x).
+**** Per què és certa?
 
-4. Desigualtat triangular:
-La desigualtat triangular diu que, per anar de x a y, no pots necessitar més “canvis” que els que necessites per anar de x a una paraula intermèdia z i després de z a y.
-   d(x,y) ≤ d(x,z) + d(z,y).
+Mira una coordenada \(i\) qualsevol. Si en aquesta posició \(x\) i \(y\) són diferents, és a dir,
+\[
+x_i \neq y_i,
+\]
+llavors necessàriament passa una d'aquestes dues coses:
+\[
+x_i \neq z_i \quad \text{o bé} \quad z_i \neq y_i.
+\]
 
-Per què és certa?
+No pot ser que \(x_i = z_i\) i alhora \(z_i = y_i\), perquè llavors \(x_i = y_i\), contradicció.
 
-Mira una coordenada i qualsevol. Si en aquesta posició x i y són diferents, és a dir,
-
-x_i ≠ y_i,
-
-llavors necessàriament passa una d’aquestes dues coses:
-
-x_i ≠ z_i o bé z_i ≠ y_i.
-
-No pot ser que x_i = z_i i alhora z_i = y_i, perquè llavors x_i = y_i, contradicció.
-
-Per tant, tota posició on x i y difereixen també és una posició on x i z difereixen, o bé on z i y difereixen. En conjunts:
-
-{ i : x_i ≠ y_i } ⊆ { i : x_i ≠ z_i } ∪ { i : z_i ≠ y_i }.
+Per tant, tota posició on \(x\) i \(y\) difereixen també és una posició on \(x\) i \(z\) difereixen, o bé on \(z\) i \(y\) difereixen. En conjunts:
+\[
+\{ i : x_i \neq y_i \} \subseteq \{ i : x_i \neq z_i \} \cup \{ i : z_i \neq y_i \}.
+\]
 
 Prenent cardinalitats:
+\[
+d(x,y) \le d(x,z) + d(z,y).
+\]
 
-d(x,y) ≤ d(x,z) + d(z,y).
+La suma de la dreta pot comptar dues vegades alguna posició on \(z\) difereix tant de \(x\) com de \(y\); per això la desigualtat pot ser estricta.
 
-La suma de la dreta pot comptar dues vegades alguna posició on z difereix tant de x com de y; per això la desigualtat pot ser estricta.
-
-Exemple
+**** Exemple
 
 Siguin
-
-x = 000, y = 111, z = 100.
+\[
+x = 000, \qquad y = 111, \qquad z = 100.
+\]
 
 Aleshores:
 
-d(x,y) = 3,
-perquè difereixen a les tres posicions;
-
-d(x,z) = 1,
-perquè només difereixen a la primera posició;
-
-d(z,y) = 3,
-perquè difereixen a les tres posicions.
+- \(d(x,y) = 3\), perquè difereixen a les tres posicions;
+- \(d(x,z) = 1\), perquè només difereixen a la primera posició;
+- \(d(z,y) = 3\), perquè difereixen a les tres posicions.
 
 Així:
-
-3 = d(x,y) ≤ d(x,z) + d(z,y) = 1 + 3 = 4.
+\[
+3 = d(x,y) \le d(x,z) + d(z,y) = 1 + 3 = 4.
+\]
 
 Es compleix la desigualtat triangular.
 
+** 6.2 Distància d'una paraula a un codi
 
+Recordem que un codi \(C\) és un subconjunt \(C \subseteq A^n\); les seves paraules són paraules codi i la seva mida és \(M = |C|\).
 
+La distància d'una paraula \(x\) al codi \(C\) és la distància entre \(x\) i la paraula del codi més propera a \(x\):
+\[
+d(x,C) = \min_{u \in C} d(x,u).
+\]
 
-3. Distancia d'una paraula a un codi
-- Codi C: subconjunt C ⊆ A^n. Les seves paraules són paraules codi. Mida M = |C|.
-  
-la distancia d'una paraula x al codi C es:
-quina és la paraula del codi més propera a x?
-d(x,C) = min d(x,u)
-u dins de C
 Es llegeix així:
 
-• agafam totes les paraules u que pertanyen al codi C;
+1. agafam totes les paraules \(u\) que pertanyen al codi \(C\);
+2. calculam la distància de Hamming \(d(x,u)\) per a cada una;
+3. ens quedam amb la més petita.
 
-• calculam la distància de Hamming d(x, u) per a cada una;
+Per tant, \(d(x,C)\) és la distància entre \(x\) i la paraula del codi que li és més propera.
 
-• ens quedam amb la més petita.
+** 6.3 Distància mínima d'un codi
 
-Per tant, d(x, C) és la distància entre x i la paraula del codi que li és més propera.
+La distància mínima d'un codi \(C\), denotada \(\delta(C)\), és la mínima distància entre dues paraules diferents del codi:
+\[
+\delta(C) = \min\{ d(u,v) : u,v \in C,\ u \neq v \}.
+\]
 
+Si \(C\) només té una paraula, es conveni \(\delta(C) = 0\).
 
-4. Distancia minima d'un codi
+La distància mínima és el paràmetre més important per mesurar la capacitat de detecció i correcció d'errors:
+
+- com més gran és \(\delta(C)\), més errors es poden detectar i corregir;
+- un codi amb paràmetres longitud \(n\), mida \(M\) i distància mínima \(\delta\) sobre un alfabet \(q\)-ari es denota
+  \[
+  (n, M, \delta)_q.
+  \]
+
+  Exemples:
+  Codi trivial: una sola paraula. Es un (n,1,0)__q -codi.
+  Codi total: C = A^n. Te mida q^n i distancia minima 1. Es un (n,q^n,1)__q-codi.
+  Codi de repeticio:
+  Rep__q(n) = {(a,...,a): a dins de A}
+  te paramentres (n,q,n)__q: dues paraules diferents difereixen a totes les coordenades 
+
+  Codi binari amb bit de paritat: donat un codi binari C, s’hi afegeix un bit final perquè el nombre total d’uns sigui parell. La distància mínima passa a ser delta o delta + 1 i de fet esdevé parella.
+Falta BOLES DE HAMMING 6.
+
