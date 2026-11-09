@@ -1,0 +1,134 @@
+- Alfabet A: conjunt finit de símbols. Cardinal q = |A|.
+- Paraula de longitud n: tupla x = (x1,...,xn) amb xi ∈ A.
+- A^n: conjunt de totes les paraules de longitud n sobre A. |A^n| = q^n.
+- Codi C: subconjunt C ⊆ A^n. Les seves paraules són paraules codi. Mida M = |C|.
+- Codi de bloc: codi on totes les paraules tenen la mateixa longitud n.
+
+
+Los códigos Hamming son un tipo de código de bloque lineal utilizado para la detección y corrección de errores en la transmisión o almacenamiento de datos digitales.
+
+
+En esencia, un código Hamming toma un bloque de k bits de datos y añade m bits de paridad para formar una palabra de código de n=k+m bits. Esta redundancia permite que el receptor no solo detecte que ha ocurrido un error, sino que también determine exactamente en qué bit se produjo y lo corrija.
+
+
+
+Capitol 6: codis de bloc.
+
+6.1 Distancia de hamming
+
+En el context dels codis de bloc, treballam amb paraules de la mateixa longitud "n" sobre un alfabet "A"
+de cardinalitat "q"
+
+Alfabet es "l'idioma amb q elements diferents" per exemple codi binari: A = {0,1}, i llavors q = 2.
+codi ternari A = {0,1,2}, i llavors q = 3.
+A^n es el conjunt de totes les paraules possibles de longitud n sobre l'alfabet A.
+Exemple 1: alfabet binari
+
+Sigui
+A = {0,1}, n = 3.
+
+Aleshores
+A^3 = {(x1,x2,x3) : xi ∈ {0,1}},
+
+o sigui,
+A^3 = {000, 001, 010, 011, 100, 101, 110, 111}.
+
+Són totes les paraules binàries de longitud 3.
+Com que q = |A| = 2, hi ha
+|A^3| = q^n = 2^3 = 8
+paraules.
+
+
+x = (x1,...,xn), y = (y1,...,yn) dins de A^n
+
+Definicio de distancia de hamming:
+
+La distancia de hamming entre x i y, denotada d(x,y) es el nombre de coordenades en que les dues paraules son diferents:
+d(x,y) = #{ i ∈ [n] : x_i ≠ y_i }
+exemple:
+d(10110, 10011) = 3
+difereix en les posicions 3, 4 i 5
+
+Proposicions/ Propietats metriques
+La distància de Hamming compleix les propietats bàsiques d’una distància:
+
+1. No negativa:
+   d(x,y) ≥ 0.
+
+2. Nul·la si i només si les paraules coincideixen:
+   d(x,y) = 0  ⟺  x = y.
+
+3. Simètrica:
+   d(x,y) = d(y,x).
+
+4. Desigualtat triangular:
+La desigualtat triangular diu que, per anar de x a y, no pots necessitar més “canvis” que els que necessites per anar de x a una paraula intermèdia z i després de z a y.
+   d(x,y) ≤ d(x,z) + d(z,y).
+
+Per què és certa?
+
+Mira una coordenada i qualsevol. Si en aquesta posició x i y són diferents, és a dir,
+
+x_i ≠ y_i,
+
+llavors necessàriament passa una d’aquestes dues coses:
+
+x_i ≠ z_i o bé z_i ≠ y_i.
+
+No pot ser que x_i = z_i i alhora z_i = y_i, perquè llavors x_i = y_i, contradicció.
+
+Per tant, tota posició on x i y difereixen també és una posició on x i z difereixen, o bé on z i y difereixen. En conjunts:
+
+{ i : x_i ≠ y_i } ⊆ { i : x_i ≠ z_i } ∪ { i : z_i ≠ y_i }.
+
+Prenent cardinalitats:
+
+d(x,y) ≤ d(x,z) + d(z,y).
+
+La suma de la dreta pot comptar dues vegades alguna posició on z difereix tant de x com de y; per això la desigualtat pot ser estricta.
+
+Exemple
+
+Siguin
+
+x = 000, y = 111, z = 100.
+
+Aleshores:
+
+d(x,y) = 3,
+perquè difereixen a les tres posicions;
+
+d(x,z) = 1,
+perquè només difereixen a la primera posició;
+
+d(z,y) = 3,
+perquè difereixen a les tres posicions.
+
+Així:
+
+3 = d(x,y) ≤ d(x,z) + d(z,y) = 1 + 3 = 4.
+
+Es compleix la desigualtat triangular.
+
+
+
+
+3. Distancia d'una paraula a un codi
+- Codi C: subconjunt C ⊆ A^n. Les seves paraules són paraules codi. Mida M = |C|.
+  
+la distancia d'una paraula x al codi C es:
+quina és la paraula del codi més propera a x?
+d(x,C) = min d(x,u)
+u dins de C
+Es llegeix així:
+
+• agafam totes les paraules u que pertanyen al codi C;
+
+• calculam la distància de Hamming d(x, u) per a cada una;
+
+• ens quedam amb la més petita.
+
+Per tant, d(x, C) és la distància entre x i la paraula del codi que li és més propera.
+
+
+4. Distancia minima d'un codi
