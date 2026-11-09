@@ -1,6 +1,8 @@
 *
 !.gitignore
-!*.md
-!*.html
-!*.org
-!*.pdf
+!apunts.html
+!apunts.org
+!apunts.pdf
+!projecte/
+!projecte/**
+*~
